@@ -1,0 +1,201 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wp-special-textboxes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-30 11:44+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Fat Cow <zhr@tut.by>\n"
+"Language-Team: Fat Cower <zhr@tut.by>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Belarusian\n"
+"X-Poedit-Country: BELARUS\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: _e;__;__ngettext:1,2;__ngettext_noop:1,2;_c\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: wp-special-textboxes.php:239
+msgid "This is example of Custom Special Text Box. You must save options to view changes."
+msgstr "Гэта прыклад наладжвальнага блока адмысловага тэксту. Каб убачыць занесеныя змены, неабходна захаваць параметры."
+
+#: wp-special-textboxes.php:240
+msgid "This is caption"
+msgstr "Гэта загаловак блока"
+
+#: wp-special-textboxes.php:241
+msgid "This is example of Captioned Custom Special Text Box. You must save options to view changes."
+msgstr "Гэта прыклад наладжвальнага блока адмысловага тэксту з загалоўкам. Каб убачыць занесеныя змены, неабходна захаваць параметры."
+
+#: wp-special-textboxes.php:247
+msgid "Special Text Boxes"
+msgstr "Падсвятленне тэксту"
+
+#: wp-special-textboxes.php:260
+msgid "Basic Settings"
+msgstr "Асноўныя параметры"
+
+#: wp-special-textboxes.php:264
+msgid "Select border style for Special Text Boxes"
+msgstr "Выбар стылю рамкі блока адмысловага тэксту"
+
+#: wp-special-textboxes.php:265
+msgid "Selecting \"None\" will disable Special Text Boxes border."
+msgstr "Вылучыўшы \"Без рамкі\", Вы забароніце прамалёўку рамкі блока адмысловага тэксту. "
+
+#: wp-special-textboxes.php:271
+msgid "Define top margin for Special Text Boxes"
+msgstr "Верхні водступ адмысловага тэксту"
+
+#: wp-special-textboxes.php:272
+msgid "This is a gap between top edge of Special Text Box and text above."
+msgstr "Гэты параметр вызначае прамежак паміж верхнім бокам блока адмысловага тэксту і тэкстам (елементом) размешчаным вышэй."
+
+#: wp-special-textboxes.php:277
+msgid "Define left margin for Special Text Boxes"
+msgstr "Левы водступ адмысловага тэксту"
+
+#: wp-special-textboxes.php:278
+msgid "This is a gap between left edge of Special Text Box and left edge of post area."
+msgstr "Гэты параметр вызначае прамежак паміж левым бокам блока адмысловага тэксту і левым бокам вобласці артыкула."
+
+#: wp-special-textboxes.php:283
+msgid "Define right margin for Special Text Boxes"
+msgstr "Правы водступ адмысловага тэксту"
+
+#: wp-special-textboxes.php:284
+msgid "This is a gap between right edge of Special Text Box and right edge of post area."
+msgstr "Гэты параметр вызначае прамежак паміж правым бокам блока адмысловага тэксту і правым бокам вобласці артыкула."
+
+#: wp-special-textboxes.php:289
+msgid "Define bottom margin for Special Text Boxes"
+msgstr "Ніжні водступ адмысловага тэксту"
+
+#: wp-special-textboxes.php:290
+msgid "This is a gap between bottom edge of Special Text Box and text below."
+msgstr "Гэты параметр вызначае прамежак паміж ніжнім бокам блока адмысловага тэксту і тэкстам (элементам), размешчаным ніжэй."
+
+#: wp-special-textboxes.php:298
+msgid "Extended Settings"
+msgstr "Дадатковыя параметры"
+
+#: wp-special-textboxes.php:299
+msgid "Parameters below add elements of CSS3 standard to Style Sheet. Not all browsers can interpret this elements properly, but including this elements to HTML page not crash browser."
+msgstr "Выкарыстанне наступных параметраў дадае ў табліцу стыляў елементы стандарту CSS3. Не ўсе браўзэры могуць інтэрпрэтаваць гэтыя элементы належнай выявай, але выкарыстанне гэтых элементаў не прыводзіць да збою ў працы браўзэра."
+
+#: wp-special-textboxes.php:303
+msgid "Allow rounded corners for Special Text Boxes?"
+msgstr "Дазволіць выкарыстанне закругленых кутоў?"
+
+#: wp-special-textboxes.php:304
+msgid "Selecting \"No\" will disable Special Text Boxes rounded corners."
+msgstr "Вылучыўшы \"Не\", Вы забароніце прамалёўку закругленых кутоў. "
+
+#: wp-special-textboxes.php:307
+#: wp-special-textboxes.php:314
+#: wp-special-textboxes.php:321
+msgid "Yes"
+msgstr "Так"
+
+#: wp-special-textboxes.php:307
+#: wp-special-textboxes.php:314
+#: wp-special-textboxes.php:321
+msgid "No"
+msgstr "Не"
+
+#: wp-special-textboxes.php:310
+msgid "Allow box shadow for Special Text Boxes?"
+msgstr "Дазволіць выкарыстанне ценю блока адмысловага тэксту?"
+
+#: wp-special-textboxes.php:311
+msgid "Selecting \"No\" will disable Special Text Boxes shadow."
+msgstr "Вылучыўшы \"Не\", Вы забароніце прамалёўку ценю блока адмысловага тэксту. "
+
+#: wp-special-textboxes.php:317
+msgid "Allow text shadow for Special Text Boxes?"
+msgstr "Дазволіць выкарыстанне ценяў тэксту?"
+
+#: wp-special-textboxes.php:318
+msgid "Selecting \"No\" will disable Special Text Boxes text shadow."
+msgstr "Вылучыўшы \"Не\", Вы забароніце прамалёўку ценяў тэксту. "
+
+#: wp-special-textboxes.php:338
+#: wp-special-textboxes.php:413
+msgid "Custom Box Editor"
+msgstr "Рэдактар наладжвальнага блока"
+
+#: wp-special-textboxes.php:339
+msgid "Use parameters below for customising custom Special Text Box."
+msgstr "Выкарыстайце гэтыя параметры для налады знешняга выгляду наладжвальнага блока адмысловага тэксту."
+
+#: wp-special-textboxes.php:343
+msgid "Define font color for Custom Special Text Box"
+msgstr "Колер шрыфта"
+
+#: wp-special-textboxes.php:344
+msgid "This is a font color of Custom Special Text Box (Six Hex Digits)."
+msgstr "Гэты параметр задае колер шрыфта наладжвальнага блока адмысловага тэксту (шэсць шестнадцатиричных лічб)."
+
+#: wp-special-textboxes.php:349
+msgid "Define caption font color for Custom Special Text Box"
+msgstr "Колер шрыфта загалоўка"
+
+#: wp-special-textboxes.php:350
+msgid "This is a font color of Custom Special Text Box caption (Six Hex Digits)."
+msgstr "Гэты параметр задае колер шрыфта загалоўка наладжвальнага блока адмысловага тэксту (шэсць шестнадцатиричных лічб)."
+
+#: wp-special-textboxes.php:355
+msgid "Define background color for Custom Special Text Box"
+msgstr "Колер фону"
+
+#: wp-special-textboxes.php:356
+msgid "This is a background color of Custom Special Text Box (Six Hex Digits)."
+msgstr "Гэты параметр задае колер фону наладжвальнага блока адмысловага тэксту (шэсць шестнадцатиричных лічб)."
+
+#: wp-special-textboxes.php:361
+msgid "Define background color for Custom Special Text Box caption"
+msgstr "Колер фону загалоўка"
+
+#: wp-special-textboxes.php:362
+msgid "This is a background color of Custom Special Text Box caption (Six Hex Digits)."
+msgstr "Гэты параметр задае колер фону загалоўка наладжвальнага блока адмысловага тэксту (шэсць шестнадцатиричных лічб)."
+
+#: wp-special-textboxes.php:367
+msgid "Define border color for Custom Special Text Box"
+msgstr "Колер акантоўкі"
+
+#: wp-special-textboxes.php:368
+msgid "This is a border color of Custom Special Text Box (Six Hex Digits)."
+msgstr "Гэты параметр вызначае колер акантоўкі наладжвальнага блока адмысловага тэксту."
+
+#: wp-special-textboxes.php:373
+msgid "Define image for Custom Special Text Box"
+msgstr "Малюнак"
+
+#: wp-special-textboxes.php:374
+msgid "This is an image of Custom Special Text Box (Full URL). 25x25 pixels, transparent background PNG image recommended."
+msgstr "Гэты параметр задае піктаграму наладжвальнага блока адмысловага тэксту (поўны URL). Рэкамендуецца малюнак PNG, 25x25 піксэл, празрысты фон."
+
+#: wp-special-textboxes.php:393
+msgid "Special Text Boxes Settings Updated."
+msgstr "Параметры падсвятлення адмысловага тэксту захаваныя."
+
+#: wp-special-textboxes.php:400
+msgid "Special Text Boxes Settings"
+msgstr "Параметры падсвятлення адмысловага тэксту"
+
+#: wp-special-textboxes.php:488
+msgid "Update Settings"
+msgstr "Захаваць параметры"
+
+#~ msgid "Solid"
+#~ msgstr "Суцэльная лінія"
+#~ msgid "Dashed"
+#~ msgstr "Пункцір"
+#~ msgid "Dotted"
+#~ msgstr "Кропкі"
+#~ msgid "None"
+#~ msgstr "Без рамкі"
+
