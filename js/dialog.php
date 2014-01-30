@@ -19,6 +19,9 @@ $styles = $stbObject->styles;
 <head>
 	<title><?php _e('Insert Special Text Box', STB_DOMAIN); ?></title>
   <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php echo get_option('blog_charset'); ?>" />
+  <style type="text/css">
+    input, button, table {font-size: 11px;}
+  </style>
 	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
@@ -35,7 +38,7 @@ $styles = $stbObject->styles;
         <li id="extended_tab"><span><a href="javascript:mcTabs.displayTab('extended_tab','extended_panel');" onmousedown="return false;"><?php _e("Extended Settings", STB_DOMAIN); ?></a></span></li>
       </ul>
     </div>
-    <div class="panel_wrapper" style="height: 400px;">
+    <div class="panel_wrapper" style="height: 440px;">
       <div id="basic_panel" class="panel current">
 		    <table border="0" cellpadding="4" cellspacing="0">
 		      <tr>

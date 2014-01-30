@@ -670,7 +670,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       //$stbClasses = $this->classes;
 
       $cssFile = STB_DIR.'css/wp-special-textboxes.css';
-      $content = ".stb-container {margin: 0px auto; padding: 0px; position: static;}\n";
+      $content = ".stb-container {margin: 0px auto; padding: 0px; position: static; box-sizing: content-box;}\n";
       $content .= ".stb-tool {";
       if($options['langDirect'] === 'ltr') {
         $content .= "float: right; ";
@@ -713,7 +713,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         /* Class Dependent Parameters */
         $content .= "background-color: #".$val['cssStyle']['bgColor'].";\n";
         if ($options['showImg'] === 'true') {
-          $content .= "background-image: url(".($options['bigImg'] === 'true') ? $val['cssStyle']['bigImg'] : $val['cssStyle']['image'].");\n";
+          $content .= "background-image: url(".(($options['bigImg'] === 'true') ? $val['cssStyle']['bigImg'] : $val['cssStyle']['image']).");\n";
         }
         $content .= "border: 1px ".$options['border_style'].' #'.$val['cssStyle']['borderColor'].";\n";
         $content .= "color: #".$val['cssStyle']['color'].";\n";
@@ -800,6 +800,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         $content .= "}\n";
       
         $content .= ".stb-".$val['slug']."-body_box {\n";
+        $content .= "box-sizing: content-box;";
         $content .= "padding: 5px;\n";
         $content .= "border-top-width: 0px;\n";
         $content .= "border-right-width: 1px;\n";

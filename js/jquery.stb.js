@@ -553,8 +553,9 @@
       
       this.each(function() {
         var opts = {}, eop,        
-        eid = $(this).attr('id'),
-        fop = $(this).data('stb'),
+          eid = $(this).attr('id'),
+          fop = $(this).data('stb'),
+          bodyLineHeight = $(this).css('line-height'),
         caption = null;
         //lineHeight = $(this).css('line-height');
         
@@ -603,7 +604,7 @@
           "margin-left": opts.mleft + "px",
           "box-sizing": "content-box",
           "z-index": 4,
-          'line-height': lineHeight,
+          'line-height': bodyLineHeight, //lineHeight,
           "text-shadow": (opts.textShadow.enabled) ? opts.textShadow.color + ' ' + opts.textShadow.offsetX + 'px ' + opts.textShadow.offsetY + 'px ' + opts.textShadow.blur + 'px' : 'none'
         };
         
@@ -642,7 +643,7 @@
             stbItems.length
           );          
         } else {
-          $(this).css(bodyCStyle).wrap('<div id="'+eid+'_container" class="stb-container"></div>');
+          $(this).css(bodyCStyle).wrap('<div id="'+eid+'_container" class="stb-container" style="line-height: 0.1em;"></div>');
           $('#'+eid+'_container').css({
             direction: opts.direction,
             "margin-top": opts.mtop + "px",
