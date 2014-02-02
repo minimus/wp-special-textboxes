@@ -20,6 +20,15 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="WP Blogs">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/wp-admin" local="$PROJECT_DIR$/../../Web/Wordpress/Wordpress/Wordpress 3.8/wordpress/wp-admin" web="/" />
+            <mapping deploy="/wp-includes" local="$PROJECT_DIR$/../../Web/Wordpress/Wordpress/Wordpress 3.8/wordpress/wp-includes" web="/" />
+            <mapping deploy="/wp-content/plugins/wp-special-textboxes" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
   </component>
 </project>

@@ -201,6 +201,7 @@ if (!class_exists("SpecialTextBoxes")) {
     
     public function addHeaderCSS() {
       if($this->globalMode != 'js') {
+        wp_enqueue_style('stbCoreCSS', STB_URL.'css/stb-core.css', false, STB_VERSION);
         if($this->settings['css_loading'] === 'dynamic')
           wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css.php', false, STB_VERSION);
         else wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css', false, STB_VERSION);
@@ -251,8 +252,8 @@ if (!class_exists("SpecialTextBoxes")) {
       $cssOptions = array(
         'roundedCorners' => ($this->settings['rounded_corners'] == 'true'),
         'mbottom' => intval($this->settings['bottom_margin']),
-        'imgHide' => STB_URL.'images/hide.png',
-        'imgShow' => STB_URL.'images/show.png',
+        'imgHide' => STB_URL.'images/minus.png',
+        'imgShow' => STB_URL.'images/plus.png',
         'strHide' => __('Hide', STB_DOMAIN),
         'strShow' => __('Show', STB_DOMAIN)
       );

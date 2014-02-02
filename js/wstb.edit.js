@@ -1,4 +1,59 @@
+var stb = stb || {}, mediaStrings = stbUserOptions.strings;
+
 (function($) {
+  var media;
+
+  stb.media = media = {
+    jsId: '#selJsImg',
+    cssId: '#selCssImg',
+    jsImgUrl: '#js_image',
+    cssImgUrl: '#css_big_image',
+
+    init: function() {
+      $(this.jsId).on( 'click', {mode: 'js'}, this.openMediaDialog );
+      $(this.cssId).on( 'click', {mode: 'css'}, this.openMediaDialog );
+    },
+
+    openMediaDialog: function( e ) {
+      e.preventDefault();
+
+      var mode = e.data.mode;
+
+      if ( this._frame ) {
+        this._frame.open();
+        return;
+      }
+
+      this._frame = media.frame = wp.media({
+        title: mediaStrings.title,
+        button: {
+          text: mediaStrings.update
+        },
+        multiple: false,
+        library: {
+          type: 'image'
+        }
+      });
+
+      this._frame.on('ready', function() {
+        //
+      });
+
+      this._frame.state( 'library' ).on('select', function() {
+        var attachment = this.get( 'selection' ).single();
+        media.handleMediaAttachment( attachment, mode );
+      });
+
+      this._frame.open();
+    },
+
+    handleMediaAttachment: function( a, mode ) {
+      var attachment = a.toJSON();
+      if(mode == 'js') $(this.jsImgUrl).val(attachment.url);
+      else $(this.cssImgUrl).val(attachment.url);
+    }
+  };
+
   function sanitizeOptions(opts) {
     if(typeof(opts.radius) == 'string') opts.radius = parseInt(opts.radius);
     if(typeof(opts.imgX) == 'string') opts.imgX = parseInt(opts.imgX);
@@ -29,83 +84,31 @@
       cpOpts = opts.pickerOptions,
       options = {direction: 'vertical'};
     if('Undefined' != theme) $('#js_test, #js_test_cap').stb(thm, opts);
-    
-    /*var cp = '#css_color, #css_caption_color, #css_bg_color, #css_caption_bg_color, #css_border_color,';
-    cp += '#js_color, #js_color_to, #js_caption_font_color, #js_font_color, #js_caption_color, #js_caption_color_to, #js_border_color';
-    $(cp).ColorPicker({
-      onSubmit: function(hsb, hex, rgb, el){
-        $(el).val(hex);
-        $(el).ColorPickerHide();
-      },
-      onBeforeShow: function(){
-        $(this).ColorPickerSetColor(this.value);
-      }
-    }).bind('keyup', function(){
-      $(this).ColorPickerSetColor(this.value);
-    });*/
-      
-    function callback(sb,sc,si) {
-      if (sb.css('display') == 'none') {
-        sc.css({'margin-bottom' : stbUserOptions.cssOptions.mbottom + 'px'});
-        si.attr({'src' : stbUserOptions.cssOptions.imgShow, 'title' : stbUserOptions.cssOptions.strShow});
-        if (stbUserOptions.cssOptions.roundedCorners) {
-          sc.css({
-            '-webkit-border-bottom-left-radius' : '5px',
-            '-webkit-border-bottom-right-radius' : '5px',
-            '-moz-border-radius-bottomleft' : '5px',
-            '-moz-border-radius-bottomright' : '5px',
-            'border-bottom-left-radius' : '5px',
-            'border-bottom-right-radius' : '5px'
-          });
-        }
-      }
-      else {
-        si.attr({'src' : stbUserOptions.cssOptions.imgHide, 'title' : stbUserOptions.cssOptions.strHide});
-      }
-    
-      $(this).parent().parent().children('#caption').css({'margin-bottom' : stbUserOptions.cssOptions.mbottom + 'px'});
+
+    media.init();
+
+    var cssOpts = stbUserOptions.cssOptions;
+    function callback(cnt) {
+      cnt.toggleClass('stb-hidden').toggleClass('stb-visible');
       return false;
     }
-      
-    $(".stb-tool").bind("click", function() {
-      var
-        eid = $(this).attr('id').split('-'),
-        num = eid[2],
-        sb = $(this).parent().parent().children('#stb-body-box-'+num),
-        sc = $(this).parent().parent().children('#stb-caption-box-'+num),
-        si = $(this).children('#stb-toolimg-'+num);
-      if (sb.css('display') != 'none')  {
-        sb.hide('blind',options,500, function() {callback(sb,sc,si);});
 
+    $('.stb-tool').bind('click', function() {
+      var
+        id = $(this).attr('id').split('-'), idn = id[2],
+        cnt = $('#stb-container-' + idn),
+        sb = $('#stb-body-box-'+idn),
+        si = $('#stb-toolimg-'+idn);
+      if(cnt.hasClass('stb-visible')) {
+        sb.hide('blind', options, 500, function() {callback(cnt)});
+        si.attr({'src': cssOpts.imgShow, 'title': cssOpts.strShow});
       }
       else {
-        sb.show('blind',options,500,function() {callback(sb,sc,si);});
-        sc.css({'margin-bottom' : '0px'});
-        if (stbUserOptions.cssOptions.roundedCorners) {
-          sc.css({
-            '-webkit-border-bottom-left-radius' : '0px',
-            '-webkit-border-bottom-right-radius' : '0px',
-            '-moz-border-radius-bottomleft' : '0px',
-            '-moz-border-radius-bottomright' : '0px',
-            'border-bottom-left-radius' : '0px',
-            'border-bottom-right-radius' : '0px'
-          });
-        }
+        sb.show('blind', options, 500, function() {callback(cnt)});
+        si.attr({'src': cssOpts.imgHide, 'title': cssOpts.strHide});
       }
       return false;
     });
-  
-    /*$('#cb_color, #cb_caption_color, #cb_background, #cb_caption_background, #cb_border_color').ColorPicker({
-      onSubmit: function(hsb, hex, rgb, el){
-        $(el).val(hex);
-        $(el).ColorPickerHide();
-      },
-      onBeforeShow: function(){
-        $(this).ColorPickerSetColor(this.value);
-      }
-    }).bind('keyup', function(){
-      $(this).ColorPickerSetColor(this.value);
-    });*/
 
     try {
       $('.color-btn').smallColorPicker({

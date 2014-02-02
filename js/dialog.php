@@ -215,11 +215,11 @@ $styles = $stbObject->styles;
             </td>
           </tr>
         </table>
-        <table border="0" cellpadding="4" cellspacing="0">
+        <!--<table border="0" cellpadding="4" cellspacing="0">
           <tr>
             <td style='color: blue'><?php _e('Note! Colors "Background color" and "Caption Background Color" are used as appropriate background color of the text block when that block is drawn in CSS mode. In Javascript mode these colors are used as start color of the background gradient.', STB_DOMAIN); ?></td>
           </tr>
-        </table>
+        </table>-->
         <table border="0" cellpadding="4" cellspacing="0">
           <tr>
             <td><strong><?php echo __('Border', STB_DOMAIN).':'; ?></strong></td>

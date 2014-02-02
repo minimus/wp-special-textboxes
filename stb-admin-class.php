@@ -257,13 +257,14 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       wp_enqueue_style('stbAdminCSS', STB_URL.'css/stb-admin.css', false, STB_VERSION);
       wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css.php', false, STB_VERSION);
       //wp_enqueue_style('ColorPickerCSS', STB_URL.'css/colorpicker.css');
-      wp_enqueue_style('jquery-ui-tabs', STB_URL.'css/jquery-ui-1.8.16.custom.css', false, '1.8.16');
+      wp_enqueue_style('jquery-ui-tabs', STB_URL.'css/jquery-ui-wp38.css', false, '1.10.3');
       wp_enqueue_style('smallColorPickerButtonsCSS', STB_URL.'css/color-buttons.min.css');
       wp_enqueue_style('smallColorPickerCSS', STB_URL.'css/small-color-picker.min.css');
     }
     
     public function addAdminEditorCSS() {
       wp_enqueue_style('stbAdminCSS', STB_URL.'css/stb-edit.css', false, STB_VERSION);
+      wp_enqueue_style('stbCoreCSS', STB_URL.'css/stb-core.css', false, STB_VERSION);
       wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css.php', false, STB_VERSION);
       //wp_enqueue_style('ColorPickerCSS', STB_URL.'css/colorpicker.css');
       wp_enqueue_style('smallColorPickerButtonsCSS', STB_URL.'css/color-buttons.min.css');
@@ -346,14 +347,19 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       $cssOptions = array(
         'roundedCorners' => ($this->settings['rounded_corners'] == 'true'),
         'mbottom' => intval($this->settings['bottom_margin']),
-        'imgHide' => STB_URL.'images/hide.png',
-        'imgShow' => STB_URL.'images/show.png',
+        'imgHide' => STB_URL.'images/minus.png',
+        'imgShow' => STB_URL.'images/plus.png',
         'strHide' => __('Hide', STB_DOMAIN),
         'strShow' => __('Show', STB_DOMAIN)
       );
       
-      $options = array('jsOptions' => $jsOptions, 'cssOptions' => $cssOptions);
-      
+      $options = array(
+        'jsOptions' => $jsOptions,
+        'cssOptions' => $cssOptions,
+        'strings' => array('title' => __('Select Image', STB_DOMAIN), 'update' => __('Select', STB_DOMAIN))
+      );
+
+      wp_enqueue_media();
       if($this->cmsVer === 'low') {
         wp_register_script('jquery-effects-core', STB_URL.'js/jquery.effects.core.min.js', array('jquery'), '1.8.16');
         wp_register_script('jquery-effects-blind', STB_URL.'js/jquery.effects.blind.min.js', array('jquery', 'jquery-effects-core'), '1.8.16');
@@ -364,7 +370,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       //wp_enqueue_script('ColorPicker', STB_URL.'js/colorpicker.js');
       wp_enqueue_script('smallColorPicker', STB_URL.'js/small-color-picker.min.js', array('jquery'));
       wp_enqueue_script('STB', STB_URL.'js/jquery.stb.js', array('jquery', 'jquery-effects-core', 'jquery-effects-blind'), STB_VERSION);
-      wp_enqueue_script('wstbAdminLayout', STB_URL.'js/wstb.edit.min.js', array('jquery', 'jquery-effects-core', 'jquery-effects-blind', 'STB'), STB_VERSION);
+      wp_enqueue_script('wstbAdminLayout', STB_URL.'js/wstb.edit.js', array('jquery', 'jquery-effects-core', 'jquery-effects-blind', 'STB'), STB_VERSION);
       if($this->cmsVer === 'high') wp_localize_script('wstbAdminLayout', 'stbUserOptions', $options);
       else wp_localize_script('wstbAdminLayout', 'stbUserOptions', array('l10n_print_after' => 'stbUserOptions = ' . json_encode($options) . ';'));
     }
@@ -664,188 +670,69 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       <?php
     }
 
-    public function writeCSS($output) {
+    public function writeCSS($out) {
       $options = $this->settings;
-      $stbStyles = $this->styles;
-      //$stbClasses = $this->classes;
-
+      $styles = $this->styles;
       $cssFile = STB_DIR.'css/wp-special-textboxes.css';
-      $content = ".stb-container {margin: 0px auto; padding: 0px; position: static; box-sizing: content-box;}\n";
-      $content .= ".stb-tool {";
-      if($options['langDirect'] === 'ltr') {
-        $content .= "float: right; ";
-      }
-      else {
-        $content .=  "float: left; ";
-      }
-      $content .=	"padding: 0px; margin: 0px auto;}\n";
-      foreach($stbStyles as $val) {
-        $content .= ".stb-".$val['slug']."_box {\n";
-        if($options['fontSize'] !== '0') { 
-          $content .= "font-size: ".$options['fontSize']."px;\n ";
+
+      $content =  ".stb-container-css {margin: {$options['top_margin']}px {$options['right_margin']}px {$options['bottom_margin']}px {$options['left_margin']}px;}";
+
+      $content .= ".stb-box {";
+      if($options['fontSize'] !== '0') $content .=  "font-size: {$options['fontSize']}px;";
+      if($options['text_shadow'] == "true") $content .= "text-shadow: 1px 1px 2px #888;";
+      $content .= "}";
+
+      $content .= ".stb-caption-box {";
+      if($options['captionFontSize'] !== '0') $content .= "font-size: {$options['captionFontSize']}px;";
+      $content .= "}";
+
+      $content .= ".stb-body-box {";
+      if($options['fontSize'] !== '0') $content .= "font-size: {$options['fontSize']}px;";
+      $content .= "}";
+
+      $content .= "\n"."/* Class Dependent Parameters */"."\n";
+      foreach($styles as &$val) {
+        if(!isset($val['cssStyle']['bgColorEnd'])) {
+          $val['cssStyle']['bgColor'] = str_replace('#', '', $val['jsStyle']['color']);
+          $val['cssStyle']['bgColorEnd'] = str_replace('#', '', $val['jsStyle']['colorTo']);
         }
-        $content .= "margin-top: ".$options['top_margin']."px;\n";
-        $content .= "margin-right: ".$options['right_margin']."px;\n";
-        $content .= "margin-bottom: ".$options['bottom_margin']."px;\n";
-        $content .= "margin-left: ".$options['left_margin']."px;\n";
-        if ($options['showImg'] === 'true') {
-          if($options['langDirect'] === 'ltr') {
-            $content .= "padding-left: ".(($options['bigImg'] === 'true') ? '50' : '25' )."px;\n";
-            $content .= "padding-right: 5px;\n";
-            $content .= "background-position:top left;\n";
-            $content .= "text-align: left;\n";
-          }
-          else {
-            $content .= "padding-right: ".(($options['bigImg'] === 'true') ? '50' : '25' )."px;\n";
-            $content .= "padding-left: 5px;\n";
-            $content .= "background-position:top right;\n";
-            $content .= "text-align: right;\n";
-          }
-          $content .= "min-height: ".(($options['bigImg'] === 'true') ? '40' : '20')."px;\n";
+        if(!isset($val['cssStyle']['captionBgColorEnd'])) {
+          $val['cssStyle']['captionBgColor'] = str_replace('#', '', $val['jsStyle']['caption']['color']);
+          $val['cssStyle']['captionBgColorEnd'] = str_replace('#', '', $val['jsStyle']['caption']['colorTo']);
         }
-        else {
-          $content .= "padding-left: 5px;\n";
-          $content .= "padding-right: 5px;\n";
-        }
-        $content .= "background-repeat: no-repeat;\n";
-        $content .= "padding-top: 5px;\n";
-        $content .= "padding-bottom: 5px;\n";
-        /* Class Dependent Parameters */
-        $content .= "background-color: #".$val['cssStyle']['bgColor'].";\n";
-        if ($options['showImg'] === 'true') {
-          $content .= "background-image: url(".(($options['bigImg'] === 'true') ? $val['cssStyle']['bigImg'] : $val['cssStyle']['image']).");\n";
-        }
-        $content .= "border: 1px ".$options['border_style'].' #'.$val['cssStyle']['borderColor'].";\n";
-        $content .= "color: #".$val['cssStyle']['color'].";\n";
-        if ($options['rounded_corners'] == "true") {
-          $content .= "-moz-border-radius: 5px;\n";
-          $content .= "-webkit-border-radius: 5px;\n";
-          $content .= "border-radius: 5px;\n";
-        }
-        if ( $options['box_shadow'] == "true" ) {
-          $content .= "-webkit-box-shadow: 3px 3px 3px #888;\n";
-          $content .= "-moz-box-shadow: 3px 3px 3px #888;\n";
-          $content .= "box-shadow: 3px 3px 3px #888;\n";
-        }
+
+        $content .= ".stb-border.stb-{$val['slug']}-container {";
+        $content .= "border: 1px {$options['border_style']} #{$val['cssStyle']['borderColor']};";
+        $content .= "}";
+        $content .= ".stb-{$val['slug']}-container {";
+        $content .= "background-image: linear-gradient(#{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
+        $content .= "}";
+        $content .= ".stb-{$val['slug']}_box {";
+        $content .= "background-color: #{$val['cssStyle']['bgColor']};";
+        $content .= "background-image: linear-gradient(#{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
+        $content .= "color: #{$val['cssStyle']['color']};";
+        $content .= "}";
+
+        $content .= ".stb-{$val['slug']}-caption_box {";
+        $content .= "background-image: linear-gradient(#{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
+        $content .= "background-color: #{$val['cssStyle']['captionBgColor']};";
+        $content .= "color: #{$val['cssStyle']['captionColor']};";
         if ($options['text_shadow'] == "true") {
-          $content .= "text-shadow: 1px 1px 2px #888;\n";
+          $content .= "text-shadow: 1px 1px 2px #888;";
         }
-        $content .= "}\n";
-      
-        $content .= ".stb-".$val['slug']."-caption_box {\n";
-        $content .= "border-top-style: ".$options['border_style'].";\n";
-        $content .= "border-right-style: ".$options['border_style'].";\n";
-        $content .= "border-left-style: ".$options['border_style'].";\n";
-        $content .= "margin-top: ".$options['top_margin']."px;\n";
-        $content .= "margin-right: ".$options['right_margin']."px;\n";
-        $content .= "margin-bottom: 0px;\n";
-        $content .= "margin-left: ".$options['left_margin']."px;\n";
-        $content .= "font-weight: bold;\n";
-        $content .= "background-repeat: no-repeat;\n";
-        $content .= "-webkit-background-origin: border;\n";
-        $content .= "-webkit-background-clip: border;\n";
-        $content .= "-moz-background-origin: border;\n";
-        $content .= "-moz-background-clip: border;\n";
-        $content .= "background-origin: border;\n";
-        $content .= "background-clip: border;\n";
-        if($options['langDirect'] === 'ltr') {
-          $content .= "padding-left: ".(($options['showImg'] === 'true') ? '25' : '5' )."px;\n";
-          $content .= "padding-right: 5px;\n";
-          $content .= "background-position: left;\n";
-          $content .= "text-align: left;\n";
-        }
-        else {
-          $content .= "padding-right: ".(($options['showImg'] === 'true') ? '25' : '5' )."px;\n";
-          $content .= "padding-left: 5px;\n";
-          $content .= "background-position: right;\n";
-          $content .= "text-align: right;\n";
-        }
-        $content .= "padding-top: 3px;\n";
-        $content .= "padding-bottom: 3px;\n";
-        $content .= "border-top-width: 1px;\n";
-        $content .= "border-right-width: 1px;\n";
-        $content .= "border-bottom-width: 0px;\n";
-        $content .= "border-left-width: 1px;\n";
-        $content .= "border-left-style: solid;\n";
-        $content .= "min-height:20px;\n";
-        if($options['captionFontSize'] !== '0') {
-          $content .= "font-size: ".$options['captionFontSize']."px;\n";
-        }
-        /* Class Dependent Parameters */
-        if ($options['showImg'] === 'true') {
-          $content .= "background-image: url(".$val['cssStyle']['image'].");\n";
-        }
-        $content .= "background-color: #".$val['cssStyle']['captionBgColor'].";\n";
-        $content .= "color: #".$val['cssStyle']['captionColor'].";\n";
-        $content .= "border-top-color: #".$val['cssStyle']['borderColor'].";\n";
-        $content .= "border-right-color: #".$val['cssStyle']['borderColor'].";\n";
-        $content .= "border-bottom-color: #".$val['cssStyle']['borderColor'].";\n";
-        $content .= "border-left-color: #".$val['cssStyle']['borderColor'].";\n";
-        if ($options['rounded_corners'] == "true") {
-          $content .= "-webkit-border-top-left-radius: 5px;\n";
-          $content .= "-webkit-border-top-right-radius: 5px;\n";
-          $content .= "-moz-border-radius-topleft: 5px;\n";
-          $content .= "-moz-border-radius-topright: 5px;\n";
-          $content .= "border-top-left-radius: 5px;\n";
-          $content .= "border-top-right-radius: 5px;\n";
-        }
-        if ( $options['box_shadow'] == "true" ) {
-          $content .= "-webkit-box-shadow: 3px 3px 3px #888;\n";
-          $content .= "-moz-box-shadow: 3px 3px 3px #888;\n";
-          $content .= "box-shadow: 3px 3px 3px #888;\n";
-        }
+        $content .= "}";
+
+        $content .= ".stb-{$val['slug']}-body_box {";
+        $content .= "background-image: linear-gradient(#{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
+        $content .= "background-color: #{$val['cssStyle']['bgColor']};";
+        $content .= "color: #{$val['cssStyle']['color']};";
         if ($options['text_shadow'] == "true") {
-          $content .= "text-shadow: 1px 1px 2px #888;\n";
+          $content .= "text-shadow: 1px 1px 2px #888;";
         }
-        $content .= "}\n";
-      
-        $content .= ".stb-".$val['slug']."-body_box {\n";
-        $content .= "box-sizing: content-box;";
-        $content .= "padding: 5px;\n";
-        $content .= "border-top-width: 0px;\n";
-        $content .= "border-right-width: 1px;\n";
-        $content .= "border-bottom-width: 1px;\n";
-        $content .= "border-left-width: 1px;\n";
-        if($options['fontSize'] !== '0') {
-          $content .= "font-size: ".$options['fontSize']."px;\n";
-        }
-        if($options['langDirect'] === 'ltr') {
-          $content .= "text-align: left;\n";
-        }
-        else {
-          $content .= "text-align: right;\n";
-        }
-        $content .= "border-left-style: ".$options['border_style'].";\n";
-        $content .= "border-right-style: ".$options['border_style'].";\n";
-        $content .= "border-bottom-style: ".$options['border_style'].";\n";
-        $content .= "margin-top: 0px;  margin-right: ".$options['right_margin']."px;\n";
-        $content .= "margin-bottom: ".$options['bottom_margin']."px;\n";
-        $content .= "margin-left: ".$options['left_margin']."px;\n";
-        /* Class Dependent Parameters */
-        $content .= "background-color: #".$val['cssStyle']['bgColor'].";\n";
-        $content .= "color: #".$val['cssStyle']['color'].";";
-        $content .= "border-top-color: #".$val['cssStyle']['borderColor'].";\n";
-        $content .= "border-right-color: #".$val['cssStyle']['borderColor'].";\n";
-        $content .= "border-bottom-color: #".$val['cssStyle']['borderColor'].";\n";
-        $content .= "border-left-color: #".$val['cssStyle']['borderColor'].";\n";
-        if ($options['rounded_corners'] == "true") {
-          $content .= "-webkit-border-bottom-left-radius: 5px;\n";
-          $content .= "-webkit-border-bottom-right-radius: 5px;\n";
-          $content .= "-moz-border-radius-bottomleft: 5px;\n";
-          $content .= "-moz-border-radius-bottomright: 5px;\n";
-          $content .= "border-bottom-left-radius: 5px;\n";
-          $content .= "border-bottom-right-radius: 5px;\n";
-        }
-        if ( $options['box_shadow'] == "true" ) {
-          $content .= "-webkit-box-shadow: 3px 3px 3px #888;\n";
-          $content .= "-moz-box-shadow: 3px 3px 3px #888;\n";
-          $content .= "box-shadow: 3px 3px 3px #888;\n";
-        }
-        if ($options['text_shadow'] == "true") $content .= "text-shadow: 1px 1px 2px #888;\n";
         $content .= "}";
       }
 
-      if($output === 'file') {
+      if($out === 'file') {
         if(is_writable($cssFile) || !file_exists($cssFile)) {
           if($handle = fopen($cssFile, 'w')) {
             fwrite($handle, $content);
@@ -866,6 +753,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         echo $content;
         $result['action'] = true;
       }
+
       return $result;
     }
     
@@ -1209,7 +1097,9 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
           'captionColor' => $_POST['css_caption_color'],
           'borderColor' => $_POST['css_border_color'],
           'bgColor' => $_POST['css_bg_color'],
+          'bgColorEnd' => $_POST['css_bg_color_end'],
           'captionBgColor' => $_POST['css_caption_bg_color'],
+          'captionBgColorEnd' => $_POST['css_caption_bg_color_end'],
           'image' => $_POST['css_image'],
           'bigImg' => $_POST['css_big_image'] 
         );
@@ -1309,13 +1199,17 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
             'captionColor' => 'FFFFFF',
             'borderColor' => 'FE9A05',
             'bgColor' => 'FEFFD5',
+            'bgColorEnd' => 'FEFFD5',
             'captionBgColor' => 'FE9A05',
+            'captionBgColorEnd' => 'FE9A05',
             'image' => STB_URL.'images/warning.png',
             'bigImg' => STB_URL.'images/warning-b.png' 
           );
           $styleSlug = 'Undefined';
         }
       }
+      if(!isset($cssStyle['bgColorEnd'])) $cssStyle['bgColorEnd'] = str_replace('#', '', $jsStyle['colorTo']);
+      if(!isset($cssStyle['captionBgColorEnd'])) $cssStyle['captionBgColorEnd'] = str_replace('#', '', $jsStyle['caption']['colorTo']);
       ?>
 <div class="wrap">
   <form method="post" action="<?php echo $_SERVER["REQUEST_URI"]; ?>">
@@ -1378,7 +1272,6 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       </div>
       <div id="post-body">
         <div id="post-body-content">
-          
           <div class="meta-box-sortables ui-sortable">
             <div id="descdiv" class="postbox ">
               <div class="handlediv" title="<?php _e('Click to toggle', STB_DOMAIN); ?>"><br/></div>
@@ -1421,7 +1314,8 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
                 <p><?php printf(__("This is a font color of %s Special Text Box (Six Hex Digits).", STB_DOMAIN), $row['caption']); ?></p>
                 <p>
                   <strong><?php echo __('Image', STB_DOMAIN).': '; ?></strong><br/>
-                  <input type='text' name='js_image' id='js_image' value='<?php echo $jsStyle['image']; ?>' style='width: 100%;'>
+                  <input type='text' name='js_image' id='js_image' value='<?php echo $jsStyle['image']; ?>' style='width: 80%;'>&nbsp;&nbsp;
+                  <input type="button" class="button-secondary" id="selJsImg" name="selJsImg" value="<?php _e('Select', STB_DOMAIN); ?>">
                 </p>
                 <p><?php printf(__("This is image for %s Special Text Box (Full URL). 50x50 pixels, transparent background PNG image recommended.", STB_DOMAIN), $row['caption']); ?></p>
                 <div class='clear-line'></div>
@@ -1466,21 +1360,24 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
                 <p><strong><?php echo _e('Background Color', STB_DOMAIN).':'; ?></strong></p>
                 <div id="css_bg_color-button" class="color-btn color-btn-left"><b style="background-color: <?php echo '#'.$cssStyle['bgColor']; ?>;"></b><?php echo strtoupper(str_replace('#', '', $cssStyle['bgColor'])); ?></div>
                 <input type='hidden' name='css_bg_color' id='css_bg_color' value='<?php echo $cssStyle['bgColor']; ?>'/>
-                <p><?php printf(__("This is a background color of %s Special Text Box (Six Hex Digits).", STB_DOMAIN), $row['caption']); ?></p>
+                <div id="css_bg_color_end-button" class="color-btn color-btn-left"><b style="background-color: <?php echo '#'.$cssStyle['bgColorEnd']; ?>;"></b><?php echo strtoupper(str_replace('#', '', $cssStyle['bgColorEnd'])); ?></div>
+                <input type='hidden' name='css_bg_color_end' id='css_bg_color_end' value='<?php echo $cssStyle['bgColorEnd']; ?>'/>
+                <p><?php _e('There are colors of box background gradient. Direction of gradient drawing is from top to bottom.', STB_DOMAIN); ?></p>
                 <p><strong><?php echo _e('Font Color', STB_DOMAIN).':'; ?></strong></p>
                 <div id="css_color-button" class="color-btn color-btn-left"><b style="background-color: <?php echo '#'.$cssStyle['color']; ?>;"></b><?php echo strtoupper(str_replace('#', '', $cssStyle['color'])); ?></div>
                 <input type='hidden' name='css_color' id='css_color' value='<?php echo $cssStyle['color']; ?>'/>
                 <p><?php printf(__("This is a font color of %s Special Text Box (Six Hex Digits).", STB_DOMAIN), $row['caption']); ?></p>
-                <p>
+                <!--<p>
                   <strong><?php echo __('Image', STB_DOMAIN).': '; ?></strong><br/>
                   <input type='text' name='css_image' id='css_image' value='<?php echo $cssStyle['image']; ?>' style='width: 100%;'>
                 </p>
-                <p><?php printf(__("This is an image of %s Special Text Box (Full URL). 25x25 pixels, transparent background PNG image recommended.", STB_DOMAIN), $row['caption']); ?></p>
+                <p><?php printf(__("This is an image of %s Special Text Box (Full URL). 25x25 pixels, transparent background PNG image recommended.", STB_DOMAIN), $row['caption']); ?></p>-->
                 <p>
-                  <strong><?php echo __('Big Image', STB_DOMAIN).': '; ?></strong><br/>
-                  <input type='text' name='css_big_image' id='css_big_image' value='<?php echo $cssStyle['bigImg']; ?>' style='width: 100%;'>
+                  <strong><?php echo __('Image', STB_DOMAIN).': '; ?></strong><br/>
+                  <input type='text' name='css_big_image' id='css_big_image' value='<?php echo $cssStyle['bigImg']; ?>' style='width: 80%;'>&nbsp;&nbsp;
+                  <input type="button" class="button-secondary" id="selCssImg" name="selCssImg" value="<?php _e('Select', STB_DOMAIN); ?>">
                 </p>
-                <p><?php printf(__("This is big image for simple (non-captioned) %s Special Text Box (Full URL). 50x50 pixels, transparent background PNG image recommended.", STB_DOMAIN), $row['caption']); ?></p>
+                <p><?php printf(__("This is image for %s Special Text Box (Full URL). 50x50 pixels, transparent background PNG image recommended.", STB_DOMAIN), $row['caption']); ?></p>
                 <div class='clear-line'></div>
                 <p><strong><?php echo _e('Border Color', STB_DOMAIN).':'; ?></strong></p>
                 <div id="css_border_color-button" class="color-btn color-btn-left"><b style="background-color: <?php echo '#'.$cssStyle['borderColor']; ?>;"></b><?php echo strtoupper(str_replace('#', '', $cssStyle['borderColor'])); ?></div>
@@ -1490,7 +1387,9 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
                 <p><strong><?php echo _e('Caption Background Color', STB_DOMAIN).':'; ?></strong></p>
                 <div id="css_caption_bg_color-button" class="color-btn color-btn-left"><b style="background-color: <?php echo '#'.$cssStyle['captionBgColor']; ?>;"></b><?php echo strtoupper(str_replace('#', '', $cssStyle['captionBgColor'])); ?></div>
                 <input type='hidden' name='css_caption_bg_color' id='css_caption_bg_color' value='<?php echo $cssStyle['captionBgColor']; ?>'/>
-                <p><?php printf(__("This is a background color of %s Special Text Box caption (Six Hex Digits).", STB_DOMAIN), $row['caption']); ?></p>
+                <div id="css_caption_bg_color_end-button" class="color-btn color-btn-left"><b style="background-color: <?php echo '#'.$cssStyle['captionBgColorEnd']; ?>;"></b><?php echo strtoupper(str_replace('#', '', $cssStyle['captionBgColorEnd'])); ?></div>
+                <input type='hidden' name='css_caption_bg_color_end' id='css_caption_bg_color_end' value='<?php echo $cssStyle['captionBgColorEnd']; ?>'/>
+                <p><?php _e('There are colors of caption background gradient. Direction of gradient drawing is from top to bottom.', STB_DOMAIN); ?></p>
                 <p><strong><?php echo _e('Caption Font Color', STB_DOMAIN).':'; ?></strong></p>
                 <div id="css_caption_color-button" class="color-btn color-btn-left"><b style="background-color: <?php echo '#'.$cssStyle['captionColor']; ?>;"></b><?php echo strtoupper(str_replace('#', '', $cssStyle['captionColor'])); ?></div>
                 <input type='hidden' name='css_caption_color' id='css_caption_color' value='<?php echo $cssStyle['captionColor']; ?>'/>
