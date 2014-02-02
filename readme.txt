@@ -2,9 +2,11 @@
 Contributors: minimus
 Donate link:  https://load.payoneer.com/LoadToPage.aspx?email=minimus@simplelib.com
 Tags: content, performance, text, code, php, widget
-Requires at least: 3.0
-Tested up to: 3.7
-Stable tag: 4.4.75
+Requires at least: 3.5
+Tested up to: 3.8.1
+Stable tag: 4.5.80
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Highlights any portion of text as text in the colored boxes.
 
@@ -30,6 +32,7 @@ Available languages:
 * Turkish by Serhat ESEN
 * Slovak by [Branco](http://webhostinggeeks.com/blog/)
 * Traditional Chinese by 断青丝
+* Spanish by [Andrew Kurtis](http://www.webhostinghub.com/)
 
 If you have created your own language pack, or have an update of an existing one, you can send **.po** and **.mo files** to me (minimus AT simplelib.com) so that I can bundle it into **Special Text Boxes**.
   
@@ -93,6 +96,12 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Changelog ==
 
+= 4.5.80 =
+* CSS mode is optimized
+* Output codes are optimized
+* Media Loader is added
+* Language pack is updated. Spanish by Andrew Kurtis is added.
+* Some bugs are fixed
 = 4.4.75 =
 * Text Line Height settings are added.
 * Some bugs are resolved.
@@ -200,6 +209,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Upgrade Notice ==
 
+= 4.5.80 =
+Some new features.
 = 4.4.75 =
 Text Line Height settings are added.
 Some bugs are resolved.

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp-special-textboxes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-02 21:26+0300\n"
+"POT-Creation-Date: 2014-02-02 22:19+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: minimus <minimus@blogcoding.ru>\n"
 "Language-Team: minimus <minimus@blogovod.co.cc>\n"
@@ -42,7 +42,7 @@ msgstr "Предупреждение!"
 msgid "Codes"
 msgstr "Коды"
 
-#: stb-admin-class.php:43 stb-admin-class.php:912 stb-admin-class.php:1073
+#: stb-admin-class.php:43 stb-admin-class.php:919 stb-admin-class.php:1080
 msgid "Custom Style"
 msgstr "Пользовательский стиль"
 
@@ -50,7 +50,7 @@ msgstr "Пользовательский стиль"
 msgid "OK"
 msgstr "Выбор"
 
-#: stb-admin-class.php:278 stb-admin-class.php:340 stb-admin-class.php:1261
+#: stb-admin-class.php:278 stb-admin-class.php:340 stb-admin-class.php:1268
 #: js/dialog.php:289
 msgid "Cancel"
 msgstr "Отмена"
@@ -79,7 +79,7 @@ msgstr "Показать"
 msgid "Select Image"
 msgstr "Выберите изображение"
 
-#: stb-admin-class.php:359 stb-admin-class.php:1318 stb-admin-class.php:1378
+#: stb-admin-class.php:359 stb-admin-class.php:1325 stb-admin-class.php:1385
 msgid "Select"
 msgstr "Выбрать"
 
@@ -103,7 +103,7 @@ msgstr ""
 "Это пример настраиваемого блока специального текста с заголовком. Чтобы "
 "увидеть внесённые изменения, необходимо сохранить параметры."
 
-#: stb-admin-class.php:388 stb-admin-class.php:1344
+#: stb-admin-class.php:388 stb-admin-class.php:1351
 #, php-format
 msgid ""
 "This is example of Captioned %s Special Text Box. You must save style "
@@ -112,7 +112,7 @@ msgstr ""
 "Это пример блока специального текста \"%s\" с заголовком. Чтобы увидеть "
 "внесённые изменения, необходимо сохранить параметры стиля."
 
-#: stb-admin-class.php:390 stb-admin-class.php:1348
+#: stb-admin-class.php:390 stb-admin-class.php:1355
 #, php-format
 msgid ""
 "This is example of %s Special Text Box. You must save style parameters to "
@@ -145,7 +145,7 @@ msgstr "Стили"
 msgid "STB Style Editor"
 msgstr "Редактор стилей STB"
 
-#: stb-admin-class.php:406 stb-admin-class.php:1217
+#: stb-admin-class.php:406 stb-admin-class.php:1224
 msgid "New Style"
 msgstr "Новый стиль"
 
@@ -855,7 +855,7 @@ msgstr "Блог автора"
 msgid "Donations"
 msgstr "Пожертвования"
 
-#: stb-admin-class.php:831
+#: stb-admin-class.php:839
 #, php-format
 msgid ""
 "If you have found this plugin useful, please consider making a %s to help "
@@ -865,44 +865,30 @@ msgstr ""
 "%s, чтобы поддержать дальнейшие работы по разработке плагина. Ваша поддержка "
 "будет оценена по достоинству. Спасибо! "
 
-#: stb-admin-class.php:832 stb-admin-class.php:838
+#: stb-admin-class.php:840
 msgid "Donate Now!"
 msgstr "Пожертвовать!"
 
-#: stb-admin-class.php:832
+#: stb-admin-class.php:840
 msgid "donation"
 msgstr "пожертвование"
 
-#: stb-admin-class.php:843
-#, php-format
-msgid ""
-"Warning! The default value of donation is %s. Don't worry! This is not my "
-"appetite, this is default value defined by Payoneer service."
-msgstr ""
-"Внимание! Значение по умолчанию для пожертвования составляет %s. Не "
-"волнуйтесь! Это не мой аппетит, это - значение по умолчанию, определенное "
-"службой Payoneer."
-
-#: stb-admin-class.php:843
-msgid " You can change it to any value you want!"
-msgstr " Вы можете изменить его на любое значение, которое посчитаете нужным!"
-
-#: stb-admin-class.php:851
+#: stb-admin-class.php:858
 msgid "Another Plugins"
 msgstr "Другие плагины"
 
-#: stb-admin-class.php:855
+#: stb-admin-class.php:862
 #, php-format
 msgid "Another plugins from %s"
 msgstr "Другие плагины от %s'а"
 
-#: stb-admin-class.php:861
+#: stb-admin-class.php:868
 msgid ""
 "Advertisment rotation system with a flexible logic of displaying "
 "advertisements. "
 msgstr "Ротатор рекламных объявлений, реализующий гибкую логику ротации."
 
-#: stb-admin-class.php:862
+#: stb-admin-class.php:869
 msgid ""
 "Adds simple counters badge (FeedBurner subscribers and Twitter followers) to "
 "your blog."
@@ -910,129 +896,129 @@ msgstr ""
 "Добавляет бейджик счётчиков (подписчики Feedburner и последователи Twitter) "
 "на все страницы блога."
 
-#: stb-admin-class.php:863
+#: stb-admin-class.php:870
 msgid "This plugin is WordPress shell for FloatBox library by Byron McGregor."
 msgstr "Wordpress оболочка для плагина FloatBox от Байрона МакГрегора."
 
-#: stb-admin-class.php:864
+#: stb-admin-class.php:871
 msgid "Adds copyright notice in the end of each post of your blog. "
 msgstr ""
 "Добавляет строку уведомления об авторском праве в конец каждой статьи блога."
 
-#: stb-admin-class.php:873
+#: stb-admin-class.php:880
 msgid "General"
 msgstr "Основные"
 
-#: stb-admin-class.php:874 js/dialog.php:85
+#: stb-admin-class.php:881 js/dialog.php:85
 msgid "Javascript"
 msgstr "Javascript"
 
-#: stb-admin-class.php:875 js/dialog.php:82
+#: stb-admin-class.php:882 js/dialog.php:82
 msgid "CSS"
 msgstr "CSS"
 
-#: stb-admin-class.php:912 stb-admin-class.php:1073
+#: stb-admin-class.php:919 stb-admin-class.php:1080
 msgid "System Style"
 msgstr "Системный стиль"
 
-#: stb-admin-class.php:912 stb-admin-class.php:1073
+#: stb-admin-class.php:919 stb-admin-class.php:1080
 msgid "Special Style"
 msgstr "Специальный стиль"
 
-#: stb-admin-class.php:931
+#: stb-admin-class.php:938
 msgid "&laquo;"
 msgstr "&laquo;"
 
-#: stb-admin-class.php:932
+#: stb-admin-class.php:939
 msgid "&raquo;"
 msgstr "&raquo;"
 
-#: stb-admin-class.php:939
+#: stb-admin-class.php:946
 msgid "Managing Styles"
 msgstr "Управление стилями"
 
-#: stb-admin-class.php:946
+#: stb-admin-class.php:953
 msgid "All"
 msgstr "Все"
 
-#: stb-admin-class.php:947
+#: stb-admin-class.php:954
 msgid "Active"
 msgstr "Активные"
 
-#: stb-admin-class.php:948
+#: stb-admin-class.php:955
 msgid "Trash"
 msgstr "Корзина"
 
-#: stb-admin-class.php:953 stb-admin-class.php:1037
+#: stb-admin-class.php:960 stb-admin-class.php:1044
 msgid "Clear Trash"
 msgstr "Очистить корзину"
 
-#: stb-admin-class.php:955 stb-admin-class.php:1039
+#: stb-admin-class.php:962 stb-admin-class.php:1046
 msgid "Add New Style"
 msgstr "Добавить новый стиль"
 
-#: stb-admin-class.php:959 stb-admin-class.php:1043
+#: stb-admin-class.php:966 stb-admin-class.php:1050
 #, php-format
 msgid "Displaying %s&#8211;%s of %s"
 msgstr "Показано  %s&#8211;%s из %s"
 
-#: stb-admin-class.php:971 stb-admin-class.php:979
+#: stb-admin-class.php:978 stb-admin-class.php:986
 msgid "Style"
 msgstr "Стиль"
 
-#: stb-admin-class.php:972 stb-admin-class.php:980
+#: stb-admin-class.php:979 stb-admin-class.php:987
 msgid "Style Name"
 msgstr "Имя стиля"
 
-#: stb-admin-class.php:973 stb-admin-class.php:981
+#: stb-admin-class.php:980 stb-admin-class.php:988
 msgid "Style Slug"
 msgstr "Ярлык стиля"
 
-#: stb-admin-class.php:974 stb-admin-class.php:982 stb-admin-class.php:1246
+#: stb-admin-class.php:981 stb-admin-class.php:989 stb-admin-class.php:1253
 msgid "Style Type"
 msgstr "Тип стиля"
 
-#: stb-admin-class.php:1001
+#: stb-admin-class.php:1008
 msgid "There are no data ..."
 msgstr "Нет данных для показа ..."
 
-#: stb-admin-class.php:1012
+#: stb-admin-class.php:1019
 msgid "in Trash"
 msgstr "в корзине"
 
-#: stb-admin-class.php:1014 stb-admin-class.php:1217
+#: stb-admin-class.php:1021 stb-admin-class.php:1224
 msgid "Edit Style"
 msgstr "Изменение стиля"
 
-#: stb-admin-class.php:1014
+#: stb-admin-class.php:1021
 msgid "Edit"
 msgstr "Изменить"
 
-#: stb-admin-class.php:1018
+#: stb-admin-class.php:1025
 msgid "Restore this Style from the Trash"
 msgstr "Восстановить этот стиль из корзины"
 
-#: stb-admin-class.php:1018
+#: stb-admin-class.php:1025
 msgid "Restore"
 msgstr "Восстановить"
 
-#: stb-admin-class.php:1019
+#: stb-admin-class.php:1026
 msgid "Remove this Style permanently"
 msgstr "Удалить этот стиль навсегда"
 
-#: stb-admin-class.php:1019
+#: stb-admin-class.php:1026
 msgid "Remove permanently"
 msgstr "Удалить навсегда"
 
-#: stb-admin-class.php:1024
+#: stb-admin-class.php:1031
 msgid "Move this Style to the Trash"
 msgstr "Отправить этот стиль в корзину"
 
-#: stb-admin-class.php:1024
+#: stb-admin-class.php:1031
 msgid "Delete"
 msgstr "Удалить"
 
-#: stb-admin-class.php:1113
+#: stb-admin-class.php:1120
 #, php-format
 msgid ""
 "You forgot to define the slug of style, therefore it was assigned randomly "
@@ -1041,52 +1027,52 @@ msgstr ""
 "Вы забыли определить ярлык стиля, поэтому он был назначен случайным образом "
 "как \"%s\". Вы всегда можете изменить его на нужное Вам значение."
 
-#: stb-admin-class.php:1137 stb-admin-class.php:1219
+#: stb-admin-class.php:1144 stb-admin-class.php:1226
 msgid "Style Data Updated."
 msgstr "Параметры стиля сохранены."
 
-#: stb-admin-class.php:1232 stb-admin-class.php:1277 stb-admin-class.php:1302
-#: stb-admin-class.php:1357
+#: stb-admin-class.php:1239 stb-admin-class.php:1284 stb-admin-class.php:1309
+#: stb-admin-class.php:1364
 msgid "Click to toggle"
 msgstr "Свернуть/развернуть"
 
-#: stb-admin-class.php:1233
+#: stb-admin-class.php:1240
 msgid "Status"
 msgstr "Статус"
 
-#: stb-admin-class.php:1240
+#: stb-admin-class.php:1247
 msgid "Back to Styles List"
 msgstr "Назад, к списку стилей"
 
-#: stb-admin-class.php:1253
+#: stb-admin-class.php:1260
 msgid "Is Active"
 msgstr "Активен"
 
-#: stb-admin-class.php:1254
+#: stb-admin-class.php:1261
 msgid "Is In Trash"
 msgstr "В корзине"
 
-#: stb-admin-class.php:1264
+#: stb-admin-class.php:1271
 msgid "Save"
 msgstr "Сохранить"
 
-#: stb-admin-class.php:1278
+#: stb-admin-class.php:1285
 msgid "Style Names"
 msgstr "Именование стиля"
 
-#: stb-admin-class.php:1280
+#: stb-admin-class.php:1287
 msgid "Enter Default Caption/Name and Slug for this Style."
 msgstr "Введите Заголовок по-умолчанию/Имя и Ярлык для этого стиля"
 
-#: stb-admin-class.php:1280
+#: stb-admin-class.php:1287
 msgid "Enter Default Caption/Name for this Style."
 msgstr "Введите заголовок по-умолчанию/имя для этого стиля."
 
-#: stb-admin-class.php:1282
+#: stb-admin-class.php:1289
 msgid "Default Caption/Name"
 msgstr "Заголовок по-умолчанию/Имя"
 
-#: stb-admin-class.php:1285
+#: stb-admin-class.php:1292
 msgid ""
 "This is name of style. Also it can be used as default caption for captioned "
 "STB block."
@@ -1094,11 +1080,11 @@ msgstr ""
 "Имя стиля. Так же может использоваться как заголовок по умолчанию для "
 "текстового блока с заголовком."
 
-#: stb-admin-class.php:1288 stb-admin-class.php:1293
+#: stb-admin-class.php:1295 stb-admin-class.php:1300
 msgid "Slug"
 msgstr "Ярлык"
 
-#: stb-admin-class.php:1291
+#: stb-admin-class.php:1298
 msgid ""
 "This is a unique style name. Must consist of latin characters, numbers and "
 "underscore characters only!"
@@ -1106,15 +1092,15 @@ msgstr ""
 "Это - уникальное имя стиля. Должно состоять из символов латинского алфавита, "
 "цифр или символов подчёркивания."
 
-#: stb-admin-class.php:1303
+#: stb-admin-class.php:1310
 msgid "Javascript Style Parameters"
 msgstr "Параметры режима Javascript"
 
-#: stb-admin-class.php:1305
+#: stb-admin-class.php:1312
 msgid "Box background gradient"
 msgstr "Градиент фона блока"
 
-#: stb-admin-class.php:1310 stb-admin-class.php:1365
+#: stb-admin-class.php:1317 stb-admin-class.php:1372
 msgid ""
 "There are colors of box background gradient. Direction of gradient drawing "
 "is from top to bottom."
@@ -1122,23 +1108,23 @@ msgstr ""
 "Это цвета градиента фона блока. Направление прорисовки градиента - сверху "
 "вниз."
 
-#: stb-admin-class.php:1311
+#: stb-admin-class.php:1318
 msgid "Font color"
 msgstr "Цвет текста"
 
-#: stb-admin-class.php:1314 stb-admin-class.php:1369
+#: stb-admin-class.php:1321 stb-admin-class.php:1376
 #, php-format
 msgid "This is a font color of %s Special Text Box (Six Hex Digits)."
 msgstr ""
 "Этот параметр задаёт цвет шрифта блока специального текста \"%s\" (шесть "
 "шестнадцатиричных цифр)."
 
-#: stb-admin-class.php:1316 stb-admin-class.php:1371 stb-admin-class.php:1376
+#: stb-admin-class.php:1323 stb-admin-class.php:1378 stb-admin-class.php:1383
 #: js/dialog.php:251
 msgid "Image"
 msgstr "Пиктограмма"
 
-#: stb-admin-class.php:1320 stb-admin-class.php:1380
+#: stb-admin-class.php:1327 stb-admin-class.php:1387
 #, php-format
 msgid ""
 "This is image for %s Special Text Box (Full URL). 50x50 pixels, transparent "
@@ -1147,25 +1133,25 @@ msgstr ""
 "Этот параметр задаёт пиктограмму блока специального текста \"%s\" (полный "
 "URL). Рекомендуется изображение PNG, 50x50 пиксел, прозрачный фон."
 
-#: stb-admin-class.php:1323 js/dialog.php:239
+#: stb-admin-class.php:1330 js/dialog.php:239
 msgid "Border Width"
 msgstr "Толщина окантовки"
 
-#: stb-admin-class.php:1326 stb-admin-class.php:1382
+#: stb-admin-class.php:1333 stb-admin-class.php:1389
 msgid "Border Color"
 msgstr "Цвет окантовки"
 
-#: stb-admin-class.php:1329 stb-admin-class.php:1385
+#: stb-admin-class.php:1336 stb-admin-class.php:1392
 #, php-format
 msgid "This is a border color of %s Special Text Box (Six Hex Digits)."
 msgstr ""
 "Этот параметр определяет цвет окантовки блока специального текста \"%s\"."
 
-#: stb-admin-class.php:1331
+#: stb-admin-class.php:1338
 msgid "Caption background gradient"
 msgstr "Градиент фона заголовка блока"
 
-#: stb-admin-class.php:1336 stb-admin-class.php:1392
+#: stb-admin-class.php:1343 stb-admin-class.php:1399
 msgid ""
 "There are colors of caption background gradient. Direction of gradient "
 "drawing is from top to bottom."
@@ -1173,30 +1159,30 @@ msgstr ""
 "Это цвета градиента фона заголовка блока. Направление прорисовки градиента - "
 "сверху вниз."
 
-#: stb-admin-class.php:1337 stb-admin-class.php:1393
+#: stb-admin-class.php:1344 stb-admin-class.php:1400
 msgid "Caption Font Color"
 msgstr "Цвет текста заголовка"
 
-#: stb-admin-class.php:1340 stb-admin-class.php:1396
+#: stb-admin-class.php:1347 stb-admin-class.php:1403
 #, php-format
 msgid "This is a font color of %s Special Text Box caption (Six Hex Digits)."
 msgstr ""
 "Этот параметр задаёт цвет шрифта заголовка блока специального текста \"%s"
 "\" (шесть шестнадцатиричных цифр)."
 
-#: stb-admin-class.php:1358
+#: stb-admin-class.php:1365
 msgid "CSS Style Parameters"
 msgstr "Параметры режима CSS"
 
-#: stb-admin-class.php:1360 js/dialog.php:178
+#: stb-admin-class.php:1367 js/dialog.php:178
 msgid "Background Color"
 msgstr "Цвет фона"
 
-#: stb-admin-class.php:1366
+#: stb-admin-class.php:1373
 msgid "Font Color"
 msgstr "Цвет текста"
 
-#: stb-admin-class.php:1374
+#: stb-admin-class.php:1381
 #, php-format
 msgid ""
 "This is an image of %s Special Text Box (Full URL). 25x25 pixels, "
@@ -1205,7 +1191,7 @@ msgstr ""
 "Этот параметр задаёт пиктограмму блока специального текста \"%s\" (полный "
 "URL). Рекомендуется изображение PNG, 25x25 пиксел, прозрачный фон."
 
-#: stb-admin-class.php:1387 js/dialog.php:187
+#: stb-admin-class.php:1394 js/dialog.php:187
 msgid "Caption Background Color"
 msgstr "Цвет фона заголовка"
 
@@ -1418,6 +1404,18 @@ msgstr "Нижний отступ"
 #: js/dialog.php:292
 msgid "Insert"
 msgstr "Вставить"
+
+#~ msgid ""
+#~ "Warning! The default value of donation is %s. Don't worry! This is not my "
+#~ "appetite, this is default value defined by Payoneer service."
+#~ msgstr ""
+#~ "Внимание! Значение по умолчанию для пожертвования составляет %s. Не "
+#~ "волнуйтесь! Это не мой аппетит, это - значение по умолчанию, определенное "
+#~ "службой Payoneer."
+
+#~ msgid " You can change it to any value you want!"
+#~ msgstr ""
+#~ " Вы можете изменить его на любое значение, которое посчитаете нужным!"
 
 #~ msgid "This is a background color of %s Special Text Box (Six Hex Digits)."
 #~ msgstr ""

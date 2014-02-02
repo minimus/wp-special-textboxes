@@ -826,25 +826,32 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
               <div class='postbox opened'>
                 <h3><?php _e('Donations', STB_DOMAIN) ?></h3>
                 <div class="inside">
+                  <div style="text-align: center; margin-top: 10px;">
+                    <script type="text/javascript">
+                      /* <![CDATA[ */
+                      function affiliateLink(str){ str = unescape(str); var r = ''; for(var i = 0; i < str.length; i++) r += String.fromCharCode(8^str.charCodeAt(i)); document.write(r); }
+                      affiliateLink('4i%28%60zmn5*%60%7C%7Cx2%27%27%7F%7F%7F%26%7Cmp%7C%25dafc%25il%7B%26kge%277zmn5%3B%3A9%3E%3F0*64aeo%28%7Bzk5*%60%7C%7Cx2%27%27%7F%7F%7F%26%7Cmp%7C%25dafc%25il%7B%26kge%27aeiom%7B%27jiffmz%7B%27%7Bfgzm%25908p%3E8%26oan*%28jgzlmz5*8*%28id%7C5*%5Cmp%7C%28Dafc%28Il%7B*%2764%27i6');
+                      /* ]]> */
+                    </script>
+                  </div>
                   <p>
-                    <?php 
-                      $format = __('If you have found this plugin useful, please consider making a %s to help support future development. Your support will be much appreciated. Thank you!', STB_DOMAIN);
-                      $str = '<a title="'.__('Donate Now!', STB_DOMAIN).'" href="https://load.payoneer.com/LoadToPage.aspx?email=minimus@simplelib.com" target="_blank">'.__('donation', STB_DOMAIN).'</a>';
-                      printf($format, $str); 
+                    <?php
+                    $format = __('If you have found this plugin useful, please consider making a %s to help support future development. Your support will be much appreciated. Thank you!', STB_DOMAIN);
+                    $str = '<a title="'.__('Donate Now!', STB_DOMAIN).'" href="https://load.payoneer.com/LoadToPage.aspx?email=minimus@simplelib.com" target="_blank">'.__('donation', STB_DOMAIN).'</a>';
+                    printf($format, $str);
                     ?>
                   </p>
                   <div style="text-align: center;">
-                    <a title="Donate Now!" href="https://load.payoneer.com/LoadToPage.aspx?email=minimus@simplelib.com" target="_blank">
-                      <img  title="<?php _e('Donate Now!', STB_DOMAIN); ?>" src="<?php echo STB_URL.'images/donate-now.png' ?>" alt="" width="100" height="34" style='margin-right: 5px;' />
-                    </a>
+                    <a href='https://pledgie.com/campaigns/23196'><img alt='Click here to lend your support to: Funds to complete the development of plugin Simple Ads Manager 2 and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/23196.png?skin_name=chrome' border='0' ></a>
                   </div>
-                  <p style='margin: 3px; font-size: 0.8em !important;'>
-                    <?php 
-                      $format = __("Warning! The default value of donation is %s. Don't worry! This is not my appetite, this is default value defined by Payoneer service.", STB_DOMAIN).'<strong>'.__(' You can change it to any value you want!', STB_DOMAIN).'</strong>';
-                      $str = '<strong>$200</strong>';
-                      printf($format, $str);
-                    ?>
-                  </p>                    
+                  <div style="text-align: center; margin: 10px;">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                      <input type="hidden" name="cmd" value="_s-xclick">
+                      <input type="hidden" name="hosted_button_id" value="FNPBPFSWX4TVC">
+                      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                  </div>
                 </div>
               </div>
               <div class='postbox opened'>
