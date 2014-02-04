@@ -17,6 +17,8 @@
 }
 
 .stb-shadow {
+  -webkit-box-shadow: 0 0 10px 0 #4C4C4C;
+  -moz-box-shadow: 0 0 10px 0 #4C4C4C;
   box-shadow: 0 0 10px 0 #4C4C4C;
 }
 
@@ -89,9 +91,10 @@
 }
 
 .stb-caption-icon img {
-  height: 25px;
-  width: 25px;
+  height: 23px;
+  width: 23px;
   vertical-align: middle;
+  margin: 0 auto;
 }
 
 .stb-caption-icon {
@@ -162,7 +165,9 @@
 .stb-caption-box {
   font-weight: bold;
   padding: 3px 7px 3px 7px;
-  min-height:20px;
+  min-height:23px;
+  /*max-height: 23px;
+  overflow: hidden;*/
 }
 
 .stb-body-box {

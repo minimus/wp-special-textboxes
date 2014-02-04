@@ -45,21 +45,36 @@ $stbClasses = $stbObject->classes;
   border: 1px <?php echo $stbOptions['border_style'].' #'.$val['cssStyle']['borderColor']; ?>;
 }
 .stb-<?php echo $val['slug'] ?>-container {
-  background-image: linear-gradient(#<?php echo $val['cssStyle']['captionBgColor']; ?> 30%, #<?php echo $val['cssStyle']['captionBgColorEnd']; ?> 90%);
-  <?php if ($stbOptions['showImg'] === 'true') {?>
-    /*background-image: url(<?php echo ($stbOptions['bigImg'] === 'true') ? $val['cssStyle']['bigImg'] : $val['cssStyle']['image']; ?>);*/
-  <?php } ?>
-
+  background: #<?php echo $val['cssStyle']['captionBgColor']; ?>; /* Old browsers */
+  background: -moz-linear-gradient(top,  #<?php echo $val['cssStyle']['captionBgColor']; ?> 30%, #<?php echo $val['cssStyle']['captionBgColorEnd']; ?> 90%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#<?php echo $val['cssStyle']['captionBgColor']; ?>), color-stop(90%,#<?php echo $val['cssStyle']['captionBgColorEnd']; ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #<?php echo $val['cssStyle']['captionBgColor']; ?> 30%,#<?php echo $val['cssStyle']['captionBgColorEnd']; ?> 90%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #<?php echo $val['cssStyle']['captionBgColor']; ?> 30%,#<?php echo $val['cssStyle']['captionBgColorEnd']; ?> 90%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #<?php echo $val['cssStyle']['captionBgColor']; ?> 30%,#<?php echo $val['cssStyle']['captionBgColorEnd']; ?> 90%); /* IE10+ */
+  background: linear-gradient(#<?php echo $val['cssStyle']['captionBgColor']; ?> 30%, #<?php echo $val['cssStyle']['captionBgColorEnd']; ?> 90%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#<?php echo $val['cssStyle']['captionBgColor']; ?>', endColorstr='#<?php echo $val['cssStyle']['captionBgColorEnd']; ?>',GradientType=0 ); /* IE6-9 */
 }
 .stb-<?php echo $val['slug'] ?>_box {
-  background-color: #<?php echo $val['cssStyle']['bgColor']; ?>;
-  background-image: linear-gradient(#<?php echo $val['cssStyle']['bgColor']; ?> 30%, #<?php echo $val['cssStyle']['bgColorEnd']; ?> 90%);
+  background: #<?php echo $val['cssStyle']['bgColor']; ?>; /* Old browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#<?php echo $val['cssStyle']['bgColor']; ?>', endColorstr='#<?php echo $val['cssStyle']['bgColorEnd']; ?>',GradientType=0 ); /* IE6-9 */
+  background: -moz-linear-gradient(top,  #<?php echo $val['cssStyle']['bgColor']; ?> 30%, #<?php echo $val['cssStyle']['bgColorEnd']; ?> 90%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#<?php echo $val['cssStyle']['bgColor']; ?>), color-stop(90%,#<?php echo $val['cssStyle']['bgColorEnd']; ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #<?php echo $val['cssStyle']['bgColor']; ?> 30%,#<?php echo $val['cssStyle']['bgColorEnd']; ?> 90%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #<?php echo $val['cssStyle']['bgColor']; ?> 30%,#<?php echo $val['cssStyle']['bgColorEnd']; ?> 90%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #<?php echo $val['cssStyle']['bgColor']; ?> 30%,#<?php echo $val['cssStyle']['bgColorEnd']; ?> 90%); /* IE10+ */
+  background: linear-gradient(#<?php echo $val['cssStyle']['bgColor']; ?> 30%, #<?php echo $val['cssStyle']['bgColorEnd']; ?> 90%); /* W3C */
   color: #<?php echo $val['cssStyle']['color']; ?>;
 }
 
 .stb-<?php echo $val['slug']; ?>-caption_box {
-  background-image: linear-gradient(#<?php echo $val['cssStyle']['captionBgColor']; ?> 30%, #<?php echo $val['cssStyle']['captionBgColorEnd']; ?> 90%);
-  background-color: #<?php echo $val['cssStyle']['captionBgColor']; ?>;
+  background: #<?php echo $val['cssStyle']['captionBgColor']; ?>; /* Old browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#<?php echo $val['cssStyle']['captionBgColor']; ?>', endColorstr='#<?php echo $val['cssStyle']['captionBgColorEnd']; ?>',GradientType=0 ); /* IE6-9 */
+  background: -moz-linear-gradient(top,  #<?php echo $val['cssStyle']['captionBgColor']; ?> 30%, #<?php echo $val['cssStyle']['captionBgColorEnd']; ?> 90%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#<?php echo $val['cssStyle']['captionBgColor']; ?>), color-stop(90%,#<?php echo $val['cssStyle']['captionBgColorEnd']; ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #<?php echo $val['cssStyle']['captionBgColor']; ?> 30%,#<?php echo $val['cssStyle']['captionBgColorEnd']; ?> 90%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #<?php echo $val['cssStyle']['captionBgColor']; ?> 30%,#<?php echo $val['cssStyle']['captionBgColorEnd']; ?> 90%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #<?php echo $val['cssStyle']['captionBgColor']; ?> 30%,#<?php echo $val['cssStyle']['captionBgColorEnd']; ?> 90%); /* IE10+ */
+  background: linear-gradient(#<?php echo $val['cssStyle']['captionBgColor']; ?> 30%, #<?php echo $val['cssStyle']['captionBgColorEnd']; ?> 90%); /* W3C */
   color: #<?php echo $val['cssStyle']['captionColor']; ?>;
   <?php if ($stbOptions['text_shadow'] == "true") {?>
   text-shadow: 1px 1px 2px #888;
@@ -67,8 +82,14 @@ $stbClasses = $stbObject->classes;
 }
 
 .stb-<?php echo $val['slug']; ?>-body_box {
-  background-image: linear-gradient(#<?php echo $val['cssStyle']['bgColor']; ?> 30%, #<?php echo $val['cssStyle']['bgColorEnd']; ?> 90%);
-  background-color: #<?php echo $val['cssStyle']['bgColor']; ?>;
+  background: #<?php echo $val['cssStyle']['bgColor']; ?>; /* Old browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#<?php echo $val['cssStyle']['bgColor']; ?>', endColorstr='#<?php echo $val['cssStyle']['bgColorEnd']; ?>',GradientType=0 ); /* IE6-9 */
+  background: -moz-linear-gradient(top,  #<?php echo $val['cssStyle']['bgColor']; ?> 30%, #<?php echo $val['cssStyle']['bgColorEnd']; ?> 90%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#<?php echo $val['cssStyle']['bgColor']; ?>), color-stop(90%,#<?php echo $val['cssStyle']['bgColorEnd']; ?>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #<?php echo $val['cssStyle']['bgColor']; ?> 30%,#<?php echo $val['cssStyle']['bgColorEnd']; ?> 90%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #<?php echo $val['cssStyle']['bgColor']; ?> 30%,#<?php echo $val['cssStyle']['bgColorEnd']; ?> 90%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #<?php echo $val['cssStyle']['bgColor']; ?> 30%,#<?php echo $val['cssStyle']['bgColorEnd']; ?> 90%); /* IE10+ */
+  background: linear-gradient(#<?php echo $val['cssStyle']['bgColor']; ?> 30%, #<?php echo $val['cssStyle']['bgColorEnd']; ?> 90%); /* W3C */
   color: #<?php echo $val['cssStyle']['color']; ?>;
   <?php if ($stbOptions['text_shadow'] == "true") {?>
   text-shadow: 1px 1px 2px #888;

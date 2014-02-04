@@ -245,19 +245,13 @@ if(!class_exists('StbBlock')) {
       );
     }
     
-    private function extendedStyleLogic($atts = null, $idNum = 0) {
+    private function getJsStyles($atts = null, $idNum = 0) {
       if(is_null($atts)) return '';
       
       $settings = $this->getSettings();
-      
-      $styleStart = 'style="';
-      $styleBody = '';
-      $styleCaption = '';
-      $styleEnd = '"';
+
       $floatStart = '';
       $floatEnd = '';
-      $imgStyle = '';
-      $image = $this->aStyles[$atts['id']]['cssStyle']['bigImg'];
       
       if($atts['defcaption'] == 'true') {
         $classes = $this->getClasses($this->styles, true);
@@ -332,7 +326,7 @@ if(!class_exists('StbBlock')) {
           );
         }
       }
-      else return '';
+      else return array('mode' => $mode);
     }
     
     private function buildBlock($data) {
@@ -368,7 +362,10 @@ if(!class_exists('StbBlock')) {
                   'level' => 0 ), 
                 $data['atts']);
       $idNum = $data['idNum'];
-      
+
+      $settings = $this->getSettings();
+      $mode = self::getMode($atts['mode'], $settings['mode']);
+
       if($atts['defcaption'] == 'true') {
         $classes = $this->getClasses($this->styles, true);
         $atts['caption'] = $classes[$atts['id']];
@@ -376,20 +373,21 @@ if(!class_exists('StbBlock')) {
       }
       
       $stbClasses = $this->getClasses($this->styles);
-      $block = array('body' => '', 'caption' => '', 'floatStart' => '', 'floatEnd' => '');
-      $cntStart = "<div id='stb-container-{$idNum}' class='stb-container-css stb-{$id}-container'>";
-      $cntEnd = '</div>';
+      //$block = array('body' => '', 'caption' => '', 'floatStart' => '', 'floatEnd' => '');
+      //$cntStart = "<div id='stb-container-{$idNum}' class='stb-container-css stb-{$id}-container'>";
+      //$cntEnd = '</div>';
       
-      if (!is_null($atts) && is_array($atts)) {
-        $block = $this->extendedStyleLogic($atts, $idNum);
-      } else return do_shortcode($content);
-      if($block['mode'] == 'js') {
+      /*if (!is_null($atts) && is_array($atts)) {
+        $block = self::getJsStyles($atts, $idNum);
+      } else return do_shortcode($content);*/
+      if($mode == 'js') {
+        $block = self::getJsStyles($atts, $idNum);
         if($id == 'grey')
           return $block['floatStart']."<div id='stb-box-{$idNum}' class='stb-$id-box stb-level-{$atts['level']}' {$block['data']}>$content</div>".$block['floatEnd'];
         else
           return $block['floatStart']."<div id='stb-box-$idNum' class='stb-$id-box stb-level-{$atts['level']}' {$block['data']}>" . do_shortcode($content) . "</div>".$block['floatEnd'];
       }
-      else {
+      elseif($mode == 'css') {
         $cssClasses = self::getCssClasses($atts);
         $cntClasses = implode(' ', $cssClasses);
         $cssBlock = self::getCssStyles($atts, $idNum);
@@ -397,7 +395,7 @@ if(!class_exists('StbBlock')) {
         $cntEnd = '</div>';
         if ( $caption === '') {
           if ( in_array( $id, $stbClasses) && $id !== 'grey' ) {
-            return $cssBlock['floatStart'].$cntStart.$cssBlock['icon']."<div id='stb-box-$idNum' class='stb-{$id}_box stb-box' {$cssBlock['body']}>" . do_shortcode($content) . "</div>".$cntEnd.$cssBlock['floatEnd'];
+            return $cssBlock['floatStart'].$cntStart.$cssBlock['icon']."<div id='stb-box-{$idNum}' class='stb-{$id}_box stb-box' {$cssBlock['body']}>" . do_shortcode($content) . "</div>".$cntEnd.$cssBlock['floatEnd'];
           } elseif ( in_array( $id, $stbClasses) && $id === 'grey' ) {
             return $cssBlock['floatStart'].$cntStart.$cssBlock['icon']."<div id='stb-box-$idNum' class='stb-{$id}_box stb-box' {$cssBlock['body']}>$content</div>".$cntEnd.$cssBlock['floatEnd'];
           } else { 
@@ -405,14 +403,15 @@ if(!class_exists('StbBlock')) {
           }
         } else {
           if ( in_array( $id, $stbClasses ) && $id !== 'grey' ) {
-            return $cssBlock['floatStart']. $cntStart .$cssBlock['icon']."<div id='stb-caption-box-$idNum' class='stb-$id-caption_box stb_caption stb-caption-box' {$cssBlock['cap']}>" . $caption . $cssBlock['tool'] . "</div><div id='stb-body-box-$idNum' class='stb-$id-body_box stb_body stb-body-box' {$cssBlock['body']}>" . do_shortcode($content) . "</div>". $cntEnd .$cssBlock['floatEnd'];
+            return $cssBlock['floatStart']. $cntStart ."<div id='stb-caption-box-$idNum' class='stb-$id-caption_box stb_caption stb-caption-box' {$cssBlock['cap']}>{$cssBlock['icon']}{$cssBlock['tool']}{$caption}</div><div id='stb-body-box-$idNum' class='stb-$id-body_box stb_body stb-body-box' {$cssBlock['body']}>" . do_shortcode($content) . "</div>". $cntEnd .$cssBlock['floatEnd'];
           } elseif ( in_array( $id, $stbClasses) && $id === 'grey' ) {
-            return $cssBlock['floatStart']. $cntStart .$cssBlock['icon']."<div id='stb-caption-box-$idNum' class='stb-$id-caption_box stb_caption stb-caption-box' {$cssBlock['cap']}>{$caption}</div><div id='stb-body-box-$idNum' class='stb-$id-body_box stb-body-box' {$cssBlock['body']}>$content</div>".$cntEnd.$cssBlock['floatEnd'];
+            return $cssBlock['floatStart']. $cntStart ."<div id='stb-caption-box-$idNum' class='stb-$id-caption_box stb_caption stb-caption-box' {$cssBlock['cap']}>{$cssBlock['icon']}{$cssBlock['tool']}{$caption}</div><div id='stb-body-box-$idNum' class='stb-$id-body_box stb_body stb-body-box' {$cssBlock['body']}>$content</div>".$cntEnd.$cssBlock['floatEnd'];
           } else { 
             return do_shortcode($content);  
           }
         }
       }
+      else return do_shortcode($content);
     }
   }
 }

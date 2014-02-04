@@ -704,18 +704,38 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         $content .= ".stb-border.stb-{$val['slug']}-container {";
         $content .= "border: 1px {$options['border_style']} #{$val['cssStyle']['borderColor']};";
         $content .= "}";
+
         $content .= ".stb-{$val['slug']}-container {";
-        $content .= "background-image: linear-gradient(#{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
+        $content .= "background: #{$val['cssStyle']['captionBgColor']};";
+        $content .= "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$val['cssStyle']['captionBgColor']}', endColorstr='#{$val['cssStyle']['captionBgColorEnd']}',GradientType=0 );";
+        $content .= "background: -moz-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
+        $content .= "background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#{$val['cssStyle']['captionBgColor']}), color-stop(90%,#{$val['cssStyle']['captionBgColorEnd']}));";
+        $content .= "background: -webkit-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%,#{$val['cssStyle']['captionBgColorEnd']} 90%);";
+        $content .= "background: -o-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%,#{$val['cssStyle']['captionBgColorEnd']} 90%);";
+        $content .= "background: -ms-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%,#{$val['cssStyle']['captionBgColorEnd']} 90%);";
+        $content .= "background: linear-gradient(#{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
         $content .= "}";
+
         $content .= ".stb-{$val['slug']}_box {";
-        $content .= "background-color: #{$val['cssStyle']['bgColor']};";
-        $content .= "background-image: linear-gradient(#{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
+        $content .= "background: #{$val['cssStyle']['bgColor']};";
+        $content .= "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$val['cssStyle']['bgColor']}', endColorstr='#{$val['cssStyle']['bgColorEnd']}',GradientType=0 );";
+        $content .= "background: -moz-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
+        $content .= "background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#{$val['cssStyle']['bgColor']}), color-stop(90%,#{$val['cssStyle']['bgColorEnd']}));";
+        $content .= "background: -webkit-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+        $content .= "background: -o-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+        $content .= "background: -ms-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+        $content .= "background: linear-gradient(#{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
         $content .= "color: #{$val['cssStyle']['color']};";
         $content .= "}";
 
         $content .= ".stb-{$val['slug']}-caption_box {";
-        $content .= "background-image: linear-gradient(#{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
-        $content .= "background-color: #{$val['cssStyle']['captionBgColor']};";
+        $content .= "background: #{$val['cssStyle']['captionBgColor']};";
+        $content .= "background: -moz-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
+        $content .= "background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#{$val['cssStyle']['captionBgColor']}), color-stop(90%,#{$val['cssStyle']['captionBgColorEnd']}));";
+        $content .= "background: -webkit-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%,#{$val['cssStyle']['captionBgColorEnd']} 90%);";
+        $content .= "background: -o-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%,#{$val['cssStyle']['captionBgColorEnd']} 90%);";
+        $content .= "background: -ms-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%,#{$val['cssStyle']['captionBgColorEnd']} 90%);";
+        $content .= "background: linear-gradient(#{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
         $content .= "color: #{$val['cssStyle']['captionColor']};";
         if ($options['text_shadow'] == "true") {
           $content .= "text-shadow: 1px 1px 2px #888;";
@@ -723,8 +743,14 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         $content .= "}";
 
         $content .= ".stb-{$val['slug']}-body_box {";
-        $content .= "background-image: linear-gradient(#{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
-        $content .= "background-color: #{$val['cssStyle']['bgColor']};";
+        $content .= "background: #{$val['cssStyle']['bgColor']};";
+        $content .= "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$val['cssStyle']['bgColor']}', endColorstr='#{$val['cssStyle']['bgColorEnd']}',GradientType=0 );";
+        $content .= "background: -moz-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
+        $content .= "background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#{$val['cssStyle']['bgColor']}), color-stop(90%,#{$val['cssStyle']['bgColorEnd']}));";
+        $content .= "background: -webkit-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+        $content .= "background: -o-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+        $content .= "background: -ms-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+        $content .= "background: linear-gradient(#{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
         $content .= "color: #{$val['cssStyle']['color']};";
         if ($options['text_shadow'] == "true") {
           $content .= "text-shadow: 1px 1px 2px #888;";

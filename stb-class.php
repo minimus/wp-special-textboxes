@@ -62,7 +62,7 @@ if (!class_exists("SpecialTextBoxes")) {
     public $globalMode = '';
     
     public function __construct() {
-      define('STB_VERSION', '4.5.80');
+      define('STB_VERSION', '4.5.81');
       define('STB_DB_VERSION', '1.0');
       define('STB_DIR', plugin_dir_path(__FILE__));
       define('STB_DOMAIN', 'wp-special-textboxes');
