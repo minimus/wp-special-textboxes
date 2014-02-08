@@ -18,6 +18,7 @@ if (!class_exists("SpecialTextBoxes")) {
       'captionFontSize' => '0',
       'langDirect' => 'ltr',
       'mode' => 'css',
+      'side' => 0,
       'js_imgMinus' => '',
       'js_imgPlus' => '',
       'js_duration' => 500,
@@ -62,7 +63,7 @@ if (!class_exists("SpecialTextBoxes")) {
     public $globalMode = '';
     
     public function __construct() {
-      define('STB_VERSION', '4.5.81');
+      define('STB_VERSION', '5.0.85');
       define('STB_DB_VERSION', '1.0');
       define('STB_DIR', plugin_dir_path(__FILE__));
       define('STB_DOMAIN', 'wp-special-textboxes');
@@ -218,7 +219,8 @@ if (!class_exists("SpecialTextBoxes")) {
           'collapsing' => ($this->settings['collapsing'] == 'true'),
           'imgMinus' => $this->settings['js_imgMinus'],
           'imgPlus' => $this->settings['js_imgPlus'],
-          'duration' => intval($this->settings['js_duration'])
+          'duration' => intval($this->settings['js_duration']),
+          'side' => ((isset($this->settings['side'])) ? $this->settings['side'] : false)
         ),
         'imgX' => intval($this->settings['js_imgX']),
         'imgY' => intval($this->settings['js_imgY']),

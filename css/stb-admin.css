@@ -22,3 +22,7 @@
 #tabs li a {
   font-size: 11px !important;
 }
+
+strong {
+  font-weight: 700;
+}

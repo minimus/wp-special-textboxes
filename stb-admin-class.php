@@ -308,7 +308,8 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
           'collapsing' => ($this->settings['collapsing'] == 'true'),
           'imgMinus' => $this->settings['js_imgMinus'],
           'imgPlus' => $this->settings['js_imgPlus'],
-          'duration' => intval($this->settings['js_duration'])
+          'duration' => intval($this->settings['js_duration']),
+          'side' => ((isset($this->settings['side'])) ? $this->settings['side'] : false)
         ),
         'imgX' => intval($this->settings['js_imgX']),
         'imgY' => intval($this->settings['js_imgY']),
@@ -413,7 +414,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       $modeHelp = '<ul>';
       $modeHelp .= '<li><strong><em>'.__('CSS Mode', STB_DOMAIN).'</em></strong>: '.__('In any cases STB blocks will be drawn using predefined style sheets.', STB_DOMAIN).'</li>';
       $modeHelp .= '<li><strong><em>'.__('Javascript Mode', STB_DOMAIN).'</em></strong>: '.__('If user browser supports tags "canvas" (all modern browsers, including Internet Explorer, support this tag) STB block will be drawn using Javascript, in any other cases this one will be drawn using CSS mode.', STB_DOMAIN).'</li>';
-      $modeHelp .= '<li><strong><em>'.__('Mixed Mode', STB_DOMAIN).'</em></strong>: '.__('You can use both CSS and Javascript methods of drawing text blocks on one page. Just define drawing mode of STB shortcode. Default is Javascript method.', STB_DOMAIN).'</li>';
+      $modeHelp .= '<li><strong><em>'.__('Mixed Mode', STB_DOMAIN).'</em></strong>: '.__('You can use both CSS and Javascript methods of drawing text blocks on one page. Just define drawing mode of STB shortcode. Default is Javascript or CSS method.', STB_DOMAIN).'</li>';
       $modeHelp .= '</ul>';
       
       add_settings_section('modeSection', __('Drawing Mode Settings', STB_DOMAIN), array(&$this, 'drawModeSection'), 'stb-settings');
@@ -427,7 +428,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       add_settings_section('cssXSection', __('Extended Settings', STB_DOMAIN), array(&$this, 'drawCssXSection'), 'stb-settings');
       add_settings_section('cssSysSection', __('System Settings', STB_DOMAIN), array(&$this, 'drawSysSection'), 'stb-settings');
       
-      add_settings_field('mode', __('Define Drawing Mode', STB_DOMAIN), array(&$this, 'drawRadioOption'), 'stb-settings', 'modeSection', array('description' => __('Select Drawing Mode', STB_DOMAIN).':'.$modeHelp, 'options' => array('css' => __('CSS Mode', STB_DOMAIN), 'js' => __('Javascript Mode', STB_DOMAIN), 'mix' => __('Mixed Mode', STB_DOMAIN))));
+      add_settings_field('mode', __('Define Drawing Mode', STB_DOMAIN), array(&$this, 'drawRadioOption'), 'stb-settings', 'modeSection', array('description' => __('Select Drawing Mode', STB_DOMAIN).':'.$modeHelp, 'options' => array('css' => __('CSS Mode', STB_DOMAIN), 'js' => __('Javascript Mode', STB_DOMAIN), 'mix' => __('Mixed Mode', STB_DOMAIN).' (Javascript)', 'mix2' => __('Mixed Mode', STB_DOMAIN).' (CSS)')));
       
       add_settings_field('top_margin', __("Define top margin for Special Text Boxes", STB_DOMAIN), array(&$this, 'drawTextOption'), 'stb-settings', 'basicSection', array('description' => __("This is a gap between top edge of Special Text Box and text above.", STB_DOMAIN)));
       add_settings_field('left_margin', __("Define left margin for Special Text Boxes", STB_DOMAIN), array(&$this, 'drawTextOption'), 'stb-settings', 'basicSection', array('description' => __("This is a gap between left edge of Special Text Box and left edge of post area.", STB_DOMAIN)));
@@ -437,6 +438,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       add_settings_field('langDirect', __('Define language direction', STB_DOMAIN), array(&$this, 'drawRadioOption'), 'stb-settings', 'extendedSection', array('description' => __('Selecting "Left-to-Right" will set Left-to-Right language direction for Special Text Boxes and visa versa.', STB_DOMAIN), 'options' => array( 'ltr' => __('Left-to-Right', STB_DOMAIN), 'rtl' => __('Right-to-Left', STB_DOMAIN))));
       add_settings_field('collapsing', __('Allow collapsing/expanding captioned Special Text Boxes?', STB_DOMAIN), array(&$this, 'drawRadioOption'), 'stb-settings', 'extendedSection', array('description' => __('Selecting "Yes" will allow displaying show/hide button in captioned Special Text Boxes.', STB_DOMAIN), 'options' => array( 'true' => __('Yes', STB_DOMAIN), 'false' => __('No', STB_DOMAIN))));
       add_settings_field('collapsed', __('Allow "collapsed on load" captioned Special Text Boxes?', STB_DOMAIN), array(&$this, 'drawRadioOption'), 'stb-settings', 'extendedSection', array('description' => __('Selecting "Yes" will allow displaying collapsed captioned Special Text Boxes after page loading.', STB_DOMAIN), 'options' => array( 'true' => __('Yes', STB_DOMAIN), 'false' => __('No', STB_DOMAIN))));
+      add_settings_field('side', __('Allow caption background colors for side image background (boxes without caption only)', STB_DOMAIN), array(&$this, 'drawCheckboxOption'), 'stb-settings', 'extendedSection', array('label_for' => 'side', 'checkbox' => true));
       
       add_settings_field('deleteOptions', __("Delete plugin options during deactivation of plugin", STB_DOMAIN), array(&$this, 'drawCheckboxOption'), 'stb-settings', 'deactivationSection', array('label_for' => 'deleteOptions', 'checkbox' => true));
       add_settings_field('deleteDB', __("Delete database table of plugin during deactivation of plugin", STB_DOMAIN), array(&$this, 'drawCheckboxOption'), 'stb-settings', 'deactivationSection', array('label_for' => 'deleteDB', 'checkbox' => true));
@@ -693,19 +695,17 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       $content .= "\n"."/* Class Dependent Parameters */"."\n";
       foreach($styles as &$val) {
         if(!isset($val['cssStyle']['bgColorEnd'])) {
-          $val['cssStyle']['bgColor'] = str_replace('#', '', $val['jsStyle']['color']);
-          $val['cssStyle']['bgColorEnd'] = str_replace('#', '', $val['jsStyle']['colorTo']);
+          $val['cssStyle']['bgColorEnd'] = str_replace('#', '', $val['cssStyle']['bgColor']);
         }
         if(!isset($val['cssStyle']['captionBgColorEnd'])) {
-          $val['cssStyle']['captionBgColor'] = str_replace('#', '', $val['jsStyle']['caption']['color']);
-          $val['cssStyle']['captionBgColorEnd'] = str_replace('#', '', $val['jsStyle']['caption']['colorTo']);
+          $val['cssStyle']['captionBgColorEnd'] = str_replace('#', '', $val['cssStyle']['captionBgColor']);
         }
 
         $content .= ".stb-border.stb-{$val['slug']}-container {";
         $content .= "border: 1px {$options['border_style']} #{$val['cssStyle']['borderColor']};";
         $content .= "}";
 
-        $content .= ".stb-{$val['slug']}-container {";
+        $content .= ".stb-side.stb-{$val['slug']}-container {";
         $content .= "background: #{$val['cssStyle']['captionBgColor']};";
         $content .= "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$val['cssStyle']['captionBgColor']}', endColorstr='#{$val['cssStyle']['captionBgColorEnd']}',GradientType=0 );";
         $content .= "background: -moz-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
@@ -714,6 +714,17 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         $content .= "background: -o-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%,#{$val['cssStyle']['captionBgColorEnd']} 90%);";
         $content .= "background: -ms-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%,#{$val['cssStyle']['captionBgColorEnd']} 90%);";
         $content .= "background: linear-gradient(#{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
+        $content .= "}";
+
+        $content .= ".stb-side-none.stb-{$val['slug']}-container {";
+        $content .= "background: #{$val['cssStyle']['bgColor']};";
+        $content .= "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$val['cssStyle']['bgColor']}', endColorstr='#{$val['cssStyle']['bgColorEnd']}',GradientType=0 );";
+        $content .= "background: -moz-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
+        $content .= "background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#{$val['cssStyle']['bgColor']}), color-stop(90%,#{$val['cssStyle']['bgColorEnd']}));";
+        $content .= "background: -webkit-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+        $content .= "background: -o-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+        $content .= "background: -ms-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+        $content .= "background: linear-gradient(#{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
         $content .= "}";
 
         $content .= ".stb-{$val['slug']}_box {";

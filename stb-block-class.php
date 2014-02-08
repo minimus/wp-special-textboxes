@@ -68,12 +68,10 @@ if(!class_exists('StbBlock')) {
           );
 
           if(!isset($aStyles[$value['slug']]['cssStyle']['bgColorEnd'])) {
-            $aStyles[$value['slug']]['cssStyle']['bgColor'] = str_replace('#', '', $aStyles[$value['slug']]['jsStyle']['color']);
-            $aStyles[$value['slug']]['cssStyle']['bgColorEnd'] = str_replace('#', '', $aStyles[$value['slug']]['jsStyle']['colorTo']);
+            $aStyles[$value['slug']]['cssStyle']['bgColorEnd'] = str_replace('#', '', $aStyles[$value['slug']]['cssStyle']['bgColor']);
           }
           if(!isset($aStyles[$value['slug']]['cssStyle']['captionBgColorEnd'])) {
-            $aStyles[$value['slug']]['cssStyle']['captionBgColor'] = str_replace('#', '', $aStyles[$value['slug']]['jsStyle']['caption']['color']);
-            $aStyles[$value['slug']]['cssStyle']['captionBgColorEnd'] = str_replace('#', '', $aStyles[$value['slug']]['jsStyle']['caption']['colorTo']);
+            $aStyles[$value['slug']]['cssStyle']['captionBgColorEnd'] = str_replace('#', '', $aStyles[$value['slug']]['cssStyle']['captionBgColor']);
           }
         }
       }
@@ -89,11 +87,20 @@ if(!class_exists('StbBlock')) {
       return $classes;
     }
     
-    private function getMode($val, $sval) {
+    private function getMode($val, $setsVal) {
       if(!empty($val)) $mode = $val;
-      else $mode = ($sval == 'mix') ? 'js' : $sval;
+      elseif($setsVal == 'mix') $mode =  'js';
+      else $mode = 'css';
       if('css' == STB_DRAWING_MODE) $mode = 'css';
       return $mode;
+    }
+
+    private function getCssImage($id) {
+      if(!empty($this->aStyles[$id]['cssStyle']['bigImg']))
+        return $this->aStyles[$id]['cssStyle']['bigImg'];
+      elseif(!empty($this->aStyles[$id]['cssStyle']['image']))
+        return $this->aStyles[$id]['cssStyle']['image'];
+      else return '';
     }
 
     private function getCssClasses( $atts = null ) {
@@ -101,7 +108,6 @@ if(!class_exists('StbBlock')) {
 
       $settings = self::getSettings();
       $cntClasses = array();
-      $value = '';
 
       if(is_array($atts)) {
         if($atts['defcaption'] == 'true') {
@@ -112,6 +118,9 @@ if(!class_exists('StbBlock')) {
         if($atts['collapsing'] === 'default') $collapsing = ($settings['collapsing'] === 'true');
         else $collapsing = ($atts['collapsing'] === 'true');
         $collapsed = ($settings['collapsing'] === 'true') && (($atts['collapsed'] === 'true') || (($settings['collapsed'] === 'true') && ($atts['collapsed'] !== 'false')));
+
+        $side = (isset($settings['side'])) ? $settings['side'] : false;
+        if(!empty($atts['side'])) $side = ($atts['side'] == 'true');
 
         // Collapsing and Collapsed
         if(!empty($atts['caption'])) {
@@ -153,6 +162,12 @@ if(!class_exists('StbBlock')) {
         // Border
         if(($settings['border_style'] != 'none') || !empty($atts['bwidth']))
           array_push($cntClasses, 'stb-border');
+
+        // Side Caption
+        if($atts['caption'] == '') {
+          if($side) array_push($cntClasses, 'stb-side');
+          else array_push($cntClasses, 'stb-side-none');
+        }
       }
 
       return $cntClasses;
@@ -162,7 +177,7 @@ if(!class_exists('StbBlock')) {
       if(is_null($atts)) return '';
 
       $settings = self::getSettings();
-      $sImg = $this->aStyles[$atts['id']]['cssStyle']['bigImg'];
+      $sImg = self::getCssImage($atts['id']); //$this->aStyles[$atts['id']]['cssStyle']['bigImg'];
       $mode = '';
 
       $toolImg = '';
@@ -182,7 +197,7 @@ if(!class_exists('StbBlock')) {
 
         // Float Mode
         if (( $atts['float'] === 'true' ) && in_array($atts['align'], array('left', 'right')) ) {
-          $float = "<div style='float:{$atts['align']}; width:{$atts['width']}px;' >";
+          $float = "<div style='float: {$atts['align']}; width: {$atts['width']}px;' >";
         }
 
         // Tool Image
@@ -383,9 +398,19 @@ if(!class_exists('StbBlock')) {
       if($mode == 'js') {
         $block = self::getJsStyles($atts, $idNum);
         if($id == 'grey')
-          return $block['floatStart']."<div id='stb-box-{$idNum}' class='stb-$id-box stb-level-{$atts['level']}' {$block['data']}>$content</div>".$block['floatEnd'];
+          return
+            $block['floatStart'].
+            //"<div id='stb-box-{$idNum}-container' class='stb-container'><canvas id='stb-box-{$idNum}-canvas'></canvas>".
+            "<div id='stb-box-{$idNum}' class='stb-box-jq stb-{$id}-box stb-level-{$atts['level']}' {$block['data']}>{$content}</div>".
+            //"</div>".
+            $block['floatEnd'];
         else
-          return $block['floatStart']."<div id='stb-box-$idNum' class='stb-$id-box stb-level-{$atts['level']}' {$block['data']}>" . do_shortcode($content) . "</div>".$block['floatEnd'];
+          return
+            $block['floatStart'].
+            //"<div id='stb-box-{$idNum}-container' class='stb-container'><canvas id='stb-box-{$idNum}-canvas'></canvas>".
+            "<div id='stb-box-{$idNum}' class='stb-box-jq stb-{$id}-box stb-level-{$atts['level']}' {$block['data']}>" . do_shortcode($content) . "</div>".
+            //"</div>".
+            $block['floatEnd'];
       }
       elseif($mode == 'css') {
         $cssClasses = self::getCssClasses($atts);

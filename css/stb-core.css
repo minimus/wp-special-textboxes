@@ -7,6 +7,17 @@
   -webkit-box-sizing: content-box !important;
 }
 
+.stb-container canvas {
+  box-sizing: content-box !important;
+  -moz-box-sizing: content-box !important;
+  -webkit-box-sizing: content-box !important;
+}
+.stb-box-jq {
+  box-sizing: content-box !important;
+  -moz-box-sizing: content-box !important;
+  -webkit-box-sizing: content-box !important;
+}
+
 .stb-container-css {
   /*margin: 0px auto; */
   padding: 0;
@@ -143,7 +154,7 @@
 
 .stb-tool img {
   border: 0;
-  padding: 0 3px;
+  padding: 3px;
   margin: 0 auto;
   background-color: transparent;
   vertical-align: middle;
@@ -158,8 +169,16 @@
   float: left;
 }
 
-.stb-box {
+.stb-side .stb-box, .stb-image-none .stb-box {
   padding: 10px;
+}
+
+.stb-side-none.stb-image-big.stb-ltr .stb-box, .stb-side-none.stb-image-small.stb-ltr .stb-box {
+  padding: 10px 10px 10px 0;
+}
+
+.stb-side-none.stb-image-big.stb-rtl .stb-box, .stb-side-none.stb-image-small.stb-rtl .stb-box {
+  padding: 10px 0 10px 10px;
 }
 
 .stb-caption-box {
@@ -171,6 +190,8 @@
 }
 
 .stb-body-box {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   box-sizing: content-box;
   padding: 5px 10px 10px;
 }

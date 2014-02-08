@@ -4,7 +4,7 @@ Donate link:  https://load.payoneer.com/LoadToPage.aspx?email=minimus@simplelib.
 Tags: content, performance, text, code, php, widget
 Requires at least: 3.5
 Tested up to: 3.8.1
-Stable tag: 4.5.81
+Stable tag: 5.0.85
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,7 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Changelog ==
 
+= 5.0.85 =
 = 4.5.81 =
 * Major bug is fixed
 = 4.5.80 =
@@ -211,6 +212,7 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Upgrade Notice ==
 
+= 5.0.85 =
 = 4.5.81 =
 Major bug is fixed.
 = 4.5.80 =
