@@ -358,7 +358,7 @@
     ctx.textAlign = (opts.direction == 'ltr') ? 'left' : 'right';
     ctx.textBaseline = 'middle';
     ctx.fillStyle = opts.caption.fontColor;
-    ctx.font = opts.caption.fontSize + 'px ' + opts.caption.fontFamily;
+    ctx.font = 'bold ' + opts.caption.fontSize + 'px ' + opts.caption.fontFamily;
     if($.browser.safari) {
       var fontSize = opts.caption.fontSize,
         textWidth = ctx.measureText(opts.caption.text).width;
@@ -452,6 +452,8 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     simpleBox(ctx, canvas.width, canvas.height, opts, cl);
     boxImage(index, 'all', cl);
+    if(opts.border.width > 0)
+      roundedBorder(ctx, canvas.width, canvas.height, opts);
   }
   
   function drawBox(canvas, opts, img, il) {
@@ -468,6 +470,8 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     simpleBox(ctx, canvas.width, canvas.height, opts, cl);
     drawCBoxImage(canvas, ctx, opts, img, imgM, imgP, 'all', cl);
+    if(opts.border.width > 0)
+      roundedBorder(ctx, canvas.width, canvas.height, opts);
   }
   
   function doDraw(data, force) {

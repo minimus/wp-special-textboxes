@@ -22,17 +22,17 @@ if (!class_exists("SpecialTextBoxes")) {
       'js_imgMinus' => '',
       'js_imgPlus' => '',
       'js_duration' => 500,
-      'js_imgX' => 5,
-      'js_imgY' => 10,
-      'js_radius' => 10,
+      'js_imgX' => 0,
+      'js_imgY' => 3,
+      'js_radius' => 5,
       'js_caption_fontSize' => 12,
       'js_caption_fontFamily' => 'Impact, Verdana, Helvetica, Arial, sans-serif',
       'js_shadow_enabled' => 'true',
-      'js_shadow_offsetX' => 7,
-      'js_shadow_offsetY' => 7,
-      'js_shadow_blur' => 5,
+      'js_shadow_offsetX' => 0,
+      'js_shadow_offsetY' => 0,
+      'js_shadow_blur' => 15,
       'js_shadow_alpha' => 0.15,
-      'js_shadow_color' => '000000',
+      'js_shadow_color' => '555555',
       'js_textShadow_enabled' => 'false',
       'js_textShadow_offsetX' => 1,
       'js_textShadow_offsetY' => 1,
@@ -44,7 +44,8 @@ if (!class_exists("SpecialTextBoxes")) {
       'deleteOptions' => 0,
       'deleteDB' => 0,
       'css_loading' => 'dynamic',
-      
+
+      /*
       'cb_color' => '000000',
       'cb_caption_color' => 'ffffff',
       'cb_background' => 'f7cdf5',
@@ -53,7 +54,8 @@ if (!class_exists("SpecialTextBoxes")) {
       'cb_image' => '',
       'cb_bigImg' => '',
       'cb_fontSize' => '0',
-      'cb_captionFontSize' => '0' 
+      'cb_captionFontSize' => '0'
+      */
     );
     public $settings = array();
     public $styles = array();
@@ -65,17 +67,16 @@ if (!class_exists("SpecialTextBoxes")) {
     public function __construct() {
       define('STB_VERSION', '5.0.85');
       define('STB_DB_VERSION', '1.0');
-      define('STB_DIR', plugin_dir_path(__FILE__));
+      define('STB_DIR', dirname( __FILE__ ) . '/');
       define('STB_DOMAIN', 'wp-special-textboxes');
       define('STB_OPTIONS', 'SpecialTextBoxesAdminOptions');
-      define('STB_URL', WP_PLUGIN_URL . '/' . str_replace( basename( __FILE__), "", plugin_basename( __FILE__ ) ));
+      define('STB_URL', plugins_url( '/',  __FILE__  ));
       
       if (function_exists( 'load_plugin_textdomain' ))
         load_plugin_textdomain( STB_DOMAIN, false, dirname( plugin_basename( __FILE__ ) ) );
       
      
-      add_action('wp_head', array(&$this, 'addHeaderCSS'), 1);
-      add_action('template_redirect', array(&$this, 'headerScripts'), 9999999999);
+      add_action('wp_enqueue_scripts', array(&$this, 'headerScripts'), 9999999999);
       
       add_filter( 'comment_text', 'do_shortcode' );
       
@@ -108,11 +109,11 @@ if (!class_exists("SpecialTextBoxes")) {
         $stbAdminOptions['js_imgMinus'] = STB_URL.'images/minus.png';
       if ( $stbAdminOptions['js_imgPlus'] === '' )
         $stbAdminOptions['js_imgPlus'] = STB_URL.'images/plus.png';
-      if ( $stbAdminOptions['cb_image'] === '' )
+      /*if ( $stbAdminOptions['cb_image'] === '' )
         $stbAdminOptions['cb_image'] = STB_URL.'images/heart.png';
       if ( $stbAdminOptions['cb_bigImg'] === '' )
         $stbAdminOptions['cb_bigImg'] = STB_URL.'images/heart-b.png';
-      if($force) update_option(STB_OPTIONS, $stbAdminOptions);
+      if($force) update_option(STB_OPTIONS, $stbAdminOptions);*/
       return $stbAdminOptions;
     }
     
@@ -193,20 +194,11 @@ if (!class_exists("SpecialTextBoxes")) {
       $browser = new Browser();
       $bName = $browser->getBrowser();
       $bVersion = explode('.', $browser->getVersion());
-      if(!is_null($validBrowsers[$bName]) && 
+      if(isset($validBrowsers[$bName]) && !is_null($validBrowsers[$bName]) &&
          (intval($bVersion[0]) > $validBrowsers[$bName][0] ||
          (intval($bVersion[0]) == $validBrowsers[$bName][0] && 
           intval($bVersion[1]) >= $validBrowsers[$bName][1]))) return $oMode;
       else return 'css';
-    }
-    
-    public function addHeaderCSS() {
-      if($this->globalMode != 'js') {
-        wp_enqueue_style('stbCoreCSS', STB_URL.'css/stb-core.css', false, STB_VERSION);
-        if($this->settings['css_loading'] === 'dynamic')
-          wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css.php', false, STB_VERSION);
-        else wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css', false, STB_VERSION);
-      }
     }
     
     public function headerScripts() {
@@ -254,8 +246,8 @@ if (!class_exists("SpecialTextBoxes")) {
       $cssOptions = array(
         'roundedCorners' => ($this->settings['rounded_corners'] == 'true'),
         'mbottom' => intval($this->settings['bottom_margin']),
-        'imgHide' => STB_URL.'images/minus.png',
-        'imgShow' => STB_URL.'images/plus.png',
+        'imgHide' => $this->settings['js_imgMinus'],
+        'imgShow' => $this->settings['js_imgPlus'],
         'strHide' => __('Hide', STB_DOMAIN),
         'strShow' => __('Show', STB_DOMAIN)
       );
@@ -274,7 +266,16 @@ if (!class_exists("SpecialTextBoxes")) {
           $options = array('mode' => $this->globalMode, 'jsOptions' => $jsOptions, 'cssOptions' => $cssOptions, 'styles' => $this->styles); 
           break;
       }
-      
+
+      // Styles
+      if($this->globalMode != 'js') {
+        wp_enqueue_style('stbCoreCSS', STB_URL.'css/stb-core.css', false, STB_VERSION);
+        if($this->settings['css_loading'] === 'dynamic')
+          wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css.php', false, STB_VERSION);
+        else wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css', false, STB_VERSION);
+      }
+
+      // Scripts
       if($this->cmsVer === 'low') {
         wp_register_script('jquery-effects-core', STB_URL.'js/jquery.effects.core.min.js', array('jquery'), '1.8.16');
         wp_register_script('jquery-effects-blind', STB_URL.'js/jquery.effects.blind.min.js', array('jquery', 'jquery-effects-core'), '1.8.16');
@@ -393,7 +394,7 @@ if (!class_exists('special_text') && class_exists('WP_Widget')) {
             (is_tag() && $instance['show_tag']) ||
             (is_author() && $instance['show_author']));
       
-      if($box_id !== 'none') {
+      /*if($box_id !== 'none') {
         $mode = self::getMode(STB_DRAWING_MODE);
         if($mode == 'css') {
           $before_title = '<div class="stb-'.$box_id.'-caption_box" style="margin-left: 0px; margin-right: 0px" >';
@@ -407,11 +408,21 @@ if (!class_exists('special_text') && class_exists('WP_Widget')) {
           $before_widget = "<div class='stb-$box_id-box stb-level-0' data-stb='{mleft: 0, mright: 0, caption: {text: \"$title\"}}'>";
           $after_widget = '</div>';
         }
-      }
+      }*/
+
+      $mode = self::getMode(STB_DRAWING_MODE);
+      $block = new StbBlock($text, $box_id, $title);
+      $codes = $block->getWidgetBox();
+
+      $before_title = $codes['beforeTitle'];
+      $after_title = $codes['afterTitle'];
+      $before_widget = $codes['before'];
+      $after_widget = $codes['after'];
+
       
       if ( $showAll || $canShow ) {
         echo $before_widget;
-        if ( !empty( $title ) && $mode == 'css' ) echo $before_title . $title . $after_title;
+        /*if ( !empty( $title ) && $mode == 'css' )*/ echo $before_title . $title . $after_title;
         echo ($parse ? eval("?>".$text."<?") : $text);
         echo $after_widget;
       }

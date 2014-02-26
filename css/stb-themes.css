@@ -1,0 +1,113 @@
+.stb-theme-item {
+  float: left;
+  margin: 10px 10px 30px 10px;
+  border: 1px solid #E5E5E5;
+  border-radius: 4px;
+  padding: 10px;
+  -webkit-box-shadow: 0 0 6px 0 #D1D0D0;
+  -moz-box-shadow: 0 0 6px 0 #D1D0D0;
+  box-shadow: 0 0 6px 0 #D1D0D0;
+  width: 95%;
+}
+
+.stb-theme-cover {
+  float: left;
+  width: 470px;
+}
+
+.stb-theme-info {
+  margin: 0 7px 0 470px;
+  background: #FFFFFF;
+  padding: 10px;
+  border: 1px solid #E5E5E5;
+  position: relative;
+  min-height: 280px;
+  overflow: hidden;
+}
+
+.stb-theme-info h3 {
+  margin: 0 0 0.3em 0;
+}
+
+.stb-theme-info p {
+  margin: 0;
+}
+
+/*.stb-theme-icon {
+  float: left;
+  width: 450px;
+}*/
+
+.stb-theme-icon img {
+  padding: 0;
+}
+
+.stb-install {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  text-align: right;
+  width: 100%;
+  visibility: hidden;
+}
+
+.stb-theme-item:hover .stb-install {
+  visibility: visible;
+}
+
+h2 .theme-count {
+  color: #fff;
+  border-radius: 30px;
+  background: #777;
+  font-size: 14px;
+  padding: 4px 10px;
+  font-weight: 600;
+  margin-left: 5px;
+  margin-right: 20px;
+  position: relative;
+  top: -3px;
+}
+
+.stb-clear {
+  margin: 10px;
+}
+
+.stb-save-dialog {
+  font-family: Arial,"Open Sans",sans-serif;
+}
+
+.stb-save-dialog label {
+  font-size: 12px;
+}
+
+.stb-save-dialog input, .stb-save-dialog select, .stb-save-dialog textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.stb-save-dialog input {
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
+  border: 1px solid #ddd;
+  outline: 0;
+}
+
+.stb-upload-info {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  margin: 0 15px;
+}
+
+.stb-upload-progress {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 16px;
+  margin: 0 15px;
+}
+
+#stb-cover input {
+  line-height: 15px;
+  height: 26px;
+}

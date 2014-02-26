@@ -2,11 +2,32 @@
 include_once('stb-class.php');
 if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
   class SpecialTextBoxesAdmin extends SpecialTextBoxes {    
+    public $menu_page;
+    public $plugin_page;
+    public $styles_page;
+    public $editor_page;
+    public $themes_page;
+
+    private $zipError;
+
     public function __construct() {
       parent::__construct();
-      
-      add_action('activate_wp-special-textboxes/wp-special-textboxes.php',  array(&$this, 'onActivate'));
-      add_action('deactivate_wp-special-textboxes/wp-special-textboxes.php', array(&$this, 'onDeactivate'));
+
+      $themesDir = trailingslashit(WP_CONTENT_DIR) . 'stb-themes/';
+
+      if(self::checkThemesFolder($themesDir)) {
+        define('STB_THEMES_DIR', $themesDir);
+        define('STB_THEMES_URL', content_url('/stb-themes/'));
+        define('STB_EXT_THEMES', true);
+      }
+      else {
+        define('STB_THEMES_DIR', STB_DIR . 'themes/');
+        define('STB_THEMES_URL', STB_URL . 'themes/');
+        define('STB_EXT_THEMES', false);
+      }
+
+      register_activation_hook(STB_MAIN_FILE, array(&$this, 'onActivate'));
+      register_deactivation_hook(STB_MAIN_FILE, array(&$this, 'onDeactivate'));
       add_action('admin_init', array(&$this, 'initSettings'));
       add_action('admin_menu', array(&$this, 'regAdminPage'));
       add_filter('tiny_mce_version', array(&$this, 'tinyMCEVersion'));
@@ -21,6 +42,8 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       $sTable = $wpdb->prefix . "stb_styles";
       
       require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+      require_once('stb-themes.php');
+
       if($wpdb->get_var("SHOW TABLES LIKE '$sTable'") != $sTable) {
         $sSql = "CREATE TABLE $sTable (
                     slug VARCHAR(255) NOT NULL,
@@ -32,209 +55,10 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
                     PRIMARY KEY (slug)
                    ) $charset_collate;";
         dbDelta($sSql);
-        
-        $names = array(
-          'alert' => __('Alert!', STB_DOMAIN),
-          'black' => __('Black Quote', STB_DOMAIN),
-          'download' => __('Download', STB_DOMAIN),
-          'info' => __('Info', STB_DOMAIN),
-          'warning' => __('Warning!', STB_DOMAIN),
-          'grey' => __('Codes', STB_DOMAIN),
-          'custom' => __('Custom Style', STB_DOMAIN)
-        );
-        $defJsStyles = array(
-          'alert' => array(
-            'image' => STB_URL.'images/alert-b.png',      
-            'color' => '#fdcbc9',
-            'colorTo' => '#fb7d78',
-            'fontColor' => '#000000',
-            'border' => array(
-              'width' => 0,
-              'color' => '#f9574f'
-            ),
-            'caption' => array(
-              'fontColor' => '#ffffff',
-              'color' => '#1d1a1a',
-              'colorTo' => '#504848'
-            )
-          ),
-          'black' => array(
-            'image' => STB_URL.'images/earth-b.png',
-            'color' => '#3b3b3b',
-            'colorTo' => '#000000',
-            'fontColor' => '#ffffff',
-            'border' => array(
-              'width' => 0,
-              'color' => '#535353'
-            ),
-            'caption' => array(
-              'fontColor' => '#ffffff',
-              'color' => '#1d1a1a',
-              'colorTo' => '#504848'
-            )
-          ),    
-          'download' => array(
-            'image' => STB_URL.'images/download-b.png',
-            'color' => '#78c0f7',
-            'colorTo' => '#2e7cb9',
-            'fontColor' => '#000000',
-            'border' => array(
-              'width' => 0,
-              'color' => '#15609a'
-            ),
-            'caption' => array(
-              'fontColor' => '#ffffff',
-              'color' => '#1d1a1a',
-              'colorTo' => '#504848'
-            )
-          ),
-          'info' => array(
-            'image' => STB_URL.'images/info-b.png',
-            'color' => '#a1ea94',
-            'colorTo' => '#79b06e',
-            'fontColor' => '#000000',
-            'border' => array(
-              'width' => 0,
-              'color' => '#6c9c62'
-            ),
-            'caption' => array(
-              'fontColor' => '#ffffff',
-              'color' => '#1d1a1a',
-              'colorTo' => '#504848'
-            )
-          ),
-          'warning' => array(
-            'image' => STB_URL.'images/warning-2-b.png',
-            'color' => '#f8fc91', 
-            'colorTo' => '#f0d208',
-            'fontColor' => '#000000',
-            'border' => array(
-              'width' => 0,
-              'color' => '#d9be08'
-            ),
-            'caption' => array(
-              'fontColor' => '#ffffff',
-              'color' => '#1d1a1a',
-              'colorTo' => '#504848'
-            ) 
-          ),
-          'grey' => array(
-            'image' => STB_URL.'images/gears-b.png',
-            'color' => '#e3e3e3', 
-            'colorTo' => '#ababab',
-            'fontColor' => '#000000',
-            'border' => array(
-              'width' => 0,
-              'color' => '#6e6e6e'
-            ),
-            'caption' => array(
-              'fontColor' => '#ffffff',
-              'color' => '#b5b5b5',
-              'colorTo' => '#6e6e6e'
-            ) 
-          ), 
-          'custom' => array(
-            'image' => STB_URL.'images/heart-b.png',
-            'color' => '#f7cdf5',
-            'colorTo' => '#f77df1',
-            'fontColor' => '#000000',
-            'border' => array(
-              'width' => 0,
-              'color' => '#f844ee'
-            ),
-            'caption' => array(
-              'fontColor' => '#ffffff',
-              'color' => '#1d1a1a',
-              'colorTo' => '#504848'
-            )
-          )
-        );
-        
-        $defCssStyles = array(
-          'alert' => array(
-            'color' => '000000',
-            'captionColor' => 'FFFFFF',
-            'borderColor' => 'FF4F4A',
-            'bgColor' => 'FFE7E6',
-            'captionBgColor' => 'FF4F4A',
-            'image' => STB_URL.'images/alert.png',
-            'bigImg' => STB_URL.'images/alert-b.png'
-          ),
-          'black' => array(
-            'color' => 'FFFFFF',
-            'captionColor' => 'FFFFFF',
-            'borderColor' => '6E6E6E',
-            'bgColor' => '000000',
-            'captionBgColor' => '333333',
-            'image' => STB_URL.'images/earth.png',
-            'bigImg' => STB_URL.'images/earth-b.png'
-          ),    
-          'download' => array(
-            'color' => '000000',
-            'captionColor' => 'FFFFFF',
-            'borderColor' => '65ADFE',
-            'bgColor' => 'DFF0FF',
-            'captionBgColor' => '65ADFE',
-            'image' => STB_URL.'images/download.png',
-            'bigImg' => STB_URL.'images/download-b.png'
-          ),
-          'info' => array(
-            'color' => '000000',
-            'captionColor' => 'FFFFFF',
-            'borderColor' => '7AD975',
-            'bgColor' => 'E2F8DE',
-            'captionBgColor' => '7AD975',
-            'image' => STB_URL.'images/info.png',
-            'bigImg' => STB_URL.'images/info-b.png'
-          ),
-          'warning' => array(
-            'color' => '000000',
-            'captionColor' => 'FFFFFF',
-            'borderColor' => 'FE9A05',
-            'bgColor' => 'FEFFD5',
-            'captionBgColor' => 'FE9A05',
-            'image' => STB_URL.'images/warning.png',
-            'bigImg' => STB_URL.'images/warning-b.png' 
-          ),
-          'grey' => array(
-            'color' => '000000',
-            'captionColor' => 'FFFFFF',
-            'borderColor' => 'BBBBBB',
-            'bgColor' => 'EEEEEE',
-            'captionBgColor' => 'BBBBBB',
-            'image' => STB_URL.'images/gears.png',
-            'bigImg' => STB_URL.'images/gears-b.png' 
-          ),
-          'custom' => array(
-            'color' => $this->settings['cb_color'],
-            'captionColor' => $this->settings['cb_caption_color'],
-            'borderColor' => $this->settings['cb_border_color'],
-            'bgColor' => $this->settings['cb_background'],
-            'captionBgColor' => $this->settings['cb_caption_background'],
-            'image' => $this->settings['cb_image'],
-            'bigImg' => $this->settings['cb_bigImg']
-          )
-        );
-        
-        $uSql = '';
-        foreach($defJsStyles as $key => $value) {
-          $jsVal = serialize($value);
-          $cssVal = serialize($defCssStyles[$key]);
-          $cap = $names[$key];
-          $stype = ($key == 'custom') ? $key : (($key == 'grey') ? 'special' : 'system');
-          $wpdb->query(
-            $wpdb->prepare("
-              INSERT INTO $sTable 
-              (slug, caption, js_style, css_style, stype, trash) 
-              VALUES(%s, %s, %s, %s, %s, %d);",
-            $key, 
-            $cap, 
-            $jsVal, 
-            $cssVal, 
-            $stype, 
-            0)
-          );
-        }
+
+        $themes = new StbThemes(STB_THEMES_DIR);
+        $themes->installTheme('stb_dark', 'install');
+
         update_option('stb_db_version', STB_DB_VERSION);
       }
       update_option('stb_version', STB_VERSION);
@@ -252,128 +76,26 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       if($this->settings['deleteOptions'] == 1) delete_option(STB_OPTIONS);
       if($this->settings['deleteDB'] == 1) $wpdb->query("DROP TABLE IF EXISTS $sTable;");
     }
-    
-    public function addAdminHeaderCSS() {
-      wp_enqueue_style('stbAdminCSS', STB_URL.'css/stb-admin.css', false, STB_VERSION);
-      wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css.php', false, STB_VERSION);
-      //wp_enqueue_style('ColorPickerCSS', STB_URL.'css/colorpicker.css');
-      wp_enqueue_style('jquery-ui-tabs', STB_URL.'css/jquery-ui-wp38.css', false, '1.10.3');
-      wp_enqueue_style('smallColorPickerButtonsCSS', STB_URL.'css/color-buttons.min.css');
-      wp_enqueue_style('smallColorPickerCSS', STB_URL.'css/small-color-picker.min.css');
-    }
-    
-    public function addAdminEditorCSS() {
-      wp_enqueue_style('stbAdminCSS', STB_URL.'css/stb-edit.css', false, STB_VERSION);
-      wp_enqueue_style('stbCoreCSS', STB_URL.'css/stb-core.css', false, STB_VERSION);
-      wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css.php', false, STB_VERSION);
-      //wp_enqueue_style('ColorPickerCSS', STB_URL.'css/colorpicker.css');
-      wp_enqueue_style('smallColorPickerButtonsCSS', STB_URL.'css/color-buttons.min.css');
-      wp_enqueue_style('smallColorPickerCSS', STB_URL.'css/small-color-picker.min.css');
-    }
-    
-    public function adminHeaderScripts() {
-      $options = array(
-        'texts' => array(
-          'ok' => __('OK', STB_DOMAIN),
-          'cancel' => __('Cancel', STB_DOMAIN),
-          'switchModeToNum' => __('Show numbers', STB_DOMAIN),
-          'switchModeToCol' => __('Show color wheel', STB_DOMAIN)
-        )
-      );
 
-      if($this->cmsVer === 'low') {
-        wp_register_script('jquery-effects-core', STB_URL.'js/jquery.effects.core.min.js', array('jquery'), '1.8.16');
-        wp_register_script('jquery-effects-blind', STB_URL.'js/jquery.effects.blind.min.js', array('jquery', 'jquery-effects-core'), '1.8.16');
+    private function checkThemesFolder($dir) {
+      global $wp_filesystem;
+
+      if(!is_dir($dir)) {
+        if( mkdir($dir) ) {
+          $zip = new ZipArchive;
+          $source = STB_DIR . 'themes/stb-default-themes.zip';
+          if($zip->open($source) === true) {
+            $zip->extractTo($dir);
+            $zip->close();
+            $out = true;
+          }
+          else $out = false;
+        }
+        else $out = false;
       }
-      wp_enqueue_script('jquery');      
-      wp_enqueue_script('jquery-ui-core');
-      wp_enqueue_script('jquery-ui-tabs');
-      wp_enqueue_script('jquery-effects-core');
-      wp_enqueue_script('jquery-effects-blind');
-      //wp_enqueue_script('ColorPicker', STB_URL.'js/colorpicker.js');
-      wp_enqueue_script('smallColorPicker', STB_URL.'js/small-color-picker.min.js', array('jquery'));
-      wp_enqueue_script('wstbAdminLayout', STB_URL.'js/wstb.admin.min.js', array('jquery'), STB_VERSION);
+      else $out = true;
 
-      if($this->cmsVer === 'high') wp_localize_script('wstbAdminLayout', 'stbUserOptions', $options);
-      else wp_localize_script('wstbAdminLayout', 'stbUserOptions', array('l10n_print_after' => 'stbUserOptions = ' . json_encode($options) . ';'));
-    }
-    
-    public function adminEditorScripts() {
-      $jsOptions = array(
-        'caption' => array(
-          'text' => '',
-          'fontFamily' => $this->settings['js_caption_fontFamily'],
-          'fontSize' => intval($this->settings['js_caption_fontSize']),
-          'collapsed' => ($this->settings['collapsed'] == 'true'),
-          'collapsing' => ($this->settings['collapsing'] == 'true'),
-          'imgMinus' => $this->settings['js_imgMinus'],
-          'imgPlus' => $this->settings['js_imgPlus'],
-          'duration' => intval($this->settings['js_duration']),
-          'side' => ((isset($this->settings['side'])) ? $this->settings['side'] : false)
-        ),
-        'imgX' => intval($this->settings['js_imgX']),
-        'imgY' => intval($this->settings['js_imgY']),
-        'radius' => intval($this->settings['js_radius']),
-        'direction' => $this->settings['langDirect'],
-        'mtop' => intval($this->settings['top_margin']),
-        'mright' => intval($this->settings['right_margin']),
-        'mbottom' => intval($this->settings['bottom_margin']),
-        'mleft' => intval($this->settings['left_margin']),
-        'shadow' => array(
-          'enabled' => ($this->settings['js_shadow_enabled'] == 'true'),
-          'offsetX' => intval($this->settings['js_shadow_offsetX']),
-          'offsetY' => intval($this->settings['js_shadow_offsetY']),
-          'blur' => intval($this->settings['js_shadow_blur']),
-          'alpha' => floatval($this->settings['js_shadow_alpha']),
-          'color' => '#'.$this->settings['js_shadow_color']
-        ),
-        'textShadow' => array(
-          'enabled' => ($this->settings['js_textShadow_enabled'] == 'true'),
-          'offsetX' => intval($this->settings['js_textShadow_offsetX']),
-          'offsetY' => intval($this->settings['js_textShadow_offsetY']),
-          'blur' => intval($this->settings['js_textShadow_blur']),
-          'alpha' => 0.15,
-          'color' => '#'.$this->settings['js_textShadow_color']
-        ),
-        'pickerOptions' => array(
-          'texts' => array(
-            'ok' => __('OK', STB_DOMAIN),
-            'cancel' => __('Cancel', STB_DOMAIN),
-            'switchModeToNum' => __('Show numbers', STB_DOMAIN),
-            'switchModeToCol' => __('Show color wheel', STB_DOMAIN)
-          )
-        )
-      );
-      
-      $cssOptions = array(
-        'roundedCorners' => ($this->settings['rounded_corners'] == 'true'),
-        'mbottom' => intval($this->settings['bottom_margin']),
-        'imgHide' => STB_URL.'images/minus.png',
-        'imgShow' => STB_URL.'images/plus.png',
-        'strHide' => __('Hide', STB_DOMAIN),
-        'strShow' => __('Show', STB_DOMAIN)
-      );
-      
-      $options = array(
-        'jsOptions' => $jsOptions,
-        'cssOptions' => $cssOptions,
-        'strings' => array('title' => __('Select Image', STB_DOMAIN), 'update' => __('Select', STB_DOMAIN))
-      );
-
-      wp_enqueue_media();
-      if($this->cmsVer === 'low') {
-        wp_register_script('jquery-effects-core', STB_URL.'js/jquery.effects.core.min.js', array('jquery'), '1.8.16');
-        wp_register_script('jquery-effects-blind', STB_URL.'js/jquery.effects.blind.min.js', array('jquery', 'jquery-effects-core'), '1.8.16');
-      }
-      wp_enqueue_script('jquery');
-      wp_enqueue_script('jquery-effects-core');
-      wp_enqueue_script('jquery-effects-blind');
-      //wp_enqueue_script('ColorPicker', STB_URL.'js/colorpicker.js');
-      wp_enqueue_script('smallColorPicker', STB_URL.'js/small-color-picker.min.js', array('jquery'));
-      wp_enqueue_script('STB', STB_URL.'js/jquery.stb.js', array('jquery', 'jquery-effects-core', 'jquery-effects-blind'), STB_VERSION);
-      wp_enqueue_script('wstbAdminLayout', STB_URL.'js/wstb.edit.js', array('jquery', 'jquery-effects-core', 'jquery-effects-blind', 'STB'), STB_VERSION);
-      if($this->cmsVer === 'high') wp_localize_script('wstbAdminLayout', 'stbUserOptions', $options);
-      else wp_localize_script('wstbAdminLayout', 'stbUserOptions', array('l10n_print_after' => 'stbUserOptions = ' . json_encode($options) . ';'));
+      return $out;
     }
     
     private function getSamples($slug = 'custom', $theme = 'Custom') {
@@ -396,18 +118,192 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       $block = new StbBlock($content, $slug, '', $atts);
       return $cblock->block.$block->block;
     }
+
+    public function loadScripts( $hook ) {
+      if($hook == $this->plugin_page) {
+        wp_enqueue_style('stbAdminCSS', STB_URL.'css/stb-admin.css', false, STB_VERSION);
+        wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css.php', false, STB_VERSION);
+        wp_enqueue_style('jquery-ui', STB_URL.'css/jquery-ui-wp38.css', false, '1.10.3');
+        wp_enqueue_style('smallColorPickerButtonsCSS', STB_URL.'css/color-buttons.min.css');
+        wp_enqueue_style('smallColorPickerCSS', STB_URL.'css/small-color-picker.min.css');
+
+        $options = array(
+          'texts' => array(
+            'ok' => __('OK', STB_DOMAIN),
+            'cancel' => __('Cancel', STB_DOMAIN),
+            'switchModeToNum' => __('Show numbers', STB_DOMAIN),
+            'switchModeToCol' => __('Show color wheel', STB_DOMAIN)
+          ),
+          'media' => array(
+            'title' => __('Select Image', STB_DOMAIN),
+            'button' => __('Choose', STB_DOMAIN)
+          )
+        );
+
+        wp_enqueue_media();
+        if($this->cmsVer === 'low') {
+          wp_register_script('jquery-effects-core', STB_URL.'js/jquery.effects.core.min.js', array('jquery'), '1.8.16');
+          wp_register_script('jquery-effects-blind', STB_URL.'js/jquery.effects.blind.min.js', array('jquery', 'jquery-effects-core'), '1.8.16');
+        }
+        wp_enqueue_script('jquery');
+        wp_enqueue_script('jquery-ui-core');
+        wp_enqueue_script('jquery-ui-tabs');
+        wp_enqueue_script('jquery-effects-core');
+        wp_enqueue_script('jquery-effects-blind');
+        wp_enqueue_script('smallColorPicker', STB_URL.'js/small-color-picker.min.js', array('jquery'));
+        wp_enqueue_script('wstbAdminLayout', STB_URL.'js/wstb.admin.min.js', array('jquery'), STB_VERSION);
+
+        if($this->cmsVer === 'high') wp_localize_script('wstbAdminLayout', 'stbUserOptions', $options);
+        else wp_localize_script('wstbAdminLayout', 'stbUserOptions', array('l10n_print_after' => 'stbUserOptions = ' . json_encode($options) . ';'));
+      }
+
+      if($hook == $this->editor_page) {
+        wp_enqueue_style('stbAdminCSS', STB_URL.'css/stb-edit.css', false, STB_VERSION);
+        wp_enqueue_style('stbCoreCSS', STB_URL.'css/stb-core.css', false, STB_VERSION);
+        wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css.php', false, STB_VERSION);
+        wp_enqueue_style('smallColorPickerButtonsCSS', STB_URL.'css/color-buttons.min.css');
+        wp_enqueue_style('smallColorPickerCSS', STB_URL.'css/small-color-picker.min.css');
+
+        $jsOptions = array(
+          'caption' => array(
+            'text' => '',
+            'fontFamily' => $this->settings['js_caption_fontFamily'],
+            'fontSize' => intval($this->settings['js_caption_fontSize']),
+            'collapsed' => ($this->settings['collapsed'] == 'true'),
+            'collapsing' => ($this->settings['collapsing'] == 'true'),
+            'imgMinus' => $this->settings['js_imgMinus'],
+            'imgPlus' => $this->settings['js_imgPlus'],
+            'duration' => intval($this->settings['js_duration']),
+            'side' => ((isset($this->settings['side'])) ? $this->settings['side'] : false)
+          ),
+          'imgX' => intval($this->settings['js_imgX']),
+          'imgY' => intval($this->settings['js_imgY']),
+          'radius' => intval($this->settings['js_radius']),
+          'direction' => $this->settings['langDirect'],
+          'mtop' => intval($this->settings['top_margin']),
+          'mright' => intval($this->settings['right_margin']),
+          'mbottom' => intval($this->settings['bottom_margin']),
+          'mleft' => intval($this->settings['left_margin']),
+          'shadow' => array(
+            'enabled' => ($this->settings['js_shadow_enabled'] == 'true'),
+            'offsetX' => intval($this->settings['js_shadow_offsetX']),
+            'offsetY' => intval($this->settings['js_shadow_offsetY']),
+            'blur' => intval($this->settings['js_shadow_blur']),
+            'alpha' => floatval($this->settings['js_shadow_alpha']),
+            'color' => '#'.$this->settings['js_shadow_color']
+          ),
+          'textShadow' => array(
+            'enabled' => ($this->settings['js_textShadow_enabled'] == 'true'),
+            'offsetX' => intval($this->settings['js_textShadow_offsetX']),
+            'offsetY' => intval($this->settings['js_textShadow_offsetY']),
+            'blur' => intval($this->settings['js_textShadow_blur']),
+            'alpha' => 0.15,
+            'color' => '#'.$this->settings['js_textShadow_color']
+          ),
+          'pickerOptions' => array(
+            'texts' => array(
+              'ok' => __('OK', STB_DOMAIN),
+              'cancel' => __('Cancel', STB_DOMAIN),
+              'switchModeToNum' => __('Show numbers', STB_DOMAIN),
+              'switchModeToCol' => __('Show color wheel', STB_DOMAIN)
+            )
+          )
+        );
+
+        $cssOptions = array(
+          'roundedCorners' => ($this->settings['rounded_corners'] == 'true'),
+          'mbottom' => intval($this->settings['bottom_margin']),
+          'imgHide' => $this->settings['js_imgMinus'],
+          'imgShow' => $this->settings['js_imgPlus'],
+          'strHide' => __('Hide', STB_DOMAIN),
+          'strShow' => __('Show', STB_DOMAIN)
+        );
+
+        $options = array(
+          'jsOptions' => $jsOptions,
+          'cssOptions' => $cssOptions,
+          'strings' => array('title' => __('Select Image', STB_DOMAIN), 'update' => __('Select', STB_DOMAIN))
+        );
+
+        wp_enqueue_media();
+        if($this->cmsVer === 'low') {
+          wp_register_script('jquery-effects-core', STB_URL.'js/jquery.effects.core.min.js', array('jquery'), '1.8.16');
+          wp_register_script('jquery-effects-blind', STB_URL.'js/jquery.effects.blind.min.js', array('jquery', 'jquery-effects-core'), '1.8.16');
+        }
+        wp_enqueue_script('jquery');
+        wp_enqueue_script('jquery-effects-core');
+        wp_enqueue_script('jquery-effects-blind');
+        wp_enqueue_script('smallColorPicker', STB_URL.'js/small-color-picker.min.js', array('jquery'));
+        wp_enqueue_script('STB', STB_URL.'js/jquery.stb.js', array('jquery', 'jquery-effects-core', 'jquery-effects-blind'), STB_VERSION);
+        wp_enqueue_script('wstbAdminLayout', STB_URL.'js/wstb.edit.min.js', array('jquery', 'jquery-effects-core', 'jquery-effects-blind', 'STB'), STB_VERSION);
+        if($this->cmsVer === 'high') wp_localize_script('wstbAdminLayout', 'stbUserOptions', $options);
+        else wp_localize_script('wstbAdminLayout', 'stbUserOptions', array('l10n_print_after' => 'stbUserOptions = ' . json_encode($options) . ';'));
+      }
+
+      if($hook == $this->themes_page) {
+        $options = array(
+          'text' => array(
+            'title' => __('Save Current Theme As...', STB_DOMAIN),
+            'save' => __('Save', STB_DOMAIN),
+            'cancel' => __('Cancel', STB_DOMAIN)
+          ),
+          'uploader' => array(
+            'path' => STB_THEMES_DIR,
+            'url' => STB_URL . 'stb-uploader.php',
+            'redirect' => admin_url('admin.php?page=stb-themes')
+          ),
+          'media' => array(
+            'title' => __('Select Cover Image', STB_DOMAIN),
+            'button' => __('Choose', STB_DOMAIN)
+          )
+        );
+
+        wp_enqueue_style('jquery-ui', STB_URL.'css/jquery-ui-wp38.css', false, '1.10.3');
+        wp_enqueue_style('stbThemesCSS', STB_URL.'css/stb-themes.css', false, STB_VERSION);
+
+        wp_enqueue_media();
+
+        wp_enqueue_script('jquery');
+        wp_enqueue_script('jquery-ui-core');
+        wp_enqueue_script('jquery-ui-widget');
+        wp_enqueue_script('jquery-ui-position');
+        wp_enqueue_script('jquery-ui-button');
+        wp_enqueue_script('jquery-ui-draggable');
+        wp_enqueue_script('jquery-ui-resizable');
+        wp_enqueue_script('jquery-effects-core');
+        wp_enqueue_script('jquery-ui-dialog');
+
+        wp_enqueue_script('plupload-all');
+
+        wp_enqueue_script('wstbThemesLayout', STB_URL.'js/wstb.themes.min.js', array('jquery'), STB_VERSION);
+        wp_localize_script('wstbThemesLayout', 'stbOptions', $options);
+      }
+    }
     
     public function regAdminPage() {
       if (function_exists('add_options_page')) {
-        $menu_page = add_menu_page(__('Special Text Boxes', STB_DOMAIN), __('Special Text Boxes', STB_DOMAIN), 'manage_options', 'stb-settings', array(&$this, 'stbAdminPage'), STB_URL.'images/stb-icon.png');
-        $plugin_page = add_submenu_page('stb-settings', __('STB Settings', STB_DOMAIN), __('Settings', STB_DOMAIN), 'manage_options', 'stb-settings', array(&$this, 'stbAdminPage'));
-        add_action('admin_print_styles-'.$plugin_page, array(&$this, 'addAdminHeaderCSS'));
-        add_action('admin_print_scripts-'.$plugin_page, array(&$this, 'adminHeaderScripts'));
-        $styles_page = add_submenu_page('stb-settings', __('STB Styles', STB_DOMAIN), __('Styles', STB_DOMAIN), 'manage_options', 'stb-styles', array(&$this, 'stbStylesPage'));
-        $editor_page = add_submenu_page('stb-settings', __('STB Style Editor', STB_DOMAIN), __('New Style', STB_DOMAIN), 'manage_options', 'stb-editor', array(&$this, 'stbEditorPage'));
-        add_action('admin_print_styles-'.$editor_page, array(&$this, 'addAdminEditorCSS'));
-        add_action('admin_print_scripts-'.$editor_page, array(&$this, 'adminEditorScripts'));
+        $this->menu_page = add_menu_page(__('Special Text Boxes', STB_DOMAIN), __('Special Text Boxes', STB_DOMAIN), 'manage_options', 'stb-settings', array(&$this, 'stbAdminPage'), STB_URL.'images/stb-icon.png');
+        $this->plugin_page = add_submenu_page('stb-settings', __('STB Settings', STB_DOMAIN), __('Settings', STB_DOMAIN), 'manage_options', 'stb-settings', array(&$this, 'stbAdminPage'));
+        $this->styles_page = add_submenu_page('stb-settings', __('STB Styles', STB_DOMAIN), __('Styles', STB_DOMAIN), 'manage_options', 'stb-styles', array(&$this, 'stbStylesPage'));
+        $this->editor_page = add_submenu_page('stb-settings', __('STB Style Editor', STB_DOMAIN), __('New Style', STB_DOMAIN), 'manage_options', 'stb-editor', array(&$this, 'stbEditorPage'));
+        $this->themes_page = add_submenu_page('stb-settings', __('STB Themes', STB_DOMAIN), __('Themes', STB_DOMAIN), 'manage_options', 'stb-themes', array(&$this, 'stbThemesPage'));
+        add_action('admin_enqueue_scripts', array(&$this, 'loadScripts'));
+
+        //add_action('load-'.$this->themes_page, array(&$this, 'themesHelp'));
       }
+    }
+
+    public function themesHelp() {
+      $content = "<div>";
+
+      $content .= "</div>";
+
+      get_current_screen()->add_help_tab(array(
+        'id' => 'stb_themes_help',
+        'title' => __('Themes', STB_DOMAIN),
+        'content' => 'bla bla bla'
+      ));
+
     }
     
     public function initSettings() {      
@@ -443,8 +339,8 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       add_settings_field('deleteOptions', __("Delete plugin options during deactivation of plugin", STB_DOMAIN), array(&$this, 'drawCheckboxOption'), 'stb-settings', 'deactivationSection', array('label_for' => 'deleteOptions', 'checkbox' => true));
       add_settings_field('deleteDB', __("Delete database table of plugin during deactivation of plugin", STB_DOMAIN), array(&$this, 'drawCheckboxOption'), 'stb-settings', 'deactivationSection', array('label_for' => 'deleteDB', 'checkbox' => true));
       
-      add_settings_field('js_imgMinus', __('Define Hide Tool Image', STB_DOMAIN), array(&$this, 'drawTextOption'), 'stb-settings', 'jsSection', array('description' => __("This image is displayed in the text block header and shows the status of the non collapsed text block.", STB_DOMAIN), 'width' => '100'));
-      add_settings_field('js_imgPlus', __('Define Show Tool Image', STB_DOMAIN), array(&$this, 'drawTextOption'), 'stb-settings', 'jsSection', array('description' => __("This image is displayed in the text block header and shows the status of the collapsed text block.", STB_DOMAIN), 'width' => '100'));
+      add_settings_field('js_imgMinus', __('Define Hide Tool Image', STB_DOMAIN), array(&$this, 'drawTextOption'), 'stb-settings', 'jsSection', array('description' => __("This image is displayed in the text block header and shows the status of the non collapsed text block.", STB_DOMAIN), 'width' => '80', 'button' => __('Choose', STB_DOMAIN)));
+      add_settings_field('js_imgPlus', __('Define Show Tool Image', STB_DOMAIN), array(&$this, 'drawTextOption'), 'stb-settings', 'jsSection', array('description' => __("This image is displayed in the text block header and shows the status of the collapsed text block.", STB_DOMAIN), 'width' => '80', 'button' => __('Choose', STB_DOMAIN)));
       add_settings_field('js_duration', __('Define Duration of Collapsing/Expanding Animation', STB_DOMAIN), array(&$this, 'drawTextOption'), 'stb-settings', 'jsSection', array('description' => __("This is time of collapsing/expanding of the text block in milliseconds.", STB_DOMAIN)));
       add_settings_field('js_imgX', __('Define Image Offset X', STB_DOMAIN), array(&$this, 'drawTextOption'), 'stb-settings', 'jsSection', array('description' => __("This is image offset by X coordinate for non-caption text block.", STB_DOMAIN)));
       add_settings_field('js_imgY', __('Define Image Offset Y', STB_DOMAIN), array(&$this, 'drawTextOption'), 'stb-settings', 'jsSection', array('description' => __("This is image offset by Y coordinate for non-caption text block.", STB_DOMAIN)));
@@ -622,7 +518,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
     
     public function drawRadioOption( $optionName, $args ) {
       $options = $args['options'];
-      $multiLines = $args['multiLines'];
+      $multiLines = isset($args['multiLines']);
       foreach ($options as $key => $option) {
       ?>
         <label for="<?php echo $optionName.'_'.$key; ?>">
@@ -638,15 +534,19 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
     }
     
     public function drawTextOption( $optionName, $args ) {
-      $width = $args['width'];
+      $width = (isset($args['width'])) ? $args['width'].'%' : '';
       $suffix = (empty($args['suffix'])) ? '' : $args['suffix'];
+      $button = (isset($args['button'])) ? $args['button'] : '';
+      $height = (empty($button)) ? '22px' : '26px';
       ?>
         <input id="<?php echo $optionName; ?>"
           name="<?php echo STB_OPTIONS.'['.$optionName.']'; ?>"
           type="text"
           value="<?php echo $this->settings[$optionName]; ?>" 
-          style="height: 22px; font-size: 11px; <?php if(!empty($width)) echo 'width: '.$width.'%;' ?>" /> <?php echo $suffix ?>
-      <?php
+          style="height: <?php echo $height ?>; font-size: 11px; <?php if(!empty($width)) echo 'width: '.$width.';' ?>" /> <?php echo $suffix ?>
+      <?php if(!empty($button)) { ?>
+        <button id="<?php echo $optionName; ?>-select" class="button-secondary"><?php echo $button; ?></button>
+        <?php }
     }
 
     public function drawCheckboxOption( $optionName, $args ) {
@@ -1029,20 +929,20 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
     <tbody>
       <?php
       $sSql = "SELECT 
-                  $sTable.slug, 
-                  $sTable.caption, 
-                  $sTable.js_style, 
-                  $sTable.stype,
-                  $sTable.trash 
-                FROM $sTable".
-                (($mode !== 'all') ? " WHERE $sTable.trash = ".(($mode === 'trash') ? 'TRUE' : 'FALSE') : '').
+                  st.slug,
+                  st.caption,
+                  st.js_style,
+                  st.stype,
+                  st.trash
+                FROM $sTable st".
+                (($mode !== 'all') ? " WHERE st.trash = ".(($mode === 'trash') ? 'TRUE' : 'FALSE') : '').
                 " LIMIT $offset, $styles_per_page";
       $styles = $wpdb->get_results($sSql, ARRAY_A);          
       $i = 0;
       if(!is_array($styles) || empty ($styles)) {
       ?>
       <tr class="no-items" valign="top">
-        <th class="colspanchange" colspan='4'><?php _e('There are no data ...', STB_DOMAIN).$sTable; ?></th>
+        <th class="colspanchange" colspan='4'><?php _e('There are no data ...', STB_DOMAIN); ?></th>
       </tr>
         <?php } else {
           foreach($styles as $row) {            
@@ -1050,7 +950,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         ?>
       <tr id="<?php echo $row['slug'];?>" class="<?php echo (($i & 1) ? 'alternate' : ''); ?> author-self status-publish iedit" valign="top">
         <td class="column-icon media-icon">
-          <img src='<?php echo $jsStyle['image']; ?>' alt='<?php echo $row['caption']; ?>' width='30' height='30'>
+          <img src='<?php echo $jsStyle['image']; ?>' alt='<?php echo $row['caption']; ?>' width='30' height='30' style="background-color: <?php echo $jsStyle['color'] ?>; border: 1px solid <?php echo $jsStyle['border']['color']; ?>;">
         </td>
         <td class="post-title column-title">
           <strong style='display: inline;'><a href="<?php echo admin_url('admin.php'); ?>?page=stb-editor&action=edit&mode=style&item=<?php echo $row['slug']; ?>"><?php echo $row['caption'];?></a><?php echo ((($row['trash'] == true) && ($mode === 'all')) ? '<span class="post-state"> - '.__('in Trash', STB_DOMAIN).'</span>' : ''); ?></strong>
@@ -1191,14 +1091,14 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       }
       
       $sSql = "SELECT 
-                  $sTable.slug, 
-                  $sTable.caption, 
-                  $sTable.js_style, 
-                  $sTable.css_style, 
-                  $sTable.stype, 
-                  $sTable.trash 
-                FROM $sTable 
-                WHERE slug = '$item';";
+                  st.slug,
+                  st.caption,
+                  st.js_style,
+                  st.css_style,
+                  st.stype,
+                  st.trash
+                FROM $sTable st
+                WHERE st.slug = '$item';";
       
       if($action !== 'new') {
         $row = $wpdb->get_row($sSql, ARRAY_A);
@@ -1441,7 +1341,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
                 <?php if(($action !== 'new') || $updated) { ?>
                 <div class='clear-line'></div>
                 <p><?php echo $row['caption']; ?></p>
-                <?php echo $this->getSamples2(/*$row['slug']*/$item, $row['caption']);} ?>
+                <?php echo self::getSamples2($item, $row['caption']);} ?>
               </div>
             </div>
           </div>
@@ -1451,6 +1351,158 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
   </form>
 </div>      
       <?php
+    }
+
+    private function drawThemeItem( $item = null, $slug = null ) {
+      if(is_null($item)) return '';
+
+      $icon = (!empty($item['icon'])) ? $item['icon'] : STB_THEMES_URL . 'stb-no-image.jpg';
+      $zip = str_replace('_', '-', $slug) . '.zip';
+      $download = (file_exists(STB_THEMES_DIR . $zip)) ? STB_THEMES_URL . $zip : '';
+
+      ?>
+<div class="stb-theme-item">
+  <aside class="stb-theme-cover">
+    <a class="stb-theme-icon" href="<?php echo add_query_arg('install', $slug); ?>">
+      <img src="<?php echo $icon; ?>" alt="<?php echo $item['name']; ?>">
+    </a>
+  </aside>
+  <div class="stb-theme-info">
+    <h3><?php echo $item['name']; ?></h3>
+    <p><?php echo $item['description']; ?></p>
+    <?php if(!empty($item['author']) && !empty($item['author_url'])) { ?>
+      <p><strong><?php _e('Author', STB_DOMAIN) ?>:</strong> <a href="<?php echo $item['author_url']; ?>"><?php echo $item['author']; ?></a></p>
+    <?php } ?>
+    <div class="stb-clear"></div>
+    <p><?php echo $item['note']; ?></p>
+    <div class="stb-install">
+      <?php if(!empty($download)) { ?>
+      <a class="button-secondary" href="<?php echo $download; ?>"><?php _e('Download', STB_DOMAIN) ?></a>&nbsp;&nbsp;
+      <?php } ?>
+      <a class="button-primary" href="<?php echo add_query_arg('install', $slug); ?>"><?php _e('Install', STB_DOMAIN); ?></a>
+    </div>
+  </div>
+</div>
+<?php
+      return true;
+    }
+
+    public function stbThemesPage() {
+      global $current_user;
+      get_currentuserinfo();
+      $userUrl = $current_user->user_url;
+      $userName = $current_user->display_name;
+
+      include_once('stb-themes.php');
+
+      $stbThemes = new StbThemes(STB_THEMES_DIR);
+
+      $install = (isset($_GET['install'])) ? $_GET['install'] : '';
+      $saveAs = (isset($_GET['save'])) ? $_GET['save'] : '';
+      $name = (isset($_GET['name'])) ? $_GET['name'] : '';
+      $desc = (isset($_GET['desc'])) ? $_GET['desc'] : '';
+      $cover = (isset($_GET['cover'])) ? $_GET['cover'] : '';
+      $author = (isset($_GET['author'])) ? $_GET['author'] : '';
+      $authorUrl = (isset($_GET['au'])) ? $_GET['au'] : '';
+      $upload = (isset($_GET['uploaded'])) ? $_GET['uploaded'] : '';
+
+
+      $class = 'updated below-h2';
+      $message = '';
+      $display = "style='display: none;'";
+      if(!empty($install)) {
+        $action = $stbThemes->installTheme($install);
+        $message = $action['message'];
+        $display = '';
+        if($action['status']) {
+          $class = 'updated below-h2';
+          $this->settings = parent::getAdminOptions(true);
+          $this->styles = parent::getStyles();
+          $fa = self::writeCSS('file');
+          if(!$fa['action']) $message .= ' '.$fa['error'];
+        }
+        else $class = 'error below-h2';
+      }
+
+      if(!empty($saveAs)) {
+        if(!empty($name) && !empty($desc)) {
+          $atts = array(
+            'slug' => $saveAs,
+            'name' => $name,
+            'description' => $desc,
+            'cover' => $cover,
+            'author' => $author,
+            'author_url' => $authorUrl
+          );
+          $dir = strtolower(str_replace('_', '-', $saveAs));
+          if(false !== ($zip = $stbThemes->saveThemeData($dir, $atts))) {
+            $class = 'updated below-h2';
+            $message = $zip['message'];
+            $display = '';
+          }
+        }
+      }
+
+      if(!empty($upload)) {
+        if ($upload != 1) {
+          $message = 'No Files to Upload...';
+          $class = 'error below-h2';
+          $display = '';
+        }
+        else {
+          $message = __('Theme file successfully uploaded...', STB_DOMAIN);
+          $class = 'updated below-h2';
+          $display = '';
+        }
+      }
+
+      $items = $stbThemes->themesInfo();
+
+      ?>
+      <div class="wrap">
+        <h2>
+          <?php _e('Themes', STB_DOMAIN); ?>   <span class="theme-count"><?php echo $stbThemes->count; ?></span>
+          <?php if(STB_EXT_THEMES) { ?>
+            <a id="save-theme" class="button-secondary" href="<?php echo admin_url('admin.php?page=stb-themes'); ?>"><?php _e('Save Current Theme As...', STB_DOMAIN); ?></a>
+            <a id="upload-theme" class="button-secondary" href="javascript:;"><?php _e('Upload New Theme', STB_DOMAIN); ?></a>
+            <span id="upload-console" class="stb-upload-info"></span><span id="upload-progress" class="stb-upload-progress"></span>&nbsp;&nbsp;
+            <a class="button-secondary" href="http://www.simplelib.com/?page_id=843" target="_blank"><?php _e('More Themes...', STB_DOMAIN); ?></a>
+          <?php } ?>
+        </h2>
+        <div id="stb-message" class="<?php echo $class; ?>" <?php echo $display; ?>>
+          <p><?php echo $message; ?></p>
+        </div>
+        <div class="stb-themes">
+      <?php
+
+      foreach($items as $key => $item) {
+        self::drawThemeItem($item, $key);
+      }
+      ?>
+        </div>
+        <div id="save-dialog" class="stb-save-dialog" style="display: none" title="<?php _e('Save Current Theme As...', STB_DOMAIN) ?>">
+          <p><?php _e('Fill fields below. Fields marked "*" are required fields.', STB_DOMAIN) ?></p>
+          <label for="stb-name"><?php echo '*'.__('Theme Name', STB_DOMAIN).':'; ?></label>
+          <input id="stb-name" name="stb-name">
+          <label for="stb-slug"><?php echo '*'.__('Theme Slug', STB_DOMAIN).':'; ?></label>
+          <input id="stb-slug" name="stb-slug">
+          <label for="stb-desc"><?php echo '*'.__('Theme Description', STB_DOMAIN).':'; ?></label>
+          <textarea id="stb-desc" rows="5" cols="15"></textarea>
+          <label for="stb-cover"><?php echo __('Cover Image', STB_DOMAIN).':'; ?></label>
+          <div id="stb-cover">
+            <input id="stb-cover-image" name="stb-cover-image" style="width: 80%;">
+            <button id="load-cover" class="button-secondary"><?php _e('Choose', STB_DOMAIN); ?></button>
+          </div>
+          <label for="stb-author"><?php echo __('Author Name', STB_DOMAIN).':'; ?></label>
+          <input id="stb-author" name="stb-author" value="<?php echo $userName; ?>">
+          <label for="stb-author-url"><?php echo __('Author URL', STB_DOMAIN).':'; ?></label>
+          <input id="stb-author-url" name="stb-author-url" value="<?php echo $userUrl; ?>">
+        </div>
+      </div>
+<?php
+      //var_dump($this->zipError);
+      //$stbThemes->getThemesInfo(STB_THEMES_DIR);
+      //$stbThemes->zipThemeData('stb_dark');
     }
     
     public function addButtons() {

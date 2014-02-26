@@ -2,540 +2,1402 @@
 # This file is distributed under the same license as the Special Text Boxes package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Special Text Boxes 3.9.57\n"
+"Project-Id-Version: Special Text Boxes\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-special-textboxes\n"
-"POT-Creation-Date: 2011-03-12 13:59:30+00:00\n"
+"POT-Creation-Date: 2014-02-25 11:05+0300\n"
+"PO-Revision-Date: 2014-02-25 11:05+0300\n"
+"Last-Translator: minimus <minimus@blogcoding.ru>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-
-#: stb-class.php:123
-msgid "Arbitrary text or PHP in colored block."
-msgstr ""
-
-#: stb-class.php:125
-msgid "Special Text"
-msgstr ""
-
-#: stb-class.php:175 js/dialog.php:45
-msgid "Alert"
-msgstr ""
-
-#: stb-class.php:176 js/dialog.php:46
-msgid "Download"
-msgstr ""
-
-#: stb-class.php:177 js/dialog.php:47
-msgid "Info"
-msgstr ""
-
-#: stb-class.php:178 js/dialog.php:50
-msgid "Warning"
-msgstr ""
-
-#: stb-class.php:179 js/dialog.php:48
-msgid "Black"
-msgstr ""
-
-#: stb-class.php:180 js/dialog.php:51
-msgid "Custom"
-msgstr ""
-
-#: stb-class.php:181
-msgid "Theme Style"
-msgstr ""
-
-#: stb-class.php:211
-msgid "Title:"
-msgstr ""
-
-#: stb-class.php:216
-msgid "ID of Box:"
-msgstr ""
-
-#: stb-class.php:222
-msgid "Evaluate as PHP code."
-msgstr ""
-
-#: stb-class.php:224
-msgid "Show on all pages of blog"
-msgstr ""
-
-#: stb-class.php:226
-msgid "Show only on"
-msgstr ""
-
-#: stb-class.php:227
-msgid "Home Page"
-msgstr ""
-
-#: stb-class.php:228
-msgid "Single Post Pages"
-msgstr ""
-
-#: stb-class.php:229
-msgid "Archive Pages"
-msgstr ""
-
-#: stb-class.php:230
-msgid "Category Archive Pages"
-msgstr ""
-
-#: stb-class.php:231
-msgid "Tag Archive Pages"
-msgstr ""
-
-#: stb-class.php:232
-msgid "Author Archive Pages"
-msgstr ""
-
-#: js/wstb.js.php:21 js/wstb.admin.js.php:21 stb-admin-class.php:46
-#: stb-block-class.php:66
-msgid "Show"
-msgstr ""
-
-#: js/wstb.js.php:32 js/wstb.admin.js.php:32 stb-admin-class.php:46
-#: stb-block-class.php:66
-msgid "Hide"
-msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_c;_n:1,2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: js/dialog.php:20
 msgid "Insert Special Text Box"
 msgstr ""
 
-#: js/dialog.php:34 stb-admin-class.php:62
+#: js/dialog.php:37 stb-admin-class.php:499 stb-admin-class.php:502
+#: stb-admin-class.php:505
 msgid "Basic Settings"
 msgstr ""
 
-#: js/dialog.php:35 stb-admin-class.php:63
+#: js/dialog.php:38 stb-admin-class.php:500 stb-admin-class.php:506
 msgid "Extended Settings"
 msgstr ""
 
-#: js/dialog.php:42
+#: js/dialog.php:45
 msgid "Text Box ID"
 msgstr ""
 
-#: js/dialog.php:49
-msgid "Grey"
-msgstr ""
-
-#: js/dialog.php:56
+#: js/dialog.php:55
 msgid "Caption"
 msgstr ""
 
-#: js/dialog.php:61
+#: js/dialog.php:62
+msgid "Use default caption"
+msgstr ""
+
+#: js/dialog.php:66
 msgid "Block Collapsing (for captioned box only)"
 msgstr ""
 
-#: js/dialog.php:63 js/dialog.php:69 stb-admin-class.php:73
-#: stb-admin-class.php:75 stb-admin-class.php:76 stb-admin-class.php:77
-#: stb-admin-class.php:79 stb-admin-class.php:80 stb-admin-class.php:81
+#: js/dialog.php:68 js/dialog.php:74 stb-admin-class.php:517
+#: stb-admin-class.php:518 stb-admin-class.php:535 stb-admin-class.php:542
+#: stb-admin-class.php:551 stb-admin-class.php:552 stb-admin-class.php:554
+#: stb-admin-class.php:555 stb-admin-class.php:556
 msgid "Yes"
 msgstr ""
 
-#: js/dialog.php:63 js/dialog.php:69 stb-admin-class.php:73
-#: stb-admin-class.php:75 stb-admin-class.php:76 stb-admin-class.php:77
-#: stb-admin-class.php:79 stb-admin-class.php:80 stb-admin-class.php:81
+#: js/dialog.php:68 js/dialog.php:74 stb-admin-class.php:517
+#: stb-admin-class.php:518 stb-admin-class.php:535 stb-admin-class.php:542
+#: stb-admin-class.php:551 stb-admin-class.php:552 stb-admin-class.php:554
+#: stb-admin-class.php:555 stb-admin-class.php:556
 msgid "No"
 msgstr ""
 
-#: js/dialog.php:63 js/dialog.php:69
+#: js/dialog.php:68 js/dialog.php:74 js/dialog.php:88 js/dialog.php:104
+#: js/dialog.php:120
 msgid "Default"
 msgstr ""
 
-#: js/dialog.php:67
+#: js/dialog.php:72
 msgid "Collapsed on Load (for captioned box only)"
 msgstr ""
 
-#: js/dialog.php:74
-msgid "Floating Mode Settings"
+#: js/dialog.php:78
+msgid "Block Drawing Mode"
 msgstr ""
 
-#: js/dialog.php:80
-msgid "Float Mode"
+#: js/dialog.php:82 stb-admin-class.php:997
+msgid "CSS"
 msgstr ""
 
-#: js/dialog.php:85
-msgid "Box Alignment"
-msgstr ""
-
-#: js/dialog.php:88
-msgid "Left"
-msgstr ""
-
-#: js/dialog.php:89
-msgid "Right"
+#: js/dialog.php:85 stb-admin-class.php:996
+msgid "Javascript"
 msgstr ""
 
 #: js/dialog.php:94
-msgid "Box Width (in pixels)"
+msgid "Block Text Direction"
 msgstr ""
 
-#: js/dialog.php:102
-msgid "Text color"
+#: js/dialog.php:98
+msgid "left-to-right"
 msgstr ""
 
-#: js/dialog.php:111
-msgid "Caption Text color"
+#: js/dialog.php:101
+msgid "right-to-left"
 msgstr ""
 
-#: js/dialog.php:123
-msgid "Color"
+#: js/dialog.php:110
+msgid "Block Shadow"
+msgstr ""
+
+#: js/dialog.php:114
+msgid "Enable"
+msgstr ""
+
+#: js/dialog.php:117
+msgid "Disable"
+msgstr ""
+
+#: js/dialog.php:127
+msgid "Floating Mode Settings"
 msgstr ""
 
 #: js/dialog.php:133
-msgid "Caption color"
+msgid "Float Mode"
 msgstr ""
 
-#: js/dialog.php:144
+#: js/dialog.php:138
+msgid "Box Alignment"
+msgstr ""
+
+#: js/dialog.php:141
+msgid "Left"
+msgstr ""
+
+#: js/dialog.php:142
+msgid "Right"
+msgstr ""
+
+#: js/dialog.php:147
+msgid "Box Width (in pixels)"
+msgstr ""
+
+#: js/dialog.php:155
+msgid "Colors"
+msgstr ""
+
+#: js/dialog.php:158
+msgid "Text color"
+msgstr ""
+
+#: js/dialog.php:167
+msgid "Caption Text color"
+msgstr ""
+
+#: js/dialog.php:178 stb-admin-class.php:1482
+msgid "Background Color"
+msgstr ""
+
+#: js/dialog.php:187 stb-admin-class.php:1509
+msgid "Caption Background Color"
+msgstr ""
+
+#: js/dialog.php:198
+msgid "Background Stop Color"
+msgstr ""
+
+#: js/dialog.php:207
+msgid "Caption Background Stop Color"
+msgstr ""
+
+#: js/dialog.php:220
+msgid ""
+"Note! Colors \"Background color\" and \"Caption Background Color\" are used "
+"as appropriate background color of the text block when that block is drawn "
+"in CSS mode. In Javascript mode these colors are used as start color of the "
+"background gradient."
+msgstr ""
+
+#: js/dialog.php:225
+msgid "Border"
+msgstr ""
+
+#: js/dialog.php:230
 msgid "Border color"
 msgstr ""
 
-#: js/dialog.php:157
+#: js/dialog.php:239 stb-admin-class.php:1445
+msgid "Border Width"
+msgstr ""
+
+#: js/dialog.php:251 stb-admin-class.php:1438 stb-admin-class.php:1493
+#: stb-admin-class.php:1498
+msgid "Image"
+msgstr ""
+
+#: js/dialog.php:254
 msgid "Image URL"
 msgstr ""
 
-#: js/dialog.php:164
+#: js/dialog.php:261
 msgid "This is big image (or, if URL not entered, big standard image)"
 msgstr ""
 
-#: js/dialog.php:168
+#: js/dialog.php:265
 msgid "Do not show image"
 msgstr ""
 
-#: js/dialog.php:173
+#: js/dialog.php:270
 msgid "Margins"
 msgstr ""
 
-#: js/dialog.php:176
+#: js/dialog.php:273
 msgid "Left Margin"
 msgstr ""
 
-#: js/dialog.php:178
+#: js/dialog.php:275
 msgid "Right Margin"
 msgstr ""
 
-#: js/dialog.php:182
+#: js/dialog.php:279
 msgid "Top Margin"
 msgstr ""
 
-#: js/dialog.php:184
+#: js/dialog.php:281
 msgid "Bottom Margin"
 msgstr ""
 
-#: js/dialog.php:192
+#: js/dialog.php:289 stb-admin-class.php:335 stb-admin-class.php:403
+#: stb-admin-class.php:445 stb-admin-class.php:1383
 msgid "Cancel"
 msgstr ""
 
-#: js/dialog.php:195
+#: js/dialog.php:292
 msgid "Insert"
 msgstr ""
 
-#: stb-admin-class.php:44
+#: js/wstb.admin.js.php:21 js/wstb.js.php:21 stb-admin-class.php:307
+#: stb-admin-class.php:416 stb-block-class.php:207 stb-class.php:252
+msgid "Show"
+msgstr ""
+
+#: js/wstb.admin.js.php:32 js/wstb.js.php:32 stb-admin-class.php:307
+#: stb-admin-class.php:415 stb-block-class.php:207 stb-class.php:251
+msgid "Hide"
+msgstr ""
+
+#: stb-admin-class.php:305
 msgid ""
 "This is example of Custom Special Text Box. You must save options to view "
 "changes."
 msgstr ""
 
-#: stb-admin-class.php:45
+#: stb-admin-class.php:306
 msgid "This is caption"
 msgstr ""
 
-#: stb-admin-class.php:47
+#: stb-admin-class.php:308
 msgid ""
 "This is example of Captioned Custom Special Text Box. You must save options "
 "to view changes."
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (Special Text Boxes 3.9.57)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#: stb-admin-class.php:53
+#: stb-admin-class.php:313 stb-admin-class.php:1466
+#, php-format
+msgid ""
+"This is example of Captioned %s Special Text Box. You must save style "
+"parameters to view changes."
+msgstr ""
+
+#: stb-admin-class.php:315 stb-admin-class.php:1470
+#, php-format
+msgid ""
+"This is example of %s Special Text Box. You must save style parameters to "
+"view changes."
+msgstr ""
+
+#: stb-admin-class.php:334 stb-admin-class.php:402
+msgid "OK"
+msgstr ""
+
+#: stb-admin-class.php:336 stb-admin-class.php:404
+msgid "Show numbers"
+msgstr ""
+
+#: stb-admin-class.php:337 stb-admin-class.php:405
+msgid "Show color wheel"
+msgstr ""
+
+#: stb-admin-class.php:422
+msgid "Select Image"
+msgstr ""
+
+#: stb-admin-class.php:422 stb-admin-class.php:1440 stb-admin-class.php:1500
+msgid "Select"
+msgstr ""
+
+#: stb-admin-class.php:443 stb-admin-class.php:1646 stb-admin-class.php:1662
+msgid "Save Current Theme As..."
+msgstr ""
+
+#: stb-admin-class.php:444 stb-admin-class.php:1386
+msgid "Save"
+msgstr ""
+
+#: stb-admin-class.php:453
+msgid "Select Cover Image"
+msgstr ""
+
+#: stb-admin-class.php:454 stb-admin-class.php:1673
+msgid "Choose"
+msgstr ""
+
+#: stb-admin-class.php:482
 msgid "Special Text Boxes"
 msgstr ""
 
-#: stb-admin-class.php:64
-msgid "Custom Box Editor"
+#: stb-admin-class.php:483
+msgid "STB Settings"
 msgstr ""
 
-#: stb-admin-class.php:66
-msgid "Select border style for Special Text Boxes"
+#: stb-admin-class.php:483
+msgid "Settings"
 msgstr ""
 
-#: stb-admin-class.php:66
-msgid "Selecting \"None\" will disable Special Text Boxes border."
+#: stb-admin-class.php:484
+msgid "STB Styles"
 msgstr ""
 
-#: stb-admin-class.php:66
-msgid "Solid"
+#: stb-admin-class.php:484
+msgid "Styles"
 msgstr ""
 
-#: stb-admin-class.php:66
-msgid "Dashed"
+#: stb-admin-class.php:485
+msgid "STB Style Editor"
 msgstr ""
 
-#: stb-admin-class.php:66
-msgid "Dotted"
+#: stb-admin-class.php:485 stb-admin-class.php:1339
+msgid "New Style"
 msgstr ""
 
-#: stb-admin-class.php:66
-msgid "None"
+#: stb-admin-class.php:486
+msgid "STB Themes"
 msgstr ""
 
-#: stb-admin-class.php:67
+#: stb-admin-class.php:486 stb-admin-class.php:1644
+msgid "Themes"
+msgstr ""
+
+#: stb-admin-class.php:493 stb-admin-class.php:509
+msgid "CSS Mode"
+msgstr ""
+
+#: stb-admin-class.php:493
+msgid "In any cases STB blocks will be drawn using predefined style sheets."
+msgstr ""
+
+#: stb-admin-class.php:494 stb-admin-class.php:509
+msgid "Javascript Mode"
+msgstr ""
+
+#: stb-admin-class.php:494
+msgid ""
+"If user browser supports tags \"canvas\" (all modern browsers, including "
+"Internet Explorer, support this tag) STB block will be drawn using "
+"Javascript, in any other cases this one will be drawn using CSS mode."
+msgstr ""
+
+#: stb-admin-class.php:495 stb-admin-class.php:509
+msgid "Mixed Mode"
+msgstr ""
+
+#: stb-admin-class.php:495
+msgid ""
+"You can use both CSS and Javascript methods of drawing text blocks on one "
+"page. Just define drawing mode of STB shortcode. Default is Javascript or "
+"CSS method."
+msgstr ""
+
+#: stb-admin-class.php:498
+msgid "Drawing Mode Settings"
+msgstr ""
+
+#: stb-admin-class.php:501
+msgid "Deactivation Settings"
+msgstr ""
+
+#: stb-admin-class.php:503
+msgid "Box Shadow Settings"
+msgstr ""
+
+#: stb-admin-class.php:504
+msgid "Text Shadow Settings"
+msgstr ""
+
+#: stb-admin-class.php:507
+msgid "System Settings"
+msgstr ""
+
+#: stb-admin-class.php:509
+msgid "Define Drawing Mode"
+msgstr ""
+
+#: stb-admin-class.php:509
+msgid "Select Drawing Mode"
+msgstr ""
+
+#: stb-admin-class.php:511
 msgid "Define top margin for Special Text Boxes"
 msgstr ""
 
-#: stb-admin-class.php:67
+#: stb-admin-class.php:511
 msgid "This is a gap between top edge of Special Text Box and text above."
 msgstr ""
 
-#: stb-admin-class.php:68
+#: stb-admin-class.php:512
 msgid "Define left margin for Special Text Boxes"
 msgstr ""
 
-#: stb-admin-class.php:68
+#: stb-admin-class.php:512
 msgid ""
 "This is a gap between left edge of Special Text Box and left edge of post "
 "area."
 msgstr ""
 
-#: stb-admin-class.php:69
+#: stb-admin-class.php:513
 msgid "Define right margin for Special Text Boxes"
 msgstr ""
 
-#: stb-admin-class.php:69
+#: stb-admin-class.php:513
 msgid ""
 "This is a gap between right edge of Special Text Box and right edge of post "
 "area."
 msgstr ""
 
-#: stb-admin-class.php:70
+#: stb-admin-class.php:514
 msgid "Define bottom margin for Special Text Boxes"
 msgstr ""
 
-#: stb-admin-class.php:70
+#: stb-admin-class.php:514
 msgid "This is a gap between bottom edge of Special Text Box and text below."
 msgstr ""
 
-#: stb-admin-class.php:71
-msgid "Define font size for Special Text Boxes"
-msgstr ""
-
-#: stb-admin-class.php:71 stb-admin-class.php:85
-msgid "This is font size in pixels."
-msgstr ""
-
-#: stb-admin-class.php:71 stb-admin-class.php:72 stb-admin-class.php:85
-#: stb-admin-class.php:86
-msgid "Set this parameter to value 0 for theme default font size."
-msgstr ""
-
-#: stb-admin-class.php:72
-msgid "Define caption font size for Special Text Boxes"
-msgstr ""
-
-#: stb-admin-class.php:72 stb-admin-class.php:86
-msgid "This is caption font size in pixels."
-msgstr ""
-
-#: stb-admin-class.php:73
-msgid "Allow Big Image for Simple (non-captioned) Special Text Boxes?"
-msgstr ""
-
-#: stb-admin-class.php:73
-msgid ""
-"Selecting \"Yes\" will allow big icons for simple (non-captioned) Special "
-"Text Boxes."
-msgstr ""
-
-#: stb-admin-class.php:74
+#: stb-admin-class.php:516
 msgid "Define language direction"
 msgstr ""
 
-#: stb-admin-class.php:74
+#: stb-admin-class.php:516
 msgid ""
 "Selecting \"Left-to-Right\" will set Left-to-Right language direction for "
 "Special Text Boxes and visa versa."
 msgstr ""
 
-#: stb-admin-class.php:74
+#: stb-admin-class.php:516
 msgid "Left-to-Right"
 msgstr ""
 
-#: stb-admin-class.php:74
+#: stb-admin-class.php:516
 msgid "Right-to-Left"
 msgstr ""
 
-#: stb-admin-class.php:75
-msgid "Allow icon images for Special Text Boxes?"
-msgstr ""
-
-#: stb-admin-class.php:75
-msgid ""
-"Selecting \"Yes\" will allow displaying icon images in Special Text Boxes."
-msgstr ""
-
-#: stb-admin-class.php:76
+#: stb-admin-class.php:517
 msgid "Allow collapsing/expanding captioned Special Text Boxes?"
 msgstr ""
 
-#: stb-admin-class.php:76
+#: stb-admin-class.php:517
 msgid ""
 "Selecting \"Yes\" will allow displaying show/hide button in captioned "
 "Special Text Boxes."
 msgstr ""
 
-#: stb-admin-class.php:77
+#: stb-admin-class.php:518
 msgid "Allow \"collapsed on load\" captioned Special Text Boxes?"
 msgstr ""
 
-#: stb-admin-class.php:77
+#: stb-admin-class.php:518
 msgid ""
 "Selecting \"Yes\" will allow displaying collapsed captioned Special Text "
 "Boxes after page loading."
 msgstr ""
 
-#: stb-admin-class.php:79
+#: stb-admin-class.php:519
+msgid ""
+"Allow caption background colors for side image background (boxes without "
+"caption only)"
+msgstr ""
+
+#: stb-admin-class.php:521
+msgid "Delete plugin options during deactivation of plugin"
+msgstr ""
+
+#: stb-admin-class.php:522
+msgid "Delete database table of plugin during deactivation of plugin"
+msgstr ""
+
+#: stb-admin-class.php:524
+msgid "Define Hide Tool Image"
+msgstr ""
+
+#: stb-admin-class.php:524
+msgid ""
+"This image is displayed in the text block header and shows the status of the "
+"non collapsed text block."
+msgstr ""
+
+#: stb-admin-class.php:525
+msgid "Define Show Tool Image"
+msgstr ""
+
+#: stb-admin-class.php:525
+msgid ""
+"This image is displayed in the text block header and shows the status of the "
+"collapsed text block."
+msgstr ""
+
+#: stb-admin-class.php:526
+msgid "Define Duration of Collapsing/Expanding Animation"
+msgstr ""
+
+#: stb-admin-class.php:526
+msgid "This is time of collapsing/expanding of the text block in milliseconds."
+msgstr ""
+
+#: stb-admin-class.php:527
+msgid "Define Image Offset X"
+msgstr ""
+
+#: stb-admin-class.php:527
+msgid "This is image offset by X coordinate for non-caption text block."
+msgstr ""
+
+#: stb-admin-class.php:528
+msgid "Define Image Offset Y"
+msgstr ""
+
+#: stb-admin-class.php:528
+msgid "This is image offset by Y coordinate for non-caption text block."
+msgstr ""
+
+#: stb-admin-class.php:529
+msgid "Define Corners Radius"
+msgstr ""
+
+#: stb-admin-class.php:529
+msgid "This is corners radius in pixels."
+msgstr ""
+
+#: stb-admin-class.php:530
+msgid "Define Caption Font Size"
+msgstr ""
+
+#: stb-admin-class.php:530
+msgid "This is font size of caption text in pixels."
+msgstr ""
+
+#: stb-admin-class.php:531
+msgid "Define Caption Font Family"
+msgstr ""
+
+#: stb-admin-class.php:531
+msgid "This is font family for caption text."
+msgstr ""
+
+#: stb-admin-class.php:532
+msgid "Select Text Line Height"
+msgstr ""
+
+#: stb-admin-class.php:532
+msgid "Inherit - Defined by theme style sheet."
+msgstr ""
+
+#: stb-admin-class.php:532
+msgid "Normal - Defined by visitor's browser."
+msgstr ""
+
+#: stb-admin-class.php:532
+msgid ""
+"Custom - Defined by You. You can define custom value for text line height "
+"using parameter below."
+msgstr ""
+
+#: stb-admin-class.php:532
+msgid "Inherit"
+msgstr ""
+
+#: stb-admin-class.php:532
+msgid "Normal"
+msgstr ""
+
+#: stb-admin-class.php:532
+msgid "Custom"
+msgstr ""
+
+#: stb-admin-class.php:533
+msgid "Define Custom Text Line Height"
+msgstr ""
+
+#: stb-admin-class.php:533
+msgid "This is custom text line height of STB block in \"em\" defined by You."
+msgstr ""
+
+#: stb-admin-class.php:535
+msgid "Enable Box Shadow"
+msgstr ""
+
+#: stb-admin-class.php:535
+msgid "Selecting \"Yes\" will allow drawing shadow of Special Text Boxes."
+msgstr ""
+
+#: stb-admin-class.php:536 stb-admin-class.php:543
+msgid "Define Shadow Offset X"
+msgstr ""
+
+#: stb-admin-class.php:536
+msgid "This is box shadow offset by X coordinate for text block in pixels."
+msgstr ""
+
+#: stb-admin-class.php:537 stb-admin-class.php:544
+msgid "Define Shadow Offset Y"
+msgstr ""
+
+#: stb-admin-class.php:537
+msgid "This is box shadow offset by Y coordinate for text block in pixels."
+msgstr ""
+
+#: stb-admin-class.php:538 stb-admin-class.php:545
+msgid "Define Shadow Blur"
+msgstr ""
+
+#: stb-admin-class.php:538
+msgid "This is box shadow blur for text block in pixels."
+msgstr ""
+
+#: stb-admin-class.php:539
+msgid "Define Shadow Alpha"
+msgstr ""
+
+#: stb-admin-class.php:539
+msgid "This is box shadow alpha chanel value for text block."
+msgstr ""
+
+#: stb-admin-class.php:540 stb-admin-class.php:546
+msgid "Define Shadow Color"
+msgstr ""
+
+#: stb-admin-class.php:540
+msgid "This is box shadow color for text block."
+msgstr ""
+
+#: stb-admin-class.php:542
+msgid "Enable Text Shadow"
+msgstr ""
+
+#: stb-admin-class.php:542
+msgid "Selecting \"Yes\" will allow drawing text shadow of Special Text Boxes."
+msgstr ""
+
+#: stb-admin-class.php:543
+msgid "This is text shadow offset by X coordinate for text block in pixels."
+msgstr ""
+
+#: stb-admin-class.php:544
+msgid "This is text shadow offset by Y coordinate for text block in pixels."
+msgstr ""
+
+#: stb-admin-class.php:545
+msgid "This is text shadow blur for text block in pixels."
+msgstr ""
+
+#: stb-admin-class.php:546
+msgid "This is text shadow color for text block."
+msgstr ""
+
+#: stb-admin-class.php:548
+msgid "Select border style for Special Text Boxes"
+msgstr ""
+
+#: stb-admin-class.php:548
+msgid "Selecting \"None\" will disable Special Text Boxes border."
+msgstr ""
+
+#: stb-admin-class.php:548
+msgid "Solid"
+msgstr ""
+
+#: stb-admin-class.php:548
+msgid "Dashed"
+msgstr ""
+
+#: stb-admin-class.php:548
+msgid "Dotted"
+msgstr ""
+
+#: stb-admin-class.php:548
+msgid "None"
+msgstr ""
+
+#: stb-admin-class.php:549
+msgid "Define font size for Special Text Boxes"
+msgstr ""
+
+#: stb-admin-class.php:549 stb-admin-class.php:562
+msgid "This is font size in pixels."
+msgstr ""
+
+#: stb-admin-class.php:549 stb-admin-class.php:550 stb-admin-class.php:562
+#: stb-admin-class.php:563
+msgid "Set this parameter to value 0 for theme default font size."
+msgstr ""
+
+#: stb-admin-class.php:550
+msgid "Define caption font size for Special Text Boxes"
+msgstr ""
+
+#: stb-admin-class.php:550 stb-admin-class.php:563
+msgid "This is caption font size in pixels."
+msgstr ""
+
+#: stb-admin-class.php:551
+msgid "Allow Big Image for Simple (non-captioned) Special Text Boxes?"
+msgstr ""
+
+#: stb-admin-class.php:551
+msgid ""
+"Selecting \"Yes\" will allow big icons for simple (non-captioned) Special "
+"Text Boxes."
+msgstr ""
+
+#: stb-admin-class.php:552
+msgid "Allow icon images for Special Text Boxes?"
+msgstr ""
+
+#: stb-admin-class.php:552
+msgid ""
+"Selecting \"Yes\" will allow displaying icon images in Special Text Boxes."
+msgstr ""
+
+#: stb-admin-class.php:554
 msgid "Allow rounded corners for Special Text Boxes?"
 msgstr ""
 
-#: stb-admin-class.php:79
+#: stb-admin-class.php:554
 msgid "Selecting \"No\" will disable Special Text Boxes rounded corners."
 msgstr ""
 
-#: stb-admin-class.php:80
+#: stb-admin-class.php:555
 msgid "Allow box shadow for Special Text Boxes?"
 msgstr ""
 
-#: stb-admin-class.php:80
+#: stb-admin-class.php:555
 msgid "Selecting \"No\" will disable Special Text Boxes shadow."
 msgstr ""
 
-#: stb-admin-class.php:81
+#: stb-admin-class.php:556
 msgid "Allow text shadow for Special Text Boxes?"
 msgstr ""
 
-#: stb-admin-class.php:81
+#: stb-admin-class.php:556
 msgid "Selecting \"No\" will disable Special Text Boxes text shadow."
 msgstr ""
 
-#: stb-admin-class.php:83
+#: stb-admin-class.php:558
+msgid "Define mode of CSS loading"
+msgstr ""
+
+#: stb-admin-class.php:558
+msgid ""
+"Static - will be loaded static styles sheet file. More faster but needs full "
+"read/write access to file. Dynamic - will be loaded dynamic (PHP) styles "
+"sheet."
+msgstr ""
+
+#: stb-admin-class.php:558
+msgid "Static"
+msgstr ""
+
+#: stb-admin-class.php:558
+msgid "Dynamic"
+msgstr ""
+
+#: stb-admin-class.php:560
 msgid "Define font color for Custom Special Text Box"
 msgstr ""
 
-#: stb-admin-class.php:83
+#: stb-admin-class.php:560
 msgid "This is a font color of Custom Special Text Box (Six Hex Digits)."
 msgstr ""
 
-#: stb-admin-class.php:84
+#: stb-admin-class.php:561
 msgid "Define caption font color for Custom Special Text Box"
 msgstr ""
 
-#: stb-admin-class.php:84
+#: stb-admin-class.php:561
 msgid ""
 "This is a font color of Custom Special Text Box caption (Six Hex Digits)."
 msgstr ""
 
-#: stb-admin-class.php:85
+#: stb-admin-class.php:562
 msgid "Define font size for Custom Special Text Box"
 msgstr ""
 
-#: stb-admin-class.php:86
+#: stb-admin-class.php:563
 msgid "Define caption font size for Custom Special Text Box"
 msgstr ""
 
-#: stb-admin-class.php:87
+#: stb-admin-class.php:564
 msgid "Define background color for Custom Special Text Box"
 msgstr ""
 
-#: stb-admin-class.php:87
+#: stb-admin-class.php:564
 msgid "This is a background color of Custom Special Text Box (Six Hex Digits)."
 msgstr ""
 
-#: stb-admin-class.php:88
+#: stb-admin-class.php:565
 msgid "Define background color for Custom Special Text Box caption"
 msgstr ""
 
-#: stb-admin-class.php:88
+#: stb-admin-class.php:565
 msgid ""
 "This is a background color of Custom Special Text Box caption (Six Hex "
 "Digits)."
 msgstr ""
 
-#: stb-admin-class.php:89
+#: stb-admin-class.php:566
 msgid "Define border color for Custom Special Text Box"
 msgstr ""
 
-#: stb-admin-class.php:89
+#: stb-admin-class.php:566
 msgid "This is a border color of Custom Special Text Box (Six Hex Digits)."
 msgstr ""
 
-#: stb-admin-class.php:90
+#: stb-admin-class.php:567
 msgid "Define image for Custom Special Text Box"
 msgstr ""
 
-#: stb-admin-class.php:90
+#: stb-admin-class.php:567
 msgid ""
 "This is an image of Custom Special Text Box (Full URL). 25x25 pixels, "
 "transparent background PNG image recommended."
 msgstr ""
 
-#: stb-admin-class.php:91
+#: stb-admin-class.php:568
 msgid "Define big image for simple (non-captioned) Custom Special Text Box"
 msgstr ""
 
-#: stb-admin-class.php:91
+#: stb-admin-class.php:568
 msgid ""
 "This is big image for simple (non-captioned) Custom Special Text Box (Full "
 "URL). 50x50 pixels, transparent background PNG image recommended."
 msgstr ""
 
-#: stb-admin-class.php:164
+#: stb-admin-class.php:660
+msgid "Are you allow to perform these actions during deactivating plugin?"
+msgstr ""
+
+#: stb-admin-class.php:664
+msgid ""
+"Use parameters below for customising Special Text Box for drawing in "
+"javascript mode."
+msgstr ""
+
+#: stb-admin-class.php:668
+msgid ""
+"Use parameters below for customising shadow of Special Text Box for drawing "
+"in javascript mode."
+msgstr ""
+
+#: stb-admin-class.php:672
+msgid ""
+"Use parameters below for customising text shadow of Special Text Box for "
+"drawing in javascript mode."
+msgstr ""
+
+#: stb-admin-class.php:676
+msgid ""
+"Use parameters below for customising Special Text Box for drawing in CSS "
+"mode."
+msgstr ""
+
+#: stb-admin-class.php:680
 msgid ""
 "Parameters below add elements of CSS3 standard to Style Sheet. Not all "
 "browsers can interpret this elements properly, but including this elements "
 "to HTML page not crash browser."
 msgstr ""
 
-#: stb-admin-class.php:168
-msgid "Use parameters below for customising custom Special Text Box."
+#: stb-admin-class.php:859
+msgid "Can't open CSS file."
 msgstr ""
 
-#: stb-admin-class.php:231
+#: stb-admin-class.php:864
+msgid "CSS file is not writable"
+msgstr ""
+
+#: stb-admin-class.php:888
 msgid "Special Text Boxes Settings"
 msgstr ""
 
-#: stb-admin-class.php:232
-msgid "Plugin version"
+#: stb-admin-class.php:897
+msgid "Special Text Box settings are updated."
 msgstr ""
 
-#: stb-admin-class.php:237
-msgid "Special Text Boxes Settings Updated."
+#: stb-admin-class.php:913
+msgid "System Info"
 msgstr ""
 
-#: stb-admin-class.php:245
-msgid "Save Changes"
+#: stb-admin-class.php:917
+msgid "Wordpress Version"
 msgstr ""
 
-#. Plugin URI of the plugin/theme
-msgid "http://www.simplelib.com/?p=11"
+#: stb-admin-class.php:918
+msgid "Plugin Version"
 msgstr ""
 
-#. Description of the plugin/theme
+#: stb-admin-class.php:919
+msgid "Plugin DB Version"
+msgstr ""
+
+#: stb-admin-class.php:920
+msgid "PHP Version"
+msgstr ""
+
+#: stb-admin-class.php:921
+msgid "MySQL Version"
+msgstr ""
+
+#: stb-admin-class.php:922
+msgid "Memory Limit"
+msgstr ""
+
+#: stb-admin-class.php:926
+msgid "Note! If you have detected a bug, include this data to bug report."
+msgstr ""
+
+#: stb-admin-class.php:931
+msgid "Resources"
+msgstr ""
+
+#: stb-admin-class.php:934
+msgid "Wordpress Plugin Page"
+msgstr ""
+
+#: stb-admin-class.php:935
+msgid "Author Plugin Page"
+msgstr ""
+
+#: stb-admin-class.php:936
+msgid "Support Forum"
+msgstr ""
+
+#: stb-admin-class.php:937
+msgid "Author's Blog"
+msgstr ""
+
+#: stb-admin-class.php:942
+msgid "Donations"
+msgstr ""
+
+#: stb-admin-class.php:954
+#, php-format
 msgid ""
-"Adds simple colored text boxes to highlight some portion of post text. Use "
-"it for highlights warnings, alerts, infos and downloads in your blog posts. "
-"Visit <a href=\"http://www.simplelib.com/\">SimpleLib blog</a> for more "
-"details."
+"If you have found this plugin useful, please consider making a %s to help "
+"support future development. Your support will be much appreciated. Thank you!"
 msgstr ""
 
-#. Author of the plugin/theme
-msgid "minimus"
+#: stb-admin-class.php:955
+msgid "Donate Now!"
 msgstr ""
 
-#. Author URI of the plugin/theme
-msgid "http://blogcoding.ru"
+#: stb-admin-class.php:955
+msgid "donation"
+msgstr ""
+
+#: stb-admin-class.php:973
+msgid "Another Plugins"
+msgstr ""
+
+#: stb-admin-class.php:977
+#, php-format
+msgid "Another plugins from %s"
+msgstr ""
+
+#: stb-admin-class.php:983
+msgid ""
+"Advertisment rotation system with a flexible logic of displaying "
+"advertisements. "
+msgstr ""
+
+#: stb-admin-class.php:984
+msgid ""
+"Adds simple counters badge (FeedBurner subscribers and Twitter followers) to "
+"your blog."
+msgstr ""
+
+#: stb-admin-class.php:985
+msgid "This plugin is WordPress shell for FloatBox library by Byron McGregor."
+msgstr ""
+
+#: stb-admin-class.php:986
+msgid "Adds copyright notice in the end of each post of your blog. "
+msgstr ""
+
+#: stb-admin-class.php:995
+msgid "General"
+msgstr ""
+
+#: stb-admin-class.php:1034 stb-admin-class.php:1195
+msgid "System Style"
+msgstr ""
+
+#: stb-admin-class.php:1034 stb-admin-class.php:1195 stb-themes.php:154
+msgid "Custom Style"
+msgstr ""
+
+#: stb-admin-class.php:1034 stb-admin-class.php:1195
+msgid "Special Style"
+msgstr ""
+
+#: stb-admin-class.php:1053
+msgid "&laquo;"
+msgstr ""
+
+#: stb-admin-class.php:1054
+msgid "&raquo;"
+msgstr ""
+
+#: stb-admin-class.php:1061
+msgid "Managing Styles"
+msgstr ""
+
+#: stb-admin-class.php:1068
+msgid "All"
+msgstr ""
+
+#: stb-admin-class.php:1069
+msgid "Active"
+msgstr ""
+
+#: stb-admin-class.php:1070
+msgid "Trash"
+msgstr ""
+
+#: stb-admin-class.php:1075 stb-admin-class.php:1159
+msgid "Clear Trash"
+msgstr ""
+
+#: stb-admin-class.php:1077 stb-admin-class.php:1161
+msgid "Add New Style"
+msgstr ""
+
+#: stb-admin-class.php:1081 stb-admin-class.php:1165
+#, php-format
+msgid "Displaying %s&#8211;%s of %s"
+msgstr ""
+
+#: stb-admin-class.php:1093 stb-admin-class.php:1101
+msgid "Style"
+msgstr ""
+
+#: stb-admin-class.php:1094 stb-admin-class.php:1102
+msgid "Style Name"
+msgstr ""
+
+#: stb-admin-class.php:1095 stb-admin-class.php:1103
+msgid "Style Slug"
+msgstr ""
+
+#: stb-admin-class.php:1096 stb-admin-class.php:1104 stb-admin-class.php:1368
+msgid "Style Type"
+msgstr ""
+
+#: stb-admin-class.php:1123
+msgid "There are no data ..."
+msgstr ""
+
+#: stb-admin-class.php:1134
+msgid "in Trash"
+msgstr ""
+
+#: stb-admin-class.php:1136 stb-admin-class.php:1339
+msgid "Edit Style"
+msgstr ""
+
+#: stb-admin-class.php:1136
+msgid "Edit"
+msgstr ""
+
+#: stb-admin-class.php:1140
+msgid "Restore this Style from the Trash"
+msgstr ""
+
+#: stb-admin-class.php:1140
+msgid "Restore"
+msgstr ""
+
+#: stb-admin-class.php:1141
+msgid "Remove this Style permanently"
+msgstr ""
+
+#: stb-admin-class.php:1141
+msgid "Remove permanently"
+msgstr ""
+
+#: stb-admin-class.php:1146
+msgid "Move this Style to the Trash"
+msgstr ""
+
+#: stb-admin-class.php:1146
+msgid "Delete"
+msgstr ""
+
+#: stb-admin-class.php:1235
+#, php-format
+msgid ""
+"You forgot to define the slug of style, therefore it was assigned randomly "
+"to %s. You can always change this one to the desired value."
+msgstr ""
+
+#: stb-admin-class.php:1259 stb-admin-class.php:1341
+msgid "Style Data Updated."
+msgstr ""
+
+#: stb-admin-class.php:1354 stb-admin-class.php:1399 stb-admin-class.php:1424
+#: stb-admin-class.php:1479
+msgid "Click to toggle"
+msgstr ""
+
+#: stb-admin-class.php:1355
+msgid "Status"
+msgstr ""
+
+#: stb-admin-class.php:1362
+msgid "Back to Styles List"
+msgstr ""
+
+#: stb-admin-class.php:1375
+msgid "Is Active"
+msgstr ""
+
+#: stb-admin-class.php:1376
+msgid "Is In Trash"
+msgstr ""
+
+#: stb-admin-class.php:1400
+msgid "Style Names"
+msgstr ""
+
+#: stb-admin-class.php:1402
+msgid "Enter Default Caption/Name and Slug for this Style."
+msgstr ""
+
+#: stb-admin-class.php:1402
+msgid "Enter Default Caption/Name for this Style."
+msgstr ""
+
+#: stb-admin-class.php:1404
+msgid "Default Caption/Name"
+msgstr ""
+
+#: stb-admin-class.php:1407
+msgid ""
+"This is name of style. Also it can be used as default caption for captioned "
+"STB block."
+msgstr ""
+
+#: stb-admin-class.php:1410 stb-admin-class.php:1415
+msgid "Slug"
+msgstr ""
+
+#: stb-admin-class.php:1413
+msgid ""
+"This is a unique style name. Must consist of latin characters, numbers and "
+"underscore characters only!"
+msgstr ""
+
+#: stb-admin-class.php:1425
+msgid "Javascript Style Parameters"
+msgstr ""
+
+#: stb-admin-class.php:1427
+msgid "Box background gradient"
+msgstr ""
+
+#: stb-admin-class.php:1432 stb-admin-class.php:1487
+msgid ""
+"There are colors of box background gradient. Direction of gradient drawing "
+"is from top to bottom."
+msgstr ""
+
+#: stb-admin-class.php:1433
+msgid "Font color"
+msgstr ""
+
+#: stb-admin-class.php:1436 stb-admin-class.php:1491
+#, php-format
+msgid "This is a font color of %s Special Text Box (Six Hex Digits)."
+msgstr ""
+
+#: stb-admin-class.php:1442 stb-admin-class.php:1502
+#, php-format
+msgid ""
+"This is image for %s Special Text Box (Full URL). 50x50 pixels, transparent "
+"background PNG image recommended."
+msgstr ""
+
+#: stb-admin-class.php:1448 stb-admin-class.php:1504
+msgid "Border Color"
+msgstr ""
+
+#: stb-admin-class.php:1451 stb-admin-class.php:1507
+#, php-format
+msgid "This is a border color of %s Special Text Box (Six Hex Digits)."
+msgstr ""
+
+#: stb-admin-class.php:1453
+msgid "Caption background gradient"
+msgstr ""
+
+#: stb-admin-class.php:1458 stb-admin-class.php:1514
+msgid ""
+"There are colors of caption background gradient. Direction of gradient "
+"drawing is from top to bottom."
+msgstr ""
+
+#: stb-admin-class.php:1459 stb-admin-class.php:1515
+msgid "Caption Font Color"
+msgstr ""
+
+#: stb-admin-class.php:1462 stb-admin-class.php:1518
+#, php-format
+msgid "This is a font color of %s Special Text Box caption (Six Hex Digits)."
+msgstr ""
+
+#: stb-admin-class.php:1480
+msgid "CSS Style Parameters"
+msgstr ""
+
+#: stb-admin-class.php:1488
+msgid "Font Color"
+msgstr ""
+
+#: stb-admin-class.php:1496
+#, php-format
+msgid ""
+"This is an image of %s Special Text Box (Full URL). 25x25 pixels, "
+"transparent background PNG image recommended."
+msgstr ""
+
+#: stb-admin-class.php:1552
+msgid "Author"
+msgstr ""
+
+#: stb-admin-class.php:1558 stb-themes.php:150
+msgid "Download"
+msgstr ""
+
+#: stb-admin-class.php:1560
+msgid "Install"
+msgstr ""
+
+#: stb-admin-class.php:1633
+msgid "Theme file successfully uploaded..."
+msgstr ""
+
+#: stb-admin-class.php:1647
+msgid "Upload New Theme"
+msgstr ""
+
+#: stb-admin-class.php:1663
+msgid "Fill fields below. Fields marked \"*\" are required fields."
+msgstr ""
+
+#: stb-admin-class.php:1664
+msgid "Theme Name"
+msgstr ""
+
+#: stb-admin-class.php:1666
+msgid "Theme Slug"
+msgstr ""
+
+#: stb-admin-class.php:1668
+msgid "Theme Description"
+msgstr ""
+
+#: stb-admin-class.php:1670
+msgid "Cover Image"
+msgstr ""
+
+#: stb-admin-class.php:1675
+msgid "Author Name"
+msgstr ""
+
+#: stb-admin-class.php:1677
+msgid "Author URL"
+msgstr ""
+
+#: stb-class.php:346
+msgid "Arbitrary text or PHP in colored block."
+msgstr ""
+
+#: stb-class.php:348
+msgid "Special Text"
+msgstr ""
+
+#: stb-class.php:476
+msgid "Title:"
+msgstr ""
+
+#: stb-class.php:481
+msgid "ID of Box:"
+msgstr ""
+
+#: stb-class.php:487
+msgid "Evaluate as PHP code."
+msgstr ""
+
+#: stb-class.php:489
+msgid "Show on all pages of blog"
+msgstr ""
+
+#: stb-class.php:491
+msgid "Show only on"
+msgstr ""
+
+#: stb-class.php:492
+msgid "Home Page"
+msgstr ""
+
+#: stb-class.php:493
+msgid "Single Post Pages"
+msgstr ""
+
+#: stb-class.php:494
+msgid "Archive Pages"
+msgstr ""
+
+#: stb-class.php:495
+msgid "Category Archive Pages"
+msgstr ""
+
+#: stb-class.php:496
+msgid "Tag Archive Pages"
+msgstr ""
+
+#: stb-class.php:497
+msgid "Author Archive Pages"
+msgstr ""
+
+#: stb-themes.php:148
+msgid "Alert!"
+msgstr ""
+
+#: stb-themes.php:149
+msgid "Black Quote"
+msgstr ""
+
+#: stb-themes.php:151
+msgid "Info"
+msgstr ""
+
+#: stb-themes.php:152
+msgid "Warning!"
+msgstr ""
+
+#: stb-themes.php:153
+msgid "Codes"
+msgstr ""
+
+#: stb-themes.php:278
+#, php-format
+msgid "Theme %s is saved ..."
+msgstr ""
+
+#: stb-themes.php:287
+msgid "STB Dark"
+msgstr ""
+
+#: stb-themes.php:288
+msgid "Colored content boxes with dark captions."
+msgstr ""
+
+#: stb-themes.php:291
+msgid "STB Light"
+msgstr ""
+
+#: stb-themes.php:292
+msgid "Light content boxes with colored captions."
+msgstr ""
+
+#: stb-themes.php:295
+msgid "Metro"
+msgstr ""
+
+#: stb-themes.php:296
+msgid "Flat colored content boxes, clone of Windows Metro theme."
+msgstr ""
+
+#: stb-themes.php:402
+msgid "Note:"
+msgstr ""
+
+#: stb-themes.php:402
+msgid "This theme may change your STB settings."
+msgstr ""
+
+#: stb-themes.php:470
+#, php-format
+msgid "%s theme installed..."
+msgstr ""
+
+#: stb-themes.php:474
+msgid "Something went wrong..."
 msgstr ""
