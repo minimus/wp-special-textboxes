@@ -46,7 +46,7 @@
 					author 	  : 'minimus',
 					authorurl : 'http://blogcoding.ru',
 					infourl   : 'http://www.simplelib.com',
-					version   : "4.2.70"
+					version   : "5.1.88"
 			};
 		}
 	});

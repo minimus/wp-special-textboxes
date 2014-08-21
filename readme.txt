@@ -223,6 +223,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Upgrade Notice ==
 
+= 5.1.88 =
+Some bugs are resolved.
 = 5.0.86 =
 TinyMCE compatibility bug is fixed
 = 5.0.85 =
