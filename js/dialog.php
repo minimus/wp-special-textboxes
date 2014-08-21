@@ -27,6 +27,7 @@ $styles = $stbObject->styles;
 	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/utils/editable_selects.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-content/plugins/wp-special-textboxes/js/wstb-dialog.js"></script>
+  <script type="text/javascript" language="JavaScript" src="<?php echo STB_URL; ?>js/jscolor/jscolor.js"></script>
 	<base target="_self" />
 </head>
 
@@ -159,8 +160,7 @@ $styles = $stbObject->styles;
             <td colspan="2">
               <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td><input id="wstb_fcolor" name="wstb_fcolor" type="text" value="" size="9" onchange="updateColor('wstb_fcolor_pick','wstb_fcolor');" /></td>
-                  <td id="wstb_fcolor_pickcontainer">&nbsp;</td>
+                  <td><input class="color {required:false}" id="wstb_fcolor" name="wstb_fcolor" type="text" value="" size="9" onchange="updateColor('wstb_fcolor_pick','wstb_fcolor');" /></td>
                 </tr>
               </table>
             </td>
@@ -168,8 +168,7 @@ $styles = $stbObject->styles;
             <td colspan="2">
               <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td><input id="wstb_cfcolor" name="wstb_cfcolor" type="text" value="" size="9" onchange="updateColor('wstb_cfcolor_pick','wstb_cfcolor');" /></td>
-                  <td id="wstb_cfcolor_pickcontainer">&nbsp;</td>
+                  <td><input class="color {required:false}" id="wstb_cfcolor" name="wstb_cfcolor" type="text" value="" size="9" onchange="updateColor('wstb_cfcolor_pick','wstb_cfcolor');" /></td>
                 </tr>
               </table>
             </td>
@@ -179,8 +178,7 @@ $styles = $stbObject->styles;
             <td colspan="2">
               <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td><input id="wstb_bgcolor" name="wstb_bgcolor" type="text" value="" size="9" onchange="updateColor('wstb_bgcolor_pick','wstb_bgcolor');" /></td>
-                  <td id="wstb_bgcolor_pickcontainer">&nbsp;</td>
+                  <td><input class="color {required:false}" id="wstb_bgcolor" name="wstb_bgcolor" type="text" value="" size="9" onchange="updateColor('wstb_bgcolor_pick','wstb_bgcolor');" /></td>
                 </tr>
               </table>
             </td>
@@ -188,8 +186,7 @@ $styles = $stbObject->styles;
             <td colspan="2">
               <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td><input id="wstb_cbgcolor" name="wstb_cbgcolor" type="text" value="" size="9" onchange="updateColor('wstb_cbgcolor_pick','wstb_cbgcolor');" /></td>
-                  <td id="wstb_cbgcolor_pickcontainer">&nbsp;</td>
+                  <td><input class="color {required:false}" id="wstb_cbgcolor" name="wstb_cbgcolor" type="text" value="" size="9" onchange="updateColor('wstb_cbgcolor_pick','wstb_cbgcolor');" /></td>
                 </tr>
               </table>
             </td>
@@ -199,8 +196,7 @@ $styles = $stbObject->styles;
             <td colspan="2">
               <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td><input id="wstb_bgcolorto" name="wstb_bgcolorto" type="text" value="" size="9" onchange="updateColor('wstb_bgcolorto_pick','wstb_bgcolorto');" /></td>
-                  <td id="wstb_bgcolorto_pickcontainer">&nbsp;</td>
+                  <td><input class="color {required:false}" id="wstb_bgcolorto" name="wstb_bgcolorto" type="text" value="" size="9" onchange="updateColor('wstb_bgcolorto_pick','wstb_bgcolorto');" /></td>
                 </tr>
               </table>
             </td>
@@ -208,8 +204,7 @@ $styles = $stbObject->styles;
             <td colspan="2">
               <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td><input id="wstb_cbgcolorto" name="wstb_cbgcolorto" type="text" value="" size="9" onchange="updateColor('wstb_cbgcolorto_pick','wstb_cbgcolorto');" /></td>
-                  <td id="wstb_cbgcolorto_pickcontainer">&nbsp;</td>
+                  <td><input class="color {required:false}" id="wstb_cbgcolorto" name="wstb_cbgcolorto" type="text" value="" size="9" onchange="updateColor('wstb_cbgcolorto_pick','wstb_cbgcolorto');" /></td>
                 </tr>
               </table>
             </td>
@@ -231,8 +226,7 @@ $styles = $stbObject->styles;
             <td colspan="2">
               <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td><input id="wstb_bcolor" name="wstb_bcolor" type="text" value="" size="9" onchange="updateColor('wstb_bcolor_pick','wstb_bcolor');" /></td>
-                  <td id="wstb_bcolor_pickcontainer">&nbsp;</td>
+                  <td><input class="color {required:false}" id="wstb_bcolor" name="wstb_bcolor" type="text" value="" size="9"></td>
                 </tr>
               </table>
             </td>

@@ -3,14 +3,6 @@ tinyMCEPopup.requireLangPack();
 function init() {
 	tinyMCEPopup.resizeToInnerSize();
 	
-	document.getElementById('wstb_fcolor_pickcontainer').innerHTML = getColorPickerHTML('wstb_fcolor_pick','wstb_fcolor');
-	document.getElementById('wstb_cfcolor_pickcontainer').innerHTML = getColorPickerHTML('wstb_cfcolor_pick','wstb_cfcolor');
-	document.getElementById('wstb_bgcolor_pickcontainer').innerHTML = getColorPickerHTML('wstb_bgcolor_pick','wstb_bgcolor');
-	document.getElementById('wstb_cbgcolor_pickcontainer').innerHTML = getColorPickerHTML('wstb_cbgcolor_pick','wstb_cbgcolor');
-  document.getElementById('wstb_bgcolorto_pickcontainer').innerHTML = getColorPickerHTML('wstb_bgcolorto_pick','wstb_bgcolorto');
-  document.getElementById('wstb_cbgcolorto_pickcontainer').innerHTML = getColorPickerHTML('wstb_cbgcolorto_pick','wstb_cbgcolorto');
-	document.getElementById('wstb_bcolor_pickcontainer').innerHTML = getColorPickerHTML('wstb_bcolor_pick','wstb_bcolor');
-	
 	TinyMCE_EditableSelects.init();
 }
 
@@ -66,9 +58,8 @@ function insertWSTBCode() {
   
   if(sRadio[0].checked) wstbShadow = 1;
   else if(sRadio[1].checked) wstbShadow = 2;
-	
-	var contentObj = tinyMCE.getInstanceById('content');
-	var wstbBody = contentObj.selection.getContent();
+
+	var wstbBody =  window.tinyMCE.activeEditor.selection.getContent();
 	
 	wstbCode = ' [stextbox id="' + wstbID + '"'; 
 	if (wstbCaption != '' || wstbDefCap) { 
@@ -109,7 +100,7 @@ function insertWSTBCode() {
 	if (wstbNoImage) wstbCode += ' image="null"';
 	wstbCode += ']' + wstbBody + '[/stextbox]';
 	
-	window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, wstbCode);
+	window.tinyMCE.activeEditor.execCommand('mceInsertContent', false, wstbCode);
 	tinyMCEPopup.editor.execCommand('mceRepaint');
 	tinyMCEPopup.close();
 	return;

@@ -695,16 +695,24 @@
         $.data(stbItems[stbItems.length-1].image, 'itemIndex', stbItems.length-1);
         $.data(stbItems[stbItems.length-1].imgMinus, 'itemIndex', stbItems.length-1);
         $.data(stbItems[stbItems.length-1].imgPlus, 'itemIndex', stbItems.length-1);
-        stbItems[stbItems.length-1].image.onload = function() {
-          var index = $.data(this, 'itemIndex');
-          boxImage(index, 'main');
-        };
-        stbItems[stbItems.length-1].image.src = stbItems[stbItems.length-1].options.image;
+
+        // Image
+        if(stbItems[stbItems.length-1].options.image != null) {
+          stbItems[stbItems.length-1].image.onload = function() {
+            var index = $.data(this, 'itemIndex');
+            boxImage(index, 'main');
+          };
+          stbItems[stbItems.length-1].image.src = stbItems[stbItems.length-1].options.image;
+        }
+
+        // imgMinus
         stbItems[stbItems.length-1].imgMinus.onload = function() {
           var index = $.data(this, 'itemIndex');
           boxImage(index, 'tool');
         };
         stbItems[stbItems.length-1].imgMinus.src = stbItems[stbItems.length-1].options.caption.imgMinus;
+
+        // imgPlus
         stbItems[stbItems.length-1].imgPlus.onload = function() {
           var index = $.data(this, 'itemIndex');
           boxImage(index, 'tool');

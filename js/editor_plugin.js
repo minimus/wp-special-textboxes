@@ -28,10 +28,14 @@
 				image : url + '/img/wstb.png'
 			});
 
-			ed.onNodeChange.add(function(ed, cm, n, co) {
+			/*ed.onNodeChange.add(function(ed, cm, n, co) {
 				//cm.setActive('wstb', !co);
 				cm.setDisabled('wstb', co);
-			});
+			});*/
+      ed.on("NodeChange", function(e) {
+        //tinymce.ui.Control.setDisabled("wstb", ed.selection.isCollapsed());
+        ed.controlManager.setDisabled("wstb", ed.selection.isCollapsed());
+      });
 		},
 		//createControl : function(n, cm) {
 		//	return null;

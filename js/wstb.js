@@ -41,7 +41,7 @@
         $('.stb-level-0.stb-'+el.slug+'-box ').stb(el.slug, jsOpts);
       });
       $.each(jsStyles, function(i, el) {
-        $('.stb-level-1.stb-'+el.slug+'-box ').stb(el.slug, jsOpts);
+        $('.stb-level-0 .stb-level-1.stb-'+el.slug+'-box ').stb(el.slug, jsOpts);
       });
       
       //Codes for supporting "Wordpress Post Tabs" plugin

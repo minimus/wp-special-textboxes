@@ -143,7 +143,7 @@ if(!class_exists('StbBlock')) {
         if(!empty($atts['big'])) {
           if($atts['big'] != $settings['bigImg']) $value = (($atts['big'] == 'true') ? 'stb-image-big' : 'stb-image-small');
         }
-        if($atts['image'] === 'null') $value = 'stb-image-none';
+        if(($atts['image'] === 'null') || $settings['showImg'] !== 'true') $value = 'stb-image-none';
         array_push($cntClasses, $value);
 
         // Language Direct
@@ -321,7 +321,8 @@ if(!class_exists('StbBlock')) {
           if(!empty($atts['bgcolorto'])) $stbOpts .= ', colorTo: "#'.$atts['bgcolorto'].'"';
           if(!empty($atts['direction'])) $stbOpts .= ', direction: "'.$atts['direction'].'"';
           if(!empty($atts['image'])) $stbOpts .= ', image: '.(($atts['image'] == 'null') ? 'null' : '"'.$atts['image'].'"');
-          
+          elseif($settings['showImg'] !== 'true') $stbOpts .= ', image: null';
+
           if(!empty($stbCaption)) $stbData = "caption: {{$stbCaption}}";
           if(!empty($stbBorder)) {
             if(!empty($stbData)) $stbData .= ", border: {{$stbBorder}}";

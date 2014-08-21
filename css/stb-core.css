@@ -97,6 +97,10 @@
   display: none;
 }
 
+.stb-image-none .stb-caption-icon {
+  display: none;
+}
+
 .stb-image-none .stb-box {
   margin: 0;
 }
@@ -123,6 +127,10 @@
 
 .stb-corners.stb-rtl.stb-image-big .stb-box, .stb-corners.stb-rtl.stb-image-small .stb-box {
   border-radius: 5px 0 0 5px;
+}
+
+.stb-corners.stb-ltr.stb-image-none .stb-box {
+  border-radius: 5px;
 }
 
 .stb-corners.stb-rtl.stb-image-none .stb-box {
