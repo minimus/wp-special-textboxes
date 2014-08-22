@@ -720,7 +720,7 @@
         stbItems[stbItems.length-1].imgPlus.src = stbItems[stbItems.length-1].options.caption.imgPlus;
         $(this).data('stb_props', data).addClass('stb-body');
         
-        if(opts.caption.collapsed) {
+        if(opts.caption.collapsed && opts.caption.text != '') {
           $(this).hide();
           //$(canvasId).hide();
         }

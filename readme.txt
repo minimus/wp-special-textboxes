@@ -4,7 +4,7 @@ Donate link:  https://load.payoneer.com/LoadToPage.aspx?email=minimus@simplelib.
 Tags: content, performance, text, code, php, widget
 Requires at least: 3.9
 Tested up to: 4.0
-Stable tag: 5.1.88
+Stable tag: 5.1.90
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,9 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Changelog ==
 
+= 5.1.90 =
+* Minor bug of JS mode is resolved
+* Dynamic CSS mode is optimized
 = 5.1.88 =
 * TinyMCE 4 compatibility bug is fixed
 * NoImage bug is fixed
@@ -223,6 +226,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Upgrade Notice ==
 
+= 5.1.90 =
+Some improvements are made.
 = 5.1.88 =
 Some bugs are resolved.
 = 5.0.86 =

@@ -4,11 +4,50 @@
  * @copyright 2009 - 2010
  */
 
-header("Content-type: text/css"); 
-include("../../../../wp-load.php");
+$root = dirname(dirname(dirname(dirname(dirname(__FILE__)))));
+
+ini_set('html_errors', 0);
+
+define('SHORTINIT', true);
+
+function sanitize_option($option, $value) {
+  return $value;
+}
+
+require_once( $root . '/wp-load.php' );
+
+global $wpdb;
+
+$stbOptions = get_option('SpecialTextBoxesAdminOptions');
+
+function getStbStyles() {
+  global $wpdb;
+  $sTable = $wpdb->prefix . "stb_styles";
+  $styles = array();
+
+  if($wpdb->get_var("SHOW TABLES LIKE '$sTable'") == $sTable) {
+    $sSql = "SELECT slug, caption, js_style, css_style, stype, trash FROM $sTable WHERE trash IS FALSE;";
+    $rows = $wpdb->get_results($sSql, ARRAY_A);
+    $style = array();
+    foreach($rows as $value) {
+      $style['slug'] = $value['slug'];
+      $style['name'] = $value['caption'];
+      $style['stype'] = $value['stype'];
+      $style['jsStyle'] = unserialize($value['js_style']);
+      $style['cssStyle'] = unserialize($value['css_style']);
+      array_push($styles, $style);
+    }
+  }
+  return $styles;
+}
+
+$stbStyles = getStbStyles();
+
+header("Content-type: text/css");
+/*include("../../../../wp-load.php");
 $stbOptions = $stbObject->getAdminOptions();
 $stbStyles = $stbObject->styles;
-$stbClasses = $stbObject->classes;
+$stbClasses = $stbObject->classes;*/
 ?>
 
 .stb-container-css {
