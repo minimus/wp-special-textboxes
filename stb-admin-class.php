@@ -217,7 +217,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         wp_enqueue_script('jquery-effects-core');
         wp_enqueue_script('jquery-effects-blind');
         wp_enqueue_script('smallColorPicker', STB_URL.'js/small-color-picker.min.js', array('jquery'));
-        wp_enqueue_script('STB', STB_URL.'js/jquery.stb.js', array('jquery', 'jquery-effects-core', 'jquery-effects-blind'), STB_VERSION);
+        wp_enqueue_script('STB', STB_URL.'js/jquery.stb.min.js', array('jquery', 'jquery-effects-core', 'jquery-effects-blind'), STB_VERSION);
         wp_enqueue_script('wstbAdminLayout', STB_URL.'js/wstb.edit.min.js', array('jquery', 'jquery-effects-core', 'jquery-effects-blind', 'STB'), STB_VERSION);
         if($this->cmsVer === 'high') wp_localize_script('wstbAdminLayout', 'stbUserOptions', $options);
         else wp_localize_script('wstbAdminLayout', 'stbUserOptions', array('l10n_print_after' => 'stbUserOptions = ' . json_encode($options) . ';'));

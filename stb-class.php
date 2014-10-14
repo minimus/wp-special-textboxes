@@ -284,7 +284,7 @@ if (!class_exists("SpecialTextBoxes")) {
       wp_enqueue_script('jquery-effects-core');
       wp_enqueue_script('jquery-effects-blind');
       if($this->globalMode != 'css') wp_enqueue_script('stbJS', STB_URL.'js/jquery.stb.min.js', array('jquery'), STB_VERSION);
-      wp_enqueue_script('wstbLayout', STB_URL.'js/wstb.js', array('jquery'), STB_VERSION, true);
+      wp_enqueue_script('wstbLayout', STB_URL.'js/wstb.min.js', array('jquery'), STB_VERSION, true);
       if($this->cmsVer === 'high') wp_localize_script('wstbLayout', 'stbUserOptions', $options);
       else wp_localize_script('wstbLayout', 'stbUserOptions', array('l10n_print_after' => 'stbUserOptions = ' . json_encode($options) . ';'));
     }
