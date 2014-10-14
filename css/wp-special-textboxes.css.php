@@ -25,8 +25,8 @@ function getStbStyles() {
   $sTable = $wpdb->prefix . "stb_styles";
   $styles = array();
 
-  if($wpdb->get_var("SHOW TABLES LIKE '$sTable'") == $sTable) {
-    $sSql = "SELECT slug, caption, js_style, css_style, stype, trash FROM $sTable WHERE trash IS FALSE;";
+  if($wpdb->get_var("SHOW TABLES LIKE '{$sTable}'") == $sTable) {
+    $sSql = "SELECT st.slug, st.caption, st.js_style, st.css_style, st.stype, st.trash FROM $sTable st WHERE trash IS FALSE;";
     $rows = $wpdb->get_results($sSql, ARRAY_A);
     $style = array();
     foreach($rows as $value) {

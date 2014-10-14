@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Special Text Boxes
-Plugin URI: http://www.simplelib.com/?p=11
+Plugin URI: http://www.simplelib.com/archives/wordpress-plugin-wp-special-textboxes/
 Description: Adds simple colored text boxes to highlight some portion of post text. Use it for highlights warnings, alerts, infos and downloads in your blog posts. Visit <a href="http://www.simplelib.com/">SimpleLib blog</a> for more details.
-Version: 5.1.90
+Version: 5.2.91
 Author: minimus
 Author URI: http://blogcoding.ru
 */

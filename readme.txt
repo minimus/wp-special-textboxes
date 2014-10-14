@@ -4,7 +4,7 @@ Donate link:  https://load.payoneer.com/LoadToPage.aspx?email=minimus@simplelib.
 Tags: content, performance, text, code, php, widget
 Requires at least: 3.9
 Tested up to: 4.0
-Stable tag: 5.1.90
+Stable tag: 5.2.91
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,7 +36,7 @@ Available languages:
 
 If you have created your own language pack, or have an update of an existing one, you can send **.po** and **.mo files** to me (minimus AT simplelib.com) so that I can bundle it into **Special Text Boxes**.
   
-Real examples of outputs you can see on the [plugin page](http://www.simplelib.com/?p=11)
+Real examples of outputs you can see on the [plugin page](http://www.simplelib.com/archives/wordpress-plugin-wp-special-textboxes/)
 
 == Installation ==
 
@@ -97,6 +97,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Changelog ==
 
+= 5.2.91 =
+* The possibility of manipulating custom themes has been removed by request of administration of *wordpress.org* plugins repository.
 = 5.1.90 =
 * Minor bug of JS mode is resolved
 * Dynamic CSS mode is optimized
@@ -226,6 +228,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Upgrade Notice ==
 
+= 5.2.91 =
+Some functionality of the plugin were cut.
 = 5.1.90 =
 Some improvements are made.
 = 5.1.88 =

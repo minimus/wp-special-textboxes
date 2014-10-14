@@ -16,8 +16,8 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       $themesDir = trailingslashit(WP_CONTENT_DIR) . 'stb-themes/';
 
       if(self::checkThemesFolder($themesDir)) {
-        define('STB_THEMES_DIR', $themesDir);
-        define('STB_THEMES_URL', content_url('/stb-themes/'));
+        define('STB_THEMES_DIR', $themesDir);                  // for backward compatibility
+        define('STB_THEMES_URL', content_url('/stb-themes/')); // for backward compatibility
         define('STB_EXT_THEMES', true);
       }
       else {
@@ -42,7 +42,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       $sTable = $wpdb->prefix . "stb_styles";
       
       require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-      require_once('stb-themes.php');
+      require_once('stb-themes-lite.php');
 
       if($wpdb->get_var("SHOW TABLES LIKE '$sTable'") != $sTable) {
         $sSql = "CREATE TABLE $sTable (
@@ -74,28 +74,11 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       $sTable = $wpdb->prefix . "stb_styles";
       
       if($this->settings['deleteOptions'] == 1) delete_option(STB_OPTIONS);
-      if($this->settings['deleteDB'] == 1) $wpdb->query("DROP TABLE IF EXISTS $sTable;");
+      if($this->settings['deleteDB'] == 1) $wpdb->query("DROP TABLE IF EXISTS {$sTable};");
     }
 
     private function checkThemesFolder($dir) {
-      global $wp_filesystem;
-
-      if(!is_dir($dir)) {
-        if( mkdir($dir) ) {
-          $zip = new ZipArchive;
-          $source = STB_DIR . 'themes/stb-default-themes.zip';
-          if($zip->open($source) === true) {
-            $zip->extractTo($dir);
-            $zip->close();
-            $out = true;
-          }
-          else $out = false;
-        }
-        else $out = false;
-      }
-      else $out = true;
-
-      return $out;
+      return is_dir($dir);
     }
     
     private function getSamples($slug = 'custom', $theme = 'Custom') {
@@ -241,42 +224,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       }
 
       if($hook == $this->themes_page) {
-        $options = array(
-          'text' => array(
-            'title' => __('Save Current Theme As...', STB_DOMAIN),
-            'save' => __('Save', STB_DOMAIN),
-            'cancel' => __('Cancel', STB_DOMAIN)
-          ),
-          'uploader' => array(
-            'path' => STB_THEMES_DIR,
-            'url' => STB_URL . 'stb-uploader.php',
-            'redirect' => admin_url('admin.php?page=stb-themes')
-          ),
-          'media' => array(
-            'title' => __('Select Cover Image', STB_DOMAIN),
-            'button' => __('Choose', STB_DOMAIN)
-          )
-        );
-
-        wp_enqueue_style('jquery-ui', STB_URL.'css/jquery-ui-wp38.css', false, '1.10.3');
         wp_enqueue_style('stbThemesCSS', STB_URL.'css/stb-themes.css', false, STB_VERSION);
-
-        wp_enqueue_media();
-
-        wp_enqueue_script('jquery');
-        wp_enqueue_script('jquery-ui-core');
-        wp_enqueue_script('jquery-ui-widget');
-        wp_enqueue_script('jquery-ui-position');
-        wp_enqueue_script('jquery-ui-button');
-        wp_enqueue_script('jquery-ui-draggable');
-        wp_enqueue_script('jquery-ui-resizable');
-        wp_enqueue_script('jquery-effects-core');
-        wp_enqueue_script('jquery-ui-dialog');
-
-        wp_enqueue_script('plupload-all');
-
-        wp_enqueue_script('wstbThemesLayout', STB_URL.'js/wstb.themes.min.js', array('jquery'), STB_VERSION);
-        wp_localize_script('wstbThemesLayout', 'stbOptions', $options);
       }
     }
     
@@ -1357,8 +1305,8 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       if(is_null($item)) return '';
 
       $icon = (!empty($item['icon'])) ? $item['icon'] : STB_THEMES_URL . 'stb-no-image.jpg';
-      $zip = str_replace('_', '-', $slug) . '.zip';
-      $download = (file_exists(STB_THEMES_DIR . $zip)) ? STB_THEMES_URL . $zip : '';
+      //$zip = str_replace('_', '-', $slug) . '.zip';
+      $download = /*(file_exists(STB_THEMES_DIR . $zip)) ? STB_THEMES_URL . $zip :*/ '';
 
       ?>
 <div class="stb-theme-item">
@@ -1393,7 +1341,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       $userUrl = $current_user->user_url;
       $userName = $current_user->display_name;
 
-      include_once('stb-themes.php');
+      include_once('stb-themes-lite.php');
 
       $stbThemes = new StbThemes(STB_THEMES_DIR);
 
@@ -1407,7 +1355,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       $upload = (isset($_GET['uploaded'])) ? $_GET['uploaded'] : '';
 
 
-      $class = 'updated below-h2';
+      $class = 'stb-updated below-h2';
       $message = '';
       $display = "style='display: none;'";
       if(!empty($install)) {
@@ -1415,13 +1363,13 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         $message = $action['message'];
         $display = '';
         if($action['status']) {
-          $class = 'updated below-h2';
+          $class = 'stb-updated below-h2';
           $this->settings = parent::getAdminOptions(true);
           $this->styles = parent::getStyles();
           $fa = self::writeCSS('file');
           if(!$fa['action']) $message .= ' '.$fa['error'];
         }
-        else $class = 'error below-h2';
+        else $class = 'stb-error below-h2';
       }
 
       if(!empty($saveAs)) {
@@ -1436,7 +1384,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
           );
           $dir = strtolower(str_replace('_', '-', $saveAs));
           if(false !== ($zip = $stbThemes->saveThemeData($dir, $atts))) {
-            $class = 'updated below-h2';
+            $class = 'stb-updated below-h2';
             $message = $zip['message'];
             $display = '';
           }
@@ -1446,12 +1394,12 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       if(!empty($upload)) {
         if ($upload != 1) {
           $message = 'No Files to Upload...';
-          $class = 'error below-h2';
+          $class = 'stb-error below-h2';
           $display = '';
         }
         else {
           $message = __('Theme file successfully uploaded...', STB_DOMAIN);
-          $class = 'updated below-h2';
+          $class = 'stb-updated below-h2';
           $display = '';
         }
       }
@@ -1462,13 +1410,14 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       <div class="wrap">
         <h2>
           <?php _e('Themes', STB_DOMAIN); ?>   <span class="theme-count"><?php echo $stbThemes->count; ?></span>
-          <?php if(STB_EXT_THEMES) { ?>
-            <a id="save-theme" class="button-secondary" href="<?php echo admin_url('admin.php?page=stb-themes'); ?>"><?php _e('Save Current Theme As...', STB_DOMAIN); ?></a>
-            <a id="upload-theme" class="button-secondary" href="javascript:;"><?php _e('Upload New Theme', STB_DOMAIN); ?></a>
-            <span id="upload-console" class="stb-upload-info"></span><span id="upload-progress" class="stb-upload-progress"></span>&nbsp;&nbsp;
-            <a class="button-secondary" href="http://www.simplelib.com/?page_id=843" target="_blank"><?php _e('More Themes...', STB_DOMAIN); ?></a>
-          <?php } ?>
         </h2>
+	    <?php if(STB_EXT_THEMES) { ?>
+	      <div id="stb-warning" class="stb-warning below-h2">
+		      <p>
+		        <?php _e('The possibility of manipulating custom themes has been removed by request of administration of wordpress.org plugins repository. This possibility will be realised in Special Text Boxes Pro plugin (coming soon).', STB_DOMAIN); ?>
+	        </p>
+	      </div>
+	    <?php } ?>
         <div id="stb-message" class="<?php echo $class; ?>" <?php echo $display; ?>>
           <p><?php echo $message; ?></p>
         </div>
@@ -1500,9 +1449,6 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         </div>
       </div>
 <?php
-      //var_dump($this->zipError);
-      //$stbThemes->getThemesInfo(STB_THEMES_DIR);
-      //$stbThemes->zipThemeData('stb_dark');
     }
     
     public function addButtons() {
