@@ -4,7 +4,7 @@ Donate link:  https://load.payoneer.com/LoadToPage.aspx?email=minimus@simplelib.
 Tags: content, performance, text, code, php, widget
 Requires at least: 3.9
 Tested up to: 4.0
-Stable tag: 5.2.91
+Stable tag: 5.3.93
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,9 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Changelog ==
 
+= 5.3.93 =
+* Made some improvements
+* Ready for WordPress 4.1
 = 5.2.91 =
 * The possibility of manipulating custom themes has been removed by request of administration of *wordpress.org* plugins repository.
 = 5.1.90 =
@@ -228,6 +231,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Upgrade Notice ==
 
+= 5.3.93 =
+Made some improvements. Ready for WordPress 4.1
 = 5.2.91 =
 Some functionality of the plugin were cut.
 = 5.1.90 =

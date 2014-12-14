@@ -9,6 +9,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="LocalHost3">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/wp-content/plugins/wp-special-textboxes" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="Test Server">
         <serverdata>
           <mappings>
@@ -39,4 +46,3 @@
     </serverData>
   </component>
 </project>
-

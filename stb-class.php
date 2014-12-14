@@ -43,19 +43,7 @@ if (!class_exists("SpecialTextBoxes")) {
       'js_custom_text_height' => 0,
       'deleteOptions' => 0,
       'deleteDB' => 0,
-      'css_loading' => 'dynamic',
-
-      /*
-      'cb_color' => '000000',
-      'cb_caption_color' => 'ffffff',
-      'cb_background' => 'f7cdf5',
-      'cb_caption_background' => 'f844ee',
-      'cb_border_color' => 'f844ee',
-      'cb_image' => '',
-      'cb_bigImg' => '',
-      'cb_fontSize' => '0',
-      'cb_captionFontSize' => '0'
-      */
+      'css_loading' => 'dynamic'
     );
     public $settings = array();
     public $styles = array();
@@ -65,7 +53,7 @@ if (!class_exists("SpecialTextBoxes")) {
     public $globalMode = '';
     
     public function __construct() {
-      define('STB_VERSION', '5.2.91');
+      define('STB_VERSION', '5.3.93');
       define('STB_DB_VERSION', '1.0');
       define('STB_DIR', dirname( __FILE__ ) . '/');
       define('STB_DOMAIN', 'wp-special-textboxes');

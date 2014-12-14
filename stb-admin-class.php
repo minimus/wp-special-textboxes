@@ -7,6 +7,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
     public $styles_page;
     public $editor_page;
     public $themes_page;
+    public $stbProPointer = array( 'all' => true, 'themes' => true );
 
     private $zipError;
 
@@ -32,6 +33,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       add_action('admin_menu', array(&$this, 'regAdminPage'));
       add_filter('tiny_mce_version', array(&$this, 'tinyMCEVersion'));
       add_action('init', array(&$this, 'addButtons'));
+      add_action('wp_ajax_close_pointer', array(&$this, 'closePointerHandler'));
       
       $this->updateDB();
       if(!file_exists(STB_DIR.'css/wp-special-textboxes.css')) self::writeCSS('file');
@@ -57,7 +59,13 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         dbDelta($sSql);
 
         $themes = new StbThemes(STB_THEMES_DIR);
-        $themes->installTheme('stb_dark', 'install');
+        $theme = $themes->installTheme('stb_dark', 'install');
+        if($theme['status']) {
+          $this->settings = parent::getAdminOptions();
+          $this->styles = parent::getStyles();
+          $this->classes = parent::getClasses($this->styles);
+          self::writeCSS('file');
+        }
 
         update_option('stb_db_version', STB_DB_VERSION);
       }
@@ -73,8 +81,15 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       global $wpdb;
       $sTable = $wpdb->prefix . "stb_styles";
       
-      if($this->settings['deleteOptions'] == 1) delete_option(STB_OPTIONS);
-      if($this->settings['deleteDB'] == 1) $wpdb->query("DROP TABLE IF EXISTS {$sTable};");
+      if($this->settings['deleteOptions'] == 1) {
+        delete_option(STB_OPTIONS);
+        delete_option('stb_version');
+        delete_option('stb_pointers');
+      }
+      if($this->settings['deleteDB'] == 1) {
+        $wpdb->query("DROP TABLE IF EXISTS {$sTable};");
+        delete_option('stb_db_version');
+      }
     }
 
     private function checkThemesFolder($dir) {
@@ -100,6 +115,54 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       $cblock = new StbBlock($ccontent, $slug, $theme, $atts);
       $block = new StbBlock($content, $slug, '', $atts);
       return $cblock->block.$block->block;
+    }
+
+    public function getPointerOptions( $force = false ) {
+      if($force) {
+        $pointers = get_option('stb_pointers', '');
+        if($pointers == '') {
+          $pointers = $this->stbProPointer;
+          update_option('stb_pointers', $pointers);
+        }
+      }
+      else $pointers = $this->stbProPointer;
+
+      return $pointers;
+    }
+
+    public function closePointerHandler() {
+      $options = self::getPointerOptions();
+      $charset = get_bloginfo('charset');
+      @header("Content-Type: application/json; charset={$charset}");
+      if(isset($_REQUEST['pointer'])) {
+        $pointer =  $_REQUEST['pointer'];
+        $options[$pointer] = false;
+        update_option('stb_pointers', $options);
+        wp_send_json_success(array('pointer' => $pointer, 'options' => $options));
+      }
+      else wp_send_json_error();
+    }
+
+    private function getPointerContent( $pointer = false ) {
+      $alt   = __( 'Upgrade Now', STB_DOMAIN );
+      $image = STB_URL . 'images/upgrade-now' . (($pointer) ? '-pointer' : '') . '.png';
+      $about = __( 'About STB Pro...', STB_DOMAIN );
+      $docs  = __( 'STB Pro Documentation', STB_DOMAIN );
+      $themes = __('Free STB Pro Themes', STB_DOMAIN);
+      $intro = __('Get the full feature set of the <strong>Special Text Boxes</strong> plugin.', STB_DOMAIN);
+      $intro2 = __('Upgrade to the STB Pro now!', STB_DOMAIN);
+      $margin = (($pointer) ? " margin: 20px 15px 0;" : '');
+
+      return
+        "<div style='text-align: center;{$margin}'>" .
+          "<a href='http://codecanyon.net/item/stb-pro-special-text-boxes-pro-editin/9749695' target='_blank'>" .
+            "<img src='{$image}' alt='{$alt}'>" .
+          "</a>" .
+        "</div>" .
+        "<p>{$intro}<br><a href='http://codecanyon.net/item/stb-pro-special-text-boxes-pro-editin/9749695'><strong>{$intro2}</strong></a></p>" .
+        "<p><a target='_blank' href='http://stb.simplelib.com/info/stb-pro/'>{$about}</a><br>" .
+        "<a href='http://stb.simplelib.com/category/documentation/' target='_blank'>{$docs}</a><br>" .
+        "<a href='http://stb.simplelib.com/stb-pro-themes/'>{$themes}</a></p>";
     }
 
     public function loadScripts( $hook ) {
@@ -140,7 +203,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         else wp_localize_script('wstbAdminLayout', 'stbUserOptions', array('l10n_print_after' => 'stbUserOptions = ' . json_encode($options) . ';'));
       }
 
-      if($hook == $this->editor_page) {
+      elseif($hook == $this->editor_page) {
         wp_enqueue_style('stbAdminCSS', STB_URL.'css/stb-edit.css', false, STB_VERSION);
         wp_enqueue_style('stbCoreCSS', STB_URL.'css/stb-core.css', false, STB_VERSION);
         wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css.php', false, STB_VERSION);
@@ -223,8 +286,49 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         else wp_localize_script('wstbAdminLayout', 'stbUserOptions', array('l10n_print_after' => 'stbUserOptions = ' . json_encode($options) . ';'));
       }
 
-      if($hook == $this->themes_page) {
-        wp_enqueue_style('stbThemesCSS', STB_URL.'css/stb-themes.css', false, STB_VERSION);
+      elseif($hook == $this->themes_page) {
+        wp_enqueue_style( 'stbThemesCSS', STB_URL . 'css/stb-themes.css', false, STB_VERSION );
+        $pointers = self::getPointerOptions(true);
+        if($pointers['themes']) {
+          $stbImage = STB_URL . 'images/upgrade-now.png';
+          $stbAlt   = __( 'Upgrade Now!', STB_DOMAIN );
+
+          wp_enqueue_style( 'wp-pointer' );
+
+          wp_enqueue_script( 'jquery' );
+          wp_enqueue_script( 'wp-pointer' );
+          wp_enqueue_script( 'stbThemes', STB_URL . 'js/wstb.themes.min.js', array( 'jquery' ), STB_VERSION );
+          wp_localize_script( 'stbThemes', 'stbOptions', array(
+            'pointer' => array(
+              'enabled' => $pointers['themes'],
+              'title'   => __( 'Upgrade to STB Pro', STB_DOMAIN ),
+              'content' => self::getPointerContent(true),
+              'position' => 'top'
+            )
+          ) );
+        }
+      }
+
+      else {
+        $pointers = self::getPointerOptions(true);
+        if($pointers['all']) {
+          $stbImage = STB_URL . 'images/upgrade-now.png';
+          $stbAlt   = __( 'Upgrade Now!', STB_DOMAIN );
+
+          wp_enqueue_style( 'wp-pointer' );
+
+          wp_enqueue_script( 'jquery' );
+          wp_enqueue_script( 'wp-pointer' );
+          wp_enqueue_script( 'stbAll', STB_URL . 'js/wstb.all.min.js' );
+          wp_localize_script( 'stbAll', 'stbOptions', array(
+            'pointer' => array(
+              'enabled' => $pointers['all'],
+              'title'   => __( 'Upgrade to STB Pro', STB_DOMAIN ),
+              'content' => self::getPointerContent(true),
+              'position' => ((is_rtl()) ? 'right' : 'left' )
+            )
+          ) );
+        }
       }
     }
     
@@ -549,11 +653,11 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
           $val['cssStyle']['captionBgColorEnd'] = str_replace('#', '', $val['cssStyle']['captionBgColor']);
         }
 
-        $content .= ".stb-border.stb-{$val['slug']}-container {";
+        $content .= ".stb-border.stb-{$val['slug']}-container "."{";
         $content .= "border: 1px {$options['border_style']} #{$val['cssStyle']['borderColor']};";
         $content .= "}";
 
-        $content .= ".stb-side.stb-{$val['slug']}-container {";
+        $content .= ".stb-side.stb-{$val['slug']}-container "."{";
         $content .= "background: #{$val['cssStyle']['captionBgColor']};";
         $content .= "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$val['cssStyle']['captionBgColor']}', endColorstr='#{$val['cssStyle']['captionBgColorEnd']}',GradientType=0 );";
         $content .= "background: -moz-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
@@ -564,7 +668,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         $content .= "background: linear-gradient(#{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
         $content .= "}";
 
-        $content .= ".stb-side-none.stb-{$val['slug']}-container {";
+        $content .= ".stb-side-none.stb-{$val['slug']}-container "."{";
         $content .= "background: #{$val['cssStyle']['bgColor']};";
         $content .= "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$val['cssStyle']['bgColor']}', endColorstr='#{$val['cssStyle']['bgColorEnd']}',GradientType=0 );";
         $content .= "background: -moz-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
@@ -575,7 +679,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         $content .= "background: linear-gradient(#{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
         $content .= "}";
 
-        $content .= ".stb-{$val['slug']}_box {";
+        $content .= ".stb-{$val['slug']}_box "."{";
         $content .= "background: #{$val['cssStyle']['bgColor']};";
         $content .= "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$val['cssStyle']['bgColor']}', endColorstr='#{$val['cssStyle']['bgColorEnd']}',GradientType=0 );";
         $content .= "background: -moz-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
@@ -587,7 +691,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         $content .= "color: #{$val['cssStyle']['color']};";
         $content .= "}";
 
-        $content .= ".stb-{$val['slug']}-caption_box {";
+        $content .= ".stb-{$val['slug']}-caption_box "."{";
         $content .= "background: #{$val['cssStyle']['captionBgColor']};";
         $content .= "background: -moz-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
         $content .= "background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#{$val['cssStyle']['captionBgColor']}), color-stop(90%,#{$val['cssStyle']['captionBgColorEnd']}));";
@@ -601,7 +705,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         }
         $content .= "}";
 
-        $content .= ".stb-{$val['slug']}-body_box {";
+        $content .= ".stb-{$val['slug']}-body_box "."{";
         $content .= "background: #{$val['cssStyle']['bgColor']};";
         $content .= "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$val['cssStyle']['bgColor']}', endColorstr='#{$val['cssStyle']['bgColorEnd']}',GradientType=0 );";
         $content .= "background: -moz-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
@@ -707,18 +811,16 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
                     <li><a target='_blank' href='http://www.simplelib.com/'><?php _e("Author's Blog", STB_DOMAIN); ?></a></li>
                   </ul>                    
                 </div>
-              </div>  
+              </div>
+              <div class="postbox opened">
+                <h3>STB Pro</h3>
+                <div class="inside">
+                  <?php echo self::getPointerContent(); ?>
+                </div>
+              </div>
               <div class='postbox opened'>
                 <h3><?php _e('Donations', STB_DOMAIN) ?></h3>
                 <div class="inside">
-                  <div style="text-align: center; margin-top: 10px;">
-                    <script type="text/javascript">
-                      /* <![CDATA[ */
-                      function affiliateLink(str){ str = unescape(str); var r = ''; for(var i = 0; i < str.length; i++) r += String.fromCharCode(8^str.charCodeAt(i)); document.write(r); }
-                      affiliateLink('4i%28%60zmn5*%60%7C%7Cx2%27%27%7F%7F%7F%26%7Cmp%7C%25dafc%25il%7B%26kge%277zmn5%3B%3A9%3E%3F0*64aeo%28%7Bzk5*%60%7C%7Cx2%27%27%7F%7F%7F%26%7Cmp%7C%25dafc%25il%7B%26kge%27aeiom%7B%27jiffmz%7B%27%7Bfgzm%25908p%3E8%26oan*%28jgzlmz5*8*%28id%7C5*%5Cmp%7C%28Dafc%28Il%7B*%2764%27i6');
-                      /* ]]> */
-                    </script>
-                  </div>
                   <p>
                     <?php
                     $format = __('If you have found this plugin useful, please consider making a %s to help support future development. Your support will be much appreciated. Thank you!', STB_DOMAIN);
@@ -898,7 +1000,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         ?>
       <tr id="<?php echo $row['slug'];?>" class="<?php echo (($i & 1) ? 'alternate' : ''); ?> author-self status-publish iedit" valign="top">
         <td class="column-icon media-icon">
-          <img src='<?php echo $jsStyle['image']; ?>' alt='<?php echo $row['caption']; ?>' width='30' height='30' style="background-color: <?php echo $jsStyle['color'] ?>; border: 1px solid <?php echo $jsStyle['border']['color']; ?>;">
+          <img src='<?php echo $jsStyle['image']; ?>' alt='<?php echo $row['caption']; ?>' style="width: 50px; height: 50px; background-color: <?php echo $jsStyle['color'] ?>; border: 1px solid <?php echo $jsStyle['border']['color']; ?>;">
         </td>
         <td class="post-title column-title">
           <strong style='display: inline;'><a href="<?php echo admin_url('admin.php'); ?>?page=stb-editor&action=edit&mode=style&item=<?php echo $row['slug']; ?>"><?php echo $row['caption'];?></a><?php echo ((($row['trash'] == true) && ($mode === 'all')) ? '<span class="post-state"> - '.__('in Trash', STB_DOMAIN).'</span>' : ''); ?></strong>
@@ -1160,6 +1262,12 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
               </div>
             </div>
           </div>
+          <div class="postbox opened">
+            <h3>STB Pro</h3>
+            <div class="inside">
+              <?php echo self::getPointerContent(); ?>
+            </div>
+          </div>
         </div>
       </div>
       <div id="post-body">
@@ -1411,13 +1519,6 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
         <h2>
           <?php _e('Themes', STB_DOMAIN); ?>   <span class="theme-count"><?php echo $stbThemes->count; ?></span>
         </h2>
-	    <?php if(STB_EXT_THEMES) { ?>
-	      <div id="stb-warning" class="stb-warning below-h2">
-		      <p>
-		        <?php _e('The possibility of manipulating custom themes has been removed by request of administration of wordpress.org plugins repository. This possibility will be realised in Special Text Boxes Pro plugin (coming soon).', STB_DOMAIN); ?>
-	        </p>
-	      </div>
-	    <?php } ?>
         <div id="stb-message" class="<?php echo $class; ?>" <?php echo $display; ?>>
           <p><?php echo $message; ?></p>
         </div>
