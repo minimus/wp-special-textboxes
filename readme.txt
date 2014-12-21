@@ -3,8 +3,8 @@ Contributors: minimus
 Donate link:  https://load.payoneer.com/LoadToPage.aspx?email=minimus@simplelib.com
 Tags: content, performance, text, code, php, widget
 Requires at least: 3.9
-Tested up to: 4.0
-Stable tag: 5.3.93
+Tested up to: 4.1
+Stable tag: 5.3.94
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Changelog ==
 
+= 5.3.94 =
+* Conflict between STB and SAM was resolved
 = 5.3.93 =
 * Made some improvements
 * Ready for WordPress 4.1
@@ -231,6 +233,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Upgrade Notice ==
 
+= 5.3.94 =
+Conflict between STB and SAM was resolved
 = 5.3.93 =
 Made some improvements. Ready for WordPress 4.1
 = 5.2.91 =

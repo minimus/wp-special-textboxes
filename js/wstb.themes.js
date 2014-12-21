@@ -14,7 +14,7 @@ var sPointer = stbOptions.pointer;
           $.ajax({
             url: ajaxurl,
             data: {
-              action: 'close_pointer',
+              action: 'close_stb_pointer',
               pointer: 'themes'
             },
             async: true

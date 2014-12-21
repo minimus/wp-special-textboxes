@@ -33,7 +33,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       add_action('admin_menu', array(&$this, 'regAdminPage'));
       add_filter('tiny_mce_version', array(&$this, 'tinyMCEVersion'));
       add_action('init', array(&$this, 'addButtons'));
-      add_action('wp_ajax_close_pointer', array(&$this, 'closePointerHandler'));
+      add_action('wp_ajax_close_stb_pointer', array(&$this, 'closePointerHandler'));
       
       $this->updateDB();
       if(!file_exists(STB_DIR.'css/wp-special-textboxes.css')) self::writeCSS('file');
@@ -131,7 +131,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
     }
 
     public function closePointerHandler() {
-      $options = self::getPointerOptions();
+      $options = self::getPointerOptions(true);
       $charset = get_bloginfo('charset');
       @header("Content-Type: application/json; charset={$charset}");
       if(isset($_REQUEST['pointer'])) {
@@ -334,7 +334,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
     
     public function regAdminPage() {
       if (function_exists('add_options_page')) {
-        $this->menu_page = add_menu_page(__('Special Text Boxes', STB_DOMAIN), __('Special Text Boxes', STB_DOMAIN), 'manage_options', 'stb-settings', array(&$this, 'stbAdminPage'), STB_URL.'images/stb-icon.png');
+        $this->menu_page = add_object_page(__('Special Text Boxes', STB_DOMAIN), __('STB', STB_DOMAIN), 'manage_options', 'stb-settings', array(&$this, 'stbAdminPage'), STB_URL.'images/stb-icon.png');
         $this->plugin_page = add_submenu_page('stb-settings', __('STB Settings', STB_DOMAIN), __('Settings', STB_DOMAIN), 'manage_options', 'stb-settings', array(&$this, 'stbAdminPage'));
         $this->styles_page = add_submenu_page('stb-settings', __('STB Styles', STB_DOMAIN), __('Styles', STB_DOMAIN), 'manage_options', 'stb-styles', array(&$this, 'stbStylesPage'));
         $this->editor_page = add_submenu_page('stb-settings', __('STB Style Editor', STB_DOMAIN), __('New Style', STB_DOMAIN), 'manage_options', 'stb-editor', array(&$this, 'stbEditorPage'));
