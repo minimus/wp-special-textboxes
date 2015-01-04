@@ -1,10 +1,10 @@
 ﻿=== Special Text Boxes ===
 Contributors: minimus
-Donate link:  https://load.payoneer.com/LoadToPage.aspx?email=minimus@simplelib.com
+Donate link:  http://www.simplelib.com
 Tags: content, performance, text, code, php, widget
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 5.3.94
+Stable tag: 5.3.95
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,8 +13,6 @@ Highlights any portion of text as text in the colored boxes.
 == Description ==
 
 Adds little style sheet file and short code to blog for highlighting some portion of text in post as colored boxes. That may be warning, alert, info and download portion of post's text.
-
-**WARNING!!!** **Special Text Widget** works only under **Wordpress 2.8+** !
 
 Available languages:
 
@@ -37,6 +35,9 @@ Available languages:
 If you have created your own language pack, or have an update of an existing one, you can send **.po** and **.mo files** to me (minimus AT simplelib.com) so that I can bundle it into **Special Text Boxes**.
   
 Real examples of outputs you can see on the [plugin page](http://www.simplelib.com/archives/wordpress-plugin-wp-special-textboxes/)
+
+[Compare feature set](http://stb.simplelib.com/info/compare-stb/) of different editions of the STB plugin and choose exactly what you need.
+
 
 == Installation ==
 
@@ -72,21 +73,17 @@ defined as
 
 `function stbHighlightText( $content = null, $id = 'warning', $caption = '', $atts = null )`
 
-= Can I use Special Text widget with Wordpress 2.7? =
-
-No! *Special Text widget* wrote with using *Wordpress Widget Factory technology* and this one can work only under Wordpress 2.8 and higher!
-
 = How to insert special text box into special text box? =
 
 Use *stb* shortcode inside *stextbox* shortcode
 
 `[stextbox]Some text [stb]Some text in the indoor box[/stb][/stextbox]`
 
-More about Special Text Boxes usage and customising read on the [plugin page](http://www.simplelib.com/?p=11)
+More about Special Text Boxes usage and customising read on the [plugin page](http://www.simplelib.com/archives/wordpress-plugin-wp-special-textboxes/)
 
 == Screenshots ==
 
-1. Examples of special textboxes
+1. Examples of special text boxes
 1. Special Text Boxes Parameters Page
 1. Special Text Boxes Box Editor
 1. Special Text Boxes Themes Selector
@@ -97,6 +94,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Changelog ==
 
+= 5.3.95 =
+* Minor bug fixed
 = 5.3.94 =
 * Conflict between STB and SAM was resolved
 = 5.3.93 =
@@ -233,6 +232,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Upgrade Notice ==
 
+= 5.3.95 =
+Minor bug fixed
 = 5.3.94 =
 Conflict between STB and SAM was resolved
 = 5.3.93 =
