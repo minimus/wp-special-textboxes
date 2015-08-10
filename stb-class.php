@@ -53,7 +53,7 @@ if (!class_exists("SpecialTextBoxes")) {
     public $globalMode = '';
     
     public function __construct() {
-      define('STB_VERSION', '5.3.95');
+      define('STB_VERSION', '5.3.97');
       define('STB_DB_VERSION', '1.0');
       define('STB_DIR', dirname( __FILE__ ) . '/');
       define('STB_DOMAIN', 'wp-special-textboxes');
@@ -330,10 +330,10 @@ if (!class_exists("SpecialTextBoxes")) {
 
 if (!class_exists('special_text') && class_exists('WP_Widget')) {
   class special_text extends WP_Widget {
-    function special_text() {
+    function __construct() {
       $widget_ops = array( 'classname' => 'special_text', 'description' => __('Arbitrary text or PHP in colored block.', STB_DOMAIN));
       $control_ops = array( 'width' => 350, 'height' => 450, 'id_base' => 'special_text' );
-      $this->WP_Widget( 'special_text', __('Special Text', STB_DOMAIN), $widget_ops, $control_ops );
+      parent::__construct( 'special_text', __('Special Text', STB_DOMAIN), $widget_ops, $control_ops );
     }
     
     function getMode($val) {

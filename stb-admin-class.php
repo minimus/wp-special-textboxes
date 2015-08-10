@@ -42,6 +42,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
     public function updateDB() {
       global $wpdb, $charset_collate;
       $sTable = $wpdb->prefix . "stb_styles";
+      $charset = $wpdb->get_charset_collate();
       
       require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
       require_once('stb-themes-lite.php');
@@ -55,7 +56,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
                     stype VARCHAR(8) DEFAULT NULL,
                     trash TINYINT(1) DEFAULT 0,
                     PRIMARY KEY (slug)
-                   ) $charset_collate;";
+                   ) $charset;";
         dbDelta($sSql);
 
         $themes = new StbThemes(STB_THEMES_DIR);

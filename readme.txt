@@ -3,8 +3,8 @@ Contributors: minimus
 Donate link:  http://www.simplelib.com
 Tags: content, performance, text, code, php, widget
 Requires at least: 3.9
-Tested up to: 4.1
-Stable tag: 5.3.95
+Tested up to: 4.3
+Stable tag: 5.3.97
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,6 +94,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Changelog ==
 
+= 5.3.97 =
+* Wordpress 4.3 compatibility
 = 5.3.95 =
 * Minor bug fixed
 = 5.3.94 =
@@ -232,6 +234,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Upgrade Notice ==
 
+= 5.3.97 =
+Wordpress 4.3 compatibility
 = 5.3.95 =
 Minor bug fixed
 = 5.3.94 =
