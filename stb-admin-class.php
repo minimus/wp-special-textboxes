@@ -49,7 +49,7 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
 
       if($wpdb->get_var("SHOW TABLES LIKE '$sTable'") != $sTable) {
         $sSql = "CREATE TABLE $sTable (
-                    slug VARCHAR(255) NOT NULL,
+                    slug VARCHAR(55) NOT NULL,
                     caption VARCHAR(255) NOT NULL,
                     js_style TEXT DEFAULT NULL,
                     css_style TEXT DEFAULT NULL,
