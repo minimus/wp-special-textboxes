@@ -31,6 +31,7 @@ Available languages:
 * Slovak by [Branco](http://webhostinggeeks.com/blog/)
 * Traditional Chinese by 断青丝
 * Spanish by [Andrew Kurtis](http://www.webhostinghub.com/)
+* Swahili by [Andrew Mwaniki](http://purehcgdietdrops.com/)
 
 If you have created your own language pack, or have an update of an existing one, you can send **.po** and **.mo files** to me (minimus AT simplelib.com) so that I can bundle it into **Special Text Boxes**.
   
@@ -94,6 +95,9 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Changelog ==
 
+= 5.5.100 =
+* Wordpress 4.4 compatibility
+* Language pack is updated. Swahili by Andrew Mwaniki is added.
 = 5.4.98 =
 * The bug of creating DB table with charset utf8mb4 is solved.
 = 5.3.97 =

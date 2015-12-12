@@ -1,0 +1,381 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR minimus
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: wp-special-textboxes 3.3.35\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-special-textboxes\n"
+"POT-Creation-Date: 2009-08-25 09:59+0000\n"
+"PO-Revision-Date: 2015-11-24 05:13-0700\n"
+"Language-Team: مدونة رسين <r-sn.com@hotmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.8.6\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: sw\n"
+
+#: js/dialog.php:20
+msgid "Insert Special Text Box"
+msgstr "Kuingiza Maalum Nakala Box"
+
+#: js/dialog.php:34 wp-special-textboxes.php:241
+msgid "Basic Settings"
+msgstr "Mazingira ya msingi"
+
+#: js/dialog.php:35 wp-special-textboxes.php:293
+msgid "Extended Settings"
+msgstr "Mazingira kupanuliwa"
+
+#: js/dialog.php:42
+msgid "Text Box ID"
+msgstr "Nakala Box ID"
+
+#: js/dialog.php:45
+msgid "Alert"
+msgstr "Tahadhari"
+
+#: js/dialog.php:46
+msgid "Download"
+msgstr "Download"
+
+#: js/dialog.php:47
+msgid "Info"
+msgstr "Maelezo"
+
+#: js/dialog.php:48
+msgid "Black"
+msgstr "Masai Mara"
+
+#: js/dialog.php:49
+msgid "Grey"
+msgstr "Grey"
+
+#: js/dialog.php:50
+msgid "Custom"
+msgstr "mila"
+
+#: js/dialog.php:55
+msgid "Caption"
+msgstr "Maelezo"
+
+#: js/dialog.php:63
+msgid "Text color"
+msgstr "Nakala rangi"
+
+#: js/dialog.php:72
+msgid "Caption Text color"
+msgstr "Maelezo Nakala rangi"
+
+#: js/dialog.php:83
+msgid "Color"
+msgstr "Michezo"
+
+#: js/dialog.php:92
+msgid "Caption color"
+msgstr "Maelezo rangi"
+
+#: js/dialog.php:103
+msgid "Border color"
+msgstr "Mpaka rangi"
+
+#: js/dialog.php:116
+msgid "Image URL"
+msgstr "Image URL"
+
+#: js/dialog.php:123
+msgid "This is big image (or, if URL not entered, big standard image)"
+msgstr "Hii ni picha kubwa (au, kama URL hakuingia, kubwa kiwango picha)"
+
+#: js/dialog.php:127
+msgid "Do not show image"
+msgstr "Hawaonyeshi mfano"
+
+#: js/dialog.php:134
+msgid "Cancel"
+msgstr "Kufuta"
+
+#: js/dialog.php:137
+msgid "Insert"
+msgstr "Kuingiza"
+
+#: wp-special-textboxes.php:219
+msgid ""
+"This is example of Custom Special Text Box with small image. You must save "
+"options to view changes."
+msgstr ""
+"Huu ni mfano wa desturi Maalum Nakala Box na sura ndogo. Lazima kuokoa "
+"chaguzi kutazama mabadiliko."
+
+#: wp-special-textboxes.php:220
+msgid ""
+"This is example of Custom Special Text Box with big image. You must save "
+"options to view changes."
+msgstr ""
+"Huu ni mfano wa desturi Maalum Nakala Box na picha kubwa. Lazima kuokoa "
+"chaguzi kutazama mabadiliko."
+
+#: wp-special-textboxes.php:221
+msgid "This is caption"
+msgstr "Hii ni maelezo"
+
+#: wp-special-textboxes.php:222
+msgid ""
+"This is example of Captioned Custom Special Text Box. You must save options "
+"to view changes."
+msgstr ""
+"Huu ni mfano wa captioned Desturi Maalum Nakala Box. Lazima kuokoa chaguzi "
+"kutazama mabadiliko."
+
+#. Plugin Name of an extension
+#: wp-special-textboxes.php:228
+msgid "Special Text Boxes"
+msgstr "Maalum Nakala masanduku"
+
+#: wp-special-textboxes.php:245
+msgid "Select border style for Special Text Boxes"
+msgstr "Teule mpaka style kwa Maalum Nakala masanduku"
+
+#: wp-special-textboxes.php:246
+msgid "Selecting \"None\" will disable Special Text Boxes border."
+msgstr "Kuchagua \"Hakuna\" italemaza Maalum Nakala masanduku mpaka."
+
+#: wp-special-textboxes.php:252
+msgid "Define top margin for Special Text Boxes"
+msgstr "Kufafanua kiasi juu kwa Maalum Nakala masanduku"
+
+#: wp-special-textboxes.php:253
+msgid "This is a gap between top edge of Special Text Box and text above."
+msgstr ""
+"Hii ni pengo kati ya makali juu ya Maalum Nakala Box na maandishi hapo juu."
+
+#: wp-special-textboxes.php:258
+msgid "Define left margin for Special Text Boxes"
+msgstr "Kufafanua kiasi kushoto kwa Maalum Nakala masanduku"
+
+#: wp-special-textboxes.php:259
+msgid ""
+"This is a gap between left edge of Special Text Box and left edge of post "
+"area."
+msgstr ""
+"Hii ni pengo kati ya makali ya kushoto ya Maalum Nakala Box na kushoto "
+"makali ya mwisho eneo hilo."
+
+#: wp-special-textboxes.php:264
+msgid "Define right margin for Special Text Boxes"
+msgstr "Kufafanua kiasi haki kwa Maalum Nakala masanduku"
+
+#: wp-special-textboxes.php:265
+msgid ""
+"This is a gap between right edge of Special Text Box and right edge of post "
+"area."
+msgstr ""
+"Hii ni pengo kati ya makali ya haki ya Maalum Nakala Box na makali ya haki "
+"ya goli eneo hilo."
+
+#: wp-special-textboxes.php:270
+msgid "Define bottom margin for Special Text Boxes"
+msgstr "Kufafanua kiasi chini kwa Maalum Nakala masanduku"
+
+#: wp-special-textboxes.php:271
+msgid "This is a gap between bottom edge of Special Text Box and text below."
+msgstr ""
+"Hii ni pengo kati ya chini makali ya Maalum Nakala Box na ujumbe wa hapa "
+"nchini."
+
+#: wp-special-textboxes.php:276
+msgid "Allow Big Image for Simple (non-captioned) Special Text Boxes?"
+msgstr ""
+"Kuruhusu Big Image kwa rahisi (yasiyo ya yenye kichwa cha) Maalum Nakala "
+"masanduku?"
+
+#: wp-special-textboxes.php:277
+msgid ""
+"Selecting \"Yes\" will allow big icons for simple (non-captioned) Special "
+"Text Boxes."
+msgstr ""
+"Kuchagua \"Ndiyo\" itaruhusu icons kubwa kwa rahisi (yasiyo ya yenye kichwa "
+"cha) Maalum Nakala masanduku."
+
+#: wp-special-textboxes.php:280 wp-special-textboxes.php:287
+#: wp-special-textboxes.php:302 wp-special-textboxes.php:309
+#: wp-special-textboxes.php:316
+msgid "Yes"
+msgstr "Ndiyo"
+
+#: wp-special-textboxes.php:280 wp-special-textboxes.php:287
+#: wp-special-textboxes.php:302 wp-special-textboxes.php:309
+#: wp-special-textboxes.php:316
+msgid "No"
+msgstr "Hakuna"
+
+#: wp-special-textboxes.php:283
+msgid "Allow icon images for Special Text Boxes?"
+msgstr "Kuruhusu picha icon kwa Maalum Nakala masanduku?"
+
+#: wp-special-textboxes.php:284
+msgid ""
+"Selecting \"Yes\" will allow displaying icon images in Special Text Boxes."
+msgstr ""
+"Kuchagua \"Ndiyo\" itaruhusu kuonyesha picha icon katika Maalum Nakala "
+"masanduku."
+
+#: wp-special-textboxes.php:294
+msgid ""
+"Parameters below add elements of CSS3 standard to Style Sheet. Not all "
+"browsers can interpret this elements properly, but including this elements "
+"to HTML page not crash browser."
+msgstr ""
+"Vigezo chini kuongeza mambo ya CSS3 kiwango kwa Sinema Sheet. Si wote "
+"browsers unaweza kutafsiri mambo haya vizuri, lakini ikiwa ni pamoja na hii "
+"mambo ya HTML ukurasa si ajali browser."
+
+#: wp-special-textboxes.php:298
+msgid "Allow rounded corners for Special Text Boxes?"
+msgstr "Kuruhusu picha icon kwa Maalum Nakala masanduku?"
+
+#: wp-special-textboxes.php:299
+msgid "Selecting \"No\" will disable Special Text Boxes rounded corners."
+msgstr "Kuchagua \"No\" italemaza Maalum Nakala masanduku pembe rounded."
+
+#: wp-special-textboxes.php:305
+msgid "Allow box shadow for Special Text Boxes?"
+msgstr "Kuruhusu picha icon kwa Maalum Nakala masanduku?"
+
+#: wp-special-textboxes.php:306
+msgid "Selecting \"No\" will disable Special Text Boxes shadow."
+msgstr "Kuchagua \"No\" italemaza Maalum Nakala masanduku pembe rounded."
+
+#: wp-special-textboxes.php:312
+msgid "Allow text shadow for Special Text Boxes?"
+msgstr "Kuruhusu picha icon kwa Maalum Nakala masanduku?"
+
+#: wp-special-textboxes.php:313
+msgid "Selecting \"No\" will disable Special Text Boxes text shadow."
+msgstr "Kuchagua \"No\" italemaza Maalum Nakala masanduku pembe rounded."
+
+#: wp-special-textboxes.php:333 wp-special-textboxes.php:415
+msgid "Custom Box Editor"
+msgstr "Desturi Box Mhariri"
+
+#: wp-special-textboxes.php:334
+msgid "Use parameters below for customising custom Special Text Box."
+msgstr "Kutumia vigezo chini kwa customizing desturi Maalum Nakala Box."
+
+#: wp-special-textboxes.php:338
+msgid "Define font color for Custom Special Text Box"
+msgstr "Kufafanua font rangi kwa Desturi Maalum Nakala Box"
+
+#: wp-special-textboxes.php:339
+msgid "This is a font color of Custom Special Text Box (Six Hex Digits)."
+msgstr "Hii ni herufi ya rangi ya Desturi Maalum Nakala Box (Six Hex Nambari)."
+
+#: wp-special-textboxes.php:344
+msgid "Define caption font color for Custom Special Text Box"
+msgstr "Kufafanua font rangi kwa Desturi Maalum Nakala Box"
+
+#: wp-special-textboxes.php:345
+msgid ""
+"This is a font color of Custom Special Text Box caption (Six Hex Digits)."
+msgstr ""
+"Hii ni herufi ya rangi ya Desturi Maalum Nakala Box maelezo (Six Hex "
+"Nambari)."
+
+#: wp-special-textboxes.php:350
+msgid "Define background color for Custom Special Text Box"
+msgstr "Kufafanua font rangi kwa Desturi Maalum Nakala Box"
+
+#: wp-special-textboxes.php:351
+msgid "This is a background color of Custom Special Text Box (Six Hex Digits)."
+msgstr "Hii ni rangi ya asili ya desturi Maalum Nakala Box (Six Hex Nambari)."
+
+#: wp-special-textboxes.php:356
+msgid "Define background color for Custom Special Text Box caption"
+msgstr ""
+"Hii ni herufi ya rangi ya Desturi Maalum Nakala Box maelezo (Six Hex "
+"Nambari)."
+
+#: wp-special-textboxes.php:357
+msgid ""
+"This is a background color of Custom Special Text Box caption (Six Hex "
+"Digits)."
+msgstr ""
+"Hii ni herufi ya rangi ya Desturi Maalum Nakala Box maelezo (Six Hex "
+"Nambari)."
+
+#: wp-special-textboxes.php:362
+msgid "Define border color for Custom Special Text Box"
+msgstr "Kufafanua font rangi kwa Desturi Maalum Nakala Box"
+
+#: wp-special-textboxes.php:363
+msgid "This is a border color of Custom Special Text Box (Six Hex Digits)."
+msgstr ""
+"Hii ni herufi ya rangi ya Desturi Maalum Nakala Box maelezo (Six Hex "
+"Nambari)."
+
+#: wp-special-textboxes.php:368
+msgid "Define image for Custom Special Text Box"
+msgstr "Kufafanua font rangi kwa Desturi Maalum Nakala Box"
+
+#: wp-special-textboxes.php:369
+msgid ""
+"This is an image of Custom Special Text Box (Full URL). 25x25 pixels, "
+"transparent background PNG image recommended."
+msgstr ""
+"Hii ni mfano wa desturi Maalum Nakala Box (Kamili URL). 25x25 saizi, uwazi "
+"background PNG picha ilipendekeza."
+
+#: wp-special-textboxes.php:375
+msgid "Define big image for simple (non-captioned) Custom Special Text Box"
+msgstr ""
+"Kufafanua picha kubwa kwa rahisi (yasiyo ya yenye kichwa cha) Desturi Maalum "
+"Nakala Box"
+
+#: wp-special-textboxes.php:376
+msgid ""
+"This is big image for simple (non-captioned) Custom Special Text Box (Full "
+"URL). 50x50 pixels, transparent background PNG image recommended."
+msgstr ""
+"Hii ni picha kubwa kwa rahisi (yasiyo ya yenye kichwa cha) Desturi Maalum "
+"Nakala Box (Kamili URL). 50x50 saizi, uwazi background PNG picha "
+"ilipendekeza."
+
+#: wp-special-textboxes.php:395
+msgid "Special Text Boxes Settings Updated."
+msgstr "Maalum"
+
+#: wp-special-textboxes.php:402
+msgid "Special Text Boxes Settings"
+msgstr "Maalum"
+
+#: wp-special-textboxes.php:490
+msgid "Update Settings"
+msgstr "Mwisho Mazingira"
+
+#. Plugin URI of an extension
+msgid "http://simplelib.co.cc/?p=11"
+msgstr "http://simplelib.co.cc/?p=11"
+
+#. Description of an extension
+msgid ""
+"Adds simple colored text boxes to highlight some portion of post text. Use "
+"it for highlights warnings, alerts, infos and downloads in your blog posts. "
+"Visit <a href=\"http://simplelib.co.cc/\">SimpleLib blog</a> for more "
+"details."
+msgstr ""
+"Anaongeza masanduku rahisi Nakala rangi ya kuonyesha baadhi ya sehemu za "
+"baada asilia. Matumizi yake kwa mambo muhimu onyo, alerts, infos na "
+"downloads katika posts blog yako. Ziara <a href=\"http://simplelib.co.cc/\"> "
+"SimpleLib blog </a> kwa maelezo zaidi."
+
+#. Author of an extension
+msgid "minimus"
+msgstr "minimus"
+
+#. Author URI of an extension
+msgid "http://blogovod.co.cc"
+msgstr "http://blogovod.co.cc"
