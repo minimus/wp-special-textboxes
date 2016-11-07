@@ -53,7 +53,7 @@ if (!class_exists("SpecialTextBoxes")) {
     public $globalMode = '';
     
     public function __construct() {
-      define('STB_VERSION', '5.5.102');
+      define('STB_VERSION', '5.6.103');
       define('STB_DB_VERSION', '1.0');
       define('STB_DIR', dirname( __FILE__ ) . '/');
       define('STB_DOMAIN', 'wp-special-textboxes');
@@ -124,6 +124,105 @@ if (!class_exists("SpecialTextBoxes")) {
         }
       }
       return $styles;
+    }
+
+    public function writeStyles() {
+	    $options = $this->settings;
+	    $styles = $this->styles;
+
+	    $content =  ".stb-container-css {margin: {$options['top_margin']}px {$options['right_margin']}px {$options['bottom_margin']}px {$options['left_margin']}px;}";
+
+	    $content .= ".stb-box {";
+	    if($options['fontSize'] !== '0') $content .=  "font-size: {$options['fontSize']}px;";
+	    if($options['text_shadow'] == "true") $content .= "text-shadow: 1px 1px 2px #888;";
+	    $content .= "}";
+
+	    $content .= ".stb-caption-box {";
+	    if($options['captionFontSize'] !== '0') $content .= "font-size: {$options['captionFontSize']}px;";
+	    $content .= "}";
+
+	    $content .= ".stb-body-box {";
+	    if($options['fontSize'] !== '0') $content .= "font-size: {$options['fontSize']}px;";
+	    $content .= "}";
+
+	    $content .= "\n"."/* Class Dependent Parameters */"."\n";
+	    foreach($styles as &$val) {
+		    if(!isset($val['cssStyle']['bgColorEnd'])) {
+			    $val['cssStyle']['bgColorEnd'] = str_replace('#', '', $val['cssStyle']['bgColor']);
+		    }
+		    if(!isset($val['cssStyle']['captionBgColorEnd'])) {
+			    $val['cssStyle']['captionBgColorEnd'] = str_replace('#', '', $val['cssStyle']['captionBgColor']);
+		    }
+
+		    $content .= ".stb-border.stb-{$val['slug']}-container "."{";
+		    $content .= "border: 1px {$options['border_style']} #{$val['cssStyle']['borderColor']};";
+		    $content .= "}";
+
+		    $content .= ".stb-side.stb-{$val['slug']}-container "."{";
+		    $content .= "background: #{$val['cssStyle']['captionBgColor']};";
+		    $content .= "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$val['cssStyle']['captionBgColor']}', endColorstr='#{$val['cssStyle']['captionBgColorEnd']}',GradientType=0 );";
+		    $content .= "background: -moz-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
+		    $content .= "background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#{$val['cssStyle']['captionBgColor']}), color-stop(90%,#{$val['cssStyle']['captionBgColorEnd']}));";
+		    $content .= "background: -webkit-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%,#{$val['cssStyle']['captionBgColorEnd']} 90%);";
+		    $content .= "background: -o-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%,#{$val['cssStyle']['captionBgColorEnd']} 90%);";
+		    $content .= "background: -ms-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%,#{$val['cssStyle']['captionBgColorEnd']} 90%);";
+		    $content .= "background: linear-gradient(#{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
+		    $content .= "}";
+
+		    $content .= ".stb-side-none.stb-{$val['slug']}-container "."{";
+		    $content .= "background: #{$val['cssStyle']['bgColor']};";
+		    $content .= "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$val['cssStyle']['bgColor']}', endColorstr='#{$val['cssStyle']['bgColorEnd']}',GradientType=0 );";
+		    $content .= "background: -moz-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
+		    $content .= "background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#{$val['cssStyle']['bgColor']}), color-stop(90%,#{$val['cssStyle']['bgColorEnd']}));";
+		    $content .= "background: -webkit-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+		    $content .= "background: -o-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+		    $content .= "background: -ms-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+		    $content .= "background: linear-gradient(#{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
+		    $content .= "}";
+
+		    $content .= ".stb-{$val['slug']}_box "."{";
+		    $content .= "background: #{$val['cssStyle']['bgColor']};";
+		    $content .= "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$val['cssStyle']['bgColor']}', endColorstr='#{$val['cssStyle']['bgColorEnd']}',GradientType=0 );";
+		    $content .= "background: -moz-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
+		    $content .= "background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#{$val['cssStyle']['bgColor']}), color-stop(90%,#{$val['cssStyle']['bgColorEnd']}));";
+		    $content .= "background: -webkit-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+		    $content .= "background: -o-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+		    $content .= "background: -ms-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+		    $content .= "background: linear-gradient(#{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
+		    $content .= "color: #{$val['cssStyle']['color']};";
+		    $content .= "}";
+
+		    $content .= ".stb-{$val['slug']}-caption_box "."{";
+		    $content .= "background: #{$val['cssStyle']['captionBgColor']};";
+		    $content .= "background: -moz-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
+		    $content .= "background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#{$val['cssStyle']['captionBgColor']}), color-stop(90%,#{$val['cssStyle']['captionBgColorEnd']}));";
+		    $content .= "background: -webkit-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%,#{$val['cssStyle']['captionBgColorEnd']} 90%);";
+		    $content .= "background: -o-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%,#{$val['cssStyle']['captionBgColorEnd']} 90%);";
+		    $content .= "background: -ms-linear-gradient(top,  #{$val['cssStyle']['captionBgColor']} 30%,#{$val['cssStyle']['captionBgColorEnd']} 90%);";
+		    $content .= "background: linear-gradient(#{$val['cssStyle']['captionBgColor']} 30%, #{$val['cssStyle']['captionBgColorEnd']} 90%);";
+		    $content .= "color: #{$val['cssStyle']['captionColor']};";
+		    if ($options['text_shadow'] == "true") {
+			    $content .= "text-shadow: 1px 1px 2px #888;";
+		    }
+		    $content .= "}";
+
+		    $content .= ".stb-{$val['slug']}-body_box "."{";
+		    $content .= "background: #{$val['cssStyle']['bgColor']};";
+		    $content .= "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$val['cssStyle']['bgColor']}', endColorstr='#{$val['cssStyle']['bgColorEnd']}',GradientType=0 );";
+		    $content .= "background: -moz-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
+		    $content .= "background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#{$val['cssStyle']['bgColor']}), color-stop(90%,#{$val['cssStyle']['bgColorEnd']}));";
+		    $content .= "background: -webkit-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+		    $content .= "background: -o-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+		    $content .= "background: -ms-linear-gradient(top,  #{$val['cssStyle']['bgColor']} 30%,#{$val['cssStyle']['bgColorEnd']} 90%);";
+		    $content .= "background: linear-gradient(#{$val['cssStyle']['bgColor']} 30%, #{$val['cssStyle']['bgColorEnd']} 90%);";
+		    $content .= "color: #{$val['cssStyle']['color']};";
+		    if ($options['text_shadow'] == "true") {
+			    $content .= "text-shadow: 1px 1px 2px #888;";
+		    }
+		    $content .= "}";
+	    }
+
+	    return $content;
     }
     
     function getVersions($force = false) {
@@ -258,8 +357,11 @@ if (!class_exists("SpecialTextBoxes")) {
       // Styles
       if($this->globalMode != 'js') {
         wp_enqueue_style('stbCoreCSS', STB_URL.'css/stb-core.css', false, STB_VERSION);
-        if($this->settings['css_loading'] === 'dynamic')
-          wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css.php', false, STB_VERSION);
+        if($this->settings['css_loading'] === 'dynamic') {
+	        //wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css.php', false, STB_VERSION);
+	        $inlineStyles = self::writeStyles();
+	        echo "<style>\n{$inlineStyles}</style>\n";
+        }
         else wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css', false, STB_VERSION);
       }
 

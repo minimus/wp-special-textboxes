@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="dfdbb6d0-b9ca-4749-9962-77de4901a705" name="LocalHost 3" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="C:\Bitnami\wampstack-7.0.0-0\apache2\htdocs\wordpress3\wp-content\plugins" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

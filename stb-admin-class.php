@@ -167,9 +167,11 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
     }
 
     public function loadScripts( $hook ) {
-      if($hook == $this->plugin_page) {
+      $inlineStyles = parent::writeStyles();
+	    if($hook == $this->plugin_page) {
         wp_enqueue_style('stbAdminCSS', STB_URL.'css/stb-admin.css', false, STB_VERSION);
-        wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css.php', false, STB_VERSION);
+        //wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css.php', false, STB_VERSION);
+		    echo "<style>\n{$inlineStyles}</style>\n";
         wp_enqueue_style('jquery-ui', STB_URL.'css/jquery-ui-wp38.css', false, '1.10.3');
         wp_enqueue_style('smallColorPickerButtonsCSS', STB_URL.'css/color-buttons.min.css');
         wp_enqueue_style('smallColorPickerCSS', STB_URL.'css/small-color-picker.min.css');
@@ -207,7 +209,8 @@ if(!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) {
       elseif($hook == $this->editor_page) {
         wp_enqueue_style('stbAdminCSS', STB_URL.'css/stb-edit.css', false, STB_VERSION);
         wp_enqueue_style('stbCoreCSS', STB_URL.'css/stb-core.css', false, STB_VERSION);
-        wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css.php', false, STB_VERSION);
+        //wp_enqueue_style('stbCSS', STB_URL.'css/wp-special-textboxes.css.php', false, STB_VERSION);
+	      echo "<style>\n{$inlineStyles}</style>\n";
         wp_enqueue_style('smallColorPickerButtonsCSS', STB_URL.'css/color-buttons.min.css');
         wp_enqueue_style('smallColorPickerCSS', STB_URL.'css/small-color-picker.min.css');
 
