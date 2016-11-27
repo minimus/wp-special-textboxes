@@ -5,6 +5,22 @@
       <webServer id="dfdbb6d0-b9ca-4749-9962-77de4901a705" name="LocalHost 3" url="http://localhost">
         <fileTransfer port="0" mountedRoot="C:\Bitnami\wampstack-7.0.0-0\apache2\htdocs\wordpress3\wp-content\plugins" accessType="MOUNT" />
       </webServer>
+      <webServer id="2a109e27-75e8-49b6-8de8-98e40335be63" name="Test Server" url="http://188.120.255.94">
+        <fileTransfer host="188.120.255.94" port="22" rootFolder="/var/www/minimus/data/www/tests.simplelib.com/wp-content/plugins" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="86bf80b6-0269-4b1b-9bed-fd1d33c61da7" name="Test Server 2 (Blogcoding)" url="http://188.120.255.94">
+        <fileTransfer host="188.120.255.94" port="22" rootFolder="/var/www/minimus/data/www/tests.blogcoding.ru/wp-content/plugins" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

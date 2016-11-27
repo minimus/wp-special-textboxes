@@ -9,6 +9,20 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="Test Server">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/wp-special-textboxes" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Test Server 2 (Blogcoding)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/wp-special-textboxes" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
   </component>
 </project>

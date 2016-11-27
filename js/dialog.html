@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <script type="text/javascript">
+    document.write('<title>' + top.tinymce.activeEditor.getLang('wstb.title') + '</title>');
+  </script>
+  </title>
+  <style type="text/css">
+    input, button, table {
+      font-size: 11px;
+    }
+  </style>
+  <script type="text/javascript">
+    var
+      data = top.tinymce.activeEditor.windowManager.getParams(),
+      url = data.plugin_url,
+      mceUrl = data.mceUrl,
+      mceUtilsUrl = data.mceUtilsUrl,
+      jsUrl = data.jsUrl,
+      slugs = data.slugs;
+
+    document.write('<script language="JavaScript" type="text/javascript" src="' + mceUrl + 'tiny_mce_popup.js"></scr' + 'ipt>');
+    document.write('<script language="JavaScript" type="text/javascript" src="' + mceUtilsUrl + 'form_utils.js"></scr' + 'ipt>');
+    document.write('<script language="JavaScript" type="text/javascript" src="' + mceUtilsUrl + 'mctabs.js"></scr' + 'ipt>');
+    document.write('<script language="JavaScript" type="text/javascript" src="' + mceUtilsUrl + 'editable_selects.js"></scr' + 'ipt>');
+    document.write('<script language="JavaScript" type="text/javascript" src="' + url + '/wstb-dialog.js"></scr' + 'ipt>');
+    document.write('<script language="JavaScript" type="text/javascript" src="' + jsUrl + 'jscolor/jscolor.js"></scr' + 'ipt>');
+  </script>
+  <base target="_self"/>
+</head>
+<body id="link" onload="tinyMCEPopup.executeOnLoad('init();');document.body.style.display='';" style="display: none">
+<form name="wstb" onsubmit="insertWSTBCode();return false;" action="#">
+  <div class="tabs">
+    <ul>
+      <li id="basic_tab" class="current"><span><a href="javascript:mcTabs.displayTab('basic_tab','basic_panel');"
+                                                  onmousedown="return false;">{#wstb.basic_tab}</a></span></li>
+      <li id="extended_tab"><span><a href="javascript:mcTabs.displayTab('extended_tab','extended_panel');"
+                                     onmousedown="return false;">{#wstb.extended_tab}</a></span></li>
+    </ul>
+  </div>
+  <div class="panel_wrapper" style="height: 440px;">
+    <div id="basic_panel" class="panel current">
+      <table border="0" cellpadding="4" cellspacing="0">
+        <tr>
+          <td nowrap="nowrap"><label for="wstb_id">{#wstb.box_id}</label></td>
+          <td nowrap="nowrap">
+            <select id="wstb_id" name="wstb_id" style="width: 405px">
+              <script type="text/javascript">
+                document.write(slugs);
+              </script>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td nowrap="nowrap"><label for="wstb_caption">{#wstb.caption}</label></td>
+          <td><input id="wstb_caption" name="wstb_caption" style="width: 405px"/></td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td><input id="wstb_default_caption" name="wstb_default_caption" class="checkbox" type="checkbox"/></td>
+          <td><label for="wstb_default_caption">{#wstb.default_caption}</label></td>
+        </tr>
+      </table>
+      <table border="0" cellpadding="4" cellspacing="0">
+        <tr>
+          <td>{#wstb.block_collapsing}</td>
+        </tr>
+        <tr>
+          <td>
+            <label for="wstb_collapsing_yes">
+              <input type="radio" id="wstb_collapsing_yes" name="wstb_collapsing" class="radio" value="yes"/>{#wstb.yes}</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="wstb_collapsing_no">
+              <input type="radio" id="wstb_collapsing_no" name="wstb_collapsing" class="radio"
+                     value="no"/>{#wstb.no}</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="wstb_collapsing_default">
+              <input type="radio" id="wstb_collapsing_default" name="wstb_collapsing" class="radio" value="default"
+                     checked="checked"/>{#wstb.default}</label>
+          </td>
+        </tr>
+      </table>
+      <table border="0" cellpadding="4" cellspacing="0">
+        <tr>
+          <td>{#wstb.collapsed}</td>
+        </tr>
+        <tr>
+          <td>
+            <label for="wstb_collapsed_yes">
+              <input type="radio" id="wstb_collapsed_yes" name="wstb_collapsed" class="radio"
+                     value="yes"/>{#wstb.yes}</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="wstb_collapsed_no">
+              <input type="radio" id="wstb_collapsed_no" name="wstb_collapsed" class="radio"
+                     value="no"/>{#wstb.no}</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="wstb_collapsed_default">
+              <input type="radio" id="wstb_collapsed_default" name="wstb_collapsed" class="radio" value="default"
+                     checked="checked"/>{#wstb.default}</label>
+          </td>
+        </tr>
+      </table>
+      <table border="0" cellpadding="4" cellspacing="0">
+        <tr>
+          <td>{#wstb.drawing_mode}</td>
+        </tr>
+        <tr>
+          <td>
+            <label for="wstb_mode_css">
+              <input type="radio" id="wstb_mode_css" name="wstb_mode" class="radio" value="css"/>CSS
+            </label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="wstb_mode_js">
+              <input type="radio" id="wstb_mode_js" name="wstb_mode" class="radio" value="js"/>Javascript
+            </label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="wstb_mode_default">
+              <input type="radio" id="wstb_mode_default" name="wstb_mode" class="radio" value="default"
+                     checked="checked"/>{#wstb.default}
+            </label>
+          </td>
+        </tr>
+      </table>
+      <table border="0" cellpadding="4" cellspacing="0">
+        <tr>
+          <td>{#wstb.direction}</td>
+        </tr>
+        <tr>
+          <td>
+            <label for="wstb_dir_ltr">
+              <input type="radio" id="wstb_dir_ltr" name="wstb_dir" class="radio" value="ltr"/>{#wstb.left_to_right}
+            </label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="wstb_dir_rtl">
+              <input type="radio" id="wstb_dir_rtl" name="wstb_dir" class="radio" value="rtl"/>{#wstb.right_to_left}
+            </label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="wstb_dir_default">
+              <input type="radio" id="wstb_dir_default" name="wstb_dir" class="radio" value="default"
+                     checked="checked"/>{#wstb.default}
+            </label>
+          </td>
+        </tr>
+      </table>
+      <table border="0" cellpadding="4" cellspacing="0">
+        <tr>
+          <td>{#wstb.shadow}</td>
+        </tr>
+        <tr>
+          <td>
+            <label for="wstb_shadow_true">
+              <input type="radio" id="wstb_shadow_true" name="wstb_shadow" class="radio" value="true"/>{#wstb.enable}
+            </label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="wstb_shadow_false">
+              <input type="radio" id="wstb_shadow_false" name="wstb_shadow" class="radio" value="false"/>{#wstb.disable}
+            </label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="wstb_shadow_default">
+              <input type="radio" id="wstb_shadow_default" name="wstb_shadow" class="radio" value="default"
+                     checked="checked"/>{#wstb.default}
+            </label>
+          </td>
+        </tr>
+      </table>
+      <table border="0" cellpadding="4" cellspacing="0">
+        <tr>
+          <td>&nbsp;<br/><strong>{#wstb.floating_mode_settings}</strong></td>
+        </tr>
+      </table>
+      <table border="0" cellpadding="4" cellspacing="0">
+        <tr>
+          <td><input id="wstb_float" name="wstb_float" class="checkbox" type="checkbox"/></td>
+          <td><label for="wstb_float">{#wstb.floating_mode}</label></td>
+        </tr>
+      </table>
+      <table border="0" cellpadding="4" cellspacing="0">
+        <tr>
+          <td nowrap="nowrap"><label for="wstb_align">{#wstb.alignment}</label></td>
+          <td nowrap="nowrap">
+            <select id="wstb_align" name="wstb_align" style="width: 120px">
+              <option value="left">{#wstb.left}</option>
+              <option value="right">{#wstb.right}</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td nowrap="nowrap"><label for="wstb_width">{#wstb.box_width}</label></td>
+          <td><input id="wstb_width" name="wstb_width" style="width: 120px"/></td>
+        </tr>
+      </table>
+    </div>
+    <div id="extended_panel" class="panel">
+      <table border="0" width="100%" cellpadding="3" cellspacing="0">
+        <tr>
+          <td><strong>{#wstb.colors}</strong></td>
+        </tr>
+        <tr>
+          <td><label for="wstb_fcolor">{#wstb.text}</label></td>
+          <td colspan="2">
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td><input class="color {required:false}" id="wstb_fcolor" name="wstb_fcolor" type="text" value=""
+                           size="9" onchange="updateColor('wstb_fcolor_pick','wstb_fcolor');"/></td>
+              </tr>
+            </table>
+          </td>
+          <td><label for="wstb_cfcolor">{#wstb.caption_text}</label></td>
+          <td colspan="2">
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td><input class="color {required:false}" id="wstb_cfcolor" name="wstb_cfcolor" type="text" value=""
+                           size="9" onchange="updateColor('wstb_cfcolor_pick','wstb_cfcolor');"/></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="wstb_bgcolor">{#wstb.background}</label></td>
+          <td colspan="2">
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td><input class="color {required:false}" id="wstb_bgcolor" name="wstb_bgcolor" type="text" value=""
+                           size="9" onchange="updateColor('wstb_bgcolor_pick','wstb_bgcolor');"/></td>
+              </tr>
+            </table>
+          </td>
+          <td><label for="wstb_cbgcolor">{#wstb.caption_background}</label></td>
+          <td colspan="2">
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td><input class="color {required:false}" id="wstb_cbgcolor" name="wstb_cbgcolor" type="text" value=""
+                           size="9" onchange="updateColor('wstb_cbgcolor_pick','wstb_cbgcolor');"/></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="wstb_bgcolorto">{#wstb.stop}</label></td>
+          <td colspan="2">
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td><input class="color {required:false}" id="wstb_bgcolorto" name="wstb_bgcolorto" type="text" value=""
+                           size="9" onchange="updateColor('wstb_bgcolorto_pick','wstb_bgcolorto');"/></td>
+              </tr>
+            </table>
+          </td>
+          <td><label for="wstb_cbgcolorto">{#wstb.caption_stop}</label></td>
+          <td colspan="2">
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td><input class="color {required:false}" id="wstb_cbgcolorto" name="wstb_cbgcolorto" type="text"
+                           value="" size="9" onchange="updateColor('wstb_cbgcolorto_pick','wstb_cbgcolorto');"/></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <table border="0" cellpadding="4" cellspacing="0">
+        <tr>
+          <td><strong>{#wstb.border}</strong></td>
+        </tr>
+      </table>
+      <table border="0" cellpadding="4" cellspacing="0">
+        <tr>
+          <td><label for="wstb_bcolor">{#wstb.border_color}</label></td>
+          <td colspan="2">
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td><input class="color {required:false}" id="wstb_bcolor" name="wstb_bcolor" type="text" value=""
+                           size="9"></td>
+              </tr>
+            </table>
+          </td>
+          <td><label for="wstb_bwidth">{#wstb.border_width}</label></td>
+          <td colspan="2">
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td><input id="wstb_bwidth" name="wstb_bwidth" type="text" value="" size="9"/></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <table border="0" cellpadding="4" cellspacing="0">
+        <tr>
+          <td><strong>{#wstb.image}</strong></td>
+        </tr>
+        <tr>
+          <td nowrap="nowrap"><label for="wstb_image_url">{#wstb.image_url}</label></td>
+          <td><input id="wstb_image_url" name="wstb_image_url" style="width: 360px"/></td>
+        </tr>
+      </table>
+      <table border="0" cellpadding="4" cellspacing="0">
+        <tr>
+          <td><input id="wstb_big_image" name="wstb_big_image" class="checkbox" type="checkbox"/></td>
+          <td><label for="wstb_big_image">{#wstb.image_big}</label></td>
+        </tr>
+        <tr>
+          <td><input id="wstb_noimage" name="wstb_noimage" class="checkbox" type="checkbox"/></td>
+          <td><label for="wstb_noimage">{#wstb.image_no}</label></td>
+        </tr>
+      </table>
+      <table border="0" cellpadding="4" cellspacing="0">
+        <tr>
+          <td>&nbsp;<br/><strong>{#wstb.margins}</strong></td>
+        </tr>
+        <tr>
+          <td><label for='wstb_left_margin'>{#wstb.margin_left}</label></td>
+          <td><input type='text' name='wstb_left_margin' id='wstb_left_margin' style='width: 60px;'></td>
+          <td><label for='wstb_right_margin'>{#wstb.margin_right}</label></td>
+          <td><input type='text' name='wstb_right_margin' id='wstb_right_margin' style='width: 60px;'></td>
+        </tr>
+        <tr>
+          <td><label for='wstb_top_margin'>{#wstb.margin_top}</label></td>
+          <td><input type='text' name='wstb_top_margin' id='wstb_top_margin' style='width: 60px;'></td>
+          <td><label for='wstb_bottom_margin'>{#wstb.margin_bottom}</label></td>
+          <td><input type='text' name='wstb_bottom_margin' id='wstb_bottom_margin' style='width: 60px;'></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="mceActionPanel">
+    <div style="float: left">
+      <input type="button" id="cancel" name="cancel" value="{#wstb.cancel}" onclick="tinyMCEPopup.close();"/>
+    </div>
+    <div style="float: right">
+      <input type="submit" id="insert" name="insert" value="{#wstb.insert}" onclick="insertWSTBCode();"/>
+    </div>
+  </div>
+</form>
+</body>
+</html>
