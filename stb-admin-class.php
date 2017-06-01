@@ -1221,33 +1221,6 @@ if ( ! class_exists( 'SpecialTextBoxesAdmin' ) && class_exists( 'SpecialTextBoxe
                 </div>
               </div>
               <div class='postbox opened'>
-                <h3><?php _e( 'Donations', STB_DOMAIN ) ?></h3>
-                <div class="inside">
-                  <p>
-										<?php
-										$format = __( 'If you have found this plugin useful, please consider making a %s to help support future development. Your support will be much appreciated. Thank you!', STB_DOMAIN );
-										$str    = '<a title="' . __( 'Donate Now!', STB_DOMAIN ) . '" href="https://load.payoneer.com/LoadToPage.aspx?email=minimus@simplelib.com" target="_blank">' . __( 'donation', STB_DOMAIN ) . '</a>';
-										printf( $format, $str );
-										?>
-                  </p>
-                  <div style="text-align: center;">
-                    <a href='https://pledgie.com/campaigns/23196'><img
-                        alt='Click here to lend your support to: Funds to complete the development of plugin Simple Ads Manager 2 and make a donation at pledgie.com !'
-                        src='https://pledgie.com/campaigns/23196.png?skin_name=chrome' border='0'></a>
-                  </div>
-                  <div style="text-align: center; margin: 10px;">
-                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                      <input type="hidden" name="cmd" value="_s-xclick">
-                      <input type="hidden" name="hosted_button_id" value="FNPBPFSWX4TVC">
-                      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0"
-                             name="submit" alt="PayPal - The safer, easier way to pay online!">
-                      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1"
-                           height="1">
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div class='postbox opened'>
                 <h3><?php _e( 'Another Plugins', STB_DOMAIN ) ?></h3>
                 <div class="inside">
                   <p>
@@ -1258,17 +1231,8 @@ if ( ! class_exists( 'SpecialTextBoxesAdmin' ) && class_exists( 'SpecialTextBoxe
 										?>
                   </p>
                   <ul>
-                    <li><a target='_blank' href='http://wordpress.org/extend/plugins/simple-ads-manager/'><strong>Simple
-                          Ads Manager</strong></a>
+                    <li><a target='_blank' href='http://wordpress.org/extend/plugins/sam-pro-free/'><strong>SAM Pro (Free Edition)</strong></a>
                       - <?php _e( "Advertisment rotation system with a flexible logic of displaying advertisements. ", STB_DOMAIN ); ?>
-                    </li>
-                    <li><a target='_blank' href='http://wordpress.org/extend/plugins/simple-counters/'><strong>Simple
-                          Counters</strong></a>
-                      - <?php _e( "Adds simple counters badge (FeedBurner subscribers and Twitter followers) to your blog.", STB_DOMAIN ); ?>
-                    </li>
-                    <li><a target='_blank' href='http://wordpress.org/extend/plugins/simple-view/'><strong>Simple
-                          View</strong></a>
-                      - <?php _e( "This plugin is WordPress shell for FloatBox library by Byron McGregor.", STB_DOMAIN ); ?>
                     </li>
                     <li><a target='_blank' href='http://wordpress.org/extend/plugins/wp-copyrighted-post/'><strong>Copyrighted
                           Post</strong></a>

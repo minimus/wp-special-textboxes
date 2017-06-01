@@ -3,8 +3,8 @@ Contributors: minimus
 Donate link:  http://www.simplelib.com
 Tags: content, performance, text, code, php, widget
 Requires at least: 3.9
-Tested up to: 4.7
-Stable tag: 5.7.105
+Tested up to: 4.8
+Stable tag: 5.8.106
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,6 +95,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Changelog ==
 
+= 5.8.106 =
+* Wordpress 4.8 compatibility
 = 5.7.105 =
 * Some improvements on admin pages
 * Removed deprecated functions
@@ -249,6 +251,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Upgrade Notice ==
 
+= 5.8.106 =
+Wordpress 4.8 compatibility.
 = 5.7.105 =
 Some improvements on admin pages. Removed deprecated functions.
 = 5.6.103 =
