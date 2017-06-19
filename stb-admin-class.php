@@ -343,14 +343,18 @@ if ( ! class_exists( 'SpecialTextBoxesAdmin' ) && class_exists( 'SpecialTextBoxe
 			} elseif ( $hook == 'post.php' || $hook == 'post-new.php' ) {
 				$styles = $this->styles;
 				$slugs  = '';
+				$list   = array();
 				foreach ( $styles as $val ) {
-					$slugs .= "<option value='{$val['slug']}'>{$val['name']}</option>";
+					$slugs  .= "<option value='{$val['slug']}'>{$val['name']}</option>";
+					$list[] = array( 'text' => $val['name'], 'value' => $val['slug'] );
 				}
 				$data = array(
 					'mceUrl'      => get_option( 'siteurl' ) . '/wp-includes/js/tinymce/',
 					'mceUtilsUrl' => get_option( 'siteurl' ) . '/wp-includes/js/tinymce/utils/',
 					'jsUrl'       => STB_URL . 'js/',
-					'slugs'       => $slugs
+					'slugs'       => $slugs,
+					'list'        => $list,
+          'strings' => array()
 				);
 				$json = wp_json_encode( (object) $data );
 				echo "<script type='text/javascript'>var stbEditorOptions = {$json}</script>";
@@ -1231,7 +1235,8 @@ if ( ! class_exists( 'SpecialTextBoxesAdmin' ) && class_exists( 'SpecialTextBoxe
 										?>
                   </p>
                   <ul>
-                    <li><a target='_blank' href='http://wordpress.org/extend/plugins/sam-pro-free/'><strong>SAM Pro (Free Edition)</strong></a>
+                    <li><a target='_blank' href='http://wordpress.org/extend/plugins/sam-pro-free/'><strong>SAM Pro
+                          (Free Edition)</strong></a>
                       - <?php _e( "Advertisment rotation system with a flexible logic of displaying advertisements. ", STB_DOMAIN ); ?>
                     </li>
                     <li><a target='_blank' href='http://wordpress.org/extend/plugins/wp-copyrighted-post/'><strong>Copyrighted
@@ -2134,7 +2139,7 @@ if ( ! class_exists( 'SpecialTextBoxesAdmin' ) && class_exists( 'SpecialTextBoxe
 		}
 
 		public function addTinyMCEPlugin( $plugin_array ) {
-			$plugin_array['wstb'] = plugins_url( 'wp-special-textboxes/js/editor_plugin.js' );
+			$plugin_array['wstb'] = plugins_url( 'wp-special-textboxes/js/wstb.editor.plugin.min.js' );
 
 			return $plugin_array;
 		}

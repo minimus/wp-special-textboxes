@@ -1,0 +1,27 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/js/wstb.min.js" />
+        <item url="file://$PROJECT_DIR$/js/wstb.all.min.js" />
+        <item url="file://$PROJECT_DIR$/js/wstb.edit.min.js" />
+        <item url="file://$PROJECT_DIR$/js/jquery.stb.min.js" />
+        <item url="file://$PROJECT_DIR$/js/wstb-dialog.min.js" />
+        <item url="file://$PROJECT_DIR$/js/wstb.admin.min.js" />
+        <item url="file://$PROJECT_DIR$/js/wstb.editor.plugin.min.js" />
+        <item url="file://$PROJECT_DIR$/js/wstb.themes.min.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/js/wstb.min.js" />
+      <root url="file://$PROJECT_DIR$/js/wstb.all.min.js" />
+      <root url="file://$PROJECT_DIR$/js/wstb.edit.min.js" />
+      <root url="file://$PROJECT_DIR$/js/jquery.stb.min.js" />
+      <root url="file://$PROJECT_DIR$/js/wstb-dialog.min.js" />
+      <root url="file://$PROJECT_DIR$/js/wstb.admin.min.js" />
+      <root url="file://$PROJECT_DIR$/js/wstb.editor.plugin.min.js" />
+      <root url="file://$PROJECT_DIR$/js/wstb.themes.min.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

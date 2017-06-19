@@ -5,9 +5,9 @@
  * @version 4.4.75
  */
 (function($) {
-  var defaultThemes = {
+  const defaultThemes = {
     alert: {
-      image: 'alert-b.png',      
+      image: 'alert-b.png',
       color: '#fdcbc9',
       colorTo: '#fb7d78',
       fontColor: '#000000',
@@ -35,7 +35,7 @@
         color: '#1d1a1a',
         colorTo: '#504848'//'#eee0e0'
       }
-    },    
+    },
     download: {
       image: 'download-b.png',
       color: '#78c0f7',
@@ -79,26 +79,25 @@
         fontColor: '#ffffff',
         color: '#1d1a1a',
         colorTo: '#504848'//'#eee0e0'
-      } 
-    }/*,
-    custom: {
-      image: 'heart-b.png',
-      color: '#f7cdf5',
-      colorTo: '#f77df1',
-      fontColor: '#000000',
-      border: {
-        width: 3,
-        color: '#f844ee'
-      },
-      caption: {
-        fontColor: '#ffffff',
-        color: '#1d1a1a',
-        colorTo: '#504848'//'#eee0e0'
       }
-    }*/
-  },
-  
-  defaultOptions = {
+    }/*,
+     custom: {
+     image: 'heart-b.png',
+     color: '#f7cdf5',
+     colorTo: '#f77df1',
+     fontColor: '#000000',
+     border: {
+     width: 3,
+     color: '#f844ee'
+     },
+     caption: {
+     fontColor: '#ffffff',
+     color: '#1d1a1a',
+     colorTo: '#504848'//'#eee0e0'
+     }
+     }*/
+  };
+  const defaultOptions = {
     caption: {
       text: '',
       fontFamily: 'Impact, Verdana',
@@ -139,9 +138,8 @@
       {hClass: 'a[id^=tabs]', hEvent: 'click'},
       {hClass: 'li[id^=tabs]', hEvent: 'click'}
     ]
-  },
-  
-  stbItems = [];
+  };
+  const stbItems = [];
   
   function getRandInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -155,8 +153,9 @@
     if('object' === typeof console) {
 
       // Setup console and arguments
-      var c = console[ console.warn ? 'warn' : 'log' ],
-      args = Array.prototype.slice.call(arguments), a;
+      const c = console[console.warn ? 'warn' : 'log'];
+      const args = Array.prototype.slice.call(arguments);
+      let a;
 
       // Add qTip2 marker to first argument if it's a string
       if(typeof arguments[0] === 'string') { args[0] = 'qTip2: ' + args[0]; }
@@ -169,9 +168,9 @@
   function StbThemesStream() {
     this.themes = [];
     this.getIndex = function(name) {
-      var index = -1;
+      let index = -1;
       $.each(this.themes, function(i, el) {
-        if(el.name == name) {
+        if(el.name === name) {
           index = i;
           return false;
         } else return true;
@@ -186,71 +185,72 @@
       this.themes[this.themes.length-1].name = name;
     };
     this.update = function(name, udata) {
-      var data;
+      let data;
       $.extend(true, this.themes[this.getIndex(name)], udata);
     };
   }
   
-  stbThemes = new StbThemesStream();
+  const stbThemes = window.stbThemes = new StbThemesStream();
   stbThemes.register('alert', defaultThemes.alert);
   stbThemes.register('black', defaultThemes.black);
   stbThemes.register('download', defaultThemes.download);
   stbThemes.register('info', defaultThemes.info);
   stbThemes.register('warning', defaultThemes.warning);
   //stbThemes.register('custom', defaultThemes.custom);
+
+  //window.stbThemes = stbThemes;
   
   function getRGB(color) {
-    var clr = color.replace('#', '');
-    var r = parseInt('0x'+clr.slice(0,2));
-    var g = parseInt('0x'+clr.slice(2,4));
-    var b = parseInt('0x'+clr.slice(4,6));
+    const clr = color.replace('#', '');
+    const r = parseInt('0x'+clr.slice(0,2));
+    const g = parseInt('0x'+clr.slice(2,4));
+    const b = parseInt('0x'+clr.slice(4,6));
     return 'rgb(' + r.toString() + ',' + g.toString() + ',' + b.toString() + ')';
   }
 
   function getRGBA(color, alpha) {
-    var clr = color.replace('#', '');
-    var r = parseInt('0x'+clr.slice(0,2));
-    var g = parseInt('0x'+clr.slice(2,4));
-    var b = parseInt('0x'+clr.slice(4,6));
+    const clr = color.replace('#', '');
+    const r = parseInt('0x'+clr.slice(0,2));
+    const g = parseInt('0x'+clr.slice(2,4));
+    const b = parseInt('0x'+clr.slice(4,6));
     return 'rgba(' + r.toString() + ',' + g.toString() + ',' + b.toString() + ',' + alpha + ')';
   }
 
   function getPosition(e) {
-    var target;
+    let target;
     if(!e) e = window.event;
     if(e.target) target = e.target;
     else if(e.srcElement) target = e.srcElement;
-    if(target.nodeType == 3) target = target.parentNode; // defeat Safari bug
+    if(target.nodeType === 3) target = target.parentNode; // defeat Safari bug
 
-    var x = e.pageX - $(target).offset().left;
-    var y = e.pageY - $(target).offset().top;
+    const x = e.pageX - $(target).offset().left;
+    const y = e.pageY - $(target).offset().top;
 
-    return {"x": x, "y": y};
+    return {x, y};
   }
   
   function buildOptions(theme, options) {
-    var 
-      settings = {},
-      sets = {},
-      opts = {};
+    const settings = {};
+    const sets = {};
+    let opts = {};
     
-    if(typeof(options) == 'undefined') {
+    if(typeof(options) === 'undefined') {
       opts = defaultOptions;
     }
     else 
-      if((typeof(options) == 'object') && null != options) {
+      if((typeof(options) === 'object') && null !== options) {
         opts = defaultOptions;
         $.extend(true, sets, opts, options);
         opts = sets;
       }
       else opts = defaultOptions;
     
-    if(typeof(theme) == 'string') {      
-      if(-1 == stbThemes.getIndex(theme)) $.extend(true, settings, stbThemes.getTheme('warning'), opts);
+    if(typeof(theme) === 'string') {
+      if(-1 === stbThemes.getIndex(theme)) $.extend(true, settings, stbThemes.getTheme('warning'), opts);
       else $.extend(true, settings, stbThemes.getTheme(theme), opts);
     }
     else 
-      if((typeof(theme) == 'object') && (null != theme)) {
+      if((typeof(theme) === 'object') && (null !== theme)) {
         $.extend(true, settings, stbThemes.getTheme('warning'), opts, theme); 
       }
       else $.extend(true, settings, stbThemes.getTheme('warning'), opts);
@@ -258,15 +258,14 @@
   }
   
   function simpleBox(ctx, width, height, opts, cl) {
-    var
-      top = opts.mtop,
-      bottom = height - opts.mbottom,
-      left = opts.mleft,
-      right = width - opts.mright;
+    const top = opts.mtop;
+    const bottom = height - opts.mbottom;
+    const left = opts.mleft;
+    const right = width - opts.mright;
 
-    if('undefined' == typeof(cl)) cl = 0;
+    if('undefined' === typeof(cl)) cl = 0;
     ctx.fillStyle  = 'rgba(255,255,255,1)';
-    var gradient = ctx.createLinearGradient(left, top, left, bottom);
+    const gradient = ctx.createLinearGradient(left, top, left, bottom);
     gradient.addColorStop(0, opts.color);
     gradient.addColorStop(0.4, opts.color);
     gradient.addColorStop(1, opts.colorTo);
@@ -296,8 +295,8 @@
       ctx.shadowColor = "transparent";
     }
 
-    if(opts.caption.text != '') {
-      var cGradient = ctx.createLinearGradient(left, top, left, top + 30);
+    if(opts.caption.text !== '') {
+      const cGradient = ctx.createLinearGradient(left, top, left, top + 30);
       cGradient.addColorStop(0, opts.caption.color);
       cGradient.addColorStop(0.5, opts.caption.color);
       cGradient.addColorStop(1, opts.caption.colorTo);
@@ -322,13 +321,13 @@
       ctx.fill();
     }
     else if(opts.caption.side) {
-      var sGradient = ctx.createLinearGradient(left, top, left, bottom);
+      const sGradient = ctx.createLinearGradient(left, top, left, bottom);
       sGradient.addColorStop(0, opts.caption.color);
       sGradient.addColorStop(0.4, opts.caption.color);
       sGradient.addColorStop(1, opts.caption.colorTo);
 
       ctx.beginPath();
-      if(opts.direction == 'ltr') {
+      if(opts.direction === 'ltr') {
         ctx.moveTo(left, top + opts.radius);
         ctx.lineTo(left, bottom - opts.radius);
         ctx.quadraticCurveTo(left, bottom, left + opts.radius, bottom);
@@ -351,16 +350,15 @@
       ctx.fill();
     }
 
-    var
-      tp = (null != opts.image) ? 35 : 10,
-      textPos = (opts.direction == 'ltr') ? tp + opts.mleft : width - tp - opts.mright;
+    const tp = (null !== opts.image) ? 35 : 10;
+    const textPos = (opts.direction === 'ltr') ? tp + opts.mleft : width - tp - opts.mright;
 
-    ctx.textAlign = (opts.direction == 'ltr') ? 'left' : 'right';
+    ctx.textAlign = (opts.direction === 'ltr') ? 'left' : 'right';
     ctx.textBaseline = 'middle';
     ctx.fillStyle = opts.caption.fontColor;
     ctx.font = 'bold ' + opts.caption.fontSize + 'px ' + opts.caption.fontFamily;
     if($.browser.safari) {
-      var fontSize = opts.caption.fontSize,
+      let fontSize = opts.caption.fontSize,
         textWidth = ctx.measureText(opts.caption.text).width;
       if(textWidth > width - 80 - opts.mleft - opts.mright) {
         fontSize = Math.floor(fontSize * ((width - 80 - opts.mleft - opts.mright)/textWidth));
@@ -373,15 +371,14 @@
   }
   
   function roundedBorder(ctx, width, height, opts) {
-    var
-      top = opts.mtop,
-      bottom = height - opts.mbottom,
-      left = opts.mleft,
-      right = width - opts.mright;
+    const top = opts.mtop;
+    const bottom = height - opts.mbottom;
+    const left = opts.mleft;
+    const right = width - opts.mright;
 
-    var bw = opts.border.width;
-    var op = 0.7;
-    for(var i = 0; i < bw; i++) {
+    const bw = opts.border.width;
+    let op = 0.7;
+    for(let i = 0; i < bw; i++) {
       ctx.beginPath();
       ctx.moveTo(left + i, top + opts.radius + i);
       ctx.lineTo(left + i, bottom - opts.radius - i);
@@ -402,23 +399,23 @@
   } 
   
   function drawBoxImage(canvas, ctx, opts, img) {
-    if(img.complete && null != opts.image)
-      ctx.drawImage(img, ((opts.direction == "ltr") ? opts.imgX + opts.mleft : canvas.width/* - opts.shadow.offsetX*/ - opts.imgX - 50 - opts.mright), opts.imgY + opts.mtop, 50, 50);
+    if(img.complete && null !== opts.image)
+      ctx.drawImage(img, ((opts.direction === "ltr") ? opts.imgX + opts.mleft : canvas.width/* - opts.shadow.offsetX*/ - opts.imgX - 50 - opts.mright), opts.imgY + opts.mtop, 50, 50);
   }
   
   function drawCBoxImage(canvas, ctx, opts, img, imgM, imgP, mode, cl) {
-    if(img.complete && null != opts.image && (mode == 'all' || mode == 'main')) {
+    if(img.complete && null !== opts.image && (mode === 'all' || mode === 'main')) {
       ctx.drawImage(
         img,
-        ((opts.direction == "ltr") ? 7 + opts.mleft : canvas.width - opts.mright - 7 - 25),
+        ((opts.direction === "ltr") ? 7 + opts.mleft : canvas.width - opts.mright - 7 - 25),
         opts.mtop + 3,
         25, 25
       );
     }
-    if(opts.caption.collapsing && imgM.complete && imgP.complete && (mode == 'all' || mode == 'tool')) {
+    if(opts.caption.collapsing && imgM.complete && imgP.complete && (mode === 'all' || mode === 'tool')) {
       ctx.drawImage(
         (cl) ? imgP : imgM,
-        ((opts.direction == "ltr") ? canvas.width - opts.mright - 7 - 16 : opts.mleft + 7),
+        ((opts.direction === "ltr") ? canvas.width - opts.mright - 7 - 16 : opts.mleft + 7),
         opts.mtop + 7,
         16, 16
       );
@@ -426,27 +423,25 @@
   }
   
   function boxImage(index, mode, cl) {
-    var 
-      opts = stbItems[index].options,
-      canvas = stbItems[index].container.cvs,
-      ctx = stbItems[index].container.ctx,
-      img = stbItems[index].image,
-      imgM = stbItems[index].imgMinus,
-      imgP = stbItems[index].imgPlus;
+    const opts = stbItems[index].options;
+    const canvas = stbItems[index].container.cvs;
+    const ctx = stbItems[index].container.ctx;
+    const img = stbItems[index].image;
+    const imgM = stbItems[index].imgMinus;
+    const imgP = stbItems[index].imgPlus;
       
-    if(typeof(mode) == 'undefined') mode = 'all';
-    if(typeof(cl) == 'undefined') cl = opts.caption.collapsed;    
-    (opts.caption.text != '') ? drawCBoxImage(canvas, ctx, opts, img, imgM, imgP, mode, cl) : drawBoxImage(canvas, ctx, opts, img);
+    if(typeof(mode) === 'undefined') mode = 'all';
+    if(typeof(cl) === 'undefined') cl = opts.caption.collapsed;
+    (opts.caption.text !== '') ? drawCBoxImage(canvas, ctx, opts, img, imgM, imgP, mode, cl) : drawBoxImage(canvas, ctx, opts, img);
   }
   
   function redrawBox(index, cl, height) {
-    var
-      opts = stbItems[index].options,
-      canvas = stbItems[index].container.cvs,
-      ctx = stbItems[index].container.ctx,
-      img = stbItems[index].image;
+    const opts = stbItems[index].options;
+    const canvas = stbItems[index].container.cvs;
+    const ctx = stbItems[index].container.ctx;
+    const img = stbItems[index].image;
 
-    if('undefined' == typeof(height)) height = canvas.height;
+    if('undefined' === typeof(height)) height = canvas.height;
       
     canvas.height = (cl) ? opts.mtop + 30 + opts.mbottom : height;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -457,7 +452,7 @@
   }
   
   function drawBox(canvas, opts, img, il) {
-    var ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     simpleBox(ctx, canvas.width, canvas.height, opts);
     drawBoxImage(canvas, ctx, opts, img);
@@ -466,7 +461,7 @@
   }
   
   function drawCBox(canvas, opts, img, imgM, imgP, cl) {
-    var ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     simpleBox(ctx, canvas.width, canvas.height, opts, cl);
     drawCBoxImage(canvas, ctx, opts, img, imgM, imgP, 'all', cl);
@@ -476,19 +471,18 @@
   
   function doDraw(data, force) {
     if (!data) return;
-    
-    var
-      cvs = data.container.cvs,
-      cnt = data.container.cnt,
-      opts = data.options,
-      body = data.container.body,
-      width = $(cnt).parent(0).width(),
-      height = $(body).innerHeight(),
-      cp = data.options.caption;
+
+    const cvs = data.container.cvs;
+    const cnt = data.container.cnt;
+    const opts = data.options;
+    const body = data.container.body;
+    const width = $(cnt).parent(0).width();
+    const height = $(body).innerHeight();
+    const cp = data.options.caption;
         
-    if(force || cvs.width != width || cvs.height != (height + opts.mtop + opts.mbottom)) {
+    if(force || cvs.width !== width || cvs.height !== (height + opts.mtop + opts.mbottom)) {
       cvs.width = width;
-      if(cp.text == '') {
+      if(cp.text === '') {
         cvs.height = opts.mtop + height + opts.mbottom;
         drawBox(cvs, opts, data.image, data.image.complete);
       }
@@ -519,17 +513,17 @@
   
   jQuery.fn.extend({
     stb: function(theme, opts) {
-      var options = buildOptions(theme, opts); 
+      const options = buildOptions(theme, opts);
       
       this.each(function() {
-        var
-          opts = {}, eop,
-          eid = $(this).attr('id'),
-          fop = $(this).data('stb'),
-          bodyLineHeight = $(this).css('line-height'),
-          caption = null;
+        let opts = {};
+        let eop;
+        let eid = $(this).attr('id');
+        const fop = $(this).data('stb');
+        const bodyLineHeight = $(this).css('line-height');
+        const caption = null;
 
-        var canvas, ctx, cnt, body, data;
+        let canvas, ctx, cnt, body, data;
         
         try { 
           eop = typeof fop === 'string' ? (new Function("return " + fop))() : fop;
@@ -540,49 +534,48 @@
           log('Unable to parse HTML5 attribute data: ' + fop); 
         }
 
-        var
-          sidePadding = (opts.caption.side) ? 50 + 2 * opts.imgX + 10 + "px" : "50px",
-          bodyStyle = {
-            boxSizing: "content-box",
-            lineHeight: bodyLineHeight,
-            direction: opts.direction,
-            unicodeBidi: 'embed',
-            color: opts.fontColor,
-            position: 'absolute',
-            top: '0px',
-            zIndex: 4,
-            margin: opts.mtop + "px " + opts.mright + "px " + opts.mbottom + "px " + opts.mleft + "px",
-            paddingRight: (opts.image == null) ? '10px' : ((opts.direction == "ltr") ? "10px" : sidePadding),
-            paddingBottom: "10px",
-            paddingTop: "10px",
-            paddingLeft: (opts.image == null) ? '10px' : ((opts.direction == "ltr") ? sidePadding : "10px"),
-            minHeight: "40px",
-            textShadow: (opts.textShadow.enabled) ? opts.textShadow.color + ' ' + opts.textShadow.offsetX + 'px ' + opts.textShadow.offsetY + 'px ' + opts.textShadow.blur + 'px' : 'none'
-          },
-          bodyCStyle = {
-            boxSizing: "content-box",
-            lineHeight: bodyLineHeight,
-            direction: opts.direction,
-            unicodeBidi: 'embed',
-            position: 'absolute',
-            top: 30 + opts.mtop/* + '0px'*/,
-            color: opts.fontColor,
-            padding: "5px 10px 10px",
-            minHeight: "5px",
-            margin: /*(30 + opts.mtop) +*/ "0px " + opts.mright + "px " + opts.mbottom + "px " + opts.mleft + "px",
-            zIndex: 4,
-            textShadow: (opts.textShadow.enabled) ? opts.textShadow.color + ' ' + opts.textShadow.offsetX + 'px ' + opts.textShadow.offsetY + 'px ' + opts.textShadow.blur + 'px' : 'none'
-          };
+        const sidePadding = (opts.caption.side) ? 50 + 2 * opts.imgX + 10 + "px" : "50px";
+        const bodyStyle = {
+          boxSizing: "content-box",
+          lineHeight: bodyLineHeight,
+          direction: opts.direction,
+          unicodeBidi: 'embed',
+          color: opts.fontColor,
+          position: 'absolute',
+          top: '0px',
+          zIndex: 4,
+          margin: opts.mtop + "px " + opts.mright + "px " + opts.mbottom + "px " + opts.mleft + "px",
+          paddingRight: (opts.image === null) ? '10px' : ((opts.direction === "ltr") ? "10px" : sidePadding),
+          paddingBottom: "10px",
+          paddingTop: "10px",
+          paddingLeft: (opts.image === null) ? '10px' : ((opts.direction === "ltr") ? sidePadding : "10px"),
+          minHeight: "40px",
+          textShadow: (opts.textShadow.enabled) ? opts.textShadow.color + ' ' + opts.textShadow.offsetX + 'px ' + opts.textShadow.offsetY + 'px ' + opts.textShadow.blur + 'px' : 'none'
+        };
+        const bodyCStyle = {
+          boxSizing: "content-box",
+          lineHeight: bodyLineHeight,
+          direction: opts.direction,
+          unicodeBidi: 'embed',
+          position: 'absolute',
+          top: 30 + opts.mtop/* + '0px'*/,
+          color: opts.fontColor,
+          padding: "5px 10px 10px",
+          minHeight: "5px",
+          margin: /*(30 + opts.mtop) +*/ "0px " + opts.mright + "px " + opts.mbottom + "px " + opts.mleft + "px",
+          zIndex: 4,
+          textShadow: (opts.textShadow.enabled) ? opts.textShadow.color + ' ' + opts.textShadow.offsetX + 'px ' + opts.textShadow.offsetY + 'px ' + opts.textShadow.blur + 'px' : 'none'
+        };
         
         
-        if(typeof(eid) == 'undefined') {
+        if(typeof(eid) === 'undefined') {
           eid = 'stb_js_' + getRandInt(1000, 9999);
           $(this).attr('id', eid);
         }
 
-        var canvasId = '#'+eid+'_canvas', cCanvasId = '#'+eid+'_ccanvas';
+        const canvasId = '#'+eid+'_canvas', cCanvasId = '#'+eid+'_ccanvas';
 
-        if(opts.caption.text == '') {
+        if(opts.caption.text === '') {
           $(this).css(bodyStyle);
           $(this).wrap('<div id="'+eid+'_container" class="stb-container"></div>');
           $('#'+eid+'_container').css({
@@ -625,7 +618,7 @@
           });
 
 
-          var dir = $('body').css('direction');
+          const dir = $('body').css('direction');
           if(opts.safe) {
             $(canvasId).css({
               position: "relative",
@@ -646,24 +639,24 @@
           );
           if(opts.caption.collapsing) {
             $(canvasId).click(function(e) {
-              pos = getPosition(e);
+              let pos = getPosition(e);
               if((pos.x > opts.mleft && pos.x < ($(this).width() - opts.mright))
                 && (pos.y > opts.mtop && pos.y < opts.mtop + 30)) {
-                var cid = $(this).attr('id'),
-                tid = '#' + cid.replace('_canvas', ''),
-                bid = tid + '_canvas',
-                data = $(tid).data('stb_props');
+                const cid = $(this).attr('id');
+                const tid = '#' + cid.replace('_canvas', '');
+                const bid = tid + '_canvas';
+                const data = $(tid).data('stb_props');
             
                 if($(tid).is(":hidden")) {
                   redrawBox(data.index, false);
                   $(tid).slideDown({
                     duration: data.caption.duration,
                     progress: function(an, pr, rem) {
-                      var height = $(this).innerHeight() + 30 + opts.mtop + opts.mbottom;
+                      const height = $(this).innerHeight() + 30 + opts.mtop + opts.mbottom;
                       redrawBox(data.index, false, height);
                     },
                     done: function() {
-                      var data = $(tid).data('stb_props');
+                      const data = $(tid).data('stb_props');
                       data.caption.collapsed = false;
                       stbItems[data.index].caption.collapsed = false;
                       $(tid).data('stb_props', data);
@@ -674,11 +667,11 @@
                   $(tid).slideUp({
                     duration: data.caption.duration,
                     progress: function(an, pr, rem) {
-                      var height = $(this).innerHeight() + 30 + opts.mtop + opts.mbottom;
+                      const height = $(this).innerHeight() + 30 + opts.mtop + opts.mbottom;
                       redrawBox(data.index, false, height);
                     },
                     done: function() {
-                      var data = $(tid).data('stb_props');
+                      const data = $(tid).data('stb_props');
                       data.caption.collapsed = true;
                       stbItems[data.index].caption.collapsed = true;
                       $(tid).data('stb_props', data);
@@ -697,9 +690,9 @@
         $.data(stbItems[stbItems.length-1].imgPlus, 'itemIndex', stbItems.length-1);
 
         // Image
-        if(stbItems[stbItems.length-1].options.image != null) {
+        if(stbItems[stbItems.length-1].options.image !== null) {
           stbItems[stbItems.length-1].image.onload = function() {
-            var index = $.data(this, 'itemIndex');
+            const index = $.data(this, 'itemIndex');
             boxImage(index, 'main');
           };
           stbItems[stbItems.length-1].image.src = stbItems[stbItems.length-1].options.image;
@@ -707,20 +700,20 @@
 
         // imgMinus
         stbItems[stbItems.length-1].imgMinus.onload = function() {
-          var index = $.data(this, 'itemIndex');
+          const index = $.data(this, 'itemIndex');
           boxImage(index, 'tool');
         };
         stbItems[stbItems.length-1].imgMinus.src = stbItems[stbItems.length-1].options.caption.imgMinus;
 
         // imgPlus
         stbItems[stbItems.length-1].imgPlus.onload = function() {
-          var index = $.data(this, 'itemIndex');
+          const index = $.data(this, 'itemIndex');
           boxImage(index, 'tool');
         };
         stbItems[stbItems.length-1].imgPlus.src = stbItems[stbItems.length-1].options.caption.imgPlus;
         $(this).data('stb_props', data).addClass('stb-body');
         
-        if(opts.caption.collapsed && opts.caption.text != '') {
+        if(opts.caption.collapsed && opts.caption.text !== '') {
           $(this).hide();
           //$(canvasId).hide();
         }
@@ -733,7 +726,7 @@
     
     stbRedraw: function() {
       this.each(function() {
-        var data = $(this).data('stb_props');
+        const data = $(this).data('stb_props');
         doDraw(data, true);
       });
     }

@@ -1,10 +1,10 @@
 /**
  * Created by minimus on 14.12.2014.
  */
-var sPointer = stbOptions.pointer;
+const sPointer = stbOptions.pointer;
 (function($) {
   $(document).ready(function() {
-    var target = $('#toplevel_page_stb-settings');
+    const target = $('h2 .theme-count');
 
     if(sPointer.enabled) {
       target.pointer({
@@ -15,7 +15,7 @@ var sPointer = stbOptions.pointer;
             url: ajaxurl,
             data: {
               action: 'close_stb_pointer',
-              pointer: 'all'
+              pointer: 'themes'
             },
             async: true
           });

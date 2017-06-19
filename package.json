@@ -1,0 +1,13 @@
+{
+  "name": "wp-special-textboxes",
+  "version": "5.8.106",
+  "description": "Special Text Boxes",
+  "author": "Konstantin Leonov <minimus@simplelib.com>",
+  "private": true,
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.5.1",
+    "babili": "^0.1.2"
+  }
+}

@@ -1,1 +1,5 @@
 .idea/workspace.xml
+.idea/dataSources/4e4668c1-6be6-4cba-af64-6a3aad699f14/_src_/
+.idea/dataSources/4e4668c1-6be6-4cba-af64-6a3aad699f14/_staging_/
+node_modules/
+package-lock.json
