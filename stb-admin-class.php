@@ -2,12 +2,12 @@
 include_once( 'stb-class.php' );
 if ( ! class_exists( 'SpecialTextBoxesAdmin' ) && class_exists( 'SpecialTextBoxes' ) ) {
 	class SpecialTextBoxesAdmin extends SpecialTextBoxes {
-		public $menu_page;
-		public $plugin_page;
-		public $styles_page;
-		public $editor_page;
-		public $themes_page;
-		public $stbProPointer = array( 'all' => true, 'themes' => true );
+		public string $menu_page;
+		public string $plugin_page;
+		public string $styles_page;
+		public string $editor_page;
+		public string $themes_page;
+		public array $stbProPointer = array( 'all' => true, 'themes' => true );
 
 		private $zipError;
 
@@ -95,11 +95,11 @@ if ( ! class_exists( 'SpecialTextBoxesAdmin' ) && class_exists( 'SpecialTextBoxe
 			}
 		}
 
-		private function checkThemesFolder( $dir ) {
+		private function checkThemesFolder( $dir ): bool {
 			return is_dir( $dir );
 		}
 
-		public function addMceLocale( $locales ) {
+		public function addMceLocale( $locales ): string {
 			$locales['wstb'] = plugin_dir_path( __FILE__ ) . 'stb-tinymce-langs.php';
 
 			return $locales;
@@ -115,7 +115,7 @@ if ( ! class_exists( 'SpecialTextBoxesAdmin' ) && class_exists( 'SpecialTextBoxe
 			return $sampleBox . $sampleCaptionedBox;
 		}
 
-		private function getSamples2( $slug = 'custom', $theme = 'Custom' ) {
+		private function getSamples2( $slug = 'custom', $theme = 'Custom' ): string {
 			$ccontent = sprintf( __( 'This is example of Captioned %s Special Text Box. You must save style parameters to view changes.', STB_DOMAIN ), $theme ) . "<br/><br/>
                   Lacus massa. Volutpat lacus irure sem malesuada. Nullam eu amet tincidunt, turpis est vestibulum. Elit ipsum justo, in mattis. Ultricies lacus tristique molestie eu, metus iure, et in, mattis sem.";
 			$content  = sprintf( __( 'This is example of %s Special Text Box. You must save style parameters to view changes.', STB_DOMAIN ), $theme ) . "<br/><br/>
@@ -147,7 +147,7 @@ if ( ! class_exists( 'SpecialTextBoxesAdmin' ) && class_exists( 'SpecialTextBoxe
 			$charset = get_bloginfo( 'charset' );
 			@header( "Content-Type: application/json; charset={$charset}" );
 			if ( isset( $_REQUEST['pointer'] ) ) {
-				$pointer             = $_REQUEST['pointer'];
+				$pointer             = esc_attr($_REQUEST['pointer']);
 				$options[ $pointer ] = false;
 				update_option( 'stb_pointers', $options );
 				wp_send_json_success( array( 'pointer' => $pointer, 'options' => $options ) );
@@ -156,7 +156,7 @@ if ( ! class_exists( 'SpecialTextBoxesAdmin' ) && class_exists( 'SpecialTextBoxe
 			}
 		}
 
-		private function getPointerContent( $pointer = false ) {
+		private function getPointerContent( $pointer = false ): string {
 			$alt    = __( 'Upgrade Now', STB_DOMAIN );
 			$image  = STB_URL . 'images/upgrade-now' . ( ( $pointer ) ? '-pointer' : '' ) . '.png';
 			$about  = __( 'About STB Pro...', STB_DOMAIN );
@@ -854,16 +854,12 @@ if ( ! class_exists( 'SpecialTextBoxesAdmin' ) && class_exists( 'SpecialTextBoxe
 				echo '</div>';
 
 				switch ( $section['id'] ) {
-					case 'deactivationSection':
+                    case 'jsTextShadowSection':
+                    case 'cssSysSection':
+                    case 'deactivationSection':
 						echo "</div>";
 						break;
-					case 'jsTextShadowSection':
-						echo "</div>";
-						break;
-					case 'cssSysSection':
-						echo "</div>";
-						break;
-					default:
+                    default:
 						break;
 				}
 			}
@@ -880,13 +876,13 @@ if ( ! class_exists( 'SpecialTextBoxesAdmin' ) && class_exists( 'SpecialTextBoxe
 				echo '<p>';
 				if ( ! empty( $field['args']['checkbox'] ) ) {
 					call_user_func( $field['callback'], $field['id'], $field['args'] );
-					echo '<label for="' . $field['args']['label_for'] . '">' . $field['title'] . '</label>';
+					echo '<label for="' . esc_attr($field['args']['label_for']) . '">' . esc_attr($field['title']) . '</label>';
 					echo '</p>';
 				} else {
 					if ( ! empty( $field['args']['label_for'] ) ) {
-						echo '<label for="' . $field['args']['label_for'] . '">' . $field['title'] . '</label>';
+						echo '<label for="' . esc_attr($field['args']['label_for']) . '">' . esc_attr($field['title']) . '</label>';
 					} else {
-						echo '<strong>' . $field['title'] . '</strong><br/>';
+						echo '<strong>' . esc_attr($field['title']) . '</strong><br/>';
 					}
 					echo '</p>';
 					echo '<p>';
@@ -942,10 +938,10 @@ if ( ! class_exists( 'SpecialTextBoxesAdmin' ) && class_exists( 'SpecialTextBoxe
 		public function drawSelectOption( $optionName, $args ) {
 			$options = $args['options'];
 			?>
-      <select id="<?php echo $optionName; ?>"
-              name="<?php echo STB_OPTIONS . '[' . $optionName . ']'; ?>">
+      <select id="<?php echo esc_attr($optionName); ?>"
+              name="<?php echo STB_OPTIONS . '[' . esc_attr($optionName) . ']'; ?>">
 				<?php foreach ( $options as $key => $option ) { ?>
-          <option value="<?php echo $key; ?>"
+          <option value="<?php echo esc_attr($key); ?>"
 						<?php selected( $key, $this->settings[ $optionName ] ); ?> ><?php echo $option; ?>
           </option>
 				<?php } ?>
@@ -958,12 +954,12 @@ if ( ! class_exists( 'SpecialTextBoxesAdmin' ) && class_exists( 'SpecialTextBoxe
 			$multiLines = isset( $args['multiLines'] );
 			foreach ( $options as $key => $option ) {
 				?>
-        <label for="<?php echo $optionName . '_' . $key; ?>">
+        <label for="<?php echo esc_attr($optionName) . '_' . esc_attr($key); ?>">
           <input type="radio"
-                 id="<?php echo $optionName . '_' . $key; ?>"
-                 name="<?php echo STB_OPTIONS . '[' . $optionName . ']'; ?>"
+                 id="<?php echo esc_attr($optionName) . '_' . esc_attr($key); ?>"
+                 name="<?php echo STB_OPTIONS . '[' . esc_attr($optionName) . ']'; ?>"
                  value="<?php echo $key; ?>" <?php checked( $key, $this->settings[ $optionName ] ); ?> />
-					<?php echo $option; ?>
+					<?php echo esc_attr($option); ?>
         </label>&nbsp;&nbsp;&nbsp;&nbsp;
 				<?php
 				if ( $multiLines ) {
@@ -978,14 +974,14 @@ if ( ! class_exists( 'SpecialTextBoxesAdmin' ) && class_exists( 'SpecialTextBoxe
 			$button = ( isset( $args['button'] ) ) ? $args['button'] : '';
 			$height = ( empty( $button ) ) ? '22px' : '26px';
 			?>
-      <input id="<?php echo $optionName; ?>"
-             name="<?php echo STB_OPTIONS . '[' . $optionName . ']'; ?>"
+      <input id="<?php echo esc_attr($optionName); ?>"
+             name="<?php echo STB_OPTIONS . '[' . esc_attr($optionName) . ']'; ?>"
              type="text"
-             value="<?php echo $this->settings[ $optionName ]; ?>"
+             value="<?php echo esc_attr($this->settings[ $optionName ]); ?>"
              style="height: <?php echo $height ?>; font-size: 11px; <?php if ( ! empty( $width ) )
 				       echo 'width: ' . $width . ';' ?>"/> <?php echo $suffix ?>
 			<?php if ( ! empty( $button ) ) { ?>
-        <button id="<?php echo $optionName; ?>-select" class="button-secondary"><?php echo $button; ?></button>
+        <button id="<?php echo esc_attr($optionName); ?>-select" class="button-secondary"><?php echo $button; ?></button>
 			<?php }
 		}
 

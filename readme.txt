@@ -3,8 +3,8 @@ Contributors: minimus
 Donate link:  http://www.simplelib.com
 Tags: content, performance, text, code, php, widget
 Requires at least: 3.9
-Tested up to: 4.8
-Stable tag: 5.9.107
+Tested up to: 5.8
+Stable tag: 5.9.110
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,6 +95,12 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Changelog ==
 
+= 5.9.110 =
+* Preventing some vulnerabilities
+= 5.9.109 =
+* Wordpress 5.2 ready
+= 5.9.108 =
+* Wordpress 5.1 ready
 = 5.9.107 =
 * The tinyMCE dialog bug has been fixed
 = 5.8.106 =
@@ -253,6 +259,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Upgrade Notice ==
 
+= 5.9.110 =
+Preventing some vulnerabilities
 = 5.9.107 =
 The tinyMCE dialog bug has been fixed.
 = 5.8.106 =
