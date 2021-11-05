@@ -56,11 +56,14 @@ const mediaStrings = stbUserOptions.strings;
   };
 
   function sanitizeOptions(opts) {
-    if(typeof(opts.radius) === 'string') opts.radius = parseInt(opts.radius);
-    if(typeof(opts.imgX) === 'string') opts.imgX = parseInt(opts.imgX);
-    if(typeof(opts.imgY) === 'string') opts.imgY = parseInt(opts.imgY);
+    const { radius, imgX, imgY } = opts;
     
-    return opts;
+    return {
+      ...opts,
+      radius: typeof radius === 'string' ? parseInt(radius, 10) : radius,
+      imgX: typeof imgX === 'string' ? parseInt(imgX, 10) : imgX,
+      imgY: typeof imgY === 'string' ? parseInt(imgY, 10) : imgY,
+    };
   }
   
   $(document).ready(function() {

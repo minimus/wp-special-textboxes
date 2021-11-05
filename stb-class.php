@@ -56,12 +56,12 @@ if (!class_exists("SpecialTextBoxes")) {
       define('STB_VERSION', '5.9.110');
       define('STB_DB_VERSION', '1.0');
       define('STB_DIR', dirname( __FILE__ ) . '/');
-      define('STB_DOMAIN', 'wp-special-textboxes');
+      // define('STB_DOMAIN', 'wp-special-textboxes');
       define('STB_OPTIONS', 'SpecialTextBoxesAdminOptions');
       define('STB_URL', plugins_url( '/',  __FILE__  ));
       
       if (function_exists( 'load_plugin_textdomain' ))
-        load_plugin_textdomain( STB_DOMAIN, false, dirname( plugin_basename( __FILE__ ) ) );
+        load_plugin_textdomain( 'wp-special-textboxes', false, dirname( plugin_basename( __FILE__ ) ) );
       
      
       add_action('wp_enqueue_scripts', array(&$this, 'headerScripts'), 9999999999);
@@ -335,8 +335,8 @@ if (!class_exists("SpecialTextBoxes")) {
         'mbottom' => intval($this->settings['bottom_margin']),
         'imgHide' => $this->settings['js_imgMinus'],
         'imgShow' => $this->settings['js_imgPlus'],
-        'strHide' => __('Hide', STB_DOMAIN),
-        'strShow' => __('Show', STB_DOMAIN)
+        'strHide' => __('Hide', 'wp-special-textboxes'),
+        'strShow' => __('Show', 'wp-special-textboxes')
       );
       
       switch( $this->globalMode ) { 
@@ -346,10 +346,7 @@ if (!class_exists("SpecialTextBoxes")) {
         case 'js': 
           $options = array('mode' => $this->globalMode, 'jsOptions' => $jsOptions, 'styles' => $this->styles); 
           break;
-        case 'mix': 
-          $options = array('mode' => $this->globalMode, 'jsOptions' => $jsOptions, 'cssOptions' => $cssOptions, 'styles' => $this->styles); 
-          break;
-        default: 
+          default:
           $options = array('mode' => $this->globalMode, 'jsOptions' => $jsOptions, 'cssOptions' => $cssOptions, 'styles' => $this->styles); 
           break;
       }
@@ -379,7 +376,7 @@ if (!class_exists("SpecialTextBoxes")) {
       else wp_localize_script('wstbLayout', 'stbUserOptions', array('l10n_print_after' => 'stbUserOptions = ' . json_encode($options) . ';'));
     }
     
-    public function doShortcode( $atts, $content = null ) {
+    public function doShortcode( $atts, $content = null ): string {
       $attributes = shortcode_atts( array(
         'id' => 'warning',
         'mode' => '',
@@ -413,17 +410,17 @@ if (!class_exists("SpecialTextBoxes")) {
       return $block->block;
     }
     
-    public function doShortcode2($atts, $content = null) {
+    public function doShortcode2($atts, $content = null): string {
       $atts['level'] = 1;
       return $this->doShortcode($atts, $content);
     }
     
-    public function doShortcodeGrey( $atts, $content = null ) {
+    public function doShortcodeGrey( $atts, $content = null ): string {
       $atts['id'] = 'grey';
       return $this->doShortcode($atts, $content);
     }
     
-    public function highlightText( $content = null, $id = 'warning', $caption = '', $atts = null ) {
+    public function highlightText( $content = null, $id = 'warning', $caption = '', $atts = null ): string {
       $block = new StbBlock($content, $id, $caption, $atts);
       return $block->block;
     }
@@ -433,19 +430,19 @@ if (!class_exists("SpecialTextBoxes")) {
 if (!class_exists('special_text') && class_exists('WP_Widget')) {
   class special_text extends WP_Widget {
     function __construct() {
-      $widget_ops = array( 'classname' => 'special_text', 'description' => __('Arbitrary text or PHP in colored block.', STB_DOMAIN));
+      $widget_ops = array( 'classname' => 'special_text', 'description' => __('Arbitrary text or PHP in colored block.', 'wp-special-textboxes'));
       $control_ops = array( 'width' => 350, 'height' => 450, 'id_base' => 'special_text' );
-      parent::__construct( 'special_text', __('Special Text', STB_DOMAIN), $widget_ops, $control_ops );
+      parent::__construct( 'special_text', __('Special Text', 'wp-special-textboxes'), $widget_ops, $control_ops );
     }
     
-    function getMode($val) {
+    function getMode($val): string {
       $mode = 'css';
       if(!empty($val)) $mode = ($val == 'mix') ? 'js' : $val;
       if('css' == STB_DRAWING_MODE) $mode = 'css';
       return $mode;
     }
     
-    function getClasses($value) {
+    function getClasses($value): array {
       $classes = array();
       foreach($value as $val) {
         $classes[ $val['slug']] = $val['name'];
@@ -453,7 +450,7 @@ if (!class_exists('special_text') && class_exists('WP_Widget')) {
       return $classes;
     }
     
-    function getStyles() {
+    function getStyles(): array {
       global $wpdb;
       $sTable = $wpdb->prefix . "stb_styles";
       $styles = array();
@@ -519,7 +516,7 @@ if (!class_exists('special_text') && class_exists('WP_Widget')) {
       }
     }
     
-    function update( $new_instance, $old_instance ) {
+    function update( $new_instance, $old_instance ): array {
       $instance = $old_instance;
       $instance['title'] = strip_tags($new_instance['title']);
       $instance['box_id'] = $new_instance['box_id'];
@@ -564,28 +561,28 @@ if (!class_exists('special_text') && class_exists('WP_Widget')) {
       $show_tag = $instance['show_tag'];
       $show_author = $instance['show_author'];
       ?>
-    <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', STB_DOMAIN); ?></label>
+    <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'wp-special-textboxes'); ?></label>
     <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 
     <textarea class="widefat" rows="10" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo $text; ?></textarea><br />&nbsp;
 
-    <p><label for="<?php echo $this->get_field_id('box_id'); ?>"><?php _e('ID of Box:', STB_DOMAIN) ?></label>
+    <p><label for="<?php echo $this->get_field_id('box_id'); ?>"><?php _e('ID of Box:', 'wp-special-textboxes') ?></label>
     <select class="widefat" id="<?php echo $this->get_field_id('box_id'); ?>" name="<?php echo $this->get_field_name('box_id'); ?>" >
     <?php 
     foreach ($ids as $key => $option) echo '<option value='.$key.(($instance['box_id'] === $key) ? ' selected' : '' ).'>'.$option.'</option>';?> 
     </select></p>
     
-    <p><input id="<?php echo $this->get_field_id('parse'); ?>" name="<?php echo $this->get_field_name('parse'); ?>" type="checkbox" <?php checked($instance['parse']); ?> />&nbsp;<label for="<?php echo $this->get_field_id('parse'); ?>"><?php _e('Evaluate as PHP code.', STB_DOMAIN); ?></label></p>
+    <p><input id="<?php echo $this->get_field_id('parse'); ?>" name="<?php echo $this->get_field_name('parse'); ?>" type="checkbox" <?php checked($instance['parse']); ?> />&nbsp;<label for="<?php echo $this->get_field_id('parse'); ?>"><?php _e('Evaluate as PHP code.', 'wp-special-textboxes'); ?></label></p>
     
-    <p><input id="<?php echo $this->get_field_id('show_all'); ?>" name="<?php echo $this->get_field_name('show_all'); ?>" type="checkbox" <?php checked($instance['show_all']); ?> />&nbsp;<label for="<?php echo $this->get_field_id('show_all'); ?>"><?php _e('Show on all pages of blog', STB_DOMAIN); ?></label></p>
+    <p><input id="<?php echo $this->get_field_id('show_all'); ?>" name="<?php echo $this->get_field_name('show_all'); ?>" type="checkbox" <?php checked($instance['show_all']); ?> />&nbsp;<label for="<?php echo $this->get_field_id('show_all'); ?>"><?php _e('Show on all pages of blog', 'wp-special-textboxes'); ?></label></p>
     
-    <p><?php _e('Show only on', STB_DOMAIN) ?>:<br />
-    <input id="<?php echo $this->get_field_id('show_home'); ?>" name="<?php echo $this->get_field_name('show_home'); ?>" type="checkbox" <?php checked($instance['show_home']); ?> />&nbsp;<label for="<?php echo $this->get_field_id('show_home'); ?>"><?php _e('Home Page', STB_DOMAIN); ?></label><br />
-    <input id="<?php echo $this->get_field_id('show_single'); ?>" name="<?php echo $this->get_field_name('show_single'); ?>" type="checkbox" <?php checked($instance['show_single']); ?> />&nbsp;<label for="<?php echo $this->get_field_id('show_single'); ?>"><?php _e('Single Post Pages', STB_DOMAIN); ?></label><br />
-    <input id="<?php echo $this->get_field_id('show_arc'); ?>" name="<?php echo $this->get_field_name('show_arc'); ?>" type="checkbox" <?php checked($instance['show_arc']); ?> />&nbsp;<label for="<?php echo $this->get_field_id('show_arc'); ?>"><?php _e('Archive Pages', STB_DOMAIN); ?></label><br />
-    <input id="<?php echo $this->get_field_id('show_cat'); ?>" name="<?php echo $this->get_field_name('show_cat'); ?>" type="checkbox" <?php checked($instance['show_cat']); ?> />&nbsp;<label for="<?php echo $this->get_field_id('show_cat'); ?>"><?php _e('Category Archive Pages', STB_DOMAIN); ?></label><br />
-    <input id="<?php echo $this->get_field_id('show_tag'); ?>" name="<?php echo $this->get_field_name('show_tag'); ?>" type="checkbox" <?php checked($instance['show_tag']); ?> />&nbsp;<label for="<?php echo $this->get_field_id('show_tag'); ?>"><?php _e('Tag Archive Pages', STB_DOMAIN); ?></label><br />
-    <input id="<?php echo $this->get_field_id('show_author'); ?>" name="<?php echo $this->get_field_name('show_author'); ?>" type="checkbox" <?php checked($instance['show_author']); ?> />&nbsp;<label for="<?php echo $this->get_field_id('show_author'); ?>"><?php _e('Author Archive Pages', STB_DOMAIN); ?></label><br /></p>
+    <p><?php _e('Show only on', 'wp-special-textboxes') ?>:<br />
+    <input id="<?php echo $this->get_field_id('show_home'); ?>" name="<?php echo $this->get_field_name('show_home'); ?>" type="checkbox" <?php checked($instance['show_home']); ?> />&nbsp;<label for="<?php echo $this->get_field_id('show_home'); ?>"><?php _e('Home Page', 'wp-special-textboxes'); ?></label><br />
+    <input id="<?php echo $this->get_field_id('show_single'); ?>" name="<?php echo $this->get_field_name('show_single'); ?>" type="checkbox" <?php checked($instance['show_single']); ?> />&nbsp;<label for="<?php echo $this->get_field_id('show_single'); ?>"><?php _e('Single Post Pages', 'wp-special-textboxes'); ?></label><br />
+    <input id="<?php echo $this->get_field_id('show_arc'); ?>" name="<?php echo $this->get_field_name('show_arc'); ?>" type="checkbox" <?php checked($instance['show_arc']); ?> />&nbsp;<label for="<?php echo $this->get_field_id('show_arc'); ?>"><?php _e('Archive Pages', 'wp-special-textboxes'); ?></label><br />
+    <input id="<?php echo $this->get_field_id('show_cat'); ?>" name="<?php echo $this->get_field_name('show_cat'); ?>" type="checkbox" <?php checked($instance['show_cat']); ?> />&nbsp;<label for="<?php echo $this->get_field_id('show_cat'); ?>"><?php _e('Category Archive Pages', 'wp-special-textboxes'); ?></label><br />
+    <input id="<?php echo $this->get_field_id('show_tag'); ?>" name="<?php echo $this->get_field_name('show_tag'); ?>" type="checkbox" <?php checked($instance['show_tag']); ?> />&nbsp;<label for="<?php echo $this->get_field_id('show_tag'); ?>"><?php _e('Tag Archive Pages', 'wp-special-textboxes'); ?></label><br />
+    <input id="<?php echo $this->get_field_id('show_author'); ?>" name="<?php echo $this->get_field_name('show_author'); ?>" type="checkbox" <?php checked($instance['show_author']); ?> />&nbsp;<label for="<?php echo $this->get_field_id('show_author'); ?>"><?php _e('Author Archive Pages', 'wp-special-textboxes'); ?></label><br /></p>
 <?php
     }
   } // End of class special_text

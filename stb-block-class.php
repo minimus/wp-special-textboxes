@@ -1,18 +1,18 @@
 <?php
 if ( ! class_exists( 'StbBlock' ) ) {
 	class StbBlock {
-		private $data = array(
+		private array $data = array(
 			'content' => null,
 			'id'      => 'warning',
 			'caption' => '',
 			'atts'    => array(),
 			'idNum'   => 0
 		);
-		private $styles = array();
-		private $aStyles = array();
+		private array $styles = array();
+		private array $aStyles = array();
 
-		public $block = '';
-		public $widgetBlock;
+		public string $block = '';
+		public string $widgetBlock;
 
 		public function __construct( $content = null, $id = 'warning', $caption = '', $atts = null ) {
 			$this->data['content'] = $content;
@@ -28,13 +28,13 @@ if ( ! class_exists( 'StbBlock' ) ) {
 			//$this->widgetBlock = self::getWidgetBox($this->data);
 		}
 
-		private function getSettings() {
+		private function getSettings(): array {
 			$settings = get_option( STB_OPTIONS, '' );
 
 			return $settings;
 		}
 
-		private function getStyles() {
+		private function getStyles(): array {
 			global $wpdb;
 			$sTable  = $wpdb->prefix . "stb_styles";
 			$styles  = array();
@@ -82,7 +82,7 @@ if ( ! class_exists( 'StbBlock' ) ) {
 			return array( $styles, $aStyles );
 		}
 
-		private function getClasses( $value, $aa = false ) {
+		private function getClasses( $value, $aa = false ): array {
 			$classes = array();
 			foreach ( $value as $val ) {
 				if ( $aa ) {
@@ -95,7 +95,7 @@ if ( ! class_exists( 'StbBlock' ) ) {
 			return $classes;
 		}
 
-		private function getMode( $val, $setsVal ) {
+		private function getMode( $val, $setsVal ): string {
 			if ( ! empty( $val ) ) {
 				$mode = $val;
 			} elseif ( $setsVal == 'mix' ) {
@@ -110,7 +110,7 @@ if ( ! class_exists( 'StbBlock' ) ) {
 			return $mode;
 		}
 
-		private function getCssImage( $id ) {
+		private function getCssImage( $id ): string {
 			if ( ! empty( $this->aStyles[ $id ]['cssStyle']['bigImg'] ) ) {
 				return $this->aStyles[ $id ]['cssStyle']['bigImg'];
 			} elseif ( ! empty( $this->aStyles[ $id ]['cssStyle']['image'] ) ) {
@@ -253,7 +253,7 @@ if ( ! class_exists( 'StbBlock' ) ) {
 				}
 
 				// Tool Image
-				$toolImg = ( $collapsing ) ? '<div id="stb-tool-' . $idNum . '" class="stb-tool"><img id="stb-toolimg-' . $idNum . '" src="' . ( ( $collapsed ) ? $settings['js_imgPlus'] . '" title="' . __( 'Show', STB_DOMAIN ) : $settings['js_imgMinus'] . '" title="' . __( 'Hide', STB_DOMAIN ) ) . '" /></div>' : '';
+				$toolImg = ( $collapsing ) ? '<div id="stb-tool-' . $idNum . '" class="stb-tool"><img id="stb-toolimg-' . $idNum . '" src="' . ( ( $collapsed ) ? $settings['js_imgPlus'] . '" title="' . __( 'Show', 'wp-special-textboxes' ) : $settings['js_imgMinus'] . '" title="' . __( 'Hide', 'wp-special-textboxes' ) ) . '" /></div>' : '';
 
 				// Icon Image
 				if ( ! empty( $atts['image'] ) && ( $atts['image'] != 'null' ) ) {
@@ -461,7 +461,7 @@ if ( ! class_exists( 'StbBlock' ) ) {
 			);*/
 		}
 
-		public function getWidgetBox( $data = null ) {
+		public function getWidgetBox( $data = null ): array {
 			$boxData  = ( is_null( $data ) ) ? $this->data : $data;
 			$id       = $boxData['id'];
 			$caption  = $boxData['caption'];
@@ -553,7 +553,7 @@ if ( ! class_exists( 'StbBlock' ) ) {
 			return $out;
 		}
 
-		private function buildBlock( $data ) {
+		private function buildBlock( $data ): string {
 			$content = $data['content'];
 			$id      = $data['id'];
 			$caption = $data['caption'];

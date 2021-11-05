@@ -145,13 +145,13 @@ if(!class_exists('StbThemes')) {
 
     private function getStyleName($slug) {
       $names = array(
-        'alert' => __('Alert!', STB_DOMAIN),
-        'black' => __('Black Quote', STB_DOMAIN),
-        'download' => __('Download', STB_DOMAIN),
-        'info' => __('Info', STB_DOMAIN),
-        'warning' => __('Warning!', STB_DOMAIN),
-        'grey' => __('Codes', STB_DOMAIN),
-        'custom' => __('Custom Style', STB_DOMAIN)
+        'alert' => __('Alert!', 'wp-special-textboxes'),
+        'black' => __('Black Quote', 'wp-special-textboxes'),
+        'download' => __('Download', 'wp-special-textboxes'),
+        'info' => __('Info', 'wp-special-textboxes'),
+        'warning' => __('Warning!', 'wp-special-textboxes'),
+        'grey' => __('Codes', 'wp-special-textboxes'),
+        'custom' => __('Custom Style', 'wp-special-textboxes')
       );
 
       return $names[$slug];
@@ -275,7 +275,7 @@ if(!class_exists('StbThemes')) {
       $out = self::zipThemeData($opts['slug']);
       self::refresh();
 
-      return array('zip' => $out, 'message' => sprintf(__('Theme %s is saved ...', STB_DOMAIN), $data['name']));
+      return array('zip' => $out, 'message' => sprintf(__('Theme %s is saved ...', 'wp-special-textboxes'), $data['name']));
     }
 
     private function sanitizeThemeData( $data, $dir ) {
@@ -284,16 +284,16 @@ if(!class_exists('StbThemes')) {
       $tData = $data;
       switch($tData['slug']) {
         case 'stb_dark':
-          $tData['name'] = __('STB Dark', STB_DOMAIN);
-          $tData['description'] = __('Colored content boxes with dark captions.', STB_DOMAIN);
+          $tData['name'] = __('STB Dark', 'wp-special-textboxes');
+          $tData['description'] = __('Colored content boxes with dark captions.', 'wp-special-textboxes');
           break;
         case 'stb_light':
-          $tData['name'] = __('STB Light', STB_DOMAIN);
-          $tData['description'] = __('Light content boxes with colored captions.', STB_DOMAIN);
+          $tData['name'] = __('STB Light', 'wp-special-textboxes');
+          $tData['description'] = __('Light content boxes with colored captions.', 'wp-special-textboxes');
           break;
         case 'stb_metro':
-          $tData['name'] = __('Metro', STB_DOMAIN);
-          $tData['description'] = __('Flat colored content boxes, clone of Windows Metro theme.', STB_DOMAIN);
+          $tData['name'] = __('Metro', 'wp-special-textboxes');
+          $tData['description'] = __('Flat colored content boxes, clone of Windows Metro theme.', 'wp-special-textboxes');
           break;
         default: break;
       }
@@ -399,7 +399,7 @@ if(!class_exists('StbThemes')) {
           'name' => $value['name'],
           'icon' => $value['icon'],
           'description' => $value['description'],
-          'note' => ((!empty($value['options'])) ? '<strong>'.__('Note:', STB_DOMAIN).'</strong> '.__('This theme may change your STB settings.', STB_DOMAIN) : ''),
+          'note' => ((!empty($value['options'])) ? '<strong>'.__('Note:', 'wp-special-textboxes').'</strong> '.__('This theme may change your STB settings.', 'wp-special-textboxes') : ''),
           'author' => ((isset($value['author'])) ? $value['author'] : ''),
           'author_url' => (isset($value['author_url']) ? $value['author_url'] : '')
         );
@@ -467,11 +467,11 @@ if(!class_exists('StbThemes')) {
       update_option(STB_OPTIONS, $options);
 
       if($success == count($data['jsStyles'])) {
-        $mess = sprintf( __('%s theme installed...', STB_DOMAIN), $data['name'] );
+        $mess = sprintf( __('%s theme installed...', 'wp-special-textboxes'), $data['name'] );
         $status = true;
       }
       else {
-        $mess = __('Something went wrong...', STB_DOMAIN) . $errMess;
+        $mess = __('Something went wrong...', 'wp-special-textboxes') . $errMess;
         $status = false;
       }
 

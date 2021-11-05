@@ -1,8 +1,8 @@
-const stb = stb || {};
+const stb = stb ?? {};
 
 (function ($) {
   let media;
-  const mediaTexts = stbUserOptions.media;
+  const mediaTexts = window.stbUserOptions.media;
 
   // WP Media
   stb.media = media = {
@@ -52,7 +52,7 @@ const stb = stb || {};
   };
 
   $(document).ready(function () {
-    const opts = stbUserOptions;
+    const opts = window.stbUserOptions;
 
     media.init();
 
