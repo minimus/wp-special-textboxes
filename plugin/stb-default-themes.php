@@ -990,6 +990,18 @@ if (!class_exists('StbDefaultThemes')) {
             return $this->defaultThemes[$name];
         }
 
+        public function getThemeDefaultImages(string $name): array {
+            $theme = self::getTheme($name)['styles'];
+            $result = [];
+
+            foreach ($theme as $item) {
+                $colors = unserialize($item['colors']);
+                $result[$item['slug']] = $colors['image']['defaultImage'];
+            }
+
+            return $result;
+        }
+
         public function getThemes(): array
         {
             return $this->defaultThemes;

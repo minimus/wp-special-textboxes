@@ -18,6 +18,7 @@ if (!class_exists('StbDbTools')) {
         private string $sTable = '';
         private string $osTable = '';
         private array $defaultColors;
+        private array $defaultImages;
 
         public function __construct($sTable = 'stb_stylez', $osTable = 'stb_styles')
         {
@@ -28,6 +29,7 @@ if (!class_exists('StbDbTools')) {
             $this->sTable = $wpdb->prefix . $sTable;
             $this->osTable = $wpdb->prefix . $osTable;
             $this->defaultColors = $stbDefaultThemes->getTheme('stb-dark')['styles'];
+            $this->defaultImages = $stbDefaultThemes->getThemeDefaultImages('stb-dark');
         }
 
         protected function isSetValue($valid, $invalid)
@@ -84,8 +86,9 @@ if (!class_exists('StbDbTools')) {
                             'background' => array('#' . $cssStyles['captionBgColor'], '#' . $cssStyles['captionBgColorEnd']),
                         ],
                         'image' => [
-                            'image' => $cssStyles['image'],
-                            'enabled' => true,
+                            'image' => strpos($cssStyles['image'], STB_URL) === 0 ? '' : $cssStyles['image'],
+                            'defaultImage' => $this->defaultImages[$row['slug']],
+                            'enabled' => !(strpos($cssStyles['image'], STB_URL) === 0),
                         ],
                     ]),
                     'stbType' => $row['stype'],
@@ -150,7 +153,8 @@ if (!class_exists('StbDbTools')) {
             return $data;
         }
 
-        public function deleteTables(bool $all = true): void {
+        public function deleteTables(bool $all = true): void
+        {
             global $wpdb;
 
             $wpdb->query("DROP TABLE IF EXISTS {$this->sTable};");

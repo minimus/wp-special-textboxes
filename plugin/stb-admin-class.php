@@ -27,6 +27,11 @@ if (!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) 
                 define('STB_EXT_THEMES', false);
             }
 
+            /* $dbUpgraded = $this->stbDbTools->upgradeDb();
+            if ($dbUpgraded) {
+                $this->stbStyles->updateCSS();
+            } */
+
             register_activation_hook(STB_MAIN_FILE, [&$this, 'onActivate']);
             register_deactivation_hook(STB_MAIN_FILE, [&$this, 'onDeactivate']);
             add_action('admin_menu', [&$this, 'regAdminPage']);
@@ -34,11 +39,6 @@ if (!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) 
             add_action('init', [&$this, 'addButtons']);
             add_action('wp_ajax_close_stb_pointer', [&$this, 'closePointerHandler']);
             add_filter('mce_external_languages', [&$this, 'addMceLocale']);
-
-            $dbUpgraded = $this->stbDbTools->upgradeDb();
-            if ($dbUpgraded) {
-                $this->stbStyles->updateCSS();
-            }
         }
 
         public function onActivate()

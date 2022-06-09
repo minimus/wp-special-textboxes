@@ -43,9 +43,16 @@ if (!class_exists("SpecialTextBoxes")) {
 
             $this->stbTools = new StbTools();
             $this->stbDbTools = new StbDbTools();
+            $dbUpgraded = $this->stbDbTools->upgradeDb();
+
             $this->settings = self::getAdminOptions();
             $this->styles = $this->stbDbTools->getCurrentColors();
             $this->stbStyles = new StbStyles($this->settings, $this->styles);
+
+            if ($dbUpgraded) {
+                $this->stbStyles->updateCSS();
+            }
+
             $this->classes = self::getClasses($this->styles);
             $this->getVersions(true);
 
