@@ -1,0 +1,68 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "wp-special-textboxes/stb-block",
+  "version": "6.0.0",
+  "title": "Special Text",
+  "category": "text",
+  "icon": "bell",
+  "description": "Highlights block of text as colored text block.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "content": {
+      "type": "string",
+      "source": "html",
+      "selector": "p",
+      "default": ""
+    },
+    "caption": {
+      "type": "string",
+      "default": ""
+    },
+    "styleId": {
+      "type": "string",
+      "default": "warning"
+    },
+    "defaultCaption": {
+      "type": "boolean",
+      "default": false
+    },
+    "image": {
+      "type": "string",
+      "default": ""
+    },
+    "bigImage": {
+      "type": "boolean",
+      "default": true
+    },
+    "collapsed": {
+      "type": "boolean",
+      "default": false
+    },
+    "collapsing": {
+      "type": "boolean",
+      "default": true
+    },
+    "marginTop": {
+      "type": "string",
+      "default": ""
+    },
+    "marginRight": {
+      "type": "string",
+      "default": ""
+    },
+    "marginBottom": {
+      "type": "string",
+      "default": ""
+    },
+    "marginLeft": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "textdomain": "wp-special-textboxes",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css"
+}

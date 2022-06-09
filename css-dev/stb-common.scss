@@ -1,0 +1,49 @@
+.stb-container {
+	margin: 10px;
+	border-radius: 5px;
+	box-shadow: 10px 10px 10px #000000;
+
+	.stb-caption {
+		.stb-tool {
+			background-image: url(https://simplelib.com/minus.png);
+		background-position: center;
+		background-color: transparent;
+		background-repeat: no-repeat;
+	}
+}
+
+.stb-content {
+	padding: 10px;
+	text-shadow: 1px 1px 1px #000000;
+}
+
+&.stb-collapsed {
+	.stb-caption {
+		.stb-tool {
+			background-image: url(https://simplelib.com/plus.png);
+	}
+}
+
+.stb-content {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+}
+
+&.stb-no-caption.stb-ltr,
+&.stb-no-caption {
+	direction: ltr;
+
+	.stb-content {
+		padding: 10px 10px 10px 0;
+	}
+}
+
+&.stb-no-caption.stb-rtl {
+	direction: rtl;
+
+	.stb-content {
+		padding: 10px 0 10px 10px;
+	}
+}
+}

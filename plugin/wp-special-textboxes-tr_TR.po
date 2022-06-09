@@ -1,0 +1,542 @@
+# Copyright (C) 2010 Special Text Boxes
+# This file is distributed under the same license as the Special Text Boxes package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Special Text Boxes 3.9.57\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-special-textboxes\n"
+"POT-Creation-Date: 2011-03-12 13:59:30+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2011-03-12 17:14+0200\n"
+"Last-Translator: Serhat ESEN <srht.esen@gmail.com>\n"
+"Language-Team: Serhat ESEN <srht.esen@gmail.com>\n"
+"X-Poedit-Language: Turkish\n"
+"X-Poedit-Country: TURKEY\n"
+
+#: stb-class.php:123
+msgid "Arbitrary text or PHP in colored block."
+msgstr "Metin yada PHP renkli blok."
+
+#: stb-class.php:125
+msgid "Special Text"
+msgstr "Özel Metin"
+
+#: stb-class.php:175
+#: js/dialog.php:45
+msgid "Alert"
+msgstr "Uyarı"
+
+#: stb-class.php:176
+#: js/dialog.php:46
+msgid "Download"
+msgstr "İndir"
+
+#: stb-class.php:177
+#: js/dialog.php:47
+msgid "Info"
+msgstr "Bilgi"
+
+#: stb-class.php:178
+#: js/dialog.php:50
+msgid "Warning"
+msgstr "Dikkat"
+
+#: stb-class.php:179
+#: js/dialog.php:48
+msgid "Black"
+msgstr "Siyah"
+
+#: stb-class.php:180
+#: js/dialog.php:51
+msgid "Custom"
+msgstr "Özel"
+
+#: stb-class.php:181
+msgid "Theme Style"
+msgstr "Tema Stili"
+
+#: stb-class.php:211
+msgid "Title:"
+msgstr "Başlık:"
+
+#: stb-class.php:216
+msgid "ID of Box:"
+msgstr "Kutu Numarası:"
+
+#: stb-class.php:222
+msgid "Evaluate as PHP code."
+msgstr "PHP kodu olarak yorumlanır."
+
+#: stb-class.php:224
+msgid "Show on all pages of blog"
+msgstr "Bloğun bütün sayfalarını göster"
+
+#: stb-class.php:226
+msgid "Show only on"
+msgstr "Sadece şunu göster:"
+
+#: stb-class.php:227
+msgid "Home Page"
+msgstr "Anasayfa"
+
+#: stb-class.php:228
+msgid "Single Post Pages"
+msgstr "Yazı Okuma Sayfası"
+
+#: stb-class.php:229
+msgid "Archive Pages"
+msgstr "Arşiv Sayfaları"
+
+#: stb-class.php:230
+msgid "Category Archive Pages"
+msgstr "Kategori Arşiv Sayfaları"
+
+#: stb-class.php:231
+msgid "Tag Archive Pages"
+msgstr "Etiket Arşiv Sayfaları"
+
+#: stb-class.php:232
+msgid "Author Archive Pages"
+msgstr "Yazar Arşiv Sayfaları"
+
+#: js/wstb.js.php:21
+#: js/wstb.admin.js.php:21
+#: stb-admin-class.php:46
+#: stb-block-class.php:66
+msgid "Show"
+msgstr "Göster"
+
+#: js/wstb.js.php:32
+#: js/wstb.admin.js.php:32
+#: stb-admin-class.php:46
+#: stb-block-class.php:66
+msgid "Hide"
+msgstr "Gizle"
+
+#: js/dialog.php:20
+msgid "Insert Special Text Box"
+msgstr "Özel Metin Kutusu Ekle"
+
+#: js/dialog.php:34
+#: stb-admin-class.php:62
+msgid "Basic Settings"
+msgstr "Temel Ayarlar"
+
+#: js/dialog.php:35
+#: stb-admin-class.php:63
+msgid "Extended Settings"
+msgstr "Genişletilmiş Ayarlar"
+
+#: js/dialog.php:42
+msgid "Text Box ID"
+msgstr "Kutu Modeli"
+
+#: js/dialog.php:49
+msgid "Grey"
+msgstr "Gri"
+
+#: js/dialog.php:56
+msgid "Caption"
+msgstr "Başlık"
+
+#: js/dialog.php:61
+msgid "Block Collapsing (for captioned box only)"
+msgstr "Açılır/Kapanır özelliği engelle (saece başlıklılarda)"
+
+#: js/dialog.php:63
+#: js/dialog.php:69
+#: stb-admin-class.php:73
+#: stb-admin-class.php:75
+#: stb-admin-class.php:76
+#: stb-admin-class.php:77
+#: stb-admin-class.php:79
+#: stb-admin-class.php:80
+#: stb-admin-class.php:81
+msgid "Yes"
+msgstr "Evet"
+
+#: js/dialog.php:63
+#: js/dialog.php:69
+#: stb-admin-class.php:73
+#: stb-admin-class.php:75
+#: stb-admin-class.php:76
+#: stb-admin-class.php:77
+#: stb-admin-class.php:79
+#: stb-admin-class.php:80
+#: stb-admin-class.php:81
+msgid "No"
+msgstr "Hayır"
+
+#: js/dialog.php:63
+#: js/dialog.php:69
+msgid "Default"
+msgstr "Varsayılan"
+
+#: js/dialog.php:67
+msgid "Collapsed on Load (for captioned box only)"
+msgstr "Açılır/Kapanır özellik aktif (sadece başlıklılarda)"
+
+#: js/dialog.php:74
+msgid "Floating Mode Settings"
+msgstr "Hizalama Ayarları"
+
+#: js/dialog.php:80
+msgid "Float Mode"
+msgstr "Etkin"
+
+#: js/dialog.php:85
+msgid "Box Alignment"
+msgstr "Kutu Hizalama"
+
+#: js/dialog.php:88
+msgid "Left"
+msgstr "Sol"
+
+#: js/dialog.php:89
+msgid "Right"
+msgstr "Sağ"
+
+#: js/dialog.php:94
+msgid "Box Width (in pixels)"
+msgstr "Kutu Genişliği (piksel olarak)"
+
+#: js/dialog.php:102
+msgid "Text color"
+msgstr "Metin Rengi"
+
+#: js/dialog.php:111
+msgid "Caption Text color"
+msgstr "Başlık Metni Rengi"
+
+#: js/dialog.php:123
+msgid "Color"
+msgstr "Renk"
+
+#: js/dialog.php:133
+msgid "Caption color"
+msgstr "Başlık Rengi"
+
+#: js/dialog.php:144
+msgid "Border color"
+msgstr "Kenarlık Rengi"
+
+#: js/dialog.php:157
+msgid "Image URL"
+msgstr "Resim Adresi"
+
+#: js/dialog.php:164
+msgid "This is big image (or, if URL not entered, big standard image)"
+msgstr "Büyük resim."
+
+#: js/dialog.php:168
+msgid "Do not show image"
+msgstr "Resmi gösterme"
+
+#: js/dialog.php:173
+msgid "Margins"
+msgstr "Kenar Boşlukları"
+
+#: js/dialog.php:176
+msgid "Left Margin"
+msgstr "Sol Boşluk"
+
+#: js/dialog.php:178
+msgid "Right Margin"
+msgstr "Sağ Boşluk"
+
+#: js/dialog.php:182
+msgid "Top Margin"
+msgstr "Üst Boşluk"
+
+#: js/dialog.php:184
+msgid "Bottom Margin"
+msgstr "Alt Boşluk"
+
+#: js/dialog.php:192
+msgid "Cancel"
+msgstr "İptal Et"
+
+#: js/dialog.php:195
+msgid "Insert"
+msgstr "Ekle"
+
+#: stb-admin-class.php:44
+msgid "This is example of Custom Special Text Box. You must save options to view changes."
+msgstr "Bu Özel Metin Kutusu örneğidir. Değişiklikleri görmek için belirlediğiniz değişkenleri kaydetmeniz gerekir."
+
+#: stb-admin-class.php:45
+msgid "This is caption"
+msgstr "Burası başlık kısmı"
+
+#: stb-admin-class.php:47
+msgid "This is example of Captioned Custom Special Text Box. You must save options to view changes."
+msgstr "Bu Başlıklı Özel Metin Kutusu örneğidir. Değişiklikleri görmek için belirlediğiniz değişkenleri kaydetmeniz gerekir."
+
+#. #-#-#-#-#  plugin.pot (Special Text Boxes 3.9.57)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: stb-admin-class.php:53
+msgid "Special Text Boxes"
+msgstr "Özel Metin Kutuları"
+
+#: stb-admin-class.php:64
+msgid "Custom Box Editor"
+msgstr "Özelleştirilmiş Kutu Yönetimi"
+
+#: stb-admin-class.php:66
+msgid "Select border style for Special Text Boxes"
+msgstr "Özel Metin Kutuları için kenarlık stili seçin"
+
+#: stb-admin-class.php:66
+msgid "Selecting \"None\" will disable Special Text Boxes border."
+msgstr "Yok'u seçerseniz kenarlık olmayacak"
+
+#: stb-admin-class.php:66
+msgid "Solid"
+msgstr "Katı"
+
+#: stb-admin-class.php:66
+msgid "Dashed"
+msgstr "Tire"
+
+#: stb-admin-class.php:66
+msgid "Dotted"
+msgstr "Nokta"
+
+#: stb-admin-class.php:66
+msgid "None"
+msgstr "Yok"
+
+#: stb-admin-class.php:67
+msgid "Define top margin for Special Text Boxes"
+msgstr "Özel Metin Kutuları için üst kenar boşluğu tanımlayın"
+
+#: stb-admin-class.php:67
+msgid "This is a gap between top edge of Special Text Box and text above."
+msgstr "Bu metin ile üst kenar arasındaki boşluğu belirler."
+
+#: stb-admin-class.php:68
+msgid "Define left margin for Special Text Boxes"
+msgstr "Özel Metin Kutuları için sol kenar boşluğu tanımlayın"
+
+#: stb-admin-class.php:68
+msgid "This is a gap between left edge of Special Text Box and left edge of post area."
+msgstr "Bu metin ile sol kenar arasındaki boşluğu belirler."
+
+#: stb-admin-class.php:69
+msgid "Define right margin for Special Text Boxes"
+msgstr "Özel Metin Kutuları için sağ kenar boşluğu tanımlayın"
+
+#: stb-admin-class.php:69
+msgid "This is a gap between right edge of Special Text Box and right edge of post area."
+msgstr "Bu metin ile kenar sağ arasındaki boşluğu belirler."
+
+#: stb-admin-class.php:70
+msgid "Define bottom margin for Special Text Boxes"
+msgstr "Özel Metin Kutuları için alt kenar boşluğu tanımlayın"
+
+#: stb-admin-class.php:70
+msgid "This is a gap between bottom edge of Special Text Box and text below."
+msgstr "Bu metin ile alt kenar arasındaki boşluğu belirler."
+
+#: stb-admin-class.php:71
+msgid "Define font size for Special Text Boxes"
+msgstr "Özel Metin Kutuları için yazı tipi boyutunu tanımlayın"
+
+#: stb-admin-class.php:71
+#: stb-admin-class.php:85
+msgid "This is font size in pixels."
+msgstr "Piksel olarak."
+
+#: stb-admin-class.php:71
+#: stb-admin-class.php:72
+#: stb-admin-class.php:85
+#: stb-admin-class.php:86
+msgid "Set this parameter to value 0 for theme default font size."
+msgstr "Tema varsayalın boyutu olması için 0 (sıfır) girin."
+
+#: stb-admin-class.php:72
+msgid "Define caption font size for Special Text Boxes"
+msgstr "Özel Metin Kutuları için başlık yazısı boyutunu tanımlayın"
+
+#: stb-admin-class.php:72
+#: stb-admin-class.php:86
+msgid "This is caption font size in pixels."
+msgstr "Piksel olarak."
+
+#: stb-admin-class.php:73
+msgid "Allow Big Image for Simple (non-captioned) Special Text Boxes?"
+msgstr "Basit Özel Metin Kutuları için büyük resme izin verilsin mi? (Başlıksız olanlarda)"
+
+#: stb-admin-class.php:73
+msgid "Selecting \"Yes\" will allow big icons for simple (non-captioned) Special Text Boxes."
+msgstr "Evet'i seçerseniz büyük resimlerin görüntülenmesine izin verilecek."
+
+#: stb-admin-class.php:74
+msgid "Define language direction"
+msgstr "Dile göre yazım yönünü tanımlayın"
+
+#: stb-admin-class.php:74
+msgid "Selecting \"Left-to-Right\" will set Left-to-Right language direction for Special Text Boxes and visa versa."
+msgstr "   "
+
+#: stb-admin-class.php:74
+msgid "Left-to-Right"
+msgstr "Soldan sağa"
+
+#: stb-admin-class.php:74
+msgid "Right-to-Left"
+msgstr "Sağdan sola"
+
+#: stb-admin-class.php:75
+msgid "Allow icon images for Special Text Boxes?"
+msgstr "Özel Metin Kutuları için ikon resimlere izin ver?"
+
+#: stb-admin-class.php:75
+msgid "Selecting \"Yes\" will allow displaying icon images in Special Text Boxes."
+msgstr "Evet'i seçerseniz icon resimlerin görüntülenmesine izin verilecek."
+
+#: stb-admin-class.php:76
+msgid "Allow collapsing/expanding captioned Special Text Boxes?"
+msgstr "Açılır/Kapanır başlığa izin ver?"
+
+#: stb-admin-class.php:76
+msgid "Selecting \"Yes\" will allow displaying show/hide button in captioned Special Text Boxes."
+msgstr "Evet'i seçerseniz açılır/kapanır özelliği için buton aktif olacak."
+
+#: stb-admin-class.php:77
+msgid "Allow \"collapsed on load\" captioned Special Text Boxes?"
+msgstr "Başlık açışlır/kapanır özelliği aktif olsun mu?"
+
+#: stb-admin-class.php:77
+msgid "Selecting \"Yes\" will allow displaying collapsed captioned Special Text Boxes after page loading."
+msgstr "Evet'i seçerseniz sayfa yüklendikten sonra başlık açılır/kapanır özelliğine izin verilecek."
+
+#: stb-admin-class.php:79
+msgid "Allow rounded corners for Special Text Boxes?"
+msgstr "Kutu köşeleri yuvarlatılsın mı?"
+
+#: stb-admin-class.php:79
+msgid "Selecting \"No\" will disable Special Text Boxes rounded corners."
+msgstr "Hayır'ı seçerseniz köşeler yuvarlatılmayacak."
+
+#: stb-admin-class.php:80
+msgid "Allow box shadow for Special Text Boxes?"
+msgstr "Kutu gölgesine izin verilsin mi?"
+
+#: stb-admin-class.php:80
+msgid "Selecting \"No\" will disable Special Text Boxes shadow."
+msgstr "Hayır'ı seçerseniz kutula gölgesiz olacak"
+
+#: stb-admin-class.php:81
+msgid "Allow text shadow for Special Text Boxes?"
+msgstr "Metin gölgesine izin verilsin mi"
+
+#: stb-admin-class.php:81
+msgid "Selecting \"No\" will disable Special Text Boxes text shadow."
+msgstr "Hayır'ı seçerseniz metinlerin gölgesiz olacak"
+
+#: stb-admin-class.php:83
+msgid "Define font color for Custom Special Text Box"
+msgstr "Yazı Rengi"
+
+#: stb-admin-class.php:83
+msgid "This is a font color of Custom Special Text Box (Six Hex Digits)."
+msgstr "Bu yazı rengini belirler.6 dijitlik değer girin. (ff012f gibi)"
+
+#: stb-admin-class.php:84
+msgid "Define caption font color for Custom Special Text Box"
+msgstr "Başlık Metni Rengi"
+
+#: stb-admin-class.php:84
+msgid "This is a font color of Custom Special Text Box caption (Six Hex Digits)."
+msgstr "Bu başlığın yazı rengini belirler.6 dijitlik değer girin."
+
+#: stb-admin-class.php:85
+msgid "Define font size for Custom Special Text Box"
+msgstr "Metin Boyutu"
+
+#: stb-admin-class.php:86
+msgid "Define caption font size for Custom Special Text Box"
+msgstr "Bu başlık yazısının boyurunu belirler."
+
+#: stb-admin-class.php:87
+msgid "Define background color for Custom Special Text Box"
+msgstr "Kutu Arkaplan Rengi"
+
+#: stb-admin-class.php:87
+msgid "This is a background color of Custom Special Text Box (Six Hex Digits)."
+msgstr "Bu kutunun arkaplanı rengini belirler.6 dijitlik değer girin."
+
+#: stb-admin-class.php:88
+msgid "Define background color for Custom Special Text Box caption"
+msgstr "Başlık arkaplan rengi"
+
+#: stb-admin-class.php:88
+msgid "This is a background color of Custom Special Text Box caption (Six Hex Digits)."
+msgstr "Bu başlık kısmının arkaplan rengini belirler.6 dijitlik değer girin."
+
+#: stb-admin-class.php:89
+msgid "Define border color for Custom Special Text Box"
+msgstr "Kenarlık Rengi"
+
+#: stb-admin-class.php:89
+msgid "This is a border color of Custom Special Text Box (Six Hex Digits)."
+msgstr "Bu kenarlık rengini belirler.6 dijitlik değer girin."
+
+#: stb-admin-class.php:90
+msgid "Define image for Custom Special Text Box"
+msgstr "Resim"
+
+#: stb-admin-class.php:90
+msgid "This is an image of Custom Special Text Box (Full URL). 25x25 pixels, transparent background PNG image recommended."
+msgstr "Buraya resmin tam adresini girin. 25x25 piksel ve saydam arkaplanlı PNG resim tavsiye edilir."
+
+#: stb-admin-class.php:91
+msgid "Define big image for simple (non-captioned) Custom Special Text Box"
+msgstr "Büyük Resim (sadece başlık olmayanlarda)"
+
+#: stb-admin-class.php:91
+msgid "This is big image for simple (non-captioned) Custom Special Text Box (Full URL). 50x50 pixels, transparent background PNG image recommended."
+msgstr "Buraya büyük resmin tam adresini girin. 50x50 piksel ve saydam arkaplanlı PNG resim tavsiye edilir. (!Sadece başlık olmayanlarda!)"
+
+#: stb-admin-class.php:164
+msgid "Parameters below add elements of CSS3 standard to Style Sheet. Not all browsers can interpret this elements properly, but including this elements to HTML page not crash browser."
+msgstr ".."
+
+#: stb-admin-class.php:168
+msgid "Use parameters below for customising custom Special Text Box."
+msgstr "Kendiniz bir Özel Metin Kutusu oluşturmak istiyorsanız,ağaşıdaki değişkenleri kullanın."
+
+#: stb-admin-class.php:231
+msgid "Special Text Boxes Settings"
+msgstr "Özel Metin Kutusu Ayarları"
+
+#: stb-admin-class.php:232
+msgid "Plugin version"
+msgstr "Eklenti sürümü"
+
+#: stb-admin-class.php:237
+msgid "Special Text Boxes Settings Updated."
+msgstr "Özel Metin Kutusu Ayarları Güncellendi."
+
+#: stb-admin-class.php:245
+msgid "Save Changes"
+msgstr "Değişiklikleri Kaydet"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.simplelib.com/?p=11"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Adds simple colored text boxes to highlight some portion of post text. Use it for highlights warnings, alerts, infos and downloads in your blog posts. Visit <a href=\"http://www.simplelib.com/\">SimpleLib blog</a> for more details."
+msgstr "Yazılan metin içersinde vurgu yapmak için şekillendirilmiş basit metin kutuları ekler. Uyarı, detay, indirme bilgisi gibi metinlerde kullanın. Daha fazla bilgi için <a href=\"http://www.simplelib.com/\">SimpleLib blog</a> adresini ziyaret edin."
+
+#. Author of the plugin/theme
+msgid "minimus"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://blogcoding.ru"
+msgstr ""
+

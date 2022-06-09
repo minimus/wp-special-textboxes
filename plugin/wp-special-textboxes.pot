@@ -1,0 +1,887 @@
+# Copyright (C) 2010 Special Text Boxes
+# This file is distributed under the same license as the Special Text Boxes package.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Special Text Boxes\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-special-textboxes\n"
+"POT-Creation-Date: 2022-06-09 13:33+0300\n"
+"PO-Revision-Date: 2015-05-16 22:58+0300\n"
+"Last-Translator: minimus <minimus@blogcoding.ru>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_c;_n:1,2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: js\n"
+"X-Poedit-SearchPathExcluded-1: css\n"
+"X-Poedit-SearchPathExcluded-2: images\n"
+
+#: stb-admin-class.php:106
+msgid "Upgrade Now"
+msgstr ""
+
+#: stb-admin-class.php:108
+msgid "About STB Pro..."
+msgstr ""
+
+#: stb-admin-class.php:109
+msgid "STB Pro Documentation"
+msgstr ""
+
+#: stb-admin-class.php:110
+msgid "Free STB Pro Themes"
+msgstr ""
+
+#: stb-admin-class.php:111
+msgid "Get the full feature set of the <strong>Special Text Boxes</strong> plugin."
+msgstr ""
+
+#: stb-admin-class.php:112
+msgid "Upgrade to the STB Pro now!"
+msgstr ""
+
+#: stb-admin-class.php:139
+msgid "OK"
+msgstr ""
+
+#: stb-admin-class.php:140 stb-tinymce-langs.php:63
+msgid "Cancel"
+msgstr ""
+
+#: stb-admin-class.php:141
+msgid "Show numbers"
+msgstr ""
+
+#: stb-admin-class.php:142
+msgid "Show color wheel"
+msgstr ""
+
+#: stb-admin-class.php:145
+msgid "Select Image"
+msgstr ""
+
+#: stb-admin-class.php:146
+msgid "Choose"
+msgstr ""
+
+#: stb-admin-class.php:179 stb-class.php:201
+msgid "Special Text"
+msgstr ""
+
+#: stb-admin-class.php:180
+msgid "Highlights block of text as colored text block."
+msgstr ""
+
+#: stb-admin-class.php:181
+msgid "Color Scheme"
+msgstr ""
+
+#: stb-admin-class.php:182 stb-locales.php:162 stb-tinymce-langs.php:24
+msgid "Caption"
+msgstr ""
+
+#: stb-admin-class.php:183 stb-locales.php:142
+msgid "Default Caption"
+msgstr ""
+
+#: stb-admin-class.php:184
+msgid "Content"
+msgstr ""
+
+#: stb-admin-class.php:185 stb-tinymce-langs.php:54
+msgid "Image"
+msgstr ""
+
+#: stb-admin-class.php:186
+msgid "Select"
+msgstr ""
+
+#: stb-admin-class.php:187
+msgid "Big image (only for blocks without caption)"
+msgstr ""
+
+#: stb-admin-class.php:188
+msgid "Appearance"
+msgstr ""
+
+#: stb-admin-class.php:189
+msgid "Can fold/unfold"
+msgstr ""
+
+#: stb-admin-class.php:190
+msgid "Block is folded on loading"
+msgstr ""
+
+#: stb-admin-class.php:191 stb-tinymce-langs.php:58
+msgid "Margins"
+msgstr ""
+
+#: stb-admin-class.php:192
+msgid "Top, px"
+msgstr ""
+
+#: stb-admin-class.php:193
+msgid "Right, px"
+msgstr ""
+
+#: stb-admin-class.php:194
+msgid "Bottom, px"
+msgstr ""
+
+#: stb-admin-class.php:195
+msgid "Left, px"
+msgstr ""
+
+#: stb-admin-class.php:240
+msgid "Special Text Boxes"
+msgstr ""
+
+#: stb-admin-class.php:241
+msgid "STB"
+msgstr ""
+
+#: stb-class.php:199
+msgid "Arbitrary text or PHP in colored block."
+msgstr ""
+
+#: stb-class.php:330
+msgid "Title:"
+msgstr ""
+
+#: stb-class.php:339
+msgid "ID of Box:"
+msgstr ""
+
+#: stb-class.php:349
+msgid "Evaluate as PHP code."
+msgstr ""
+
+#: stb-class.php:355
+msgid "Show on all pages of blog"
+msgstr ""
+
+#: stb-class.php:358
+msgid "Show only on"
+msgstr ""
+
+#: stb-class.php:362
+msgid "Home Page"
+msgstr ""
+
+#: stb-class.php:366
+msgid "Single Post Pages"
+msgstr ""
+
+#: stb-class.php:370
+msgid "Archive Pages"
+msgstr ""
+
+#: stb-class.php:374
+msgid "Category Archive Pages"
+msgstr ""
+
+#: stb-class.php:378
+msgid "Tag Archive Pages"
+msgstr ""
+
+#: stb-class.php:382
+msgid "Author Archive Pages"
+msgstr ""
+
+#: stb-default-themes.php:19
+msgid "STB Retro Theme"
+msgstr ""
+
+#: stb-default-themes.php:21
+msgid ""
+"This theme is a repetition of styles included into first version of the “Special "
+"Text Boxes” plugin."
+msgstr ""
+
+#: stb-default-themes.php:25 stb-default-themes.php:265 stb-default-themes.php:505
+#: stb-default-themes.php:745
+msgid "Alert!"
+msgstr ""
+
+#: stb-default-themes.php:49 stb-default-themes.php:289 stb-default-themes.php:529
+#: stb-default-themes.php:769
+msgid "Black Quote"
+msgstr ""
+
+#: stb-default-themes.php:73 stb-default-themes.php:313 stb-default-themes.php:553
+#: stb-default-themes.php:793
+msgid "Download"
+msgstr ""
+
+#: stb-default-themes.php:97 stb-default-themes.php:337 stb-default-themes.php:577
+#: stb-default-themes.php:817
+msgid "Info"
+msgstr ""
+
+#: stb-default-themes.php:121 stb-default-themes.php:361 stb-default-themes.php:601
+#: stb-default-themes.php:841
+msgid "Warning!"
+msgstr ""
+
+#: stb-default-themes.php:145 stb-default-themes.php:385 stb-default-themes.php:625
+#: stb-default-themes.php:865
+msgid "Codes"
+msgstr ""
+
+#: stb-default-themes.php:169 stb-default-themes.php:409 stb-default-themes.php:649
+#: stb-default-themes.php:889
+msgid "Custom Style"
+msgstr ""
+
+#: stb-default-themes.php:259
+msgid "STB Dark Theme"
+msgstr ""
+
+#: stb-default-themes.php:261
+msgid "Colored content boxes with dark captions."
+msgstr ""
+
+#: stb-default-themes.php:499
+msgid "STB Light Theme"
+msgstr ""
+
+#: stb-default-themes.php:501
+msgid "Light content boxes with colored captions."
+msgstr ""
+
+#: stb-default-themes.php:739
+msgid "STB Metro Theme"
+msgstr ""
+
+#: stb-default-themes.php:741
+msgid "Flat colored content boxes, clone of Windows Metro theme."
+msgstr ""
+
+#: stb-locales.php:15 stb-tinymce-langs.php:27
+msgid "Yes"
+msgstr ""
+
+#: stb-locales.php:16 stb-tinymce-langs.php:28
+msgid "No"
+msgstr ""
+
+#: stb-locales.php:17
+msgid "Left-to-Right"
+msgstr ""
+
+#: stb-locales.php:18
+msgid "Right-to-Left"
+msgstr ""
+
+#: stb-locales.php:19
+msgid "Save"
+msgstr ""
+
+#: stb-locales.php:22
+msgid "Version"
+msgstr ""
+
+#: stb-locales.php:23
+msgid "DB Version"
+msgstr ""
+
+#: stb-locales.php:26
+msgid "All rights reserved."
+msgstr ""
+
+#: stb-locales.php:29
+msgid "Available Box Styles"
+msgstr ""
+
+#: stb-locales.php:30
+msgid "New Custom Color Style"
+msgstr ""
+
+#: stb-locales.php:31
+msgid "STB Settings"
+msgstr ""
+
+#: stb-locales.php:32 stb-locales.php:38
+msgid "Themes"
+msgstr ""
+
+#: stb-locales.php:35
+msgid "Styles"
+msgstr ""
+
+#: stb-locales.php:36
+msgid "Settings"
+msgstr ""
+
+#: stb-locales.php:37
+msgid "Colors Editor"
+msgstr ""
+
+#: stb-locales.php:42
+msgid "Box Settings"
+msgstr ""
+
+#: stb-locales.php:43
+msgid "Define Margins for Special Text Boxes"
+msgstr ""
+
+#: stb-locales.php:45
+msgid "Top"
+msgstr ""
+
+#: stb-locales.php:46 stb-tinymce-langs.php:41
+msgid "Left"
+msgstr ""
+
+#: stb-locales.php:47 stb-tinymce-langs.php:42
+msgid "Right"
+msgstr ""
+
+#: stb-locales.php:48
+msgid "Bottom"
+msgstr ""
+
+#: stb-locales.php:50
+msgid "This is a gap around of Special Text Box."
+msgstr ""
+
+#: stb-locales.php:52
+msgid "Define Border for Special Text Boxes"
+msgstr ""
+
+#: stb-locales.php:53
+msgid "Border Style"
+msgstr ""
+
+#: stb-locales.php:55
+msgid "Solid"
+msgstr ""
+
+#: stb-locales.php:56
+msgid "Dashed"
+msgstr ""
+
+#: stb-locales.php:57
+msgid "Dotted"
+msgstr ""
+
+#: stb-locales.php:58
+msgid "None"
+msgstr ""
+
+#: stb-locales.php:60
+msgid "Allow rounded corners"
+msgstr ""
+
+#: stb-locales.php:61
+msgid "Border Radius"
+msgstr ""
+
+#: stb-locales.php:62
+msgid "Use these parameters for customising Special Text Box borders."
+msgstr ""
+
+#: stb-locales.php:64
+msgid "Allow collapsing/expanding captioned Special Text Boxes"
+msgstr ""
+
+#: stb-locales.php:65
+msgid "Allow \"collapsed on load\" captioned Special Text Boxes"
+msgstr ""
+
+#: stb-locales.php:68
+msgid "Images Settings"
+msgstr ""
+
+#: stb-locales.php:69
+msgid "Define Hide Tool Image"
+msgstr ""
+
+#: stb-locales.php:70
+msgid "Hide Tool Image"
+msgstr ""
+
+#: stb-locales.php:71
+msgid "Use Default Hide Tool Image"
+msgstr ""
+
+#: stb-locales.php:72
+msgid ""
+"This image is displayed in the text block header and shows the status of the non "
+"collapsed text block."
+msgstr ""
+
+#: stb-locales.php:73
+msgid "Define Show Tool Image"
+msgstr ""
+
+#: stb-locales.php:74
+msgid "Show Tool Image"
+msgstr ""
+
+#: stb-locales.php:75
+msgid "Use Default Show Tool Image"
+msgstr ""
+
+#: stb-locales.php:76
+msgid ""
+"This image is displayed in the text block header and shows the status of the "
+"collapsed text block."
+msgstr ""
+
+#: stb-locales.php:77
+msgid "Animation Duration"
+msgstr ""
+
+#: stb-locales.php:78
+msgid "This is time of collapsing/expanding of the text block in milliseconds."
+msgstr ""
+
+#: stb-locales.php:79
+msgid "Allow Big Image for Simple (non-captioned) Special Text Boxes"
+msgstr ""
+
+#: stb-locales.php:80
+msgid ""
+"Selecting \"Yes\" will allow big icons for simple (non-captioned) Special Text "
+"Boxes."
+msgstr ""
+
+#: stb-locales.php:81
+msgid "Allow icon images for Special Text Boxes"
+msgstr ""
+
+#: stb-locales.php:82
+msgid "Selecting \"Yes\" will allow displaying icon images in Special Text Boxes."
+msgstr ""
+
+#: stb-locales.php:83
+msgid ""
+"Allow caption background colors for side image background (boxes without caption "
+"only)"
+msgstr ""
+
+#: stb-locales.php:86
+msgid "Text Settings"
+msgstr ""
+
+#: stb-locales.php:87
+msgid "Body Text Settings"
+msgstr ""
+
+#: stb-locales.php:88
+msgid "Define text font size"
+msgstr ""
+
+#: stb-locales.php:89
+msgid "Define text font family"
+msgstr ""
+
+#: stb-locales.php:90
+msgid "Caption Text Settings"
+msgstr ""
+
+#: stb-locales.php:91
+msgid "Define caption font size"
+msgstr ""
+
+#: stb-locales.php:92
+msgid "Define caption font family"
+msgstr ""
+
+#: stb-locales.php:93
+msgid ""
+"This is font size in pixels. Set this parameter to value 0 for theme default font "
+"size."
+msgstr ""
+
+#: stb-locales.php:94
+msgid "This is font family for box text."
+msgstr ""
+
+#: stb-locales.php:95
+msgid "Define language direction"
+msgstr ""
+
+#: stb-locales.php:96
+msgid ""
+"Selecting \"Left-to-Right\" will set Left-to-Right language direction for Special "
+"Text Boxes and visa versa."
+msgstr ""
+
+#: stb-locales.php:99
+msgid "Shadows Settings"
+msgstr ""
+
+#: stb-locales.php:100
+msgid "Define Box Shadow for Special Text Boxes"
+msgstr ""
+
+#: stb-locales.php:101
+msgid "Enable Box Shadow"
+msgstr ""
+
+#: stb-locales.php:102
+msgid "Define Text Shadow for Special Text Boxes"
+msgstr ""
+
+#: stb-locales.php:103
+msgid "Enable Text Shadow"
+msgstr ""
+
+#: stb-locales.php:105
+msgid "Drop shadow inside the box"
+msgstr ""
+
+#: stb-locales.php:106
+msgid "Offset X"
+msgstr ""
+
+#: stb-locales.php:107
+msgid "Offset Y"
+msgstr ""
+
+#: stb-locales.php:108
+msgid "Shadow Blur"
+msgstr ""
+
+#: stb-locales.php:109
+msgid "Shadow Color"
+msgstr ""
+
+#: stb-locales.php:110
+msgid "Shadow"
+msgstr ""
+
+#: stb-locales.php:111
+msgid "preview"
+msgstr ""
+
+#: stb-locales.php:115
+msgid "System Settings"
+msgstr ""
+
+#: stb-locales.php:116
+msgid "Define mode of CSS loading"
+msgstr ""
+
+#: stb-locales.php:117
+msgid "Static"
+msgstr ""
+
+#: stb-locales.php:118
+msgid "Client Dynamic"
+msgstr ""
+
+#: stb-locales.php:119
+msgid "Server Dynamic"
+msgstr ""
+
+#: stb-locales.php:120
+msgid ""
+"will be loaded static styles sheet file. More faster but needs full read/write "
+"access to file."
+msgstr ""
+
+#: stb-locales.php:121
+msgid "styles sheet will be loaded dynamically on the client side."
+msgstr ""
+
+#: stb-locales.php:122
+msgid "styles sheet will be loaded dynamically on the server side."
+msgstr ""
+
+#: stb-locales.php:125
+msgid "Deactivation Settings"
+msgstr ""
+
+#: stb-locales.php:126
+msgid "Are you allow to perform these actions during deactivating plugin?"
+msgstr ""
+
+#: stb-locales.php:127
+msgid "Delete plugin options during plugin deactivation"
+msgstr ""
+
+#: stb-locales.php:128
+msgid "Delete database tables of plugin during plugin deactivation"
+msgstr ""
+
+#: stb-locales.php:132
+msgid "All"
+msgstr ""
+
+#: stb-locales.php:133 stb-locales.php:149
+msgid "Active"
+msgstr ""
+
+#: stb-locales.php:134
+msgid "Trash"
+msgstr ""
+
+#: stb-locales.php:135
+msgid "Alias"
+msgstr ""
+
+#: stb-locales.php:136 stb-locales.php:147
+msgid "Type"
+msgstr ""
+
+#: stb-locales.php:137
+msgid "No data to show..."
+msgstr ""
+
+#: stb-locales.php:141
+msgid "Names"
+msgstr ""
+
+#: stb-locales.php:143
+msgid "Enter Default Caption for this Style."
+msgstr ""
+
+#: stb-locales.php:144
+msgid "Name"
+msgstr ""
+
+#: stb-locales.php:145
+msgid "Unique name of this style"
+msgstr ""
+
+#: stb-locales.php:146
+msgid "Only latin symbols, digits, \"-\" and \"_\" are accepted"
+msgstr ""
+
+#: stb-locales.php:148
+msgid "In trash"
+msgstr ""
+
+#: stb-locales.php:152
+msgid "Border and Icon"
+msgstr ""
+
+#: stb-locales.php:153
+msgid "Border Color"
+msgstr ""
+
+#: stb-locales.php:154
+msgid "This is border color."
+msgstr ""
+
+#: stb-locales.php:155
+msgid "Icon"
+msgstr ""
+
+#: stb-locales.php:156
+msgid "Icon URL"
+msgstr ""
+
+#: stb-locales.php:157
+msgid "Use Default Icon"
+msgstr ""
+
+#: stb-locales.php:158
+msgid ""
+"I you don't want to use default icon, fill this field and uncheck \"Use Default "
+"Icon\" selector."
+msgstr ""
+
+#: stb-locales.php:161
+msgid "Body"
+msgstr ""
+
+#: stb-locales.php:164
+msgid "Background Gradient Colors"
+msgstr ""
+
+#: stb-locales.php:165
+msgid "Start Color"
+msgstr ""
+
+#: stb-locales.php:166
+msgid "Stop Color"
+msgstr ""
+
+#: stb-locales.php:167
+msgid ""
+"There are colors of box background gradient. Direction of gradient drawing is "
+"from top to bottom."
+msgstr ""
+
+#: stb-locales.php:168
+msgid "Text Color"
+msgstr ""
+
+#: stb-locales.php:174
+msgid "Plugin settings are successfully saved"
+msgstr ""
+
+#: stb-locales.php:175 stb-locales.php:179
+msgid "An error occurred during saving process"
+msgstr ""
+
+#: stb-locales.php:178
+msgid "Style is successfully saved"
+msgstr ""
+
+#: stb-styles.php:355 stb-styles.php:381 stb-styles.php:407
+msgid "Can't open CSS file"
+msgstr ""
+
+#: stb-styles.php:364 stb-styles.php:390 stb-styles.php:416
+msgid "CSS file is not writable"
+msgstr ""
+
+#: stb-tinymce-langs.php:20
+msgid "Insert Special Text Box"
+msgstr ""
+
+#: stb-tinymce-langs.php:21
+msgid "Basic Settings"
+msgstr ""
+
+#: stb-tinymce-langs.php:22
+msgid "Extended Settings"
+msgstr ""
+
+#: stb-tinymce-langs.php:23
+msgid "Text Box ID"
+msgstr ""
+
+#: stb-tinymce-langs.php:25
+msgid "Use default caption"
+msgstr ""
+
+#: stb-tinymce-langs.php:26
+msgid "Block Collapsing (for captioned box only)"
+msgstr ""
+
+#: stb-tinymce-langs.php:29
+msgid "Default"
+msgstr ""
+
+#: stb-tinymce-langs.php:30
+msgid "Collapsed on Load (for captioned box only)"
+msgstr ""
+
+#: stb-tinymce-langs.php:31
+msgid "Block Drawing Mode"
+msgstr ""
+
+#: stb-tinymce-langs.php:32
+msgid "Block Text Direction"
+msgstr ""
+
+#: stb-tinymce-langs.php:33
+msgid "left-to-right"
+msgstr ""
+
+#: stb-tinymce-langs.php:34
+msgid "right-to-left"
+msgstr ""
+
+#: stb-tinymce-langs.php:35
+msgid "Block Shadow"
+msgstr ""
+
+#: stb-tinymce-langs.php:36
+msgid "Enable"
+msgstr ""
+
+#: stb-tinymce-langs.php:37
+msgid "Disable"
+msgstr ""
+
+#: stb-tinymce-langs.php:38
+msgid "Floating Mode Settings"
+msgstr ""
+
+#: stb-tinymce-langs.php:39
+msgid "Float Mode"
+msgstr ""
+
+#: stb-tinymce-langs.php:40
+msgid "Box Alignment"
+msgstr ""
+
+#: stb-tinymce-langs.php:43
+msgid "Box Width (in pixels)"
+msgstr ""
+
+#: stb-tinymce-langs.php:44
+msgid "Colors"
+msgstr ""
+
+#: stb-tinymce-langs.php:45
+msgid "Text color"
+msgstr ""
+
+#: stb-tinymce-langs.php:46
+msgid "Caption Text color"
+msgstr ""
+
+#: stb-tinymce-langs.php:47
+msgid "Background Color"
+msgstr ""
+
+#: stb-tinymce-langs.php:48
+msgid "Caption Background Color"
+msgstr ""
+
+#: stb-tinymce-langs.php:49
+msgid "Background Stop Color"
+msgstr ""
+
+#: stb-tinymce-langs.php:50
+msgid "Caption Background Stop Color"
+msgstr ""
+
+#: stb-tinymce-langs.php:51
+msgid "Border"
+msgstr ""
+
+#: stb-tinymce-langs.php:52
+msgid "Border color"
+msgstr ""
+
+#: stb-tinymce-langs.php:53
+msgid "Border Width"
+msgstr ""
+
+#: stb-tinymce-langs.php:55
+msgid "Image URL"
+msgstr ""
+
+#: stb-tinymce-langs.php:56
+msgid "This is big image (or, if URL not entered, big standard image)"
+msgstr ""
+
+#: stb-tinymce-langs.php:57
+msgid "Do not show image"
+msgstr ""
+
+#: stb-tinymce-langs.php:59
+msgid "Left Margin"
+msgstr ""
+
+#: stb-tinymce-langs.php:60
+msgid "Right Margin"
+msgstr ""
+
+#: stb-tinymce-langs.php:61
+msgid "Top Margin"
+msgstr ""
+
+#: stb-tinymce-langs.php:62
+msgid "Bottom Margin"
+msgstr ""
+
+#: stb-tinymce-langs.php:64
+msgid "Insert"
+msgstr ""

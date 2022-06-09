@@ -1,0 +1,22 @@
+.wp-block-wp-special-textboxes-stb-block {
+	.components-panel__header {
+		h2 {
+			font-size: 20px;
+		}
+	}
+
+	.components-base-control .components-flex.components-select-control {
+		width: 100% !important;
+
+		.components-input-control__container {
+			select {
+				height: 35px !important;
+				min-height: 35px !important;
+			}
+		}
+	}
+
+	.stb-input-100 {
+		width: 100%;
+	}
+}

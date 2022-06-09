@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es5",
+    "sourceMap": true,
+    "lib": ["es6", "dom"],
+    "outDir": "plugin/js",
+    "jsx": "react",
+    "moduleResolution": "node",
+    "rootDir": "./js-src",
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  },
+  "exclude": [
+    "node_modules",
+  ]
+}
