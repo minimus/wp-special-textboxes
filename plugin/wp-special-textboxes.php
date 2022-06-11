@@ -28,26 +28,26 @@ Text Domain: wp-special-textboxes
 define('STB_MAIN_FILE', __FILE__);
 
 include_once('stb-block.php');
-if(is_admin()) {
-  include_once('stb-admin-class.php');
-  if (class_exists("SpecialTextBoxes") && class_exists('SpecialTextBoxesAdmin')) {
-    $stbObject = new SpecialTextBoxesAdmin();
-  }
-}
-else {
-  include_once('stb-class.php');
-  if (class_exists("SpecialTextBoxes")) {
-	  $stbObject = new SpecialTextBoxes();
-	  function stbHighlightText( $content = null, $id = 'warning', $caption = '', $atts = null ) {
-		  $block = new StbBlock($content, $id, $caption, $atts);	
-	    echo $block->block;
-	  }
-  }
+if (is_admin()) {
+	include_once('stb-admin-class.php');
+	if (class_exists("SpecialTextBoxes") && class_exists('SpecialTextBoxesAdmin')) {
+		$stbObject = new SpecialTextBoxesAdmin();
+	}
+} else {
+	include_once('stb-class.php');
+	if (class_exists("SpecialTextBoxes")) {
+		$stbObject = new SpecialTextBoxes();
+		function stbHighlightText(string $content = null, string $id = 'warning', string $caption = '', array $atts = null): string
+		{
+			$block = new StbBlock(esc_html($content), esc_attr($id), esc_attr($caption), $atts);
+			return $block->block;
+		}
+	}
 }
 
 if (class_exists("special_text")) {
-	add_action('widgets_init', function() {
-	  register_widget("special_text");
+	add_action('widgets_init', function () {
+		register_widget("special_text");
 	});
 }
 ?>

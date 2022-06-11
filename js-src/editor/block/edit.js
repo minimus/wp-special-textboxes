@@ -11,7 +11,7 @@ import {
 	FlexItem,
 } from '@wordpress/components'
 
-const options = window?.stbEditorOptions ?? {}
+const options = window?.stbBlockSettings ?? {}
 
 const Edit = ({ attributes, setAttributes, className }) => {
 	const props = { ...useBlockProps() }

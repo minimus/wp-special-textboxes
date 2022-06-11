@@ -5,13 +5,13 @@ import metadata from './block.json'
 import './editor.scss'
 
 const {
-	stbEditorOptions: {
+	stbBlockSettings: {
 		strings: {
 			blockHeader = 'Special Text',
 			blockDescription = 'Highlights block of text as colored text block.',
 		} = {},
 	} = {},
-} = window
+} = window ?? {}
 
 registerBlockType(metadata.name, {
 	title: blockHeader,

@@ -1,6 +1,6 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor'
 
-const options = stbEditorOptions ?? {}
+const options = stbBlockSettings ?? {}
 
 const save = (props) => {
 	const { attributes } = props

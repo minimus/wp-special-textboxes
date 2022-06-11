@@ -9,7 +9,6 @@ if (!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) 
 	class SpecialTextBoxesAdmin extends SpecialTextBoxes
 	{
 		public string $menu_page;
-		public array $stbProPointer = ['all' => true, 'themes' => true];
 
 		public function __construct()
 		{
@@ -27,17 +26,11 @@ if (!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) 
 				define('STB_EXT_THEMES', false);
 			}
 
-			/* $dbUpgraded = $this->stbDbTools->upgradeDb();
-			if ($dbUpgraded) {
-				$this->stbStyles->updateCSS();
-			} */
-
 			register_activation_hook(STB_MAIN_FILE, [&$this, 'onActivate']);
 			register_deactivation_hook(STB_MAIN_FILE, [&$this, 'onDeactivate']);
 			add_action('admin_menu', [&$this, 'regAdminPage']);
 			add_filter('tiny_mce_version', [&$this, 'tinyMCEVersion']);
 			add_action('init', [&$this, 'addButtons']);
-			// add_action('wp_ajax_close_stb_pointer', [&$this, 'closePointerHandler']);
 			add_filter('mce_external_languages', [&$this, 'addMceLocale']);
 		}
 
@@ -103,56 +96,18 @@ if (!class_exists('SpecialTextBoxesAdmin') && class_exists('SpecialTextBoxes')) 
 
 				$styles = $this->styles;
 				$list = [];
-				$defaults = [];
 				foreach ($styles as $val) {
 					$list[] = ['label' => $val['caption'], 'text' => $val['caption'], 'value' => $val['slug']];
-					$defaults[] = [
-						'slug' => $val['slug'],
-						'caption' => $val['caption'],
-						'image' => $val['colors']['image']
-					];
 				}
 				$data = [
 					'mceUrl' => get_option('siteurl') . '/wp-includes/js/tinymce/',
 					'mceUtilsUrl' => get_option('siteurl') . '/wp-includes/js/tinymce/utils/',
 					'jsUrl' => STB_URL . 'js/',
-					// 'slugs' => $slugs,
 					'list' => $list,
-					'strings' => [
-						'blockHeader' => __('Special Text', 'wp-special-textboxes'),
-						'blockDescription' => __('Highlights block of text as colored text block.', 'wp-special-textboxes'),
-						'colorSchemeLabel' => __('Color Scheme', 'wp-special-textboxes'),
-						'captionLabel' => __('Caption', 'wp-special-textboxes'),
-						'defaultCaptionLabel' => __('Default Caption', 'wp-special-textboxes'),
-						'contentLabel' => __('Content', 'wp-special-textboxes'),
-						'imageLabel' => __('Image', 'wp-special-textboxes'),
-						'selectImageCaption' => __('Select', 'wp-special-textboxes'),
-						'bigImageLabel' => __('Big image (only for blocks without caption)', 'wp-special-textboxes'),
-						'appearanceLabel' => __('Appearance', 'wp-special-textboxes'),
-						'collapsingLabel' => __('Can fold/unfold', 'wp-special-textboxes'),
-						'collapsedLabel' => __('Block is folded on loading', 'wp-special-textboxes'),
-						'marginsLabel' => __('Margins', 'wp-special-textboxes'),
-						'marginTopLabel' => __('Top, px', 'wp-special-textboxes'),
-						'marginRightLabel' => __('Right, px', 'wp-special-textboxes'),
-						'marginBottomLabel' => __('Bottom, px', 'wp-special-textboxes'),
-						'marginLeftLabel' => __('Left, px', 'wp-special-textboxes'),
-					],
-					'defaults' => $defaults,
-					'settings' => [
-						'bigImg' => $this->settings['bigImg'],
-						'showImg' => $this->settings['showImg'],
-						'collapsing' => $this->settings['collapsing'],
-						'collapsed' => $this->settings['collapsed'],
-						'margins' => $this->settings['margins'],
-						'side' => $this->settings['side'],
-					],
 				];
 
-				/* wp_enqueue_script('stbClient', STB_URL . 'js/client.js', [], STB_VERSION, false);
-				wp_localize_script('stbClient', 'stbEditorOptions', $data); */
-
-				$json = wp_json_encode((object)$data);
-				echo "<script type='text/javascript'>window.stbEditorOptions = {$json}</script>";
+				wp_enqueue_script('stbAdminClient', STB_URL . 'js/client.js', [], STB_VERSION, false);
+				wp_localize_script('stbAdminClient', 'stbEditorOptions', $data);
 			}
 		}
 
