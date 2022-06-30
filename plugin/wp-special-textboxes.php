@@ -3,7 +3,7 @@
 Plugin Name: Special Text Boxes
 Plugin URI: http://www.simplelib.com/archives/wordpress-plugin-wp-special-textboxes/
 Description: Adds simple colored text boxes to highlight some portion of post text. Use it for highlights warnings, alerts, infos and downloads in your blog posts. Visit <a href="http://www.simplelib.com/">SimpleLib blog</a> for more details.
-Version: 6.0.0
+Version: 6.0.1
 Author: minimus
 Author URI: http://blogcoding.ru
 Text Domain: wp-special-textboxes
@@ -29,25 +29,25 @@ define('STB_MAIN_FILE', __FILE__);
 
 include_once('stb-block.php');
 if (is_admin()) {
-	include_once('stb-admin-class.php');
-	if (class_exists("SpecialTextBoxes") && class_exists('SpecialTextBoxesAdmin')) {
-		$stbObject = new SpecialTextBoxesAdmin();
-	}
+    include_once('stb-admin-class.php');
+    if (class_exists("SpecialTextBoxes") && class_exists('SpecialTextBoxesAdmin')) {
+        $stbObject = new SpecialTextBoxesAdmin();
+    }
 } else {
-	include_once('stb-class.php');
-	if (class_exists("SpecialTextBoxes")) {
-		$stbObject = new SpecialTextBoxes();
-		function stbHighlightText(string $content = null, string $id = 'warning', string $caption = '', array $atts = null): string
-		{
-			$block = new StbBlock(esc_html($content), esc_attr($id), esc_attr($caption), $atts);
-			return $block->block;
-		}
-	}
+    include_once('stb-class.php');
+    if (class_exists("SpecialTextBoxes")) {
+        $stbObject = new SpecialTextBoxes();
+        function stbHighlightText(string $content = null, string $id = 'warning', string $caption = '', array $atts = null): string
+        {
+            $block = new StbBlock(esc_html($content), esc_attr($id), esc_attr($caption), $atts);
+            return $block->block;
+        }
+    }
 }
 
 if (class_exists("special_text")) {
-	add_action('widgets_init', function () {
-		register_widget("special_text");
-	});
+    add_action('widgets_init', function () {
+        register_widget("special_text");
+    });
 }
 ?>

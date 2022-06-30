@@ -14,7 +14,7 @@ const StylesContainer = (): JSX.Element => {
 
 	useEffect(() => {
 		if (!loading) {
-			getStylesData(filter)(dispatch).then()
+			void getStylesData(filter)(dispatch).then()
 		}
 	}, [filter, needReload])
 

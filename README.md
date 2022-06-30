@@ -2,15 +2,13 @@
 
 Contributors: minimus
 
-Donate link:  http://www.simplelib.com
-
 Tags: content, performance, text, code, php, widget
 
-Requires at least: 4.9
+Requires at least: 5.6
 
 Tested up to: 6.0
 
-Stable tag: 6.0.0
+Stable tag: 6.0.1
 
 License: GPLv2 or later
 

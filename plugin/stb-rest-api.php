@@ -6,6 +6,8 @@ if (!defined('ABSPATH')) {
 include_once 'stb-tools.php';
 include_once 'stb-db-tools.php';
 
+const routeNamespace = 'stb/v6';
+
 if (!class_exists('StbRestApi')) {
     class StbRestApi
     {
@@ -24,84 +26,157 @@ if (!class_exists('StbRestApi')) {
         {
             // ** SETTINGS ROUTE START **
             register_rest_route('stb/v6', '/admin/settings', [
-                'methods' => WP_REST_Server::READABLE,
-                'callback' => array($this, 'getSettings'),
-                'permission_callback' => array($this, 'adminAccess'),
-            ]);
-
-            register_rest_route('stb/v6', '/admin/settings', [
-                'methods' => WP_REST_Server::EDITABLE,
-                'callback' => array($this, 'setSettings'),
-                'permission_callback' => array($this, 'adminAccess'),
+                [
+                    'methods' => WP_REST_Server::READABLE,
+                    'callback' => [$this, 'getSettings'],
+                    'permission_callback' => [$this, 'adminAccess'],
+                ], [
+                    'methods' => WP_REST_Server::EDITABLE,
+                    'callback' => [$this, 'setSettings'],
+                    'permission_callback' => [$this, 'adminAccess'],
+                ]
             ]);
             // ** SETTINGS ROUTE END **
 
             // ** STYLES ROUTE START **
             register_rest_route('stb/v6', '/admin/styles/(?P<filter>\d+)', [
                 'methods' => WP_REST_Server::READABLE,
-                'callback' => array($this, 'getStyles'),
-                'permission_callback' => array($this, 'adminAccess'),
+                'callback' => [$this, 'getStyles'],
+                'permission_callback' => [$this, 'adminAccess'],
+                'args' => [
+                    'filter' => [
+                        'type' => 'integer',
+                        'required' => true,
+                        'validate_callback' => function ($param, $request, $key) {
+                            return is_integer((int)$param) && (int)$param >= 0 && (int)$param <= 2;
+                        }
+                    ],
+                ],
             ]);
             // ** STYLES ROUTE END **
 
             // ** COLORS ROUTE START **
             register_rest_route('stb/v6', '/admin/colors/(?P<slug>\S+)', [
-                'methods' => WP_REST_Server::READABLE,
-                'callback' => array($this, 'getColors'),
-                'permission_callback' => array($this, 'adminAccess'),
-            ]);
-
-            register_rest_route('stb/v6', '/admin/colors/(?P<slug>\S+)', [
-                'methods' => WP_REST_Server::EDITABLE,
-                'callback' => array($this, 'setColors'),
-                'permission_callback' => array($this, 'adminAccess'),
-            ]);
-
-            register_rest_route('stb/v6', '/admin/colors/(?P<slug>\S+)', [
-                'methods' => WP_REST_Server::DELETABLE,
-                'callback' => array($this, 'deleteColors'),
-                'permission_callback' => array($this, 'adminAccess'),
+                [
+                    'methods' => WP_REST_Server::READABLE,
+                    'callback' => [$this, 'getColors'],
+                    'permission_callback' => [$this, 'adminAccess'],
+                    'args' => [
+                        'slug' => [
+                            'type' => 'string',
+                            'required' => true,
+                            'validate_callback' => function($param, $request, $key) {
+                                return self::validateColorNames($param, $request, $key);
+                            }
+                        ],
+                    ],
+                ], [
+                    'methods' => WP_REST_Server::EDITABLE,
+                    'callback' => [$this, 'setColors'],
+                    'permission_callback' => [$this, 'adminAccess'],
+                    'args' => [
+                        'slug' => [
+                            'type' => 'string',
+                            'required' => true,
+                            'validate_callback' => function($param, $request, $key) {
+                                return preg_match('/^[\da-zA-Z\-_]+$/', $param) === 1;
+                            }
+                        ],
+                    ],
+                ], [
+                    'methods' => WP_REST_Server::DELETABLE,
+                    'callback' => [$this, 'deleteColors'],
+                    'permission_callback' => [$this, 'adminAccess'],
+                    'args' => [
+                        'slug' => [
+                            'type' => 'string',
+                            'required' => true,
+                            'validate_callback' => function($param, $request, $key) {
+                                return self::validateColorNames($param, $request, $key);
+                            }
+                        ],
+                    ],
+                ]
             ]);
             // ** COLORS ROUTE END **
 
             // ** THEMES ROUTE START **
             register_rest_route('stb/v6', '/admin/themes', [
                 'methods' => WP_REST_Server::READABLE,
-                'callback' => array($this, 'getThemesInfo'),
-                'permission_callback' => array($this, 'adminAccess'),
+                'callback' => [$this, 'getThemesInfo'],
+                'permission_callback' => [$this, 'adminAccess'],
             ]);
 
             register_rest_route('stb/v6', '/admin/themes/(?P<slug>\S+)', [
                 'methods' => WP_REST_Server::EDITABLE,
-                'callback' => array($this, 'activateTheme'),
-                'permission_callback' => array($this, 'adminAccess'),
+                'callback' => [$this, 'activateTheme'],
+                'permission_callback' => [$this, 'adminAccess'],
+                'args' => [
+                    'slug' => [
+                        'type' => 'string',
+                        'required' => true,
+                        'validate_callback' => function($param, $request, $key) {
+                            return self::validateThemeName($param, $request, $key);
+                        }
+                    ],
+                ],
             ]);
             // ** THEMES ROUTE END **
 
             // ** SYSINFO ROUTE START **
             register_rest_route('stb/v6', '/admin/sysinfo', [
                 'methods' => WP_REST_Server::READABLE,
-                'callback' => array($this, 'getSysInfo'),
-                'permission_callback' => array($this, 'adminAccess'),
+                'callback' => [$this, 'getSysInfo'],
+                'permission_callback' => [$this, 'adminAccess'],
             ]);
             // ** SYSINFO ROUTE END **
 
             // ** LOCALIZATION ROUTE START **
             register_rest_route('stb/v6', '/admin/locale', [
                 'methods' => WP_REST_Server::READABLE,
-                'callback' => array($this, 'getLocaleStrings'),
-                'permission_callback' => array($this, 'adminAccess'),
+                'callback' => [$this, 'getLocaleStrings'],
+                'permission_callback' => [$this, 'adminAccess'],
             ]);
             // ** LOCALIZATION ROUTE END **
+            
+            // ** CLIENT SIDE THEME REQUEST START **
+            register_rest_route(routeNamespace, '/theme/(?P<slug>\S+)', [
+                'methods' => WP_REST_Server::READABLE,
+                'callback' => [$this, 'getTheme'],
+                'permission_callback' => '__return_true',
+                'args' => [
+                    'slug' => [
+                        'type' => 'string',
+                        'required' => true,
+                        'validate_callback' => function($param, $request, $key) {
+                            return self::validateThemeName($param, $request, $key);
+                        }
+                    ],
+                ],
+            ]);
+            // ** CLIENT SIDE THEME REQUEST END **
         }
 
-        private function getCurrentSettings(): array {
+        private function getCurrentSettings(): array
+        {
             return get_option('SpecialTextBoxesAdminSettings', false);
         }
 
         public function adminAccess($request): bool
         {
             return current_user_can('manage_options');
+        }
+
+        public function validateThemeName($param, $request, $key): bool {
+            include_once 'stb-default-themes.php';
+            $defaultThemes = new StbDefaultThemes();
+            $themes = $defaultThemes->getThemesNames();
+            return in_array($param, $themes);
+        }
+
+        public function validateColorNames($param, $request, $key): bool {
+            $names = $this->stbDbTools->getColorsNames();
+            return in_array($param, $names);
         }
 
         public function getSettings($data): array
@@ -149,25 +224,11 @@ if (!class_exists('StbRestApi')) {
         public function getColors($request): array
         {
             $slug = (string)$request['slug'];
+            $data = $this->stbDbTools->getColor($slug);
 
-            global $wpdb;
-            $sTable = $wpdb->prefix . "stb_stylez";
-            $sSql = $wpdb->prepare("SELECT * FROM $sTable st WHERE st.slug = %s;", [$slug]);
-            $colorSet = $wpdb->get_row($sSql, ARRAY_A);
-
-            return $colorSet
-                ? [
-                    'result' => 'ok',
-                    'data' => [
-                        'slug' => $colorSet['slug'],
-                        'type' => $colorSet['stbType'],
-                        'caption' => $colorSet['caption'],
-                        'colors' => unserialize($colorSet['colors']),
-                        'trash' => (int)$colorSet['trash']
-                    ]]
-                : [
-                    'result' => 'error'
-                ];
+            return count($data)
+                ? ['result' => 'ok', 'data' => $data]
+                : ['result' => 'error'];
         }
 
         public function setColors($request): array
@@ -228,12 +289,10 @@ if (!class_exists('StbRestApi')) {
         public function activateTheme($request): array
         {
             include_once 'stb-default-themes.php';
-            include_once 'stb-db-tools.php';
             include_once 'stb-styles.php';
 
             $slug = (string)$request['slug'];
             $themesModel = new StbDefaultThemes();
-            $dbTools = new StbDbTools();
 
             $theme = $themesModel->getTheme($slug);
             $themeStyles = $theme['styles'];
@@ -254,10 +313,37 @@ if (!class_exists('StbRestApi')) {
             $stbStyles = new StbStyles($themeSettings, $colors);
             $written = $stbStyles->writeStyles(false, true, true);
 
-            $dbTools->updateStyles($themeStyles);
+            $this->stbDbTools->updateStyles($themeStyles);
             update_option('SpecialTextBoxesAdminSettings', $themeSettings, true);
 
             return ['result' => 'ok', 'data' => $slug, 'written' => $written];
+        }
+
+        public function getTheme($request): array
+        {
+            include_once 'stb-default-themes.php';
+
+            $slug = (string)$request['slug'];
+
+            $themesModel = new StbDefaultThemes();
+            $theme = $themesModel->getTheme($slug);
+
+            $themeStyles = $theme['styles'];
+            $themeSettings = $theme['settings'];
+
+            $colors = [];
+
+            foreach ($themeStyles as $style) {
+                $colors[] = [
+                    'slug' => $style['slug'],
+                    'type' => $style['stbType'],
+                    'caption' => $style['caption'],
+                    'colors' => unserialize($style['colors']),
+                    'trash' => (int)$style['trash']
+                ];
+            }
+
+            return ['result' => 'ok', 'data' => ['colors' => $colors, 'settings' => $themeSettings]];
         }
 
         public function getSysInfo(): array
@@ -267,7 +353,7 @@ if (!class_exists('StbRestApi')) {
             $row = $wpdb->get_row('SELECT VERSION() AS ver', ARRAY_A);
             $sqlVersion = $row['ver'];
             $mem = ini_get('memory_limit');
-            return array('data' => [
+            return ['data' => [
                 'version' => STB_VERSION,
                 'dbVersion' => STB_DB_VERSION,
                 'phpVersion' => PHP_VERSION,
@@ -275,7 +361,7 @@ if (!class_exists('StbRestApi')) {
                 'memoryLimit' => $mem,
                 'wpMemoryLimit' => WP_MEMORY_LIMIT,
                 'wpMemoryLimitMax' => WP_MAX_MEMORY_LIMIT,
-            ]);
+            ]];
         }
 
         public function getLocaleStrings(): array

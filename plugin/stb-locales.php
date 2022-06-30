@@ -178,6 +178,10 @@ if (!class_exists('StbLocales')) {
                         'savingSuccess' => __('Style is successfully saved', 'wp-special-textboxes'),
                         'savingError' => __('An error occurred during saving process', 'wp-special-textboxes'),
                     ],
+                    'themes' => [
+                        'savingSuccess' => __('Theme is successfully activated.', 'wp-special-textboxes'),
+                        'savingError' => __('An error occurred during activating theme...', 'wp-special-textboxes'),
+                    ],
                 ],
             ];
         }

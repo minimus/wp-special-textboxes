@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Special Text Boxes\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-special-textboxes\n"
-"POT-Creation-Date: 2022-06-09 13:33+0300\n"
+"POT-Creation-Date: 2022-06-21 18:08+0300\n"
 "PO-Revision-Date: 2015-05-16 22:58+0300\n"
 "Last-Translator: minimus <minimus@blogcoding.ru>\n"
 "Language-Team: \n"
@@ -23,176 +23,112 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: css\n"
 "X-Poedit-SearchPathExcluded-2: images\n"
 
-#: stb-admin-class.php:106
-msgid "Upgrade Now"
-msgstr ""
-
-#: stb-admin-class.php:108
-msgid "About STB Pro..."
-msgstr ""
-
-#: stb-admin-class.php:109
-msgid "STB Pro Documentation"
-msgstr ""
-
-#: stb-admin-class.php:110
-msgid "Free STB Pro Themes"
-msgstr ""
-
-#: stb-admin-class.php:111
-msgid "Get the full feature set of the <strong>Special Text Boxes</strong> plugin."
-msgstr ""
-
-#: stb-admin-class.php:112
-msgid "Upgrade to the STB Pro now!"
-msgstr ""
-
-#: stb-admin-class.php:139
+#: stb-admin-class.php:79
 msgid "OK"
 msgstr ""
 
-#: stb-admin-class.php:140 stb-tinymce-langs.php:63
+#: stb-admin-class.php:80 stb-tinymce-langs.php:63
 msgid "Cancel"
 msgstr ""
 
-#: stb-admin-class.php:141
+#: stb-admin-class.php:81
 msgid "Show numbers"
 msgstr ""
 
-#: stb-admin-class.php:142
+#: stb-admin-class.php:82
 msgid "Show color wheel"
 msgstr ""
 
-#: stb-admin-class.php:145
+#: stb-admin-class.php:85
 msgid "Select Image"
 msgstr ""
 
-#: stb-admin-class.php:146
+#: stb-admin-class.php:86
 msgid "Choose"
 msgstr ""
 
-#: stb-admin-class.php:179 stb-class.php:201
-msgid "Special Text"
-msgstr ""
-
-#: stb-admin-class.php:180
-msgid "Highlights block of text as colored text block."
-msgstr ""
-
-#: stb-admin-class.php:181
-msgid "Color Scheme"
-msgstr ""
-
-#: stb-admin-class.php:182 stb-locales.php:162 stb-tinymce-langs.php:24
-msgid "Caption"
-msgstr ""
-
-#: stb-admin-class.php:183 stb-locales.php:142
-msgid "Default Caption"
-msgstr ""
-
-#: stb-admin-class.php:184
-msgid "Content"
-msgstr ""
-
-#: stb-admin-class.php:185 stb-tinymce-langs.php:54
-msgid "Image"
-msgstr ""
-
-#: stb-admin-class.php:186
-msgid "Select"
-msgstr ""
-
-#: stb-admin-class.php:187
-msgid "Big image (only for blocks without caption)"
-msgstr ""
-
-#: stb-admin-class.php:188
-msgid "Appearance"
-msgstr ""
-
-#: stb-admin-class.php:189
-msgid "Can fold/unfold"
-msgstr ""
-
-#: stb-admin-class.php:190
-msgid "Block is folded on loading"
-msgstr ""
-
-#: stb-admin-class.php:191 stb-tinymce-langs.php:58
-msgid "Margins"
-msgstr ""
-
-#: stb-admin-class.php:192
-msgid "Top, px"
-msgstr ""
-
-#: stb-admin-class.php:193
-msgid "Right, px"
-msgstr ""
-
-#: stb-admin-class.php:194
-msgid "Bottom, px"
-msgstr ""
-
-#: stb-admin-class.php:195
-msgid "Left, px"
-msgstr ""
-
-#: stb-admin-class.php:240
+#: stb-admin-class.php:118
 msgid "Special Text Boxes"
 msgstr ""
 
-#: stb-admin-class.php:241
+#: stb-admin-class.php:119
 msgid "STB"
 msgstr ""
 
-#: stb-class.php:199
+#: stb-class.php:104 stb-class.php:262
+msgid "Special Text"
+msgstr ""
+
+#: stb-class.php:105
+msgid "Highlights block of text as colored text block."
+msgstr ""
+
+#: stb-class.php:106
+msgid "Color Scheme"
+msgstr ""
+
+#: stb-class.php:107 stb-locales.php:162 stb-tinymce-langs.php:24
+msgid "Caption"
+msgstr ""
+
+#: stb-class.php:108 stb-locales.php:142
+msgid "Default Caption"
+msgstr ""
+
+#: stb-class.php:109
+msgid "Content"
+msgstr ""
+
+#: stb-class.php:110 stb-tinymce-langs.php:54
+msgid "Image"
+msgstr ""
+
+#: stb-class.php:111
+msgid "Select"
+msgstr ""
+
+#: stb-class.php:112
+msgid "Big image (only for blocks without caption)"
+msgstr ""
+
+#: stb-class.php:113
+msgid "Appearance"
+msgstr ""
+
+#: stb-class.php:114
+msgid "Can fold/unfold"
+msgstr ""
+
+#: stb-class.php:115
+msgid "Block is folded on loading"
+msgstr ""
+
+#: stb-class.php:116 stb-tinymce-langs.php:58
+msgid "Margins"
+msgstr ""
+
+#: stb-class.php:117
+msgid "Top, px"
+msgstr ""
+
+#: stb-class.php:118
+msgid "Right, px"
+msgstr ""
+
+#: stb-class.php:119
+msgid "Bottom, px"
+msgstr ""
+
+#: stb-class.php:120
+msgid "Left, px"
+msgstr ""
+
+#: stb-class.php:260
 msgid "Arbitrary text or PHP in colored block."
 msgstr ""
 
-#: stb-class.php:330
-msgid "Title:"
-msgstr ""
-
-#: stb-class.php:339
+#: stb-class.php:385
 msgid "ID of Box:"
-msgstr ""
-
-#: stb-class.php:349
-msgid "Evaluate as PHP code."
-msgstr ""
-
-#: stb-class.php:355
-msgid "Show on all pages of blog"
-msgstr ""
-
-#: stb-class.php:358
-msgid "Show only on"
-msgstr ""
-
-#: stb-class.php:362
-msgid "Home Page"
-msgstr ""
-
-#: stb-class.php:366
-msgid "Single Post Pages"
-msgstr ""
-
-#: stb-class.php:370
-msgid "Archive Pages"
-msgstr ""
-
-#: stb-class.php:374
-msgid "Category Archive Pages"
-msgstr ""
-
-#: stb-class.php:378
-msgid "Tag Archive Pages"
-msgstr ""
-
-#: stb-class.php:382
-msgid "Author Archive Pages"
 msgstr ""
 
 #: stb-default-themes.php:19
@@ -728,6 +664,14 @@ msgstr ""
 
 #: stb-locales.php:178
 msgid "Style is successfully saved"
+msgstr ""
+
+#: stb-locales.php:182
+msgid "Theme is successfully activated."
+msgstr ""
+
+#: stb-locales.php:183
+msgid "An error occurred during activating theme..."
 msgstr ""
 
 #: stb-styles.php:355 stb-styles.php:381 stb-styles.php:407

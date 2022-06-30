@@ -13,7 +13,7 @@ const ThemesContainer = (): JSX.Element => {
 
 	useEffect(() => {
 		if (!loading) {
-			getThemesInfo()(dispatch).then()
+			void getThemesInfo()(dispatch).then()
 		}
 	}, [])
 

@@ -1,10 +1,10 @@
 ﻿=== Special Text Boxes ===
 Contributors: minimus
 Donate link:  http://www.simplelib.com
-Tags: content, performance, text, code, php, widget
-Requires at least: 4.9
+Tags: content, performance, text, code, widget
+Requires at least: 5.6
 Tested up to: 6.0
-Stable tag: 6.0.0
+Stable tag: 6.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,7 +70,7 @@ were
 
 Use function **stbHighlightText**: 
 
-`<?php if(function_exists('stbHighlightText')) stbHighlightText('Test of function stbHighlightText.', 'warning'); ?>` 
+`<?php if(function_exists('stbHighlightText')) echo stbHighlightText('Test of function stbHighlightText.', 'warning'); ?>`
 
 defined as 
 
@@ -97,7 +97,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 
 == Changelog ==
-
+= 6.0.1 =
+* Some improvements
 = 6.0.0 =
 * ReactJS based admin interface
 * Special Text Block for Editor Page
@@ -262,6 +263,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 == Upgrade Notice ==
 
+= 6.0.1 =
+Some improvements
 = 6.0.0 =
 ReactJS based admin interface, Special Text Block for Editor Page, REST API queries
 = 5.9.108 =

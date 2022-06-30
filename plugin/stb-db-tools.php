@@ -153,6 +153,31 @@ if (!class_exists('StbDbTools')) {
             return $data;
         }
 
+        public function getColor(string $slug): array
+        {
+            global $wpdb;
+            $sTable = $wpdb->prefix . "stb_stylez";
+            $sSql = $wpdb->prepare("SELECT * FROM $sTable st WHERE st.slug = %s;", [$slug]);
+            $colorSet = $wpdb->get_row($sSql, ARRAY_A);
+
+            return $colorSet
+                ? [
+                    'slug' => $colorSet['slug'],
+                    'type' => $colorSet['stbType'],
+                    'caption' => $colorSet['caption'],
+                    'colors' => unserialize($colorSet['colors']),
+                    'trash' => (int)$colorSet['trash']
+                ]
+                : [];
+        }
+
+        public function getColorsNames(): array {
+            global $wpdb;
+            $sTable = $wpdb->prefix . "stb_stylez";
+            $sSql = "SELECT st.slug FROM $sTable st;";
+            return $wpdb->get_col($sSql);
+        }
+
         public function deleteTables(bool $all = true): void
         {
             global $wpdb;

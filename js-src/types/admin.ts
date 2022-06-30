@@ -395,5 +395,6 @@ export interface ILocale {
 	messages: {
 		settings: ILocaleMessages
 		editor: ILocaleMessages
+		themes: ILocaleMessages
 	}
 }

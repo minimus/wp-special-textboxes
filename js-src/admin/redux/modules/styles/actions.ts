@@ -1,6 +1,6 @@
 import type { TDispatch, TStyle } from '../../../../types/admin'
-import { getData, postData } from '../../helpers'
-import { ERROR, START, SUCCESS, STYLES_FETCH_DATA, STYLES_SET_TRASH } from '../../constants'
+import { deleteData, getData, postData } from '../../helpers'
+import { ERROR, START, SUCCESS, STYLES_FETCH_DATA, STYLES_SET_TRASH, STYLES_NEED_RELOAD } from '../../constants'
 
 export const getStylesData =
 	(filter = 1) =>
@@ -33,6 +33,21 @@ export const setStyleTrash =
 			return null
 		} catch (error: unknown) {
 			dispatch({ type: STYLES_SET_TRASH + ERROR, error })
+			return null
+		}
+	}
+
+export const deleteStyleFromTrash =
+	(slug: string) =>
+	async (dispatch: TDispatch): Promise<number | null> => {
+		try {
+			const { result, deleted } = await deleteData(`colors/${slug}`)
+			if (result === 'ok') {
+				dispatch({ type: STYLES_NEED_RELOAD })
+				return deleted
+			}
+			return null
+		} catch (e: unknown) {
 			return null
 		}
 	}

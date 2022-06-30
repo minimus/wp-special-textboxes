@@ -25,6 +25,7 @@ export const ItemRoot = styled.div`
 	border: 1px solid ${(props: TItemRootProps) => (props.isActive ? '#1976d2' : '#dcdada')};
 	border-radius: 5px;
 	overflow: hidden;
+	box-shadow: 0 0 5px 0 ${(props: TItemRootProps) => (props.isActive ? '#1976d2' : '#dcdada')};
 `
 
 export const ItemInfo = styled.div`

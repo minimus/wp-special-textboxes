@@ -75,5 +75,6 @@ export interface IResponse {
 	data?: Record<string, unknown>
 	settings?: Record<string, unknown>
 	completed?: number | boolean | Record<string, unknown>
+	deleted?: number
 }
 // ** ACTIONS END **

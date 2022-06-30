@@ -71,7 +71,7 @@ const Editor = (props: TProps): JSX.Element => {
 		dispatch({ type: EDITOR_POST_DATA + STOP })
 	}
 
-	const slugIsValid = /[a-zA-Z0-9-_]+/.test(slug)
+	const slugIsValid = /^[\da-zA-Z-_]+$/.test(slug)
 
 	return (
 		<Root>
@@ -137,6 +137,7 @@ const Editor = (props: TProps): JSX.Element => {
 				color="primary"
 				displayPosition={{ bottom: 30, right: 40 }}
 				delay={3000}
+				disabled={!slugIsValid}
 				onClick={onSaveColors}
 				onDelay={onDelay}
 			>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useSnackbar } from 'notistack'
-import { TDispatch, TSettings, TThemeInfo } from '../../../types/admin'
+import { ILocale, TDispatch, TSettings, TThemeInfo } from '../../../types/admin'
 import { IReducers } from '../../../types/state'
 import { Root } from './styles'
 import ThemeItem from './components/ThemeItem'
@@ -13,15 +13,12 @@ const Themes = (): JSX.Element => {
 
 	const themes: TThemeInfo[] = useSelector((state: IReducers) => state.themes.themes) ?? []
 	const settings: TSettings = useSelector((state: IReducers) => state.settings.settings)
+	const localesData: ILocale = useSelector((state: IReducers) => state.locales.data)
+
+	const { messages: { themes: messages = { savingSuccess: '', savingError: '' } } = {} } = localesData ?? {}
 
 	const onActivateClick = (slug: string): void => {
-		activateTheme(slug)(dispatch)
-			.then(() => {
-				enqueueSnackbar('Theme are successfully activated!', { variant: 'success' })
-			})
-			.catch(() => {
-				enqueueSnackbar('An error occurred during activating theme...', { variant: 'error' })
-			})
+		void activateTheme(slug)(dispatch, enqueueSnackbar, messages).then()
 	}
 
 	return (

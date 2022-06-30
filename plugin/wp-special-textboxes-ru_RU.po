@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp-special-textboxes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-08 15:44+0300\n"
+"POT-Creation-Date: 2022-06-21 18:04+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: minimus <minimus@blogcoding.ru>\n"
 "Language-Team: minimus <minimus@simplelib.com>\n"
@@ -26,195 +26,113 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-6: .idea\n"
 "X-Poedit-SearchPathExcluded-7: .git\n"
 
-#: stb-admin-class.php:108
-msgid "Upgrade Now"
-msgstr "Обновить сейчас"
-
-#: stb-admin-class.php:110
-msgid "About STB Pro..."
-msgstr "О STB Pro ..."
-
-#: stb-admin-class.php:111
-msgid "STB Pro Documentation"
-msgstr "Документация STB Pro"
-
-#: stb-admin-class.php:112
-msgid "Free STB Pro Themes"
-msgstr "Бесплатные темы STB Pro"
-
-#: stb-admin-class.php:113
-msgid ""
-"Get the full feature set of the <strong>Special Text Boxes</strong> plugin."
-msgstr ""
-"Получите полный набор функций плагина <strong>Special Text Boxes</strong>."
-
-#: stb-admin-class.php:114
-msgid "Upgrade to the STB Pro now!"
-msgstr "Обновитесь до STB Pro прямо сейчас!"
-
-#: stb-admin-class.php:141
+#: stb-admin-class.php:79
 msgid "OK"
 msgstr "Выбор"
 
-#: stb-admin-class.php:142 stb-tinymce-langs.php:63
+#: stb-admin-class.php:80 stb-tinymce-langs.php:63
 msgid "Cancel"
 msgstr "Отмена"
 
-#: stb-admin-class.php:143
+#: stb-admin-class.php:81
 msgid "Show numbers"
 msgstr "Цифровые значения"
 
-#: stb-admin-class.php:144
+#: stb-admin-class.php:82
 msgid "Show color wheel"
 msgstr "Выбор из палитры"
 
-#: stb-admin-class.php:147
+#: stb-admin-class.php:85
 msgid "Select Image"
 msgstr "Выберите изображение"
 
-#: stb-admin-class.php:148
+#: stb-admin-class.php:86
 msgid "Choose"
 msgstr "Выбрать"
 
-#: stb-admin-class.php:178 stb-class.php:216
-msgid "Special Text"
-msgstr "Специальный текст"
-
-#: stb-admin-class.php:179
-msgid "Highlights block of text as colored text block."
-msgstr "Выделяет блок текста в виде цветного блока."
-
-#: stb-admin-class.php:180
-msgid "Color Scheme"
-msgstr "Цветовая схема"
-
-#: stb-admin-class.php:181 stb-locales.php:162 stb-tinymce-langs.php:24
-msgid "Caption"
-msgstr "Заголовок"
-
-#: stb-admin-class.php:182 stb-locales.php:142
-msgid "Default Caption"
-msgstr "Заголовок по-умолчанию"
-
-#: stb-admin-class.php:183
-msgid "Content"
-msgstr "Контент блока"
-
-#: stb-admin-class.php:184 stb-tinymce-langs.php:54
-msgid "Image"
-msgstr "Пиктограмма"
-
-#: stb-admin-class.php:185
-msgid "Select"
-msgstr "Выбрать"
-
-#: stb-admin-class.php:186
-msgid "Big image (only for blocks without caption)"
-msgstr "Большая пиктограмма (только для блоков без заголовка)"
-
-#: stb-admin-class.php:187
-msgid "Appearance"
-msgstr "Внешний вид"
-
-#: stb-admin-class.php:188
-msgid "Can fold/unfold"
-msgstr "Сворачивание/разворачивание"
-
-#: stb-admin-class.php:189
-msgid "Block is folded on loading"
-msgstr "Показывать свёрнутым при загрузке"
-
-#: stb-admin-class.php:190 stb-tinymce-langs.php:58
-msgid "Margins"
-msgstr "Отступы"
-
-#: stb-admin-class.php:191
-msgid "Top, px"
-msgstr "Верхний отступ, px"
-
-#: stb-admin-class.php:192
-msgid "Right, px"
-msgstr "Правый отступ, px"
-
-#: stb-admin-class.php:193
-msgid "Bottom, px"
-msgstr "Нижний отступ, px"
-
-#: stb-admin-class.php:194
-msgid "Left, px"
-msgstr "Левый отступ, px"
-
-#: stb-admin-class.php:212
-msgid "Upgrade Now!"
-msgstr "Обновите сейчас!"
-
-#: stb-admin-class.php:222
-msgid "Upgrade to STB Pro"
-msgstr "Обновите до STB Pro"
-
-#: stb-admin-class.php:235
+#: stb-admin-class.php:118
 msgid "Special Text Boxes"
 msgstr "Подсветка текста"
 
-#: stb-admin-class.php:236
+#: stb-admin-class.php:119
 msgid "STB"
 msgstr "STB"
 
-#: stb-block-class.php:258
-msgid "Show"
-msgstr "Показать"
+#: stb-class.php:104 stb-class.php:262
+msgid "Special Text"
+msgstr "Специальный текст"
 
-#: stb-block-class.php:258
-msgid "Hide"
-msgstr "Скрыть"
+#: stb-class.php:105
+msgid "Highlights block of text as colored text block."
+msgstr "Выделяет блок текста в виде цветного блока."
 
-#: stb-class.php:214
+#: stb-class.php:106
+msgid "Color Scheme"
+msgstr "Цветовая схема"
+
+#: stb-class.php:107 stb-locales.php:162 stb-tinymce-langs.php:24
+msgid "Caption"
+msgstr "Заголовок"
+
+#: stb-class.php:108 stb-locales.php:142
+msgid "Default Caption"
+msgstr "Заголовок по-умолчанию"
+
+#: stb-class.php:109
+msgid "Content"
+msgstr "Контент блока"
+
+#: stb-class.php:110 stb-tinymce-langs.php:54
+msgid "Image"
+msgstr "Пиктограмма"
+
+#: stb-class.php:111
+msgid "Select"
+msgstr "Выбрать"
+
+#: stb-class.php:112
+msgid "Big image (only for blocks without caption)"
+msgstr "Большая пиктограмма (только для блоков без заголовка)"
+
+#: stb-class.php:113
+msgid "Appearance"
+msgstr "Внешний вид"
+
+#: stb-class.php:114
+msgid "Can fold/unfold"
+msgstr "Сворачивание/разворачивание"
+
+#: stb-class.php:115
+msgid "Block is folded on loading"
+msgstr "Показывать свёрнутым при загрузке"
+
+#: stb-class.php:116 stb-tinymce-langs.php:58
+msgid "Margins"
+msgstr "Отступы"
+
+#: stb-class.php:117
+msgid "Top, px"
+msgstr "Верхний отступ, px"
+
+#: stb-class.php:118
+msgid "Right, px"
+msgstr "Правый отступ, px"
+
+#: stb-class.php:119
+msgid "Bottom, px"
+msgstr "Нижний отступ, px"
+
+#: stb-class.php:120
+msgid "Left, px"
+msgstr "Левый отступ, px"
+
+#: stb-class.php:260
 msgid "Arbitrary text or PHP in colored block."
 msgstr "Произвольный текст или PHP-код в подсвеченном блоке."
 
-#: stb-class.php:345
-msgid "Title:"
-msgstr "Заголовок:"
-
-#: stb-class.php:354
+#: stb-class.php:385
 msgid "ID of Box:"
 msgstr "Идентификатор блока:"
-
-#: stb-class.php:364
-msgid "Evaluate as PHP code."
-msgstr "Выполнить как код PHP."
-
-#: stb-class.php:370
-msgid "Show on all pages of blog"
-msgstr "Показывать на всех страницах блога"
-
-#: stb-class.php:373
-msgid "Show only on"
-msgstr "Показывать только на"
-
-#: stb-class.php:377
-msgid "Home Page"
-msgstr "главной странице"
-
-#: stb-class.php:381
-msgid "Single Post Pages"
-msgstr "страницах статей"
-
-#: stb-class.php:385
-msgid "Archive Pages"
-msgstr "страницах архивов"
-
-#: stb-class.php:389
-msgid "Category Archive Pages"
-msgstr "страницах архивов рубрик"
-
-#: stb-class.php:393
-msgid "Tag Archive Pages"
-msgstr "страницах архивов меток"
-
-#: stb-class.php:397
-msgid "Author Archive Pages"
-msgstr "страницах архивов авторов"
 
 #: stb-default-themes.php:19
 msgid "STB Retro Theme"
@@ -483,7 +401,7 @@ msgid ""
 "Text Boxes."
 msgstr ""
 "Выбрав \"Да\", Вы разрешите использование большой иконки в простом (без "
-"заголовка) блоке специального текста. "
+"заголовка) блоке специального текста."
 
 #: stb-locales.php:81
 msgid "Allow icon images for Special Text Boxes"
@@ -494,7 +412,7 @@ msgid ""
 "Selecting \"Yes\" will allow displaying icon images in Special Text Boxes."
 msgstr ""
 "Выбрав \"Да\", Вы разрешите использование иконок в блоках специального "
-"текста, в противном случае иконки выводиться не будут. "
+"текста, в противном случае иконки выводиться не будут."
 
 #: stb-locales.php:83
 msgid ""
@@ -702,7 +620,7 @@ msgstr "Уникальное имя этого стиля"
 #: stb-locales.php:146
 msgid "Only latin symbols, digits, \"-\" and \"_\" are accepted"
 msgstr ""
-"Допускаются только латинские символы, цифры, символы подчеркивания и тире."
+"Допускаются только латинские символы, цифры, символы подчеркивания и тире"
 
 #: stb-locales.php:148
 msgid "In trash"
@@ -778,13 +696,21 @@ msgstr "Произошла ошибка во время процесса сох�
 
 #: stb-locales.php:178
 msgid "Style is successfully saved"
-msgstr "Стиль темы успешно сохранён ..."
+msgstr "Стиль темы успешно сохранён"
 
-#: stb-styles.php:349 stb-styles.php:375 stb-styles.php:401
+#: stb-locales.php:182
+msgid "Theme is successfully activated."
+msgstr "Тема успешно активирована."
+
+#: stb-locales.php:183
+msgid "An error occurred during activating theme..."
+msgstr "Произошла ошибка во время процесса активации темы..."
+
+#: stb-styles.php:355 stb-styles.php:381 stb-styles.php:407
 msgid "Can't open CSS file"
 msgstr "Невозможно открыть файл таблицы стилей"
 
-#: stb-styles.php:358 stb-styles.php:384 stb-styles.php:410
+#: stb-styles.php:364 stb-styles.php:390 stb-styles.php:416
 msgid "CSS file is not writable"
 msgstr "Нет доступа к записи файла таблицы стилей"
 
@@ -830,11 +756,11 @@ msgstr "Направление текста в блоке"
 
 #: stb-tinymce-langs.php:33
 msgid "left-to-right"
-msgstr "Слева-направо"
+msgstr "слева-направо"
 
 #: stb-tinymce-langs.php:34
 msgid "right-to-left"
-msgstr "Справа-налево"
+msgstr "справа-налево"
 
 #: stb-tinymce-langs.php:35
 msgid "Block Shadow"
@@ -936,834 +862,3 @@ msgstr "Нижний отступ"
 #: stb-tinymce-langs.php:64
 msgid "Insert"
 msgstr "Вставить"
-
-#~ msgid "STB Dark"
-#~ msgstr "Тёмная"
-
-#~ msgid "STB Light"
-#~ msgstr "Светлая"
-
-#~ msgid "Metro"
-#~ msgstr "Метро"
-
-#~ msgid "Note:"
-#~ msgstr "Внимание:"
-
-#~ msgid "This theme may change your STB settings."
-#~ msgstr "Эта тема может изменить параметры плагина."
-
-#, php-format
-#~ msgid "%s theme installed..."
-#~ msgstr "Тема \"%s\" установлена ..."
-
-#~ msgid "Something went wrong..."
-#~ msgstr "Что-то пошло не так ..."
-
-#~ msgid "style"
-#~ msgstr "Стиль"
-
-#, fuzzy
-#~| msgid "Define Show Tool Image"
-#~ msgid "Hide Show Image"
-#~ msgstr "Пиктограммы \"Показать\""
-
-#~ msgid "CSS"
-#~ msgstr "CSS"
-
-#~ msgid "Javascript"
-#~ msgstr "Javascript"
-
-#~ msgid ""
-#~ "Note! Colors \"Background color\" and \"Caption Background Color\" are "
-#~ "used as appropriate background color of the text block when that block is "
-#~ "drawn in CSS mode. In Javascript mode these colors are used as start "
-#~ "color of the background gradient."
-#~ msgstr ""
-#~ "Обратите внимание! Цвета \"Цвет фона\" и \"Цвет фона заголовка\" "
-#~ "используются в качестве соответствующего цвета фона текстового блока, "
-#~ "когда этот блок рисуется в режиме CSS. В режиме Javascript эти цвета "
-#~ "используются как начальный цвет градиента фона."
-
-#~ msgid ""
-#~ "This is example of Custom Special Text Box. You must save options to view "
-#~ "changes."
-#~ msgstr ""
-#~ "Это пример настраиваемого блока специального текста. Чтобы увидеть "
-#~ "внесённые изменения, необходимо сохранить параметры."
-
-#~ msgid "This is caption"
-#~ msgstr "Это заголовок блока"
-
-#~ msgid ""
-#~ "This is example of Captioned Custom Special Text Box. You must save "
-#~ "options to view changes."
-#~ msgstr ""
-#~ "Это пример настраиваемого блока специального текста с заголовком. Чтобы "
-#~ "увидеть внесённые изменения, необходимо сохранить параметры."
-
-#, php-format
-#~ msgid ""
-#~ "This is example of Captioned %s Special Text Box. You must save style "
-#~ "parameters to view changes."
-#~ msgstr ""
-#~ "Это пример блока специального текста \"%s\" с заголовком. Чтобы увидеть "
-#~ "внесённые изменения, необходимо сохранить параметры стиля."
-
-#, php-format
-#~ msgid ""
-#~ "This is example of %s Special Text Box. You must save style parameters to "
-#~ "view changes."
-#~ msgstr ""
-#~ "Это пример блока специального текста \"%s\". Чтобы увидеть внесённые "
-#~ "изменения, необходимо сохранить параметры стиля."
-
-#~ msgid "STB Styles"
-#~ msgstr "Стили STB"
-
-#~ msgid "STB Style Editor"
-#~ msgstr "Редактор стилей STB"
-
-#~ msgid "New Style"
-#~ msgstr "Новый стиль"
-
-#~ msgid "CSS Mode"
-#~ msgstr "Режим CSS"
-
-#~ msgid "In any cases STB blocks will be drawn using predefined style sheets."
-#~ msgstr ""
-#~ "В любом случае текстовый блок будет прорисован с помощью заданной таблицы "
-#~ "стиля."
-
-#~ msgid "Javascript Mode"
-#~ msgstr "Режим Javascript"
-
-#~ msgid ""
-#~ "If user browser supports tags \"canvas\" (all modern browsers, including "
-#~ "Internet Explorer, support this tag) STB block will be drawn using "
-#~ "Javascript, in any other cases this one will be drawn using CSS mode."
-#~ msgstr ""
-#~ "Если браузер пользователя поддерживает тег \"canvas\" (все современные "
-#~ "браузеры, включая Internet Explorer, поддерживают этот тег), текстовый "
-#~ "блок будет прорисован с помощью Javascript, в противном случае будут "
-#~ "использованы таблицы стилей."
-
-#~ msgid "Mixed Mode"
-#~ msgstr "Смешанный режим"
-
-#~ msgid ""
-#~ "You can use both CSS and Javascript methods of drawing text blocks on one "
-#~ "page. Just define drawing mode of STB shortcode. Default is Javascript or "
-#~ "CSS method."
-#~ msgstr ""
-#~ "Вы можете использовать как CSS так и Javascript методы рисования "
-#~ "текстовых блоков на одной странице. Просто задайте режим рисования в "
-#~ "коротком коде (shortcode) STB. По умолчанию используется метод рисования "
-#~ "с помощью Javascript или CSS."
-
-#~ msgid "Text Shadow Settings"
-#~ msgstr "Параметры тени текста"
-
-#~ msgid "Define Drawing Mode"
-#~ msgstr "Режим рисования"
-
-#~ msgid "Select Drawing Mode"
-#~ msgstr "Выберите режим рисования текстового блока"
-
-#~ msgid ""
-#~ "This is a gap between left edge of Special Text Box and left edge of post "
-#~ "area."
-#~ msgstr ""
-#~ "Этот параметр определяет промежуток между левым краем блока специального "
-#~ "текста и левым краем области статьи."
-
-#~ msgid "Define right margin for Special Text Boxes"
-#~ msgstr "Правый отступ специального текста"
-
-#~ msgid ""
-#~ "This is a gap between right edge of Special Text Box and right edge of "
-#~ "post area."
-#~ msgstr ""
-#~ "Этот параметр определяет промежуток между правым краем блока специального "
-#~ "текста и правым краем области статьи."
-
-#~ msgid "Define bottom margin for Special Text Boxes"
-#~ msgstr "Нижний отступ специального текста"
-
-#~ msgid ""
-#~ "This is a gap between bottom edge of Special Text Box and text below."
-#~ msgstr ""
-#~ "Этот параметр определяет промежуток между нижним краем блока специального "
-#~ "текста и текстом (элементом) расположенным ниже."
-
-#~ msgid ""
-#~ "Selecting \"Yes\" will allow displaying show/hide button in captioned "
-#~ "Special Text Boxes."
-#~ msgstr ""
-#~ "Выбрав \"Да\", Вы разрешите вывод кнопки Скрыть/Показать в заголовке "
-#~ "блока специального текста. "
-
-#~ msgid ""
-#~ "Selecting \"Yes\" will allow displaying collapsed captioned Special Text "
-#~ "Boxes after page loading."
-#~ msgstr ""
-#~ "Выбрав \"Да\", Вы разрешите показывать свёрнутые блоки специального "
-#~ "текста с заголовком при загрузке страницы , в противном случае блоки "
-#~ "будут показываться развёрнутыми. "
-
-#~ msgid "Define Duration of Collapsing/Expanding Animation"
-#~ msgstr "Продолжительность анимации сворачивания/разворачивания блока"
-
-#~ msgid "Define Image Offset X"
-#~ msgstr "Смещение по оси X"
-
-#~ msgid "This is image offset by X coordinate for non-caption text block."
-#~ msgstr "Смещение пиктограммы блока без заголовка по оси X в пикселах."
-
-#~ msgid "Define Image Offset Y"
-#~ msgstr "Смещение по оси Y"
-
-#~ msgid "This is image offset by Y coordinate for non-caption text block."
-#~ msgstr "Смещение пиктограммы блока без заголовка по оси Y в пикселах."
-
-#~ msgid "This is corners radius in pixels."
-#~ msgstr "Размер радиуса закругления углов текстового блока в пикселах."
-
-#~ msgid "This is font size of caption text in pixels."
-#~ msgstr "Размер шрифта текста заголовка в пикселах."
-
-#~ msgid "Select Text Line Height"
-#~ msgstr "Интерлиньяж (межстрочный интервал)"
-
-#~ msgid "Inherit - Defined by theme style sheet."
-#~ msgstr "Наследуемый - определяется таблицами стилей текущей темы Wordpress."
-
-#~ msgid "Normal - Defined by visitor's browser."
-#~ msgstr "Нормальный - определяется (вычисляется) браузером посетителя блога."
-
-#~ msgid ""
-#~ "Custom - Defined by You. You can define custom value for text line height "
-#~ "using parameter below."
-#~ msgstr ""
-#~ "Настраиваемый - определяется Вами. Вы можете настроить значение "
-#~ "интерлиньяжа (межстрочного интервала) с помощью параметра расположенного "
-#~ "ниже."
-
-#~ msgid "Inherit"
-#~ msgstr "Наследуемый"
-
-#~ msgid "Normal"
-#~ msgstr "Нормальный"
-
-#~ msgid "Custom"
-#~ msgstr "Настраиваемый"
-
-#~ msgid "Define Custom Text Line Height"
-#~ msgstr "Настраиваемый интерлиньяж (межстрочный интервал)"
-
-#~ msgid ""
-#~ "This is custom text line height of STB block in \"em\" defined by You."
-#~ msgstr ""
-#~ "Этот параметр задаёт интерлиньяж (межстрочный интервал) текста блока, "
-#~ "определяемый в \"em\"."
-
-#~ msgid "Selecting \"Yes\" will allow drawing shadow of Special Text Boxes."
-#~ msgstr ""
-#~ "Выбрав \"Да\", Вы разрешите использование тени в блоках специального "
-#~ "текста. "
-
-#~ msgid "Define Shadow Offset X"
-#~ msgstr "Смещение по оси X"
-
-#~ msgid "This is box shadow offset by X coordinate for text block in pixels."
-#~ msgstr "Смещение тени блока по оси X в пикселах."
-
-#~ msgid "Define Shadow Offset Y"
-#~ msgstr "Смещение по оси Y"
-
-#~ msgid "This is box shadow offset by Y coordinate for text block in pixels."
-#~ msgstr "Смещение тени блока по оси Y в пикселах."
-
-#~ msgid "This is box shadow blur for text block in pixels."
-#~ msgstr "Значение размытия тени блока в пикселах."
-
-#~ msgid "Define Shadow Alpha"
-#~ msgstr "Прозрачность"
-
-#~ msgid "This is box shadow alpha chanel value for text block."
-#~ msgstr "Значение альфа-канала для тени блока."
-
-#~ msgid "This is box shadow color for text block."
-#~ msgstr "Цвет тени текстового блока."
-
-#~ msgid ""
-#~ "Selecting \"Yes\" will allow drawing text shadow of Special Text Boxes."
-#~ msgstr ""
-#~ "Выбрав \"Да\", Вы разрешите использование тени текста в блоках "
-#~ "специального текста."
-
-#~ msgid "This is text shadow offset by X coordinate for text block in pixels."
-#~ msgstr "Смещение тени текста по оси X в пикселах."
-
-#~ msgid "This is text shadow offset by Y coordinate for text block in pixels."
-#~ msgstr "Смещение тени текста по оси Y в пикселах."
-
-#~ msgid "This is text shadow blur for text block in pixels."
-#~ msgstr "Значение размытия тени текста блока в пикселах."
-
-#~ msgid "Select border style for Special Text Boxes"
-#~ msgstr "Выбор стиля рамки блока специального текста"
-
-#~ msgid "Selecting \"None\" will disable Special Text Boxes border."
-#~ msgstr ""
-#~ "Выбрав \"Без рамки\", Вы запретите прорисовку рамки блока специального "
-#~ "текста. "
-
-#~ msgid "This is font size in pixels."
-#~ msgstr "Размер шрифта в пикселах."
-
-#~ msgid "Define caption font size for Special Text Boxes"
-#~ msgstr "Размер шрифта заголовка"
-
-#~ msgid "This is caption font size in pixels."
-#~ msgstr "Размер шрифта заголовка в пикселах."
-
-#~ msgid "Selecting \"No\" will disable Special Text Boxes rounded corners."
-#~ msgstr "Выбрав \"Нет\", Вы запретите прорисовку закруглённых углов. "
-
-#~ msgid "Allow box shadow for Special Text Boxes?"
-#~ msgstr "Разрешить использование тени блока специального текста?"
-
-#~ msgid "Selecting \"No\" will disable Special Text Boxes shadow."
-#~ msgstr ""
-#~ "Выбрав \"Нет\", Вы запретите прорисовку тени блока специального текста. "
-
-#~ msgid "Allow text shadow for Special Text Boxes?"
-#~ msgstr "Разрешить использование теней текста?"
-
-#~ msgid "Selecting \"No\" will disable Special Text Boxes text shadow."
-#~ msgstr "Выбрав \"Нет\", Вы запретите прорисовку теней текста. "
-
-#~ msgid "Define font color for Custom Special Text Box"
-#~ msgstr "Цвет шрифта"
-
-#~ msgid "This is a font color of Custom Special Text Box (Six Hex Digits)."
-#~ msgstr ""
-#~ "Этот параметр задаёт цвет шрифта настраиваемого блока специального текста "
-#~ "(шесть шестнадцатиричных цифр)."
-
-#~ msgid "Define caption font color for Custom Special Text Box"
-#~ msgstr "Цвет шрифта заголовка"
-
-#~ msgid ""
-#~ "This is a font color of Custom Special Text Box caption (Six Hex Digits)."
-#~ msgstr ""
-#~ "Этот параметр задаёт цвет шрифта заголовка настраиваемого блока "
-#~ "специального текста (шесть шестнадцатиричных цифр)."
-
-#~ msgid "Define font size for Custom Special Text Box"
-#~ msgstr "Размер шрифта"
-
-#~ msgid "Define caption font size for Custom Special Text Box"
-#~ msgstr "Размер шрифта заголовка"
-
-#~ msgid "Define background color for Custom Special Text Box"
-#~ msgstr "Цвет фона"
-
-#~ msgid ""
-#~ "This is a background color of Custom Special Text Box (Six Hex Digits)."
-#~ msgstr ""
-#~ "Этот параметр задаёт цвет фона настраиваемого блока специального текста "
-#~ "(шесть шестнадцатиричных цифр)."
-
-#~ msgid "Define background color for Custom Special Text Box caption"
-#~ msgstr "Цвет фона заголовка"
-
-#~ msgid ""
-#~ "This is a background color of Custom Special Text Box caption (Six Hex "
-#~ "Digits)."
-#~ msgstr ""
-#~ "Этот параметр задаёт цвет фона заголовка настраиваемого блока "
-#~ "специального текста (шесть шестнадцатиричных цифр)."
-
-#~ msgid "Define border color for Custom Special Text Box"
-#~ msgstr "Цвет окантовки"
-
-#~ msgid "This is a border color of Custom Special Text Box (Six Hex Digits)."
-#~ msgstr ""
-#~ "Этот параметр определяет цвет окантовки настраиваемого блока специального "
-#~ "текста."
-
-#~ msgid "Define image for Custom Special Text Box"
-#~ msgstr "Изображение"
-
-#~ msgid ""
-#~ "This is an image of Custom Special Text Box (Full URL). 25x25 pixels, "
-#~ "transparent background PNG image recommended."
-#~ msgstr ""
-#~ "Этот параметр задаёт пиктограмму настраиваемого блока специального текста "
-#~ "(полный URL). Рекомендуется изображение PNG, 25x25 пиксел, прозрачный фон."
-
-#~ msgid "Define big image for simple (non-captioned) Custom Special Text Box"
-#~ msgstr "Большое изображение"
-
-#~ msgid ""
-#~ "This is big image for simple (non-captioned) Custom Special Text Box "
-#~ "(Full URL). 50x50 pixels, transparent background PNG image recommended."
-#~ msgstr ""
-#~ "Этот параметр задаёт большую пиктограмму для простого (без заголовка) "
-#~ "настраиваемого блока специального текста (полный URL). Рекомендуется "
-#~ "изображение PNG, 50x50 пиксел, прозрачный фон."
-
-#~ msgid ""
-#~ "Use parameters below for customising Special Text Box for drawing in "
-#~ "javascript mode."
-#~ msgstr ""
-#~ "Используйте эти параметры для настройки внешнего вида блока специального "
-#~ "текста в режиме рисования Javascript."
-
-#~ msgid ""
-#~ "Use parameters below for customising shadow of Special Text Box for "
-#~ "drawing in javascript mode."
-#~ msgstr ""
-#~ "Используйте эти параметры для настройки тени блока специального текста в "
-#~ "режиме рисования Javascript."
-
-#~ msgid ""
-#~ "Use parameters below for customising text shadow of Special Text Box for "
-#~ "drawing in javascript mode."
-#~ msgstr ""
-#~ "Используйте эти параметры для настройки тени текста блока специального "
-#~ "текста в режиме рисования Javascript."
-
-#~ msgid ""
-#~ "Parameters below add elements of CSS3 standard to Style Sheet. Not all "
-#~ "browsers can interpret this elements properly, but including this "
-#~ "elements to HTML page not crash browser."
-#~ msgstr ""
-#~ "Использование следующих параметров добавляет в таблицу стилей елементы "
-#~ "стандарта CSS3. Не все браузеры могут интерпретировать эти элементы "
-#~ "должным образом, но использование этих элементов не приводит к сбою в "
-#~ "работе браузера."
-
-#~ msgid "Special Text Boxes Settings"
-#~ msgstr "Параметры подсветки специального текста"
-
-#~ msgid "Special Text Box settings are updated."
-#~ msgstr "Параметры подсветки специального текста сохранены."
-
-#~ msgid "System Info"
-#~ msgstr "Системная информация"
-
-#~ msgid "Wordpress Version"
-#~ msgstr "Версия Wordpress"
-
-#~ msgid "Plugin Version"
-#~ msgstr "Версия плагина"
-
-#~ msgid "Plugin DB Version"
-#~ msgstr "Версия таблицы БД плагина"
-
-#~ msgid "MySQL Version"
-#~ msgstr "Версия MySQL"
-
-#~ msgid "Memory Limit"
-#~ msgstr "Лимит памяти"
-
-#~ msgid "Note! If you have detected a bug, include this data to bug report."
-#~ msgstr ""
-#~ "Обратите внимание! Если вы обнаружили ошибку, не забудьте включить эти "
-#~ "данные в отчет об ошибке."
-
-#~ msgid "Resources"
-#~ msgstr "Ресурсы"
-
-#~ msgid "Wordpress Plugin Page"
-#~ msgstr "Страница плагина на Wordpress"
-
-#~ msgid "Author Plugin Page"
-#~ msgstr "Страница плагина в блоге автора"
-
-#~ msgid "Support Forum"
-#~ msgstr "Форум поддержки"
-
-#~ msgid "Author's Blog"
-#~ msgstr "Блог автора"
-
-#~ msgid "Donations"
-#~ msgstr "Пожертвования"
-
-#, php-format
-#~ msgid ""
-#~ "If you have found this plugin useful, please consider making a %s to help "
-#~ "support future development. Your support will be much appreciated. Thank "
-#~ "you!"
-#~ msgstr ""
-#~ "Если Вы сочли этот плагин полезным, пожалуйста, изыщите возможность "
-#~ "сделать %s, чтобы поддержать дальнейшие работы по разработке плагина. "
-#~ "Ваша поддержка будет оценена по достоинству. Спасибо! "
-
-#~ msgid "Donate Now!"
-#~ msgstr "Пожертвовать!"
-
-#~ msgid "donation"
-#~ msgstr "пожертвование"
-
-#~ msgid "Another Plugins"
-#~ msgstr "Другие плагины"
-
-#, php-format
-#~ msgid "Another plugins from %s"
-#~ msgstr "Другие плагины от %s'а"
-
-#~ msgid ""
-#~ "Advertisment rotation system with a flexible logic of displaying "
-#~ "advertisements. "
-#~ msgstr "Ротатор рекламных объявлений, реализующий гибкую логику ротации."
-
-#~ msgid ""
-#~ "Adds simple counters badge (FeedBurner subscribers and Twitter followers) "
-#~ "to your blog."
-#~ msgstr ""
-#~ "Добавляет бейджик счётчиков (подписчики Feedburner и последователи "
-#~ "Twitter) на все страницы блога."
-
-#~ msgid ""
-#~ "This plugin is WordPress shell for FloatBox library by Byron McGregor."
-#~ msgstr "Wordpress оболочка для плагина FloatBox от Байрона МакГрегора."
-
-#~ msgid "Adds copyright notice in the end of each post of your blog. "
-#~ msgstr ""
-#~ "Добавляет строку уведомления об авторском праве в конец каждой статьи "
-#~ "блога."
-
-#~ msgid "General"
-#~ msgstr "Основные"
-
-#~ msgid "System Style"
-#~ msgstr "Системный стиль"
-
-#~ msgid "Special Style"
-#~ msgstr "Специальный стиль"
-
-#~ msgid "&laquo;"
-#~ msgstr "&laquo;"
-
-#~ msgid "&raquo;"
-#~ msgstr "&raquo;"
-
-#~ msgid "Managing Styles"
-#~ msgstr "Управление стилями"
-
-#~ msgid "Clear Trash"
-#~ msgstr "Очистить корзину"
-
-#~ msgid "Add New Style"
-#~ msgstr "Добавить новый стиль"
-
-#, php-format
-#~ msgid "Displaying %s&#8211;%s of %s"
-#~ msgstr "Показано  %s&#8211;%s из %s"
-
-#~ msgid "Style Name"
-#~ msgstr "Имя стиля"
-
-#~ msgid "Style Slug"
-#~ msgstr "Ярлык стиля"
-
-#~ msgid "Style Type"
-#~ msgstr "Тип стиля"
-
-#~ msgid "There are no data ..."
-#~ msgstr "Нет данных для показа ..."
-
-#~ msgid "Edit Style"
-#~ msgstr "Изменение стиля"
-
-#~ msgid "Edit"
-#~ msgstr "Изменить"
-
-#~ msgid "Restore this Style from the Trash"
-#~ msgstr "Восстановить этот стиль из корзины"
-
-#~ msgid "Restore"
-#~ msgstr "Восстановить"
-
-#~ msgid "Remove this Style permanently"
-#~ msgstr "Удалить этот стиль навсегда"
-
-#~ msgid "Remove permanently"
-#~ msgstr "Удалить навсегда"
-
-#~ msgid "Move this Style to the Trash"
-#~ msgstr "Отправить этот стиль в корзину"
-
-#~ msgid "Delete"
-#~ msgstr "Удалить"
-
-#, php-format
-#~ msgid ""
-#~ "You forgot to define the slug of style, therefore it was assigned "
-#~ "randomly to %s. You can always change this one to the desired value."
-#~ msgstr ""
-#~ "Вы забыли определить ярлык стиля, поэтому он был назначен случайным "
-#~ "образом как \"%s\". Вы всегда можете изменить его на нужное Вам значение."
-
-#~ msgid "Style Data Updated."
-#~ msgstr "Параметры стиля сохранены."
-
-#~ msgid "Click to toggle"
-#~ msgstr "Свернуть/развернуть"
-
-#~ msgid "Status"
-#~ msgstr "Статус"
-
-#~ msgid "Back to Styles List"
-#~ msgstr "Назад, к списку стилей"
-
-#~ msgid "Is Active"
-#~ msgstr "Активен"
-
-#~ msgid "Is In Trash"
-#~ msgstr "В корзине"
-
-#~ msgid "Enter Default Caption/Name and Slug for this Style."
-#~ msgstr "Введите Заголовок по-умолчанию/Имя и Ярлык для этого стиля"
-
-#~ msgid ""
-#~ "This is name of style. Also it can be used as default caption for "
-#~ "captioned STB block."
-#~ msgstr ""
-#~ "Имя стиля. Так же может использоваться как заголовок по умолчанию для "
-#~ "текстового блока с заголовком."
-
-#~ msgid "Slug"
-#~ msgstr "Ярлык"
-
-#~ msgid ""
-#~ "This is a unique style name. Must consist of latin characters, numbers "
-#~ "and underscore characters only!"
-#~ msgstr ""
-#~ "Это - уникальное имя стиля. Должно состоять из символов латинского "
-#~ "алфавита, цифр или символов подчёркивания."
-
-#~ msgid "Javascript Style Parameters"
-#~ msgstr "Параметры режима Javascript"
-
-#~ msgid "Box background gradient"
-#~ msgstr "Градиент фона блока"
-
-#~ msgid "Font color"
-#~ msgstr "Цвет текста"
-
-#, php-format
-#~ msgid "This is a font color of %s Special Text Box (Six Hex Digits)."
-#~ msgstr ""
-#~ "Этот параметр задаёт цвет шрифта блока специального текста \"%s\" (шесть "
-#~ "шестнадцатиричных цифр)."
-
-#, php-format
-#~ msgid ""
-#~ "This is image for %s Special Text Box (Full URL). 50x50 pixels, "
-#~ "transparent background PNG image recommended."
-#~ msgstr ""
-#~ "Этот параметр задаёт пиктограмму блока специального текста \"%s\" (полный "
-#~ "URL). Рекомендуется изображение PNG, 50x50 пиксел, прозрачный фон."
-
-#, php-format
-#~ msgid "This is a border color of %s Special Text Box (Six Hex Digits)."
-#~ msgstr ""
-#~ "Этот параметр определяет цвет окантовки блока специального текста \"%s\"."
-
-#~ msgid "Caption background gradient"
-#~ msgstr "Градиент фона заголовка блока"
-
-#~ msgid ""
-#~ "There are colors of caption background gradient. Direction of gradient "
-#~ "drawing is from top to bottom."
-#~ msgstr ""
-#~ "Это цвета градиента фона заголовка блока. Направление прорисовки "
-#~ "градиента - сверху вниз."
-
-#~ msgid "Caption Font Color"
-#~ msgstr "Цвет текста заголовка"
-
-#, php-format
-#~ msgid ""
-#~ "This is a font color of %s Special Text Box caption (Six Hex Digits)."
-#~ msgstr ""
-#~ "Этот параметр задаёт цвет шрифта заголовка блока специального текста "
-#~ "\"%s\" (шесть шестнадцатиричных цифр)."
-
-#~ msgid "CSS Style Parameters"
-#~ msgstr "Параметры режима CSS"
-
-#~ msgid "Font Color"
-#~ msgstr "Цвет текста"
-
-#, php-format
-#~ msgid ""
-#~ "This is an image of %s Special Text Box (Full URL). 25x25 pixels, "
-#~ "transparent background PNG image recommended."
-#~ msgstr ""
-#~ "Этот параметр задаёт пиктограмму блока специального текста \"%s\" (полный "
-#~ "URL). Рекомендуется изображение PNG, 25x25 пиксел, прозрачный фон."
-
-#~ msgid "Author"
-#~ msgstr "Автор"
-
-#~ msgid "Install"
-#~ msgstr "Установить"
-
-#~ msgid ""
-#~ "The possibility of manipulating custom themes has been removed by request "
-#~ "of administration of wordpress.org plugins repository. This possibility "
-#~ "will be realised in Special Text Boxes Pro plugin (coming soon)."
-#~ msgstr ""
-#~ "Возможность манипулирования пользовательскими темами была удалена по "
-#~ "требованию администрации репозитария плагинов wordpress.org. Эта "
-#~ "возможность будет реализована в плагине Special Text Boxes Pro (очень "
-#~ "скоро)."
-
-#~ msgid "Save Current Theme As..."
-#~ msgstr "Сохранить текущую тему ..."
-
-#~ msgid "Fill fields below. Fields marked \"*\" are required fields."
-#~ msgstr ""
-#~ "Заполните поля, расположенные ниже. Поля отмеченные \"*\" обязательны к "
-#~ "заполнению."
-
-#~ msgid "Theme Name"
-#~ msgstr "Имя темы"
-
-#~ msgid "Theme Slug"
-#~ msgstr "Псевдоним темы"
-
-#~ msgid "Theme Description"
-#~ msgstr "Описание темы"
-
-#~ msgid "Cover Image"
-#~ msgstr "Обложка"
-
-#~ msgid "Author Name"
-#~ msgstr "Имя автора темы"
-
-#~ msgid "Author URL"
-#~ msgstr "URL автора темы"
-
-#, php-format
-#~ msgid "Theme %s is saved ..."
-#~ msgstr "Тема \"%s\" сохранена ..."
-
-#~ msgid "Select Cover Image"
-#~ msgstr "Выберите изображение обложки"
-
-#~ msgid "Upload New Theme"
-#~ msgstr "Загрузить новую тему"
-
-#~ msgid "More Themes..."
-#~ msgstr "Ещё темы ..."
-
-#~ msgid ""
-#~ "Warning! The default value of donation is %s. Don't worry! This is not my "
-#~ "appetite, this is default value defined by Payoneer service."
-#~ msgstr ""
-#~ "Внимание! Значение по умолчанию для пожертвования составляет %s. Не "
-#~ "волнуйтесь! Это не мой аппетит, это - значение по умолчанию, определенное "
-#~ "службой Payoneer."
-
-#~ msgid " You can change it to any value you want!"
-#~ msgstr ""
-#~ " Вы можете изменить его на любое значение, которое посчитаете нужным!"
-
-#~ msgid "This is a background color of %s Special Text Box (Six Hex Digits)."
-#~ msgstr ""
-#~ "Этот параметр задаёт цвет фона блока специального текста \"%s\" (шесть "
-#~ "шестнадцатиричных цифр)."
-
-#~ msgid "Big Image"
-#~ msgstr "URL большой пиктограммы"
-
-#~ msgid ""
-#~ "This is big image for simple (non-captioned) %s Special Text Box (Full "
-#~ "URL). 50x50 pixels, transparent background PNG image recommended."
-#~ msgstr ""
-#~ "Этот параметр задаёт большую пиктограмму для простого (без заголовка) "
-#~ "блока специального текста \"%s\" (полный URL). Рекомендуется изображение "
-#~ "PNG, 50x50 пиксел, прозрачный фон."
-
-#~ msgid ""
-#~ "This is a background color of %s Special Text Box caption (Six Hex "
-#~ "Digits)."
-#~ msgstr ""
-#~ "Этот параметр задаёт цвет фона заголовка блока специального текста "
-#~ "\"%s\" (шесть шестнадцатиричных цифр)."
-
-#~ msgid ""
-#~ "Same as Javascript mode (Javascript mode is default mode), but allows to "
-#~ "use STB blocks in either Javascript or CSS mode on same page for one user."
-#~ msgstr ""
-#~ "То же, что и режим Javascript (режим Javascript - режим по-умолчанию), но "
-#~ "так же позволяет одновременно с блоками в режиме JS выводить блоки в "
-#~ "режиме CSS."
-
-#~ msgid "Color"
-#~ msgstr "Цвет фона"
-
-#~ msgid "Caption color"
-#~ msgstr "Цвет фона заголовка"
-
-#~ msgid "Alert"
-#~ msgstr "Опасность"
-
-#~ msgid "Warning"
-#~ msgstr "Внимание"
-
-#~ msgid "Black"
-#~ msgstr "Чёрный"
-
-#~ msgid "Grey"
-#~ msgstr "Серый"
-
-#~ msgid "Undefined"
-#~ msgstr "Неопределено"
-
-#~ msgid ""
-#~ "This is example of Custom Special Text Box with small image. You must "
-#~ "save options to view changes."
-#~ msgstr ""
-#~ "Это пример настраиваемого блока специального текста с маленькой иконкой. "
-#~ "Чтобы увидеть внесённые изменения, необходимо сохранить параметры."
-
-#~ msgid ""
-#~ "This is example of Custom Special Text Box with big image. You must save "
-#~ "options to view changes."
-#~ msgstr ""
-#~ "Это пример настраиваемого блока специального текста с большой иконкой. "
-#~ "Чтобы увидеть внесённые изменения, необходимо сохранить параметры."
-
-#~ msgid "Update Settings"
-#~ msgstr "Сохранить параметры"
-
-#~ msgid "alert"
-#~ msgstr "опасность"
-
-#~ msgid "download"
-#~ msgstr "скачать"
-
-#~ msgid "info"
-#~ msgstr "инфо"
-
-#~ msgid "black"
-#~ msgstr "чёрный"
-
-#~ msgid "custom"
-#~ msgstr "настраиваемый"
-
-#~ msgid "This is big image"
-#~ msgstr "Это большая пиктограмма"
-
-#~ msgid "Basic"
-#~ msgstr "Основные параметры"
-
-#~ msgid "Extended"
-#~ msgstr "Дополнительные"

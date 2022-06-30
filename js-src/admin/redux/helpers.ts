@@ -14,7 +14,7 @@ export const getData = async (entry: string): Promise<IResponse> => {
 	})
 
 	try {
-		return await window.fetch(req).then((res) => (res.json() as IResponse))
+		return await window.fetch(req).then((res) => res.json() as IResponse)
 	} catch (e: unknown) {
 		return e
 	}
@@ -36,7 +36,7 @@ export const postData = async (entry: string, body?: string): Promise<IResponse>
 	})
 
 	try {
-		return await window.fetch(req).then((res) => (res.json() as IResponse))
+		return await window.fetch(req).then((res) => res.json() as IResponse)
 	} catch (e: unknown) {
 		return e
 	}
@@ -56,7 +56,7 @@ export const deleteData = async (entry: string): Promise<IResponse> => {
 	})
 
 	try {
-		return await window.fetch(req).then((res) => (res.json() as IResponse))
+		return await window.fetch(req).then((res) => res.json() as IResponse)
 	} catch (e: unknown) {
 		return e
 	}

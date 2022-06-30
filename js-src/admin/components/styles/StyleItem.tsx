@@ -10,7 +10,7 @@ import type { TColors, TDispatch, TStyleColors } from '../../../types/admin'
 import { ItemAlias, ItemBody, ItemContent, ItemInfo, ItemToolbar } from './styless'
 import StyleBox from '../box/StyleBox'
 import { STYLES_NEED_RELOAD } from '../../redux/constants'
-import { setStyleTrash } from '../../redux/modules/styles/actions'
+import { deleteStyleFromTrash, setStyleTrash } from '../../redux/modules/styles/actions'
 
 /* const useStyles = makeStyles((theme) => ({
     button: {
@@ -66,7 +66,9 @@ const StyleItem = (props: TProps): JSX.Element => {
 		})
 	}
 
-	const onKillClick = (): void => {}
+	const onKillClick = (): void => {
+		void deleteStyleFromTrash(slug)(dispatch).then()
+	}
 
 	const deleteButtons = (): JSX.Element => {
 		if (trash) {
