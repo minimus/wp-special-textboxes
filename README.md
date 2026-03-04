@@ -6,9 +6,9 @@ Tags: content, performance, text, code, php, widget
 
 Requires at least: 5.6
 
-Tested up to: 6.0
+Tested up to: 6.9
 
-Stable tag: 6.0.1
+Stable tag: 6.5
 
 License: GPLv2 or later
 
@@ -75,6 +75,23 @@ Use *stb* shortcode inside *stextbox* shortcode
 More about Special Text Boxes usage and customising read on the [plugin page](http://www.simplelib.com/archives/wordpress-plugin-wp-special-textboxes/)
 
 ## Changelog
+### 6.5
+* update: updated to React 19
+* update: third party libraries are updated
+* fix: block's content input is fixed
+* fix: admin data requests are fixed
+### 6.2.6
+* WordPress 6.8 ready
+### 6.2.5
+* Plugin security improved
+### 6.2.4
+* Plugin security improved
+### 6.2.2
+* WordPress 6.5 ready
+### 6.2.1
+* WordPress 6.4 ready
+### 6.2
+* WordPress 6.3 ready
 ### 6.1
 * added: border width param
 * fixed: collapsed box style
