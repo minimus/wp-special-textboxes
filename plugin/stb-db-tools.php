@@ -70,7 +70,7 @@ if (!class_exists('StbDbTools')) {
             $styles = [];
             foreach ($rows as $row) {
                 $cssStyles = unserialize($row['css_style']);
-                $style = array(
+                $style = [
                     'slug' => $row['slug'],
                     'caption' => $row['caption'],
                     'colors' => serialize([
@@ -93,7 +93,7 @@ if (!class_exists('StbDbTools')) {
                     ]),
                     'stbType' => $row['stype'],
                     'trash' => (int)$row['trash'],
-                );
+                ];
                 $styles[] = $style;
                 $wpdb->insert($this->sTable, $style, ['%s', '%s', '%s', '%s', '%d']);
             }
@@ -132,12 +132,12 @@ if (!class_exists('StbDbTools')) {
             return self::tableExists($this->sTable);
         }
 
-        public function getCurrentColors($filter = ''): array
+        public function getCurrentColors($filter = NULL): array
         {
             global $wpdb;
 
             $sTable = $wpdb->prefix . "stb_stylez";
-            $sSql = "SELECT * FROM $sTable st{$filter}";
+            $sSql = is_null($filter) ? "SELECT * FROM $sTable st" : $wpdb->prepare("SELECT * FROM $sTable st WHERE st.trash = %d", [$filter]);
             $colors = $wpdb->get_results($sSql, ARRAY_A);
             $data = [];
             foreach ($colors as $color) {

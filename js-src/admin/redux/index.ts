@@ -1,26 +1,30 @@
-import { createStore, applyMiddleware, combineReducers, Reducer, ReducersMapObject, CombinedState } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import thunk from 'redux-thunk'
-import header from './modules/header/header'
-import settings from './modules/settings/settings'
-import styles from './modules/styles/styles'
-import editor from './modules/editor/editor'
-import locales from './modules/locales/locales'
-import themes from './modules/themes/themes'
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-declare const __DEV__: string | undefined
+import header from './modules/header/header';
+import settings from './modules/settings/settings';
+import styles from './modules/styles/styles';
+import editor from './modules/editor/editor';
+import locales from './modules/locales/locales';
+import themes from './modules/themes/themes';
 
-const createStoreWithMiddleware = __DEV__
-	? composeWithDevTools(applyMiddleware(thunk))(createStore)
-	: applyMiddleware(thunk)(createStore)
+declare const __DEV__: string | undefined;
 
-const reducer: Reducer<CombinedState<Record<string, unknown>>> = combineReducers({
-	settings,
-	styles,
-	editor,
-	themes,
-	header,
-	locales,
-} as ReducersMapObject)
+const reducers = { settings, styles, editor, themes, header, locales };
+const reducer = combineReducers(reducers);
 
-export default (initialState: Record<string, unknown>) => createStoreWithMiddleware(reducer, initialState)
+const store = configureStore({
+  reducer,
+  devTools: !!__DEV__,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+      immutableCheck: false,
+    }),
+});
+
+export type TRootState = ReturnType<typeof store.getState>;
+export type TRootStore = typeof store;
+export type TRootGetState = typeof store.getState;
+export type TRootDispatch = typeof store.dispatch;
+
+export default store;

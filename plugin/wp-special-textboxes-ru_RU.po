@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp-special-textboxes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-21 18:04+0300\n"
+"POT-Creation-Date: 2022-11-18 18:48+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: minimus <minimus@blogcoding.ru>\n"
 "Language-Team: minimus <minimus@simplelib.com>\n"
@@ -10,12 +10,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _e;__;__ngettext:1,2;__ngettext_noop:1,2;_c;_x\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.1\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
 "X-Poedit-SearchPathExcluded-1: js-src\n"
@@ -70,11 +70,11 @@ msgstr "Выделяет блок текста в виде цветного бл
 msgid "Color Scheme"
 msgstr "Цветовая схема"
 
-#: stb-class.php:107 stb-locales.php:162 stb-tinymce-langs.php:24
+#: stb-class.php:107 stb-locales.php:163 stb-tinymce-langs.php:24
 msgid "Caption"
 msgstr "Заголовок"
 
-#: stb-class.php:108 stb-locales.php:142
+#: stb-class.php:108 stb-locales.php:143
 msgid "Default Caption"
 msgstr "Заголовок по-умолчанию"
 
@@ -144,62 +144,62 @@ msgid ""
 "“Special Text Boxes” plugin."
 msgstr "Реинкарнация самой первой темы плагина."
 
-#: stb-default-themes.php:25 stb-default-themes.php:265
-#: stb-default-themes.php:505 stb-default-themes.php:745
+#: stb-default-themes.php:25 stb-default-themes.php:266
+#: stb-default-themes.php:507 stb-default-themes.php:748
 msgid "Alert!"
 msgstr "Внимание!"
 
-#: stb-default-themes.php:49 stb-default-themes.php:289
-#: stb-default-themes.php:529 stb-default-themes.php:769
+#: stb-default-themes.php:49 stb-default-themes.php:290
+#: stb-default-themes.php:531 stb-default-themes.php:772
 msgid "Black Quote"
 msgstr "Черная цитата"
 
-#: stb-default-themes.php:73 stb-default-themes.php:313
-#: stb-default-themes.php:553 stb-default-themes.php:793
+#: stb-default-themes.php:73 stb-default-themes.php:314
+#: stb-default-themes.php:555 stb-default-themes.php:796
 msgid "Download"
 msgstr "Скачать"
 
-#: stb-default-themes.php:97 stb-default-themes.php:337
-#: stb-default-themes.php:577 stb-default-themes.php:817
+#: stb-default-themes.php:97 stb-default-themes.php:338
+#: stb-default-themes.php:579 stb-default-themes.php:820
 msgid "Info"
 msgstr "Инфо"
 
-#: stb-default-themes.php:121 stb-default-themes.php:361
-#: stb-default-themes.php:601 stb-default-themes.php:841
+#: stb-default-themes.php:121 stb-default-themes.php:362
+#: stb-default-themes.php:603 stb-default-themes.php:844
 msgid "Warning!"
 msgstr "Предупреждение!"
 
-#: stb-default-themes.php:145 stb-default-themes.php:385
-#: stb-default-themes.php:625 stb-default-themes.php:865
+#: stb-default-themes.php:145 stb-default-themes.php:386
+#: stb-default-themes.php:627 stb-default-themes.php:868
 msgid "Codes"
 msgstr "Коды"
 
-#: stb-default-themes.php:169 stb-default-themes.php:409
-#: stb-default-themes.php:649 stb-default-themes.php:889
+#: stb-default-themes.php:169 stb-default-themes.php:410
+#: stb-default-themes.php:651 stb-default-themes.php:892
 msgid "Custom Style"
 msgstr "Пользовательский стиль"
 
-#: stb-default-themes.php:259
+#: stb-default-themes.php:260
 msgid "STB Dark Theme"
 msgstr "Тёмная тема STB"
 
-#: stb-default-themes.php:261
+#: stb-default-themes.php:262
 msgid "Colored content boxes with dark captions."
 msgstr "Цветные блоки текста с тёмным заголовком."
 
-#: stb-default-themes.php:499
+#: stb-default-themes.php:501
 msgid "STB Light Theme"
 msgstr "Светлая тема STB"
 
-#: stb-default-themes.php:501
+#: stb-default-themes.php:503
 msgid "Light content boxes with colored captions."
 msgstr "Светлые блоки текста с цветными заголовками."
 
-#: stb-default-themes.php:739
+#: stb-default-themes.php:742
 msgid "STB Metro Theme"
 msgstr "Тема метро"
 
-#: stb-default-themes.php:741
+#: stb-default-themes.php:744
 msgid "Flat colored content boxes, clone of Windows Metro theme."
 msgstr "Плоские цветные блоки. Клон темы Windows Metro."
 
@@ -315,45 +315,49 @@ msgstr "Пунктирная линия"
 msgid "None"
 msgstr "Без рамки"
 
-#: stb-locales.php:60
+#: stb-locales.php:60 stb-tinymce-langs.php:53
+msgid "Border Width"
+msgstr "Толщина окантовки"
+
+#: stb-locales.php:61
 msgid "Allow rounded corners"
 msgstr "Разрешить использование закруглённых углов"
 
-#: stb-locales.php:61
+#: stb-locales.php:62
 msgid "Border Radius"
 msgstr "Радиус закругления углов"
 
-#: stb-locales.php:62
+#: stb-locales.php:63
 msgid "Use these parameters for customising Special Text Box borders."
 msgstr ""
 "Используйте эти параметры для настройки рамки блока специального текста."
 
-#: stb-locales.php:64
+#: stb-locales.php:65
 msgid "Allow collapsing/expanding captioned Special Text Boxes"
 msgstr ""
 "Разрешить сворачивание/разворачивание блока специального текста с заголовком"
 
-#: stb-locales.php:65
+#: stb-locales.php:66
 msgid "Allow \"collapsed on load\" captioned Special Text Boxes"
 msgstr "Разрешить вывод свёрнутых блоков с заголовком при загрузке страницы"
 
-#: stb-locales.php:68
+#: stb-locales.php:69
 msgid "Images Settings"
 msgstr "Параметры иконок"
 
-#: stb-locales.php:69
+#: stb-locales.php:70
 msgid "Define Hide Tool Image"
 msgstr "Параметры пиктограммы \"Скрыть\""
 
-#: stb-locales.php:70
+#: stb-locales.php:71
 msgid "Hide Tool Image"
 msgstr "Пиктограмма \"Скрыть\""
 
-#: stb-locales.php:71
+#: stb-locales.php:72
 msgid "Use Default Hide Tool Image"
 msgstr "Использовать заданную по умолчанию пиктограмму \"Скрыть\""
 
-#: stb-locales.php:72
+#: stb-locales.php:73
 msgid ""
 "This image is displayed in the text block header and shows the status of the "
 "non collapsed text block."
@@ -361,19 +365,19 @@ msgstr ""
 "Эта пиктограмма показывается в заголовке блока и показывает статус "
 "несвёрнутого текстового блока."
 
-#: stb-locales.php:73
+#: stb-locales.php:74
 msgid "Define Show Tool Image"
 msgstr "Параметры пиктограммы \"Показать\""
 
-#: stb-locales.php:74
+#: stb-locales.php:75
 msgid "Show Tool Image"
 msgstr "Пиктограмма \"Показать\""
 
-#: stb-locales.php:75
+#: stb-locales.php:76
 msgid "Use Default Show Tool Image"
 msgstr "Использовать заданную по умолчанию пиктограмму \"Показать\""
 
-#: stb-locales.php:76
+#: stb-locales.php:77
 msgid ""
 "This image is displayed in the text block header and shows the status of the "
 "collapsed text block."
@@ -381,21 +385,21 @@ msgstr ""
 "Эта пиктограмма показывается в заголовке блока и показывает статус "
 "свёрнутого текстового блока."
 
-#: stb-locales.php:77
+#: stb-locales.php:78
 msgid "Animation Duration"
 msgstr "Продолжительность анимации"
 
-#: stb-locales.php:78
+#: stb-locales.php:79
 msgid "This is time of collapsing/expanding of the text block in milliseconds."
 msgstr "Время сворачивания/разворачивания текстового блока в миллисекундах."
 
-#: stb-locales.php:79
+#: stb-locales.php:80
 msgid "Allow Big Image for Simple (non-captioned) Special Text Boxes"
 msgstr ""
 "Разрешить использование большой иконки в простом (без заголовка) блоке "
 "специального текста"
 
-#: stb-locales.php:80
+#: stb-locales.php:81
 msgid ""
 "Selecting \"Yes\" will allow big icons for simple (non-captioned) Special "
 "Text Boxes."
@@ -403,18 +407,18 @@ msgstr ""
 "Выбрав \"Да\", Вы разрешите использование большой иконки в простом (без "
 "заголовка) блоке специального текста."
 
-#: stb-locales.php:81
+#: stb-locales.php:82
 msgid "Allow icon images for Special Text Boxes"
 msgstr "Разрешить использование иконок для блока специального текста"
 
-#: stb-locales.php:82
+#: stb-locales.php:83
 msgid ""
 "Selecting \"Yes\" will allow displaying icon images in Special Text Boxes."
 msgstr ""
 "Выбрав \"Да\", Вы разрешите использование иконок в блоках специального "
 "текста, в противном случае иконки выводиться не будут."
 
-#: stb-locales.php:83
+#: stb-locales.php:84
 msgid ""
 "Allow caption background colors for side image background (boxes without "
 "caption only)"
@@ -422,35 +426,35 @@ msgstr ""
 "Разрешить использовать цвета заголовка для отрисовки фона изображения "
 "(только для блоков без заголовка)"
 
-#: stb-locales.php:86
+#: stb-locales.php:87
 msgid "Text Settings"
 msgstr "Параметры текста"
 
-#: stb-locales.php:87
+#: stb-locales.php:88
 msgid "Body Text Settings"
 msgstr "Параметры текста блока"
 
-#: stb-locales.php:88
+#: stb-locales.php:89
 msgid "Define text font size"
 msgstr "Размер шрифта текста"
 
-#: stb-locales.php:89
+#: stb-locales.php:90
 msgid "Define text font family"
 msgstr "Семейство шрифтов текста"
 
-#: stb-locales.php:90
+#: stb-locales.php:91
 msgid "Caption Text Settings"
 msgstr "Параметры текста заголовка блока"
 
-#: stb-locales.php:91
+#: stb-locales.php:92
 msgid "Define caption font size"
 msgstr "Размер шрифта текста заголовка"
 
-#: stb-locales.php:92
+#: stb-locales.php:93
 msgid "Define caption font family"
 msgstr "Семейство шрифтов текста заголовка"
 
-#: stb-locales.php:93
+#: stb-locales.php:94
 msgid ""
 "This is font size in pixels. Set this parameter to value 0 for theme default "
 "font size."
@@ -458,15 +462,15 @@ msgstr ""
 "Для использования размера шрифта заданного темой, установите значение этого "
 "параметра в 0."
 
-#: stb-locales.php:94
+#: stb-locales.php:95
 msgid "This is font family for box text."
 msgstr "Семейство шрифтов для текста блока."
 
-#: stb-locales.php:95
+#: stb-locales.php:96
 msgid "Define language direction"
 msgstr "Направление текста"
 
-#: stb-locales.php:96
+#: stb-locales.php:97
 msgid ""
 "Selecting \"Left-to-Right\" will set Left-to-Right language direction for "
 "Special Text Boxes and visa versa."
@@ -474,75 +478,75 @@ msgstr ""
 "Выбор \"Слева-направо\" установит направление текста слева-направо и "
 "наоборот."
 
-#: stb-locales.php:99
+#: stb-locales.php:100
 msgid "Shadows Settings"
 msgstr "Параметры теней"
 
-#: stb-locales.php:100
+#: stb-locales.php:101
 msgid "Define Box Shadow for Special Text Boxes"
 msgstr "Тень блока специального текста"
 
-#: stb-locales.php:101
+#: stb-locales.php:102
 msgid "Enable Box Shadow"
 msgstr "Разрешить тень блока"
 
-#: stb-locales.php:102
+#: stb-locales.php:103
 msgid "Define Text Shadow for Special Text Boxes"
 msgstr "Тень текста специального текста"
 
-#: stb-locales.php:103
+#: stb-locales.php:104
 msgid "Enable Text Shadow"
 msgstr "Разрешить тень текста"
 
-#: stb-locales.php:105
+#: stb-locales.php:106
 msgid "Drop shadow inside the box"
 msgstr "Отбрасывать тень внутрь блока"
 
-#: stb-locales.php:106
+#: stb-locales.php:107
 msgid "Offset X"
 msgstr "Смещение по оси X"
 
-#: stb-locales.php:107
+#: stb-locales.php:108
 msgid "Offset Y"
 msgstr "Смещение по оси Y"
 
-#: stb-locales.php:108
+#: stb-locales.php:109
 msgid "Shadow Blur"
 msgstr "Размытие тени"
 
-#: stb-locales.php:109
+#: stb-locales.php:110
 msgid "Shadow Color"
 msgstr "Цвет тени"
 
-#: stb-locales.php:110
+#: stb-locales.php:111
 msgid "Shadow"
 msgstr "Тень"
 
-#: stb-locales.php:111
+#: stb-locales.php:112
 msgid "preview"
 msgstr "демо"
 
-#: stb-locales.php:115
+#: stb-locales.php:116
 msgid "System Settings"
 msgstr "Системные параметры"
 
-#: stb-locales.php:116
+#: stb-locales.php:117
 msgid "Define mode of CSS loading"
 msgstr "Определите режим загрузки CSS"
 
-#: stb-locales.php:117
+#: stb-locales.php:118
 msgid "Static"
 msgstr "Статически"
 
-#: stb-locales.php:118
+#: stb-locales.php:119
 msgid "Client Dynamic"
 msgstr "Динамически (клиент)"
 
-#: stb-locales.php:119
+#: stb-locales.php:120
 msgid "Server Dynamic"
 msgstr "Динамически (сервер)"
 
-#: stb-locales.php:120
+#: stb-locales.php:121
 msgid ""
 "will be loaded static styles sheet file. More faster but needs full read/"
 "write access to file."
@@ -550,107 +554,107 @@ msgstr ""
 "будет загружен статический файл таблицы стилей. Более быстрый режим, но "
 "требует полного доступа к записи/чтению файлов."
 
-#: stb-locales.php:121
+#: stb-locales.php:122
 msgid "styles sheet will be loaded dynamically on the client side."
 msgstr ""
 "стили будут закружены динамически в заголовок документа в браузере клиента "
 "(JS)."
 
-#: stb-locales.php:122
+#: stb-locales.php:123
 msgid "styles sheet will be loaded dynamically on the server side."
 msgstr ""
 "стили будут закружены динамически в заголовок документа на сервере (PHP)."
 
-#: stb-locales.php:125
+#: stb-locales.php:126
 msgid "Deactivation Settings"
 msgstr "Параметры деактивации"
 
-#: stb-locales.php:126
+#: stb-locales.php:127
 msgid "Are you allow to perform these actions during deactivating plugin?"
 msgstr "Вы разрешаете выполнение этих действий в процессе деактивации плагина?"
 
-#: stb-locales.php:127
+#: stb-locales.php:128
 msgid "Delete plugin options during plugin deactivation"
 msgstr "Удалить параметры плагина при деактивации плагина"
 
-#: stb-locales.php:128
+#: stb-locales.php:129
 msgid "Delete database tables of plugin during plugin deactivation"
 msgstr "Удалить таблицы базы данных плагина при деактивации плагина"
 
-#: stb-locales.php:132
+#: stb-locales.php:133
 msgid "All"
 msgstr "Все"
 
-#: stb-locales.php:133 stb-locales.php:149
+#: stb-locales.php:134 stb-locales.php:150
 msgid "Active"
 msgstr "Активные"
 
-#: stb-locales.php:134
+#: stb-locales.php:135
 msgid "Trash"
 msgstr "Корзина"
 
-#: stb-locales.php:135
+#: stb-locales.php:136
 msgid "Alias"
 msgstr "Псевдоним"
 
-#: stb-locales.php:136 stb-locales.php:147
+#: stb-locales.php:137 stb-locales.php:148
 msgid "Type"
 msgstr "Тип"
 
-#: stb-locales.php:137
+#: stb-locales.php:138
 msgid "No data to show..."
 msgstr "Нет данных для просмотра..."
 
-#: stb-locales.php:141
+#: stb-locales.php:142
 msgid "Names"
 msgstr "Имена"
 
-#: stb-locales.php:143
+#: stb-locales.php:144
 msgid "Enter Default Caption for this Style."
 msgstr "Введите заголовок по-умолчанию для этого стиля."
 
-#: stb-locales.php:144
+#: stb-locales.php:145
 msgid "Name"
 msgstr "Имя"
 
-#: stb-locales.php:145
+#: stb-locales.php:146
 msgid "Unique name of this style"
 msgstr "Уникальное имя этого стиля"
 
-#: stb-locales.php:146
+#: stb-locales.php:147
 msgid "Only latin symbols, digits, \"-\" and \"_\" are accepted"
 msgstr ""
 "Допускаются только латинские символы, цифры, символы подчеркивания и тире"
 
-#: stb-locales.php:148
+#: stb-locales.php:149
 msgid "In trash"
 msgstr "В корзине"
 
-#: stb-locales.php:152
+#: stb-locales.php:153
 msgid "Border and Icon"
 msgstr "Окантовка и иконка"
 
-#: stb-locales.php:153
+#: stb-locales.php:154
 msgid "Border Color"
 msgstr "Цвет окантовки"
 
-#: stb-locales.php:154
+#: stb-locales.php:155
 msgid "This is border color."
 msgstr "Это цвет окантовки блока."
 
-#: stb-locales.php:155
+#: stb-locales.php:156
 msgid "Icon"
 msgstr "Иконка"
 
-#: stb-locales.php:156
+#: stb-locales.php:157
 msgid "Icon URL"
 msgstr "URL иконки"
 
-#: stb-locales.php:157
+#: stb-locales.php:158
 msgid "Use Default Icon"
 msgstr "Использовать иконку по-умолчанию"
 
-#: stb-locales.php:158
+#: stb-locales.php:159
 msgid ""
 "I you don't want to use default icon, fill this field and uncheck \"Use "
 "Default Icon\" selector."
@@ -658,23 +662,23 @@ msgstr ""
 "Если Вы не хотите использовать иконку, заданную по-умолчанию, введите URL "
 "нужной иконки и уберите флажок \"Использовать иконку по-умолчанию\"."
 
-#: stb-locales.php:161
+#: stb-locales.php:162
 msgid "Body"
 msgstr "Тело"
 
-#: stb-locales.php:164
+#: stb-locales.php:165
 msgid "Background Gradient Colors"
 msgstr "Цвета градиента фона"
 
-#: stb-locales.php:165
+#: stb-locales.php:166
 msgid "Start Color"
 msgstr "Начальный цвет"
 
-#: stb-locales.php:166
+#: stb-locales.php:167
 msgid "Stop Color"
 msgstr "Конечный цвет"
 
-#: stb-locales.php:167
+#: stb-locales.php:168
 msgid ""
 "There are colors of box background gradient. Direction of gradient drawing "
 "is from top to bottom."
@@ -682,35 +686,35 @@ msgstr ""
 "Это цвета градиента фона блока. Направление прорисовки градиента - сверху "
 "вниз."
 
-#: stb-locales.php:168
+#: stb-locales.php:169
 msgid "Text Color"
 msgstr "Цвет текста"
 
-#: stb-locales.php:174
+#: stb-locales.php:175
 msgid "Plugin settings are successfully saved"
 msgstr "Параметры плагина успешно сохранены"
 
-#: stb-locales.php:175 stb-locales.php:179
+#: stb-locales.php:176 stb-locales.php:180
 msgid "An error occurred during saving process"
 msgstr "Произошла ошибка во время процесса сохранения"
 
-#: stb-locales.php:178
+#: stb-locales.php:179
 msgid "Style is successfully saved"
 msgstr "Стиль темы успешно сохранён"
 
-#: stb-locales.php:182
+#: stb-locales.php:183
 msgid "Theme is successfully activated."
 msgstr "Тема успешно активирована."
 
-#: stb-locales.php:183
+#: stb-locales.php:184
 msgid "An error occurred during activating theme..."
 msgstr "Произошла ошибка во время процесса активации темы..."
 
-#: stb-styles.php:355 stb-styles.php:381 stb-styles.php:407
+#: stb-styles.php:361 stb-styles.php:387 stb-styles.php:413
 msgid "Can't open CSS file"
 msgstr "Невозможно открыть файл таблицы стилей"
 
-#: stb-styles.php:364 stb-styles.php:390 stb-styles.php:416
+#: stb-styles.php:370 stb-styles.php:396 stb-styles.php:422
 msgid "CSS file is not writable"
 msgstr "Нет доступа к записи файла таблицы стилей"
 
@@ -825,10 +829,6 @@ msgstr "Окантовка"
 #: stb-tinymce-langs.php:52
 msgid "Border color"
 msgstr "Цвет окантовки"
-
-#: stb-tinymce-langs.php:53
-msgid "Border Width"
-msgstr "Толщина окантовки"
 
 #: stb-tinymce-langs.php:55
 msgid "Image URL"

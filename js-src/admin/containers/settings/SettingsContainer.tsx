@@ -1,18 +1,19 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { Backdrop } from '@mui/material'
-import Settings from '../../components/settings/Settings'
-import type { IReducers } from '../../../types/state'
+import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
+import { Backdrop } from '@mui/material';
 
-const SettingsContainer = (): JSX.Element => {
-	const saving: boolean = useSelector((state: IReducers) => state.settings.saving)
+import Settings from '../../components/settings/Settings';
+import { TRootState } from '../../redux';
 
-	return (
-		<>
-			<Settings />
-			<Backdrop open={saving} invisible sx={{ color: '#fff', zIndex: 1000 }} />
-		</>
-	)
-}
+const SettingsContainer: FC = () => {
+  const saving: boolean = useSelector((state: TRootState) => state.settings.saving);
 
-export default SettingsContainer
+  return (
+    <>
+      <Settings />
+      <Backdrop open={saving} invisible sx={{ color: '#fff', zIndex: 1000 }} />
+    </>
+  );
+};
+
+export default SettingsContainer;

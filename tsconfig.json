@@ -1,7 +1,8 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "module": "esnext",
-    "target": "es5",
+    "module": "ESNext",
+    "target": "ES2022",
     "sourceMap": true,
     "lib": ["es6", "dom"],
     "outDir": "plugin/js",
@@ -11,7 +12,8 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "strictNullChecks": true
   },
   "exclude": [
     "node_modules",

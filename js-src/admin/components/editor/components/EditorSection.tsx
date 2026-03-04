@@ -1,20 +1,21 @@
-import React from 'react'
-import { EditorSectionBody, EditorSectionCaption, EditorSectionRoot } from '../styles'
+import React, { FC, ReactNode } from 'react';
 
-type TProps = {
-	caption: string
-	children: JSX.Element | JSX.Element[]
+import { EditorSectionBody, EditorSectionCaption, EditorSectionRoot } from '../styles';
+
+interface TProps {
+  caption: string;
+  children: ReactNode | ReactNode[];
 }
 
-const EditorSection = (props: TProps): JSX.Element => {
-	const { caption, children } = props
+const EditorSection: FC<TProps> = (props) => {
+  const { caption, children } = props;
 
-	return (
-		<EditorSectionRoot>
-			<EditorSectionCaption>{caption}</EditorSectionCaption>
-			<EditorSectionBody>{children}</EditorSectionBody>
-		</EditorSectionRoot>
-	)
-}
+  return (
+    <EditorSectionRoot>
+      <EditorSectionCaption>{caption}</EditorSectionCaption>
+      <EditorSectionBody>{children}</EditorSectionBody>
+    </EditorSectionRoot>
+  );
+};
 
-export default EditorSection
+export default EditorSection;

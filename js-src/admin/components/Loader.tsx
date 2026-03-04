@@ -1,37 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import CircularProgress from '@mui/material/CircularProgress'
-import { LoaderRoot } from '../styles'
-import type { IReducers } from '../../types/state'
+import React, { useEffect, useState, FC } from 'react';
+import { useSelector } from 'react-redux';
+import CircularProgress from '@mui/material/CircularProgress';
 
-const Loader = () => {
-	const [progress, setProgress] = useState(0)
+import { LoaderRoot } from '../styles';
+import { TRootState } from '../redux';
 
-	const stylesLoading = useSelector((state: IReducers) => state.styles.loading)
-	const settingsLoading = useSelector((state: IReducers) => state.settings.loading)
+const Loader: FC = () => {
+  const [progress, setProgress] = useState(0);
 
-	const loading = stylesLoading || settingsLoading
+  const stylesLoading = useSelector((state: TRootState) => state.styles.loading);
+  const settingsLoading = useSelector((state: TRootState) => state.settings.loading);
 
-	useEffect(() => {
-		function tick() {
-			// reset when reaching 100%
-			setProgress((oldProgress) => (oldProgress >= 100 ? 0 : oldProgress + 1))
-		}
+  const loading = stylesLoading ?? settingsLoading;
 
-		const timer = setInterval(tick, 20)
-		return () => {
-			clearInterval(timer)
-		}
-	}, [settingsLoading, stylesLoading])
+  useEffect(() => {
+    function tick() {
+      // reset when reaching 100%
+      setProgress((oldProgress) => (oldProgress >= 100 ? 0 : oldProgress + 1));
+    }
 
-	if (loading) {
-		return (
-			<LoaderRoot>
-				<CircularProgress variant="determinate" value={progress} />
-			</LoaderRoot>
-		)
-	}
-	return null
-}
+    const timer = setInterval(tick, 20);
+    return () => {
+      clearInterval(timer);
+    };
+  }, [settingsLoading, stylesLoading]);
 
-export default Loader
+  if (loading) {
+    return (
+      <LoaderRoot>
+        <CircularProgress variant="determinate" value={progress} />
+      </LoaderRoot>
+    );
+  }
+  return null;
+};
+
+export default Loader;

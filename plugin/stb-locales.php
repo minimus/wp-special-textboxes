@@ -57,6 +57,7 @@ if (!class_exists('StbLocales')) {
                                 'dotted' => __('Dotted', 'wp-special-textboxes'),
                                 'none' => __('None', 'wp-special-textboxes'),
                             ],
+                            'borderWidthCaption' => __('Border Width', 'wp-special-textboxes'),
                             'roundedCornersCaption' => __('Allow rounded corners', 'wp-special-textboxes'),
                             'borderRadiusCaption' => __('Border Radius', 'wp-special-textboxes'),
                             'borderSettingsTooltip' => __('Use these parameters for customising Special Text Box borders.', 'wp-special-textboxes'),

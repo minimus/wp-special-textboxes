@@ -16,7 +16,7 @@ if ( ! class_exists( '_WP_Editors' ) ) {
 
 function wstb_tinymce_plugin_translation(): string
 {
-    $strings    = array(
+    $strings    = [
         'title'                  => __( 'Insert Special Text Box', 'wp-special-textboxes' ),
         'basic_tab'              => __( "Basic Settings", 'wp-special-textboxes' ),
         'extended_tab'           => __( "Extended Settings", 'wp-special-textboxes' ),
@@ -62,7 +62,7 @@ function wstb_tinymce_plugin_translation(): string
         'margin_bottom'          => __( 'Bottom Margin', 'wp-special-textboxes' ) . ': ',
         'cancel'                 => __( "Cancel", 'wp-special-textboxes' ),
         'insert'                 => __( "Insert", 'wp-special-textboxes' )
-    );
+    ];
     $locale     = _WP_Editors::$mce_locale;
     return 'tinyMCE.addI18n("' . $locale . '.wstb", ' . json_encode( $strings ) . ");\n";
 }

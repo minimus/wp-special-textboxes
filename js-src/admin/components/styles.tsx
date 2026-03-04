@@ -1,28 +1,30 @@
-import React from 'react'
-import { createGlobalStyle } from 'styled-components'
-import type { TSettings, TShadowSettings, TStyle, TStyleColors } from '../../types/admin'
+import React, { FC, ReactNode } from 'react';
+import { createGlobalStyle, css, styled } from 'styled-components';
 
-type TGlobalColorsProps = {
-	settings: TSettings
-	styles: TStyle[]
+import type { TSettings, TShadowSettings, TStyle, TStyleColors } from '../../types/admin';
+
+interface TGlobalColorsProps {
+  settings: TSettings;
+  styles: TStyle[];
 }
 
-type TColorsProps = {
-	slug: string
-	colors: TStyleColors
-	borderStyle: string
+interface TColorsProps {
+  slug: string;
+  colors: TStyleColors;
+  borderStyle: string;
+  borderWidth: number;
 }
 
-type TCommonProps = {
-	settings: TSettings
+interface TCommonProps {
+  settings: TSettings;
 }
 
 export const GlobalCoreStyles = createGlobalStyle`
   .stb-container {
-    display: flex;
-    overflow: hidden;
     box-sizing: border-box;
+    display: flex;
 	padding: 0;
+    overflow: hidden;
 
     .stb-caption {
       display: flex;
@@ -31,11 +33,11 @@ export const GlobalCoreStyles = createGlobalStyle`
 
       .stb-logo {
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        order: 1;
         width: 60px;
         height: 60px;
-        order: 1;
 
         &__image {
           width: 50px;
@@ -99,11 +101,11 @@ export const GlobalCoreStyles = createGlobalStyle`
 
       .stb-logo {
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        order: 1;
         width: 27px;
         height: 27px;
-        order: 1;
 
         .stb-logo__image {
           width: 25px;
@@ -113,25 +115,26 @@ export const GlobalCoreStyles = createGlobalStyle`
 
       .stb-caption-content {
         display: inherit;
+        order: 2;
         width: 100%;
         padding: 0 3px;
-        order: 2;
       }
 
       .stb-tool {
         display: inherit;
         justify-self: flex-end;
+        order: 3;
         width: 27px;
         height: 27px;
         cursor: pointer;
-        order: 3;
       }
     }
 
     .stb-content {
-      /*max-height: 2000px;*/
-      overflow: hidden;
       width: 100%;
+
+      /* max-height: 2000px; */
+      overflow: hidden;
       transition: all .3s linear;
       will-change: transform;
 
@@ -155,6 +158,11 @@ export const GlobalCoreStyles = createGlobalStyle`
     &.stb-collapsed {
       .stb-content {
         font-size: 0;
+		line-height: unset;
+		  
+		  p {
+			line-height: unset;
+		  }
       }
 
       .stb-content img {
@@ -165,26 +173,26 @@ export const GlobalCoreStyles = createGlobalStyle`
   }
   
   .stb-container.stb-widget {
-	margin-left: 0;
 	margin-right: 0;
+	margin-left: 0;
 	box-shadow: none;
   }
-`
+`;
 
-export const getMargins = (settings: TSettings): string =>
-	`${settings.margins.top}px ${settings.margins.right}px ${settings.margins.bottom}px ${settings.margins.left}px`
+const getMargins = (settings: TSettings): string =>
+  `${settings.margins.top}px ${settings.margins.right}px ${settings.margins.bottom}px ${settings.margins.left}px`;
 
-export const getTextShadow = (settings: TSettings): string => {
-	const { enabled, offsetX, offsetY, blur, color }: TShadowSettings = settings.text.shadow
-	if (!enabled) return 'unset'
-	return `${offsetX}px ${offsetY}px ${blur}px ${color}`
-}
+const getTextShadow = (settings: TSettings): string => {
+  const { enabled, offsetX, offsetY, blur, color }: TShadowSettings = settings.text.shadow;
+  if (!enabled) return 'unset';
+  return `${offsetX}px ${offsetY}px ${blur}px ${color}`;
+};
 
-export const getBoxShadow = (settings: TSettings): string => {
-	const { enabled, inset, offsetX, offsetY, blur, color }: TShadowSettings = settings.shadow
-	if (!enabled) return 'unset'
-	return `${inset ? 'inset ' : ''}${offsetX}px ${offsetY}px ${blur}px ${color}`
-}
+const getBoxShadow = (settings: TSettings): string => {
+  const { enabled, inset, offsetX, offsetY, blur, color }: TShadowSettings = settings.shadow;
+  if (!enabled) return 'unset';
+  return `${inset ? 'inset ' : ''}${offsetX}px ${offsetY}px ${blur}px ${color}`;
+};
 
 export const GlobalCommonStyles = createGlobalStyle`
   .stb-container {
@@ -194,26 +202,23 @@ export const GlobalCommonStyles = createGlobalStyle`
 
     .stb-caption {
 	  .stb-caption-content {
-        font-size: ${(props: TCommonProps) =>
-			props.settings.caption.font.fontSize === 0 ? 'unset' : `${props.settings.caption.font.fontSize}px`};
-        font-family: ${(props: TCommonProps) =>
-			props.settings.caption.font.fontFamily ? props.settings.caption.font.fontFamily : 'unset'};
+        font-family: ${(props: TCommonProps) => (props.settings.caption.font.fontFamily ? props.settings.caption.font.fontFamily : 'unset')};
+        font-size: ${(props: TCommonProps) => (props.settings.caption.font.fontSize === 0 ? 'unset' : `${props.settings.caption.font.fontSize}px`)};
       }
+
       .stb-tool {
-        background-image: url(${(props: TCommonProps) =>
-			props.settings.imgMinus.enabled ? props.settings.imgMinus.image : props.settings.imgMinus.defaultImage});
-        background-position: center;
         background-color: transparent;
+        background-image: url(${(props: TCommonProps) =>
+          props.settings.imgMinus.enabled ? props.settings.imgMinus.image : props.settings.imgMinus.defaultImage});
         background-repeat: no-repeat;
+        background-position: center;
       }
     }
 
     .stb-content {
       padding: 10px;
-      font-size: ${(props: TCommonProps) =>
-			props.settings.text.font.fontSize === 0 ? 'unset' : `${props.settings.text.font.fontSize}px`};
-      font-family: ${(props: TCommonProps) =>
-			props.settings.text.font.fontFamily ? props.settings.text.font.fontFamily : 'unset'};
+      font-family: ${(props: TCommonProps) => (props.settings.text.font.fontFamily ? props.settings.text.font.fontFamily : 'unset')};
+      font-size: ${(props: TCommonProps) => (props.settings.text.font.fontSize === 0 ? 'unset' : `${props.settings.text.font.fontSize}px`)};
       text-shadow: ${(props: TCommonProps) => getTextShadow(props.settings)};
     }
 
@@ -221,7 +226,7 @@ export const GlobalCommonStyles = createGlobalStyle`
       .stb-caption {
         .stb-tool {
           background-image: url(${(props: TCommonProps) =>
-				props.settings.imgPlus.enabled ? props.settings.imgPlus.image : props.settings.imgPlus.defaultImage});
+            props.settings.imgPlus.enabled ? props.settings.imgPlus.image : props.settings.imgPlus.defaultImage});
         }
       }
 
@@ -248,42 +253,55 @@ export const GlobalCommonStyles = createGlobalStyle`
       }
     }
   }
-`
+`;
 
-export const EditorColorStyles = createGlobalStyle`
+export const EditorColorStyles = createGlobalStyle<TColorsProps>`
   .stb-container.stb-style-${(props: TColorsProps) => props.slug} {
     color: ${(props: TColorsProps) => props.colors.body.color};
-    border: ${(props: TColorsProps) => `1px ${props.borderStyle ?? 'solid'} ${props.colors.border.color}`};
     background-image: linear-gradient(to bottom,
-    ${(props: TColorsProps) => props.colors.body.background[0]} 30%,
-    ${(props: TColorsProps) => props.colors.body.background[1]} 90%);
+    ${(props: TColorsProps) => props?.colors?.body?.background?.[0]} 30%,
+    ${(props: TColorsProps) => props?.colors?.body?.background?.[1]} 90%);
+    border: ${(props: TColorsProps) => `${props.borderWidth}px ${props.borderStyle ?? 'solid'} ${props.colors.border.color}`};
 
     & .stb-caption {
       color: ${(props: TColorsProps) => props.colors.caption.color};
       background-image: linear-gradient(to bottom,
-      ${(props: TColorsProps) => props.colors.caption.background[0]} 30%,
-      ${(props: TColorsProps) => props.colors.caption.background[1]} 90%);
+      ${(props: TColorsProps) => props?.colors?.caption?.background?.[0]} 30%,
+      ${(props: TColorsProps) => props?.colors?.caption?.background?.[1]} 90%);
     }
 
     &.stb-no-caption:not(.stb-caption-box) .stb-caption {
       background-image: linear-gradient(to bottom,
-      ${(props: TColorsProps) => props.colors.body.background[0]} 30%,
-      ${(props: TColorsProps) => props.colors.body.background[1]} 90%);
+      ${(props: TColorsProps) => props?.colors?.body?.background?.[0]} 30%,
+      ${(props: TColorsProps) => props?.colors?.body?.background?.[1]} 90%);
     }
   }
-`
+`;
 
-export const GlobalColorStyles = (props: TGlobalColorsProps): JSX.Element => (
-	<>
-		{props.styles.map(
-			(style: TStyle): JSX.Element => (
-				<EditorColorStyles
-					key={style.slug}
-					slug={style.slug}
-					colors={style.colors}
-					borderStyle={props.settings.borderStyle}
-				/>
-			),
-		)}
-	</>
-)
+export const GlobalColorStyles = styled.div<TGlobalColorsProps>`
+  & ${(props) =>
+    props.styles
+      .map(
+        (style) => `
+          .stb-container.stb-style-${style.slug} {
+            color: ${style.colors.body.color};
+            background-image: linear-gradient(to bottom, ${style?.colors?.body?.background?.[0]} 30%, ${style?.colors?.body?.background?.[1]} 90%);
+            border: ${`${props.settings.borderWidth}px ${props.settings.borderStyle ?? 'solid'} ${style.colors.border.color}`};
+
+            & .stb-caption {
+              color: ${style.colors.caption.color};
+              background-image: linear-gradient(
+                to bottom,
+                ${style?.colors?.caption?.background?.[0]} 30%,
+                ${style?.colors?.caption?.background?.[1]} 90%
+              );
+            }
+
+            &.stb-no-caption:not(.stb-caption-box) .stb-caption {
+              background-image: linear-gradient(to bottom, ${style?.colors?.body?.background?.[0]} 30%, ${style?.colors?.body?.background?.[1]} 90%);
+            }
+          }
+        `,
+      )
+      .join('')}
+`;

@@ -22,7 +22,7 @@ if (!class_exists("SpecialTextBoxes")) {
 
         public function __construct()
         {
-            define('STB_VERSION', '6.0.1');
+            define('STB_VERSION', '6.5');
             define('STB_DB_VERSION', '2.0');
             define('STB_DIR', dirname(__FILE__) . '/');
             define('STB_DOMAIN', 'wp-special-textboxes');
@@ -145,7 +145,7 @@ if (!class_exists("SpecialTextBoxes")) {
 
         function getVersions($force = false): array
         {
-            $versions = array('stb' => null, 'db' => null);
+            $versions = ['stb' => null, 'db' => null];
             if ($force) {
                 $versions['stb'] = get_option('stb_version', '');
                 $versions['db'] = get_option('stb_db_version', '');
@@ -157,7 +157,7 @@ if (!class_exists("SpecialTextBoxes")) {
 
         public function getClasses($value): array
         {
-            $classes = array();
+            $classes = [];
             foreach ($value as $val) {
                 $classes[] = $val['slug'];
             }
@@ -258,13 +258,13 @@ if (!class_exists('special_text') && class_exists('WP_Widget')) {
         function __construct()
         {
             $widget_ops = ['classname' => 'special_text', 'description' => __('Arbitrary text or PHP in colored block.', 'wp-special-textboxes')];
-            $control_ops = array('width' => 350, 'height' => 450, 'id_base' => 'special_text');
+            $control_ops = ['width' => 350, 'height' => 450, 'id_base' => 'special_text'];
             parent::__construct('special_text', __('Special Text', 'wp-special-textboxes'), $widget_ops, $control_ops);
         }
 
         function getClasses($value): array
         {
-            $classes = array();
+            $classes = [];
             foreach ($value as $val) {
                 $classes[$val['slug']] = $val['name'];
             }
@@ -275,12 +275,12 @@ if (!class_exists('special_text') && class_exists('WP_Widget')) {
         {
             global $wpdb;
             $sTable = $wpdb->prefix . "stb_styles";
-            $styles = array();
+            $styles = [];
 
             if ($wpdb->get_var("SHOW TABLES LIKE '$sTable'") == $sTable) {
                 $sSql = "SELECT slug, caption FROM $sTable WHERE trash IS FALSE;";
                 $rows = $wpdb->get_results($sSql, ARRAY_A);
-                $style = array();
+                $style = [];
                 foreach ($rows as $value) {
                     $style['slug'] = $value['slug'];
                     $style['name'] = $value['caption'];
@@ -340,7 +340,7 @@ if (!class_exists('special_text') && class_exists('WP_Widget')) {
         {
             $ids = self::getStyles();
             $instance = wp_parse_args((array)$instance,
-                array(
+                [
                     'title' => '',
                     'box_id' => 'warning',
                     'parse' => false,
@@ -352,7 +352,7 @@ if (!class_exists('special_text') && class_exists('WP_Widget')) {
                     'show_single' => false,
                     'show_tag' => false,
                     'show_author' => false
-                )
+                ]
             );
             $title = strip_tags($instance['title']);
             $boxId = $instance['box_id'];
@@ -371,7 +371,7 @@ if (!class_exists('special_text') && class_exists('WP_Widget')) {
                     <?php esc_attr_e('Title:', 'wp-special-textboxes'); ?>
                 </label>
                 <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>"
-                       name="<?php echo $this->get_field_name('title'); ?>" type="text"
+                       name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text"
                        value="<?php echo esc_attr__($title); ?>"/>
             </p>
 
@@ -382,7 +382,7 @@ if (!class_exists('special_text') && class_exists('WP_Widget')) {
 
             <p>
                 <label for="<?php echo esc_attr($this->get_field_id('box_id')); ?>">
-                    <?php _e('ID of Box:', 'wp-special-textboxes') ?>
+                    <?php esc_attr_e('ID of Box:', 'wp-special-textboxes') ?>
                 </label>
                 <select class="widefat" id="<?php echo esc_attr($this->get_field_id('box_id')); ?>"
                         name="<?php echo esc_attr($this->get_field_name('box_id')); ?>">

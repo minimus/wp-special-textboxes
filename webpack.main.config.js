@@ -3,8 +3,9 @@ const { DefinePlugin } = require('webpack')
 const TerserPlugin = require('terser-webpack-plugin')
 // const WebpackAssetsManifest = require('webpack-assets-manifest')
 
-// eslint-disable-next-line no-undef
 const isDebug = !!process.env.DEV
+
+console.log('DEBUG', isDebug );
 
 module.exports = [
 	{
@@ -14,12 +15,11 @@ module.exports = [
 			admin: ['./js-src/admin/index.tsx'],
 		},
 		output: {
-			// eslint-disable-next-line no-undef
 			path: path.resolve(__dirname, 'plugin/js'),
 			publicPath: '/',
 			filename: '[name].js',
 			// chunkFilename: '[id]-[chunkhash].js',
-			// clean: true,
+			clean: false,
 		},
 		devtool: 'source-map',
 		devServer: {
@@ -104,7 +104,6 @@ module.exports = [
 			'editor.plugin': './js-src/editor/classic/editor.plugin.js',
 		},
 		output: {
-			// eslint-disable-next-line no-undef
 			path: path.resolve(__dirname, 'plugin/js'),
 			publicPath: '/',
 			filename: '[name].js',

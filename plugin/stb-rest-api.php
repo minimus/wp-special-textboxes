@@ -25,7 +25,7 @@ if (!class_exists('StbRestApi')) {
         public function setAdminRoutes(): void
         {
             // ** SETTINGS ROUTE START **
-            register_rest_route('stb/v6', '/admin/settings', [
+            register_rest_route(routeNamespace, '/admin/settings', [
                 [
                     'methods' => WP_REST_Server::READABLE,
                     'callback' => [$this, 'getSettings'],
@@ -39,7 +39,7 @@ if (!class_exists('StbRestApi')) {
             // ** SETTINGS ROUTE END **
 
             // ** STYLES ROUTE START **
-            register_rest_route('stb/v6', '/admin/styles/(?P<filter>\d+)', [
+            register_rest_route(routeNamespace, '/admin/styles/(?P<filter>\d+)', [
                 'methods' => WP_REST_Server::READABLE,
                 'callback' => [$this, 'getStyles'],
                 'permission_callback' => [$this, 'adminAccess'],
@@ -56,7 +56,7 @@ if (!class_exists('StbRestApi')) {
             // ** STYLES ROUTE END **
 
             // ** COLORS ROUTE START **
-            register_rest_route('stb/v6', '/admin/colors/(?P<slug>\S+)', [
+            register_rest_route(routeNamespace, '/admin/colors/(?P<slug>\S+)', [
                 [
                     'methods' => WP_REST_Server::READABLE,
                     'callback' => [$this, 'getColors'],
@@ -65,7 +65,7 @@ if (!class_exists('StbRestApi')) {
                         'slug' => [
                             'type' => 'string',
                             'required' => true,
-                            'validate_callback' => function($param, $request, $key) {
+                            'validate_callback' => function ($param, $request, $key) {
                                 return self::validateColorNames($param, $request, $key);
                             }
                         ],
@@ -78,7 +78,7 @@ if (!class_exists('StbRestApi')) {
                         'slug' => [
                             'type' => 'string',
                             'required' => true,
-                            'validate_callback' => function($param, $request, $key) {
+                            'validate_callback' => function ($param, $request, $key) {
                                 return preg_match('/^[\da-zA-Z\-_]+$/', $param) === 1;
                             }
                         ],
@@ -91,7 +91,7 @@ if (!class_exists('StbRestApi')) {
                         'slug' => [
                             'type' => 'string',
                             'required' => true,
-                            'validate_callback' => function($param, $request, $key) {
+                            'validate_callback' => function ($param, $request, $key) {
                                 return self::validateColorNames($param, $request, $key);
                             }
                         ],
@@ -101,7 +101,7 @@ if (!class_exists('StbRestApi')) {
             // ** COLORS ROUTE END **
 
             // ** THEMES ROUTE START **
-            register_rest_route('stb/v6', '/admin/themes', [
+            register_rest_route(routeNamespace, '/admin/themes', [
                 'methods' => WP_REST_Server::READABLE,
                 'callback' => [$this, 'getThemesInfo'],
                 'permission_callback' => [$this, 'adminAccess'],
@@ -115,7 +115,7 @@ if (!class_exists('StbRestApi')) {
                     'slug' => [
                         'type' => 'string',
                         'required' => true,
-                        'validate_callback' => function($param, $request, $key) {
+                        'validate_callback' => function ($param, $request, $key) {
                             return self::validateThemeName($param, $request, $key);
                         }
                     ],
@@ -124,7 +124,7 @@ if (!class_exists('StbRestApi')) {
             // ** THEMES ROUTE END **
 
             // ** SYSINFO ROUTE START **
-            register_rest_route('stb/v6', '/admin/sysinfo', [
+            register_rest_route(routeNamespace, '/admin/sysinfo', [
                 'methods' => WP_REST_Server::READABLE,
                 'callback' => [$this, 'getSysInfo'],
                 'permission_callback' => [$this, 'adminAccess'],
@@ -138,7 +138,7 @@ if (!class_exists('StbRestApi')) {
                 'permission_callback' => [$this, 'adminAccess'],
             ]);
             // ** LOCALIZATION ROUTE END **
-            
+
             // ** CLIENT SIDE THEME REQUEST START **
             register_rest_route(routeNamespace, '/theme/(?P<slug>\S+)', [
                 'methods' => WP_REST_Server::READABLE,
@@ -148,7 +148,7 @@ if (!class_exists('StbRestApi')) {
                     'slug' => [
                         'type' => 'string',
                         'required' => true,
-                        'validate_callback' => function($param, $request, $key) {
+                        'validate_callback' => function ($param, $request, $key) {
                             return self::validateThemeName($param, $request, $key);
                         }
                     ],
@@ -167,14 +167,16 @@ if (!class_exists('StbRestApi')) {
             return current_user_can('manage_options');
         }
 
-        public function validateThemeName($param, $request, $key): bool {
+        public function validateThemeName($param, $request, $key): bool
+        {
             include_once 'stb-default-themes.php';
             $defaultThemes = new StbDefaultThemes();
             $themes = $defaultThemes->getThemesNames();
             return in_array($param, $themes);
         }
 
-        public function validateColorNames($param, $request, $key): bool {
+        public function validateColorNames($param, $request, $key): bool
+        {
             $names = $this->stbDbTools->getColorsNames();
             return in_array($param, $names);
         }
@@ -212,11 +214,8 @@ if (!class_exists('StbRestApi')) {
 
         public function getStyles($request): array
         {
-            $filter = (string)$request['filter'];
-            $sqlFilter = '';
-            if ($filter != '0') {
-                $sqlFilter = ($filter == '2') ? ' WHERE st.trash = 1' : ' WHERE st.trash = 0';
-            }
+            $filter = (int)$request['filter'];
+            $sqlFilter = $filter === 0 ? NULL : $filter - 1;
             $data = $this->stbDbTools->getCurrentColors($sqlFilter);
             return ['data' => $data];
         }
@@ -286,18 +285,12 @@ if (!class_exists('StbRestApi')) {
             return ['data' => $themesModel->getThemesInfo()];
         }
 
-        public function activateTheme($request): array
+        private function getThemeProps(string $slug): array
         {
             include_once 'stb-default-themes.php';
-            include_once 'stb-styles.php';
+            $themeModel = new StbDefaultThemes();
 
-            $slug = (string)$request['slug'];
-            $themesModel = new StbDefaultThemes();
-
-            $theme = $themesModel->getTheme($slug);
-            $themeStyles = $theme['styles'];
-            $themeSettings = $theme['settings'];
-
+            ['styles' => $themeStyles, 'settings' => $themeSettings] = $themeModel->getTheme($slug);
             $colors = [];
 
             foreach ($themeStyles as $style) {
@@ -309,6 +302,25 @@ if (!class_exists('StbRestApi')) {
                     'trash' => (int)$style['trash']
                 ];
             }
+
+            return [
+                'themeStyles' => $themeStyles,
+                'colors' => $colors,
+                'settings' => $themeSettings
+            ];
+        }
+
+        public function activateTheme($request): array
+        {
+            include_once 'stb-styles.php';
+
+            $slug = (string)$request['slug'];
+
+            [
+                'themeStyles' => $themeStyles,
+                'settings' => $themeSettings,
+                'colors' => $colors
+            ] = self::getThemeProps($slug);
 
             $stbStyles = new StbStyles($themeSettings, $colors);
             $written = $stbStyles->writeStyles(false, true, true);
@@ -321,27 +333,8 @@ if (!class_exists('StbRestApi')) {
 
         public function getTheme($request): array
         {
-            include_once 'stb-default-themes.php';
-
             $slug = (string)$request['slug'];
-
-            $themesModel = new StbDefaultThemes();
-            $theme = $themesModel->getTheme($slug);
-
-            $themeStyles = $theme['styles'];
-            $themeSettings = $theme['settings'];
-
-            $colors = [];
-
-            foreach ($themeStyles as $style) {
-                $colors[] = [
-                    'slug' => $style['slug'],
-                    'type' => $style['stbType'],
-                    'caption' => $style['caption'],
-                    'colors' => unserialize($style['colors']),
-                    'trash' => (int)$style['trash']
-                ];
-            }
+            ['colors' => $colors, 'settings' => $themeSettings] = self::getThemeProps($slug);
 
             return ['result' => 'ok', 'data' => ['colors' => $colors, 'settings' => $themeSettings]];
         }

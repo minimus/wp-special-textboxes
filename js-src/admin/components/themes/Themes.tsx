@@ -1,41 +1,46 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useSnackbar } from 'notistack'
-import { ILocale, TDispatch, TSettings, TThemeInfo } from '../../../types/admin'
-import { IReducers } from '../../../types/state'
-import { Root } from './styles'
-import ThemeItem from './components/ThemeItem'
-import { activateTheme } from '../../redux/modules/themes/actions'
+import React, { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useSnackbar } from 'notistack';
 
-const Themes = (): JSX.Element => {
-	const dispatch: TDispatch = useDispatch()
-	const { enqueueSnackbar } = useSnackbar()
+import { ILocale, TDispatch, TSettings, TThemeInfo } from '../../../types/admin';
+import { activateTheme } from '../../redux/modules/themes/actions';
+import { TRootState } from '../../redux';
+import { STYLES_NEED_RELOAD } from '../../redux/constants';
 
-	const themes: TThemeInfo[] = useSelector((state: IReducers) => state.themes.themes) ?? []
-	const settings: TSettings = useSelector((state: IReducers) => state.settings.settings)
-	const localesData: ILocale = useSelector((state: IReducers) => state.locales.data)
+import { Root } from './styles';
+import ThemeItem from './components/ThemeItem';
 
-	const { messages: { themes: messages = { savingSuccess: '', savingError: '' } } = {} } = localesData ?? {}
+const Themes: FC = () => {
+  const dispatch: TDispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
-	const onActivateClick = (slug: string): void => {
-		void activateTheme(slug)(dispatch, enqueueSnackbar, messages).then()
-	}
+  const themes: TThemeInfo[] = useSelector((state: TRootState) => state.themes.themes) ?? [];
+  const settings: TSettings = useSelector((state: TRootState) => state.settings.settings);
+  const localesData: ILocale | null = useSelector((state: TRootState) => state.locales.data);
 
-	return (
-		<Root>
-			{themes.map((item: TThemeInfo) => (
-				<ThemeItem
-					key={item.slug}
-					name={item.name}
-					slug={item.slug}
-					description={item.description}
-					image={item.image}
-					active={item.slug === settings.themeName}
-					onActivateClick={onActivateClick}
-				/>
-			))}
-		</Root>
-	)
-}
+  const { messages: { themes: messages = { savingSuccess: '', savingError: '' } } = {} } = localesData ?? {};
 
-export default Themes
+  const onActivateClick = (slug: string): void => {
+    void activateTheme(slug)(dispatch, enqueueSnackbar, messages).then(() => {
+      dispatch({ type: STYLES_NEED_RELOAD });
+    });
+  };
+
+  return (
+    <Root>
+      {themes.map((item: TThemeInfo) => (
+        <ThemeItem
+          key={item.slug}
+          name={item.name}
+          slug={item.slug}
+          description={item.description}
+          image={item.image}
+          active={item.slug === settings.themeName}
+          onActivateClick={onActivateClick}
+        />
+      ))}
+    </Root>
+  );
+};
+
+export default Themes;

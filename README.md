@@ -20,24 +20,10 @@ Highlights any portion of text as text in the colored boxes.
 
 Adds little style sheet file and short code to blog for highlighting some portion of text in post as colored boxes. That may be warning, alert, info and download portion of post's text.
 
-Available languages:
+### Available languages:
 
 * English
 * Russian
-* Italian by [Gianni Diurno](http://gidibao.net/)
-* Belarus by [Fat Cower](http://www.fatcow.com)
-* Uzbek by [Alisher Safarov](http://www.comfi.com)
-* Polish by [Daniel Fruzynski](http://www.poradnik-webmastera.com)
-* Arabic by [مدونة رسين](http://www.r-sn.com/wp/)
-* Dutch by [Rene](http://wpwebshop.com/blog/)
-* Ukrainian by [official ukrainian localization team](http://wordpress.co.ua/)
-* German by [Renate](http://www.bhvnederland.nl/)
-* Czech by [Stanislav Čihák](http://www.abacomp.cz/)
-* Turkish by Serhat ESEN
-* Slovak by [Branco](http://webhostinggeeks.com/blog/)
-* Traditional Chinese by 断青丝
-* Spanish by [Andrew Kurtis](http://www.webhostinghub.com/)
-* Swahili by [Andrew Mwaniki](http://purehcgdietdrops.com/)
 
 If you have created your own language pack, or have an update of an existing one, you can send **.po** and **.mo files** to me (minimus AT simplelib.com) so that I can bundle it into **Special Text Boxes**.
   
@@ -48,13 +34,13 @@ Real examples of outputs you can see on the [plugin page](http://www.simplelib.c
 
 ## Installation
 
-1. Upload plugin dir to the `/wp-content/plugins/` directory
+1. Upload files contained in the `/plugin` dir into the `/wp-content/plugins/wp-special-textboxes` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Use short codes in the text of post to highlight any portion of it.
 
 ## Frequently Asked Questions
 
-### How to insert special text box to post's text?
+### How to insert special text box into the post's text?
 
 Use short codes: 
 
@@ -88,45 +74,40 @@ Use *stb* shortcode inside *stextbox* shortcode
 
 More about Special Text Boxes usage and customising read on the [plugin page](http://www.simplelib.com/archives/wordpress-plugin-wp-special-textboxes/)
 
-## Screenshots
-
-1. Examples of special text boxes
-1. Special Text Boxes Parameters Page
-1. Special Text Boxes Box Editor
-1. Special Text Boxes Themes Selector
-1. Insertion dialog. Basic Settings
-1. Insertion dialog. Extended Settings
-1. Special Text widget. Admin Page
-
-
 ## Changelog
-
+### 6.1
+* added: border width param
+* fixed: collapsed box style
+* Some development improvements
+### 6.0.2
+* WP 6.1 ready
+* Some improvements
 ### 6.0.0
 * ReactJS based admin interface
 * Special Text Block for Editor Page
 * REST API
 ### 5.9.108
-* Wordpress 5.1 ready
+* WordPress 5.1 ready
 ### 5.9.107
 * The tinyMCE dialog bug has been fixed
 ### 5.8.106
-* Wordpress 4.8 compatibility
+* WordPress 4.8 compatibility
 ### 5.7.105
 * Some improvements on admin pages
 * Removed deprecated functions
 ### 5.6.103
 * Some changes to prevent vulnerability of plugin have been made
 ### 5.5.102
-* Wordpress 4.6 ready
+* WordPress 4.6 ready
 ### 5.5.101
-* Wordpress 4.5 ready
+* WordPress 4.5 ready
 ### 5.5.100
-* Wordpress 4.4 compatibility
+* WordPress 4.4 compatibility
 * Language pack is updated. Swahili by Andrew Mwaniki is added.
 ### 5.4.98
 * The bug of creating DB table with charset utf8mb4 is solved.
 ### 5.3.97
-* Wordpress 4.3 compatibility
+* WordPress 4.3 compatibility
 ### 5.3.95
 * Minor bug fixed
 ### 5.3.94
@@ -142,7 +123,7 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 ### 5.1.88
 * TinyMCE 4 compatibility bug is fixed
 * NoImage bug is fixed
-* Wordpress 4 compatibility is tested
+* WordPress 4 compatibility is tested
 ### 5.0.86
 * TinyMCE compatibility bug is fixed
 ### 5.0.85
@@ -172,7 +153,7 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 * Some bugs are fixed.
 * Control of block's shadow from short codes is added.
 * Improvements in the interface of plugin are made.
-* Compatibility with "Wordpress Post Tabs" plugin is added.
+* Compatibility with "WordPress Post Tabs" plugin is added.
 ### 4.0.65
 * Styles repository is added
 * Javascript drawing mode is added
@@ -188,8 +169,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 * The amount of the parameters adjusted "on the fly" is increased
 * The output html code meets the requirements of the markup validity of Web documents
 ### 3.8.55
-* Now the plugin codes are using **Wordpress 3.0+** standards (PHP5 only)
-* Wordpress Settings API are used
+* Now the plugin codes are using **WordPress 3.0+** standards (PHP5 only)
+* WordPress Settings API are used
 * Now the plugin uses "resources saving technology" for saving server resources in blog runtime mode.
 ### 3.7.52
 * Language pack is updated. Czech by [Stanislav Čihák](http://www.abacomp.cz/) are added.
@@ -233,7 +214,7 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 * Italian language pack updated
 ### 2.0.23
 * Uzbek language pack by [Alisher Safarov](http://www.comfi.com) added
-* Wordpress 2.8.4 compatibility tested
+* WordPress 2.8.4 compatibility tested
 ### 2.0.22
 * Direct output codes optimised
 * Italian language pack updated
@@ -245,14 +226,14 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 * Plugin codes optimised
 ### 1.2.13
 * Belarus language by [Fat Cower](http://www.fatcow.com) added
-* Wordpress 2.8.1 compatibility tested
+* WordPress 2.8.1 compatibility tested
 ### 1.2.12
 * Italian language by [Gianni Diurno](http://gidibao.net/) added
 ### 1.2.11
 * custom box added
 * custom editor added
 * customising "on the fly" added
-* Wordpress 2.8 compatibility checked
+* WordPress 2.8 compatibility checked
 ### 1.1.7
 * black box margins bug fixed
 ### 1.1.6

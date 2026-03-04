@@ -1,62 +1,64 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { TDispatch, ILocale, TSettings } from '../../../../types/admin'
-import { IReducers } from '../../../../types/state'
-import SettingsSection from './SettingsSection'
-import { RadioInput } from '@minimus/simplelib-ui-kit'
-import { SETTINGS_SET_SETTINGS } from '../../../redux/constants'
+import React, { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RadioInput } from '@minimus/simplelib-ui-kit';
 
-const SystemSettings = (): JSX.Element => {
-	const dispatch: TDispatch = useDispatch()
+import { TDispatch, ILocale, TSettings } from '../../../../types/admin';
+import { SETTINGS_SET_SETTINGS } from '../../../redux/constants';
+import { TRootState } from '../../../redux';
 
-	const settings: TSettings = useSelector((state: IReducers) => state.settings.settings)
-	const localesData: ILocale = useSelector((state: IReducers) => state.locales.data)
+import SettingsSection from './SettingsSection';
 
-	const { cssLoading } = settings
-	const {
-		settings: {
-			systemSettings: {
-				caption: captionString = '',
-				loadingCaption = '',
-				staticCaption = '',
-				clientDynamicCaption = '',
-				serverDynamicCaption = '',
-				staticTooltip = '',
-				// clientDynamicTooltip = '',
-				serverDynamicTooltip = '',
-			} = {},
-		} = {},
-	} = localesData ?? {}
+const SystemSettings: FC = () => {
+  const dispatch: TDispatch = useDispatch();
 
-	const onChange = (value: string): void => {
-		dispatch({ type: SETTINGS_SET_SETTINGS, payload: { cssLoading: value } })
-	}
+  const settings: TSettings = useSelector((state: TRootState) => state.settings.settings);
+  const localesData: ILocale | null = useSelector((state: TRootState) => state.locales.data);
 
-	return (
-		<SettingsSection caption={captionString}>
-			<RadioInput
-				id="cssLoading"
-				value={cssLoading}
-				tooltip={
-					<>
-						<b>{staticCaption}</b> - {staticTooltip}
-						{/* <br/>
+  const { cssLoading } = settings;
+  const {
+    settings: {
+      systemSettings: {
+        caption: captionString = '',
+        loadingCaption = '',
+        staticCaption = '',
+        // clientDynamicCaption = '',
+        serverDynamicCaption = '',
+        staticTooltip = '',
+        // clientDynamicTooltip = '',
+        serverDynamicTooltip = '',
+      } = {},
+    } = {},
+  } = localesData ?? {};
+
+  const onChange = (value: string): void => {
+    dispatch({ type: SETTINGS_SET_SETTINGS, payload: { cssLoading: value } });
+  };
+
+  return (
+    <SettingsSection caption={captionString}>
+      <RadioInput
+        id="cssLoading"
+        value={cssLoading}
+        tooltip={
+          <>
+            <b>{staticCaption}</b> - {staticTooltip}
+            {/* <br/>
 							<b>{clientDynamicCaption}</b> - {clientDynamicTooltip} */}
-						<br />
-						<b>{serverDynamicCaption}</b> - {serverDynamicTooltip}
-					</>
-				}
-				caption={loadingCaption}
-				values={[
-					{ text: staticCaption ?? 'Static', value: 'static' },
-					// { text: clientDynamicCaption ?? 'Client Dynamic', value: 'styled' },
-					{ text: serverDynamicCaption ?? 'Server Dynamic', value: 'dynamic' },
-				]}
-				direction="row"
-				onChange={onChange}
-			/>
-		</SettingsSection>
-	)
-}
+            <br />
+            <b>{serverDynamicCaption}</b> - {serverDynamicTooltip}
+          </>
+        }
+        caption={loadingCaption}
+        values={[
+          { text: staticCaption ?? 'Static', value: 'static' },
+          // { text: clientDynamicCaption ?? 'Client Dynamic', value: 'styled' },
+          { text: serverDynamicCaption ?? 'Server Dynamic', value: 'dynamic' },
+        ]}
+        direction="row"
+        onChange={onChange}
+      />
+    </SettingsSection>
+  );
+};
 
-export default SystemSettings
+export default SystemSettings;

@@ -1,65 +1,67 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import SettingsSection from './SettingsSection'
-import ShadowSettings from '../../../../ui-kit/ShadowSettings'
-import { TDispatch, ILocale, TSettings, TShadowSettings } from '../../../../types/admin'
-import { IReducers } from '../../../../types/state'
-import { SETTINGS_SET_SETTINGS } from '../../../redux/constants'
+import React, { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-const ShadowsSettings = (): JSX.Element => {
-	const dispatch: TDispatch = useDispatch()
+import ShadowSettings from '../../../../ui-kit/ShadowSettings';
+import { TDispatch, ILocale, TSettings, TShadowSettings } from '../../../../types/admin';
+import { SETTINGS_SET_SETTINGS } from '../../../redux/constants';
+import { TRootState } from '../../../redux';
 
-	const settings: TSettings = useSelector((state: IReducers) => state.settings.settings)
-	const localesData: ILocale = useSelector((state: IReducers) => state.locales.data)
+import SettingsSection from './SettingsSection';
 
-	const {
-		shadow,
-		text: { shadow: textShadow },
-		text,
-	} = settings ?? {}
+const ShadowsSettings: FC = () => {
+  const dispatch: TDispatch = useDispatch();
 
-	const {
-		settings: {
-			shadowsSettings: {
-				caption: captionString = '',
-				boxShadowCaption = '',
-				boxShadowLabel = '',
-				textShadowCaption = '',
-				textShadowLabel = '',
-				shadowSettings = undefined,
-			} = {},
-		} = {},
-	} = localesData ?? {}
+  const settings: TSettings = useSelector((state: TRootState) => state.settings.settings);
+  const localesData: ILocale | null = useSelector((state: TRootState) => state.locales.data);
 
-	const onBoxShadowChange = (value: TShadowSettings): any => {
-		dispatch({ type: SETTINGS_SET_SETTINGS, payload: { shadow: value } })
-	}
+  const {
+    shadow,
+    text: { shadow: textShadow },
+    text,
+  } = settings ?? {};
 
-	const onTextShadowChange = (value: TShadowSettings): any => {
-		dispatch({ type: SETTINGS_SET_SETTINGS, payload: { text: { ...text, shadow: { ...value } } } })
-	}
+  const {
+    settings: {
+      shadowsSettings: {
+        caption: captionString = '',
+        boxShadowCaption = '',
+        boxShadowLabel = '',
+        textShadowCaption = '',
+        textShadowLabel = '',
+        shadowSettings = undefined,
+      } = {},
+    } = {},
+  } = localesData ?? {};
 
-	return (
-		<SettingsSection caption={captionString}>
-			<ShadowSettings
-				id="box-shadow"
-				caption={boxShadowCaption}
-				label={boxShadowLabel}
-				locale={shadowSettings}
-				shadow={shadow}
-				onChange={onBoxShadowChange}
-			/>
-			<ShadowSettings
-				id="text-shadow"
-				caption={textShadowCaption}
-				label={textShadowLabel}
-				locale={shadowSettings}
-				shadow={textShadow}
-				variant="text"
-				onChange={onTextShadowChange}
-			/>
-		</SettingsSection>
-	)
-}
+  const onBoxShadowChange = (value: TShadowSettings): void => {
+    dispatch({ type: SETTINGS_SET_SETTINGS, payload: { shadow: value } });
+  };
 
-export default ShadowsSettings
+  const onTextShadowChange = (value: TShadowSettings): void => {
+    dispatch({ type: SETTINGS_SET_SETTINGS, payload: { text: { ...text, shadow: { ...value } } } });
+  };
+
+  return (
+    <SettingsSection caption={captionString}>
+      <ShadowSettings
+        htmlId="box-shadow"
+        caption={boxShadowCaption}
+        label={boxShadowLabel}
+        locale={shadowSettings}
+        shadow={shadow}
+        onChange={onBoxShadowChange}
+      />
+      <ShadowSettings
+        htmlId="text-shadow"
+        caption={textShadowCaption}
+        label={textShadowLabel}
+        locale={shadowSettings}
+        shadow={textShadow}
+        variant="text"
+        onChange={onTextShadowChange}
+      />
+    </SettingsSection>
+  );
+};
+
+export default ShadowsSettings;

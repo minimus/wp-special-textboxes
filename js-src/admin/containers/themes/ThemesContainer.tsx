@@ -1,28 +1,30 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Backdrop } from '@mui/material'
-import type { IReducers } from '../../../types/state'
-import type { TDispatch } from '../../../types/admin'
-import { getThemesInfo } from '../../redux/modules/themes/actions'
-import Themes from '../../components/themes/Themes'
+import React, { useEffect, FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Backdrop } from '@mui/material';
 
-const ThemesContainer = (): JSX.Element => {
-	const dispatch: TDispatch = useDispatch()
+import type { TDispatch } from '../../../types/admin';
+import { getThemesInfo } from '../../redux/modules/themes/actions';
+import Themes from '../../components/themes/Themes';
+import { TRootState } from '../../redux';
 
-	const loading: boolean = useSelector((state: IReducers) => state.themes.loading)
+const ThemesContainer: FC = () => {
+  const dispatch: TDispatch = useDispatch();
 
-	useEffect(() => {
-		if (!loading) {
-			void getThemesInfo()(dispatch).then()
-		}
-	}, [])
+  const loading: boolean = useSelector((state: TRootState) => state.themes.loading);
+  const loaded: boolean = useSelector((state: TRootState) => state.themes.loaded);
 
-	return (
-		<>
-			<Themes />
-			<Backdrop open={loading} sx={{ color: '#fff', zIndex: 1000 }} />
-		</>
-	)
-}
+  useEffect(() => {
+    if (!loading && !loaded) {
+      void getThemesInfo()(dispatch).then();
+    }
+  }, [dispatch, loaded, loading]);
 
-export default ThemesContainer
+  return (
+    <>
+      <Themes />
+      <Backdrop open={loading} sx={{ color: '#fff', zIndex: 1000 }} />
+    </>
+  );
+};
+
+export default ThemesContainer;

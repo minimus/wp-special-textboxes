@@ -194,6 +194,7 @@ if (!class_exists('StbDefaultThemes')) {
                     'roundedCorners' => true,
                     'radius' => 5,
                     'borderStyle' => 'solid',
+                    'borderWidth' => 1,
                     'margins' => [
                         'top' => 10,
                         'left' => 10,
@@ -220,7 +221,7 @@ if (!class_exists('StbDefaultThemes')) {
                     'duration' => 500,
                     'caption' => [
                         'font' => [
-                            'fontSize' => 12,
+                            'fontSize' => 0,
                             'fontFamily' => 'Impact, Verdana, Helvetica, Arial, sans-serif',
                         ],
                     ],
@@ -434,6 +435,7 @@ if (!class_exists('StbDefaultThemes')) {
                     'roundedCorners' => true,
                     'radius' => 5,
                     'borderStyle' => 'solid',
+                    'borderWidth' => 1,
                     'margins' => [
                         'top' => 10,
                         'left' => 10,
@@ -460,7 +462,7 @@ if (!class_exists('StbDefaultThemes')) {
                     'duration' => 500,
                     'caption' => [
                         'font' => [
-                            'fontSize' => 12,
+                            'fontSize' => 0,
                             'fontFamily' => 'Impact, Verdana, Helvetica, Arial, sans-serif',
                         ],
                     ],
@@ -674,6 +676,7 @@ if (!class_exists('StbDefaultThemes')) {
                     'roundedCorners' => true,
                     'radius' => 5,
                     'borderStyle' => 'solid',
+                    'borderWidth' => 1,
                     'margins' => [
                         'top' => 10,
                         'left' => 10,
@@ -700,7 +703,7 @@ if (!class_exists('StbDefaultThemes')) {
                     'duration' => 500,
                     'caption' => [
                         'font' => [
-                            'fontSize' => 12,
+                            'fontSize' => 0,
                             'fontFamily' => 'Impact, Verdana, Helvetica, Arial, sans-serif',
                         ],
                     ],
@@ -914,6 +917,7 @@ if (!class_exists('StbDefaultThemes')) {
                     'roundedCorners' => false,
                     'radius' => 5,
                     'borderStyle' => 'solid',
+                    'borderWidth' => 1,
                     'margins' => [
                         'top' => 10,
                         'left' => 10,
@@ -940,7 +944,7 @@ if (!class_exists('StbDefaultThemes')) {
                     'duration' => 500,
                     'caption' => [
                         'font' => [
-                            'fontSize' => 12,
+                            'fontSize' => 0,
                             'fontFamily' => 'Impact, Verdana, Helvetica, Arial, sans-serif',
                         ],
                     ],

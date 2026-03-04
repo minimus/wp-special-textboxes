@@ -1,10 +1,11 @@
 ﻿=== Special Text Boxes ===
 Contributors: minimus
 Donate link:  http://www.simplelib.com
-Tags: content, performance, text, code, widget
+Tags: content, performance, text, info, color
 Requires at least: 5.6
-Tested up to: 6.0
-Stable tag: 6.0.1
+Tested up to: 6.9
+Stable tag: 6.5
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,20 +21,6 @@ Available languages:
 
 * English
 * Russian
-* Italian by [Gianni Diurno](http://gidibao.net/)
-* Belarus by [Fat Cower](http://www.fatcow.com)
-* Uzbek by [Alisher Safarov](http://www.comfi.com)
-* Polish by [Daniel Fruzynski](http://www.poradnik-webmastera.com)
-* Arabic by [مدونة رسين](http://www.r-sn.com/wp/)
-* Dutch by [Rene](http://wpwebshop.com/blog/)
-* Ukrainian by [official ukrainian localization team](http://wordpress.co.ua/)
-* German by [Renate](http://www.bhvnederland.nl/)
-* Czech by [Stanislav Čihák](http://www.abacomp.cz/)
-* Turkish by Serhat ESEN
-* Slovak by [Branco](http://webhostinggeeks.com/blog/)
-* Traditional Chinese by 断青丝
-* Spanish by [Andrew Kurtis](http://www.webhostinghub.com/)
-* Swahili by [Andrew Mwaniki](http://purehcgdietdrops.com/)
 
 If you have created your own language pack, or have an update of an existing one, you can send **.po** and **.mo files** to me (minimus AT simplelib.com) so that I can bundle it into **Special Text Boxes**.
   
@@ -97,6 +84,30 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 
 == Changelog ==
+= 6.5 =
+* update: updated to React 19
+* update: third party libraries are updated
+* fix: block's content input is fixed
+* fix: admin data requests are fixed
+= 6.2.6 =
+* WordPress 6.8 ready
+= 6.2.5 =
+* Plugin security improved
+= 6.2.4 =
+* Plugin security improved
+= 6.2.2 =
+* WordPress 6.5 ready
+= 6.2.1 =
+* WordPress 6.4 ready
+= 6.2 =
+* WordPress 6.3 ready
+= 6.1 =
+* added: border width param
+* fixed: collapsed box style
+* Some development improvements
+= 6.0.2 =
+* WordPress 6.1 ready
+* Some development improvements
 = 6.0.1 =
 * Some improvements
 = 6.0.0 =
@@ -262,7 +273,24 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 * Initial upload
 
 == Upgrade Notice ==
-
+= 6.5 =
+Updated to React 19. Third party libraries are updated. Block's content input is fixed. Admin data requests are fixed.
+= 6.2.6 =
+WordPress 6.8 ready
+= 6.2.5 =
+Plugin security improved
+= 6.2.4 =
+Plugin security improved
+= 6.2.2 =
+WordPress 6.5 ready
+= 6.2.1 =
+WordPress 6.4 ready
+= 6.2 =
+WordPress 6.3 ready
+= 6.1 =
+Border width param is added. Collapsed box style is fixed
+= 6.0.2 =
+Some development improvements. WordPress 6.1 ready
 = 6.0.1 =
 Some improvements
 = 6.0.0 =

@@ -1,36 +1,37 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { ERROR, HEADER_FETCH_DATA, START, SUCCESS } from '../../redux/constants'
-import { getData } from '../../redux/helpers'
-import Header from '../../components/header/Header'
-import type { IReducers } from '../../../types/state'
-import type { TDispatch, TSysInfo } from '../../../types/admin'
+import React, { useEffect, FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-const HeaderContainer = (): JSX.Element => {
-	const sysInfo: TSysInfo = useSelector((state: IReducers) => state.header.sysInfo)
-	const dispatch: TDispatch = useDispatch()
+import { ERROR, HEADER_FETCH_DATA, START, SUCCESS } from '../../redux/constants';
+import { getData } from '../../redux/helpers';
+import Header from '../../components/header/Header';
+import type { TDispatch, TSysInfo } from '../../../types/admin';
+import { TRootState } from '../../redux';
 
-	useEffect(() => {
-		if (sysInfo === null) {
-			dispatch({ type: HEADER_FETCH_DATA + START })
+const HeaderContainer: FC = () => {
+  const sysInfo: TSysInfo | null = useSelector((state: TRootState) => state.header.sysInfo);
+  const dispatch: TDispatch = useDispatch();
 
-			getData('sysinfo')
-				.then((data) => {
-					dispatch({
-						type: HEADER_FETCH_DATA + SUCCESS,
-						payload: data?.data,
-					})
-				})
-				.catch((err: Record<string, unknown>) => {
-					dispatch({
-						type: HEADER_FETCH_DATA + ERROR,
-						payload: err,
-					})
-				})
-		}
-	}, [sysInfo, dispatch])
+  useEffect(() => {
+    if (sysInfo === null) {
+      dispatch({ type: HEADER_FETCH_DATA + START });
 
-	return <Header />
-}
+      getData('sysinfo')
+        .then((data) => {
+          dispatch({
+            type: HEADER_FETCH_DATA + SUCCESS,
+            payload: data?.data,
+          });
+        })
+        .catch((err: Record<string, unknown>) => {
+          dispatch({
+            type: HEADER_FETCH_DATA + ERROR,
+            payload: err,
+          });
+        });
+    }
+  }, [sysInfo, dispatch]);
 
-export default HeaderContainer
+  return <Header />;
+};
+
+export default HeaderContainer;

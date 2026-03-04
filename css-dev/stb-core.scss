@@ -1,150 +1,155 @@
 .stb-container {
-	display: flex;
-	overflow: hidden;
-	box-sizing: border-box;
+  box-sizing: border-box;
+  display: flex;
+  overflow: hidden;
 
-	.stb-caption {
-		display: flex;
-		flex-direction: column;
-		order: 1;
+  .stb-caption {
+    display: flex;
+    flex-direction: column;
+    order: 1;
 
-		.stb-logo {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 60px;
-			height: 60px;
-			order: 1;
+    .stb-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      order: 1;
+      width: 60px;
+      height: 60px;
 
-			.stb-logo__image {
-				width: 50px;
-				height: 50px;
-			}
-		}
+      .stb-logo__image {
+        width: 50px;
+        height: 50px;
+      }
+    }
 
-		.stb-caption-content {
-			display: none;
-			order: 2;
-		}
+    .stb-caption-content {
+      display: none;
+      order: 2;
+    }
 
-		.stb-tool {
-			display: none;
-			order: 3;
-		}
-	}
+    .stb-tool {
+      display: none;
+      order: 3;
+    }
+  }
 
-	.stb-content {
-		order: 2;
-		width: 100%;
+  .stb-content {
+    order: 2;
+    width: 100%;
 
-		p:first-child {
-			margin-block-start: 0;
-		}
+    p:first-child {
+      margin-block-start: 0;
+    }
 
-		p:last-child {
-			margin-block-end: 0;
-		}
-	}
+    p:last-child {
+      margin-block-end: 0;
+    }
+  }
 
-	&.stb-image-small {
-		.stb-caption {
-			.stb-logo {
-				width: 30px;
-				height: 30px;
+  &.stb-image-small {
+    .stb-caption {
+      .stb-logo {
+        width: 30px;
+        height: 30px;
 
-				.stb-logo__image {
-					width: 25px;
-					height: 25px;
-				}
-			}
-		}
-	}
+        .stb-logo__image {
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+  }
 
-	&.stb-image-none {
-		.stb-caption {
-			display: none;
-		}
-	}
+  &.stb-image-none {
+    .stb-caption {
+      display: none;
+    }
+  }
 }
 
 .stb-container.stb-caption-box {
-	flex-direction: column;
+  flex-direction: column;
 
-	.stb-caption {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		padding: 0 3px;
+  .stb-caption {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 3px;
 
-		.stb-logo {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 27px;
-			height: 27px;
-			order: 1;
+    .stb-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      order: 1;
+      width: 27px;
+      height: 27px;
 
-			.stb-logo__image {
-				width: 25px;
-				height: 25px;
-			}
-		}
+      .stb-logo__image {
+        width: 25px;
+        height: 25px;
+      }
+    }
 
-		.stb-caption-content {
-			display: inherit;
-			width: 100%;
-			padding: 0 3px;
-			order: 2;
-		}
+    .stb-caption-content {
+      display: inherit;
+      order: 2;
+      padding: 0 3px;
+      width: 100%;
+    }
 
-		.stb-tool {
-			display: inherit;
-			justify-self: flex-end;
-			width: 27px;
-			height: 27px;
-			cursor: pointer;
-			order: 3;
-		}
-	}
+    .stb-tool {
+      display: inherit;
+      justify-self: flex-end;
+      order: 3;
+      cursor: pointer;
+      width: 27px;
+      height: 27px;
+    }
+  }
 
-	.stb-content {
-		/*max-height: 2000px;*/
-		overflow: hidden;
-		width: 100%;
-		transition: all .3s linear;
-		will-change: transform;
+  .stb-content {
+    transition: all .3s linear;
+    width: 100%;
+    /*max-height: 2000px;*/
+    overflow: hidden;
+    will-change: transform;
 
-		p:first-child {
-			margin-block-start: 0;
-		}
+    p:first-child {
+      margin-block-start: 0;
+    }
 
-		p:last-child {
-			margin-block-end: 0;
-		}
-	}
+    p:last-child {
+      margin-block-end: 0;
+    }
+  }
 
-	&.stb-fixed {
-		.stb-caption {
-			.stb-tool {
-				display: none;
-			}
-		}
-	}
+  &.stb-fixed {
+    .stb-caption {
+      .stb-tool {
+        display: none;
+      }
+    }
+  }
 
-	&.stb-collapsed {
-		.stb-content {
-			font-size: 0;
-		}
+  &.stb-collapsed {
+    .stb-content {
+      line-height: unset;
+      font-size: 0;
 
-		.stb-content img {
-			width: 0;
-			height: 0;
-		}
-	}
+      p {
+        line-height: unset;
+      }
+    }
+
+    .stb-content img {
+      width: 0;
+      height: 0;
+    }
+  }
 }
 
 .stb-container.stb-widget {
-	margin-left: 0;
-	margin-right: 0;
-	box-shadow: none;
+  margin-right: 0;
+  margin-left: 0;
+  box-shadow: none;
 }

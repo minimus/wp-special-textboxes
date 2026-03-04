@@ -1,26 +1,27 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import Styles from '../../components/styles/Styles'
-import { getStylesData } from '../../redux/modules/styles/actions'
-import type { IReducers } from '../../../types/state'
-import StylesLoader from '../../components/styles/StylesLoader'
+import React, { useEffect, FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-const StylesContainer = (): JSX.Element => {
-	const dispatch = useDispatch()
+import Styles from '../../components/styles/Styles';
+import { getStylesData } from '../../redux/modules/styles/actions';
+import StylesLoader from '../../components/styles/StylesLoader';
+import { TRootState } from '../../redux';
 
-	const filter = useSelector((state: IReducers) => state.styles.filter)
-	const needReload = useSelector((state: IReducers) => state.styles.needReload)
-	const loading = useSelector((state: IReducers) => state.styles.loading)
+const StylesContainer: FC = () => {
+  const dispatch = useDispatch();
 
-	useEffect(() => {
-		if (!loading) {
-			void getStylesData(filter)(dispatch).then()
-		}
-	}, [filter, needReload])
+  const filter = useSelector((state: TRootState) => state.styles.filter);
+  const needReload = useSelector((state: TRootState) => state.styles.needReload);
+  const loading = useSelector((state: TRootState) => state.styles.loading);
 
-	if (loading) return <StylesLoader />
+  useEffect(() => {
+    if (!loading && needReload) {
+      void getStylesData(filter)(dispatch).then();
+    }
+  }, [dispatch, filter, loading, needReload]);
 
-	return <Styles />
-}
+  if (loading) return <StylesLoader />;
 
-export default StylesContainer
+  return <Styles />;
+};
+
+export default StylesContainer;

@@ -1,18 +1,19 @@
-import React, { useState } from 'react'
-import { Skeleton } from '@mui/material'
-import { Root, ToolbarRoot } from './styless'
+import React, { useState, FC, ReactNode } from 'react';
+import { Skeleton } from '@mui/material';
 
-const StylesLoader = (): JSX.Element => {
-	const [skeletons] = useState(new Array(7).fill(<Skeleton width="100%" />, 0, 7))
+import { Root, ToolbarRoot } from './styless';
 
-	return (
-		<>
-			<ToolbarRoot>
-				<Skeleton width="100%" />
-			</ToolbarRoot>
-			<Root>{skeletons.map((skeleton: JSX.Element) => skeleton)}</Root>
-		</>
-	)
-}
+const StylesLoader: FC = () => {
+  const [skeletons] = useState(new Array(7).fill(<Skeleton width="100%" />, 0, 7));
 
-export default StylesLoader
+  return (
+    <>
+      <ToolbarRoot>
+        <Skeleton width="100%" />
+      </ToolbarRoot>
+      <Root>{skeletons.map((skeleton: ReactNode) => skeleton)}</Root>
+    </>
+  );
+};
+
+export default StylesLoader;

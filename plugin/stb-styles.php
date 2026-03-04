@@ -199,7 +199,12 @@ if (!class_exists('StbStyles')) {
                 '}' .
 
                 '.stb-container.stb-caption-box.stb-collapsed .stb-content {' .
+                'line-height: unset;' .
                 'font-size: 0' .
+                '}' .
+
+                '.stb-container.stb-caption-box.stb-collapsed .stb-content p {' .
+                'line-height: unset;' .
                 '}' .
 
                 '.stb-container.stb-caption-box.stb-collapsed .stb-content img {' .
@@ -285,6 +290,7 @@ if (!class_exists('StbStyles')) {
             $slug = $colors['slug'];
             $color = $colors['colors']['body']['color'] ?? '#000';
             $borderStyle = $this->settings['borderStyle'] ?? 'solid';
+            $borderWidth = $this->settings['borderWidth'] ?? 1;
             $borderColor = $colors['colors']['border']['color'] ?? '#000';
             $backgroundBody0 = $colors['colors']['body']['background'][0] ?? '#fff';
             $backgroundBody1 = $colors['colors']['body']['background'][1] ?? '#fff';
@@ -296,7 +302,7 @@ if (!class_exists('StbStyles')) {
 
             return ".stb-container.stb-style-$slug {" .
                 "color: $color;" .
-                "border: 1px $borderStyle $borderColor;" .
+                "border: {$borderWidth}px $borderStyle $borderColor;" .
                 "background-image: -webkit-gradient(linear, left top, left bottom, color-stop(30%, $backgroundBody0), color-stop(90%, $backgroundBody1));" .
                 "background-image: -o-linear-gradient(top, $backgroundBody0 30%, $backgroundBody1 90%);" .
                 "background-image: linear-gradient(180deg, $backgroundBody0 30%, $backgroundBody1 90%);" .
