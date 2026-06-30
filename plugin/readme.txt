@@ -3,8 +3,8 @@ Contributors: minimus
 Donate link:  http://www.simplelib.com
 Tags: content, performance, text, info, color
 Requires at least: 5.6
-Tested up to: 6.9
-Stable tag: 6.5
+Tested up to: 7.0
+Stable tag: 6.5.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -84,6 +84,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 
 
 == Changelog ==
+= 6.5.1 =
+* WordPress 7.0 ready
 = 6.5 =
 * update: updated to React 19
 * update: third party libraries are updated
@@ -273,6 +275,8 @@ More about Special Text Boxes usage and customising read on the [plugin page](ht
 * Initial upload
 
 == Upgrade Notice ==
+= 6.5.1 =
+WordPress 7.0 ready
 = 6.5 =
 Updated to React 19. Third party libraries are updated. Block's content input is fixed. Admin data requests are fixed.
 = 6.2.6 =

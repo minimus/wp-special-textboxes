@@ -22,7 +22,7 @@ if (!class_exists("SpecialTextBoxes")) {
 
         public function __construct()
         {
-            define('STB_VERSION', '6.5');
+            define('STB_VERSION', '6.5.1');
             define('STB_DB_VERSION', '2.0');
             define('STB_DIR', dirname(__FILE__) . '/');
             define('STB_DOMAIN', 'wp-special-textboxes');
